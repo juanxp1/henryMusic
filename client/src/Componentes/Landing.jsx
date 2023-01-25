@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from './Login/Login.jsx'
+import Nav from '../Componentes/NavLanding/Nav'
 
 
 
@@ -8,8 +8,10 @@ function Landing() {
 
     return (
         <div className="contianer">
-            <h1 className='container'>Bienvenidos a Henry Music</h1>
-            <Login />
+         
+            <Nav />
+<h1>holis</h1>
+
         </div>
     )
 }
