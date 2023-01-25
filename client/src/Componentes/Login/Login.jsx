@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Button } from 'react-bootstrap';
+
 
 
 function Login() {
@@ -9,7 +9,7 @@ function Login() {
     return (
         <div className="container text-center">
             <div className="row">
-                <button type="button" class="btn btn-dark" onClick={() => loginWithRedirect()}>Login</button>
+                <button type="button" class="btn btn-primary" onClick={() => loginWithRedirect()}>REGISTRATE</button>
             </div>
         </div>
     )
