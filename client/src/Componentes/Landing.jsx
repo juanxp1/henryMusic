@@ -1,14 +1,15 @@
 import React from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
+import Login from './Login/Login.jsx'
+
 
 
 function Landing() {
 
-    const { loginWithRedirect } = useAuth0()
+
     return (
-        <div>
-            <h1>Landing</h1>
-            <button onClick={() => loginWithRedirect()}>Login</button>
+        <div className="contianer">
+            <h1 className='container'>Bienvenidos a Henry Music</h1>
+            <Login />
         </div>
     )
 }
