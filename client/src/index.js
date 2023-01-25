@@ -5,11 +5,10 @@ import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from '@auth0/auth0-react';
 
 
-const domain = "dev-pn2czfl5wy1pdhmw.us.auth0.com"
-const clientId = "OCltO6wdxzfQTuowJoHh7uZyGmMgSeed"
+const domain = "dev-183wwf4clw7n6848.us.auth0.com"
+const clientId = "dLASOdvYt2rzL3N67Ze5o8C7WuHVShOZ"
 
-console.log(domain);
-console.log(clientId);
+
 
 ReactDOM.render(
   <React.StrictMode>
