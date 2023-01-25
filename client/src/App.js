@@ -1,10 +1,15 @@
-
+import Landing from "./Componentes/Landing";
+import { Route, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <h1>ForMusic</h1>
-    </div>
+
+    <>
+      <BrowserRouter>
+        <Route exact path="/" component={Landing} />
+      </BrowserRouter>
+    </>
+
   );
 }
 
