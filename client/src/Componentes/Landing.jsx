@@ -1,5 +1,8 @@
 import React from 'react'
 import Nav from '../Componentes/Nave/Nave'
+import Premium from './Premium/Premium'
+
+
 
 
 
@@ -8,9 +11,10 @@ function Landing() {
 
 
     return (
-        <div className="contianer">
+        <div >
 
             <Nav />
+            <Premium />
 
 
         </div>

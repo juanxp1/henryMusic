@@ -7,7 +7,8 @@ import Login from '../Login/Login'
 import { useAuth0 } from "@auth0/auth0-react";
 import gif from '../Nave/gif.gif'
 import styled from 'styled-components'
-import Button from './Button';
+
+
 
 
 
@@ -16,45 +17,29 @@ import Button from './Button';
 function Nave() {
 
   const { isAuthenticated, isLoading } = useAuth0();
-  const [clicked, setCliked] = useState(false)
 
-  const handleClick = () => {
-    setCliked(!clicked)
-  }
+
+
 
   if (isLoading) {
-    return <img src={gif} alt="gif" />
+    return <img style={{ display: "block", width: "100%" }} src={gif} alt="gif" />
   }
 
   return (
     <>
 
-      {/* <nav class="navbar bg-dark" data-bs-theme="dark">
-        <div>
-          <img className={style.logo} src={foto} alt="Logo" />
-          <h2>Henry Music</h2>
-        </div>
-        <div>
-          {isAuthenticated ? <Logout /> : <Login />}
-          <Profile />
-        </div>
-
-      </nav> */}
-
       <NavContainer>
-        <img  src={foto} alt="Logo" />
-        <h2>Henry<span> Music</span></h2>
-        <div className={`links ${clicked ? 'active' : ''}`}>
-          <a onClick={handleClick} href='#'>
+
+        <h2><img className='logo' src={foto} alt="logo" /> Henry<span> Music</span></h2>
+        <div className="nav">
+          <a className='premium' href='#'><button className="btn btn-warning">Premium</button> </a>
+          <a className='login' >
             {isAuthenticated ? <Logout /> : <Login />}
             <Profile />
           </a>
 
         </div>
-        <div className='button'>
-          <Button clicked={clicked} handleClick={handleClick} />
-        </div>
-        <BgDiv className={`initial ${clicked ? ' active' : ''}`}></BgDiv>
+
       </NavContainer>
 
 
@@ -66,6 +51,22 @@ function Nave() {
 export default Nave;
 
 const NavContainer = styled.nav`
+
+.login{
+  
+
+}
+.btn {
+  background-color: #FFFF01;
+}
+
+
+
+ .logo{
+    width: 80px;
+    margin-left: 40px;
+  }
+
   h2{
     color: #ffffff;
     font-weight: 300;
@@ -75,7 +76,7 @@ const NavContainer = styled.nav`
     }
 }
 padding: .4 rem;
-background-color:#333;
+background-color:#000000;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -154,7 +155,5 @@ const BgDiv = styled.div`
     height: 100%;
   }
 
-  img{
-    width: 20px;
-  }
+ 
 `
