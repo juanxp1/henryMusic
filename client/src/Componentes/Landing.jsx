@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from '../Componentes/NavLanding/Nav'
+import Nav from '../Componentes/Nave/Nave'
 
 
 
