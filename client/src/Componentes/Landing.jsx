@@ -1,5 +1,6 @@
 import React from 'react'
-import Nave from './Nave/Nave.jsx'
+import Nav from '../Componentes/NavLanding/Nav'
+
 
 
 function Landing() {
@@ -7,12 +8,12 @@ function Landing() {
 
 
     return (
-        <>
-            <div >
-                <Nave />
+        <div className="contianer">
 
-            </div>
-        </>
+            <Nav />
+
+
+        </div>
     )
 }
 
