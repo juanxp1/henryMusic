@@ -6,7 +6,7 @@ function App() {
 
     <>
       <BrowserRouter>
-        <Route exact path="/" component={Landing} />
+        <Route  path="/" component={Landing} />
       </BrowserRouter>
     </>
 

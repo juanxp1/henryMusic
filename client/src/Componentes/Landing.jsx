@@ -1,18 +1,18 @@
 import React from 'react'
-import Nav from '../Componentes/NavLanding/Nav'
-
+import Nave from './Nave/Nave.jsx'
 
 
 function Landing() {
 
 
-    return (
-        <div className="contianer">
-         
-            <Nav />
-<h1>holis</h1>
 
-        </div>
+    return (
+        <>
+            <div >
+                <Nave />
+
+            </div>
+        </>
     )
 }
 
