@@ -1,11 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
+
 import foto from './logosin.png'
 import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile.jsx';
 import Login from '../Login/Login'
 import { useAuth0 } from "@auth0/auth0-react";
-import gif from '../Nave/gif.gif'
+import gif from '../Nave/Henry.png'
 import styled from 'styled-components'
 
 
@@ -22,20 +22,20 @@ function Nave() {
 
 
   if (isLoading) {
-    return <img style={{ display: "block", width: "100%" }} src={gif} alt="gif" />
+    return <img style={{ background: "black", width: "100%" }} src={gif} alt="gif" />
   }
 
   return (
     <>
 
-      <NavContainer>
+      <NavContainer className='navbar navbar-expand-lg '>
 
         <h2><img className='logo' src={foto} alt="logo" /> Henry<span> Music</span></h2>
         <div className="nav">
-          <a className='premium' href='#'><button className="btn btn-warning">Premium</button> </a>
+          <a className='premium' href='#'><button className="btn btn-warning">¿Quiénes somos?</button> </a>
           <a className='login' >
             {isAuthenticated ? <Logout /> : <Login />}
-            <Profile />
+            <div className='profile'><Profile /></div>
           </a>
 
         </div>
@@ -52,10 +52,10 @@ export default Nave;
 
 const NavContainer = styled.nav`
 
-.login{
-  
-
+.profile{
+  padding-top: 10px;
 }
+
 .btn {
   background-color: #FFFF01;
 }
