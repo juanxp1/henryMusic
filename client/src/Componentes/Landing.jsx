@@ -15,12 +15,8 @@ function Landing() {
 
             <Nav />
             <Premium />
-<<<<<<< HEAD
            
 
-=======
-            <Footer />
->>>>>>> 7bf17da9e183a3225490c1725e9faa6a22614eb2
 
         </div>
     )
