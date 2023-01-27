@@ -1,6 +1,7 @@
 import React from 'react'
 import Lima from '../Premium/lima.png'
-
+import Ilimi from '../Premium/ilimi.png'
+import Fini from '../Premium/play.png'
 import styled from 'styled-components'
 
 function Premium() {
@@ -13,23 +14,23 @@ function Premium() {
                 <div className="card">
                     <img src={Lima} className="rounded mx-auto d-block" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">Escuchá música sin anuncios.</h5>
+                        <h4 className="card-title">Escuchá música sin anuncios.</h4>
                         <p className="card-text">Disfruta de tu música sin interrupciones.</p>
                         <p className="card-text"><small className="text-muted"><button className='btn btn-warning'>Premium</button></small></p>
                     </div>
                 </div>
                 <div className="card">
-                    <img src={Lima} className="rounded mx-auto d-block" alt="..." />
+                    <img src={Ilimi} className="rounded mx-auto d-block" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">Escuchá la canción que quieras.</h5>
+                        <h4 className="card-title">Escuchá la canción que quieras.</h4>
                         <p className="card-text">Incluso en dispositivos móviles..</p>
                         <p className="card-text"><small className="text-muted"><button className='btn btn-warning'>Premium</button></small></p>
                     </div>
                 </div>
                 <div className="card">
-                    <img src={Lima} className="rounded mx-auto d-block" alt="..." />
+                    <img src={Fini} className="rounded mx-auto d-block" alt="..." />
                     <div className="card-body">
-                        <h5 class="card-title">Saltos ilimitados de canciones.</h5>
+                        <h4 class="card-title">Saltos ilimitados de canciones.</h4>
                         <p className="card-text">Solo pasa a la siguiente.</p>
                         <p className="card-text"><small className="text-muted"><button className='btn btn-warning'>Premium</button></small></p>
                     </div>

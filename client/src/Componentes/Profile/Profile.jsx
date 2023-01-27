@@ -3,6 +3,8 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import gif from '../Nave/gif.gif'
 import styled from 'styled-components'
+import Avatar from '@mui/material/Avatar';
+
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -17,9 +19,8 @@ const Profile = () => {
     isAuthenticated && (
       <NavContainer>
         <div className="div">
-          <img src={user.picture} alt={user.name} />
-
-          <p>{user.nickname}</p>
+          <Avatar src={user.picture} alt={user.name} />
+          {/* <p>{user.nickname}</p> */}
         </div>
       </NavContainer>
     )
@@ -30,9 +31,6 @@ export default Profile;
 
 const NavContainer = styled.nav`
 
-img{
-  width: 50px;
-}
 
 h2{
   font-size: 20px;
