@@ -16,7 +16,7 @@ function Premium() {
                     <div className="card-body">
                         <h4 className="card-title">Escuchá música sin anuncios.</h4>
                         <p className="card-text">Disfruta de tu música sin interrupciones.</p>
-                        <p className="card-text"><small className="text-muted"><button className='btn btn-warning'>Premium</button></small></p>
+                        <p className="card-text"><small className="text-muted"><button className='d-grid gap-2 col-6 mx-auto btn btn-warning'>👇</button></small></p>
                     </div>
                 </div>
                 <div className="card">
@@ -24,7 +24,7 @@ function Premium() {
                     <div className="card-body">
                         <h4 className="card-title">Escuchá la canción que quieras.</h4>
                         <p className="card-text">Incluso en dispositivos móviles..</p>
-                        <p className="card-text"><small className="text-muted"><button className='btn btn-warning'>Premium</button></small></p>
+                        <p className="card-text"><small className="text-muted"><button className='d-grid gap-2 col-6 mx-auto btn btn-warning'>👇</button></small></p>
                     </div>
                 </div>
                 <div className="card">
@@ -32,8 +32,10 @@ function Premium() {
                     <div className="card-body">
                         <h4 class="card-title">Saltos ilimitados de canciones.</h4>
                         <p className="card-text">Solo pasa a la siguiente.</p>
-                        <p className="card-text"><small className="text-muted"><button className='btn btn-warning'>Premium</button></small></p>
+                        <p className="card-text"><small className="text-muted"><button className='d-grid gap-2 col-6 mx-auto btn btn-warning'>👇</button></small></p>
                     </div>
+                    <br />
+                   
                 </div>
             </div>
         </NavContainer>
@@ -69,8 +71,7 @@ background-image: linear-gradient(270deg, #ffa3ff 0, #ff9cff 3.33%, #ff97fe 6.67
 padding-top: 10px;
 text-align: center;
 
-
-
+text-align: center;
 
 
 `

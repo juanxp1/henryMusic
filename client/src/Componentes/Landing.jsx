@@ -15,8 +15,7 @@ function Landing() {
 
             <Nav />
             <Premium />
-           
-
+          
 
         </div>
     )

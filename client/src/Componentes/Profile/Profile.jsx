@@ -11,17 +11,19 @@ const Profile = () => {
 
   console.log(user)
 
-  if (isLoading) {
-    return <img style={{ display: "block", width: "100%" }} src={gif} alt="gif" />
-  }
+  // if (isLoading) {
+  //   return <h1>LOADING...</h1>
+  // }
 
   return (
     isAuthenticated && (
       <NavContainer>
-        <div className="div">
-          <Avatar src={user.picture} alt={user.name} />
-          {/* <p>{user.nickname}</p> */}
+        <div className="div container">
+          <div>
+            <Avatar src={user.picture} alt={user.name} />
+          </div>
         </div>
+
       </NavContainer>
     )
   );
