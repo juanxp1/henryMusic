@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import gif from '../Nave/gif.gif'
 import styled from 'styled-components'
 import Avatar from '@mui/material/Avatar';
 
