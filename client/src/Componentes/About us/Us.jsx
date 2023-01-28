@@ -143,7 +143,7 @@ const AboutContainer = styled.div`
 .linke{
     width: 30px;
     height: 30px;
-    margin-bottom:22px
+    margin-bottom:5px
 }
 
 .git{
@@ -160,7 +160,7 @@ h1{
 img{
   width: 200px;
   border-radius: 100%;
-  margin-top: 20px;
+  margin-top: 0px;
   padding: 0;
   background-color: #FFFF01;
   height: 200px;
