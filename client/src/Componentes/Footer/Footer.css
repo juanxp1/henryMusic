@@ -14,9 +14,14 @@
 .footer_content p {
     margin: 0;
 }
-/* .footer_title{
+h4{
+    color: #ffffff;
+    font-weight: 300;
+}    
+h4 span{
+    font-weight:bold;
+}
 
-} */
 .socials{
     list-style: none;
     padding: 0;
