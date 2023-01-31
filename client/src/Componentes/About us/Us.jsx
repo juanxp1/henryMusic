@@ -9,6 +9,7 @@ import Erick from '../About us/erick.jpg';
 import Agustin from '../About us/agustin.jpg';
 import Linke from '../About us/linke.png';
 import Git from '../About us/github.png'
+import Carlos from '../About us/carlos.jpg';
 
 
 
@@ -29,7 +30,7 @@ function Us() {
                         <Card.Title className='text-center'>Bianchi</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
-                              
+
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
                             </div>
                         </Card.Text>
@@ -51,7 +52,7 @@ function Us() {
                     </Card.Footer>
                 </Card>
                 <Card>
-                    <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Felipe} />
+                    <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Carlos} />
                     <Card.Body>
                         <Card.Title className='text-center'>Carlos</Card.Title>
                         <Card.Text className='text-center'>
@@ -97,7 +98,7 @@ function Us() {
                         <Card.Title className='text-center'>Erick</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
-                                Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
+                                Full Stack Developer <a href='https://www.linkedin.com/in/erick-espinoza-g%C3%B3mez-58b9b8231/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
                             </div>
                         </Card.Text>
                     </Card.Body>
