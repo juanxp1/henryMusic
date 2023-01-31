@@ -1,34 +1,43 @@
-'use strict';
+const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const Joi = require("joi");
+const passwordComplexity = require("joi-password-complexity");
 
-const db = require('../db');
+const userSchema = new mongoose.Schema({
+	name: { type: String, required: true },
+	email: { type: String, unique: true, required: true },
+	password: { type: String, required: true },
+	gender: { type: String, required: true },
+	month: { type: String, required: true },
+	date: { type: String, required: true },
+	year: { type: String, required: true },
+	likedSongs: { type: [String], default: [] },
+	playlists: { type: [String], default: [] },
+	isAdmin: { type: Boolean, default: false },
+});
 
+userSchema.methods.generateAuthToken = function () {
+	const token = jwt.sign(
+		{ _id: this._id, name: this.name, isAdmin: this.isAdmin },
+		process.env.JWTPRIVATEKEY,
+		{ expiresIn: "7d" }
+	);
+	return token;
+};
 
+const validate = (user) => {
+	const schema = Joi.object({
+		name: Joi.string().min(5).max(10).required(),
+		email: Joi.string().email().required(),
+		password: passwordComplexity().required(),
+		month: Joi.string().required(),
+		date: Joi.string().required(),
+		year: Joi.string().required(),
+		gender: Joi.string().valid("male", "female", "non-binary").required(),
+	});
+	return schema.validate(user);
+};
 
-class User {
+const User = mongoose.model("user", userSchema);
 
-
-  static async add(data) {
-    const duplicateCheck = await db.query(
-      `SELECT username
-           FROM users
-           WHERE username = $1`,
-      [data.username]
-    );
-
-    if (duplicateCheck.rows[0]) return;
-
-    const result = await db.query(
-      `INSERT INTO users
-           (username, display_name, image, profile_url)
-           VALUES ($1, $2, $3, $4)
-           RETURNING username, display_name, image, profile_url`,
-      [data.username, data.display_name, data.image, data.profile_url]
-    );
-
-    const user = result.rows[0];
-
-    return user;
-  }
-}
-
-module.exports = User;
+module.exports = { User, validate };
