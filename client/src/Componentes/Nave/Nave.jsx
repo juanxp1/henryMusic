@@ -5,9 +5,8 @@ import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile.jsx';
 import Login from '../Login/Login'
 import { useAuth0 } from "@auth0/auth0-react";
-import gif from '../Nave/Henry.png'
 import styled from 'styled-components'
-
+import { Link } from "react-router-dom"
 
 
 
@@ -18,9 +17,6 @@ function Nave() {
 
   const { isAuthenticated, isLoading } = useAuth0();
 
-
-
-
   // if (isLoading) {
   //   return <h1>Loading...</h1>
   // }
@@ -28,19 +24,22 @@ function Nave() {
   return (
     <>
 
-      <NavContainer className='navbar navbar-expand-lg '>
+      <NavContainer className='navbar navbar-expand-lg'>
         <div className='container-fluid'>
-          <div>
-            <h2><img className='logo' src={foto} alt="logo" /> Henry<span> Music</span></h2>
-          </div>
 
-          <div className="nav">
-            <a className='premium' href='#'><button className="btn btn-warning">Cámbiate a Premium </button> </a>
-            <a className='premium' href='#'><button className="btn btn-warning">¿Quiénes somos?</button> </a>
-            <a className='login ' >
-              {isAuthenticated ? <Logout /> : <Login />}
-            </a>
-            <Profile />
+          <div>
+            <h2><img className='logo' src={foto} alt="logo" />Henry<span> Music</span></h2>
+          </div>
+          <div className='d-flex justify-content-end'>
+            <div className="nav justify-content-end">
+              <Link to="/home" className='premium'> <button className="btn btn-warning">Let's go !</button></Link>
+              <Link  to="/#" className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></Link>
+              <Link  to="/#"  className='premium' ><button className="btn btn-warning">¿Quiénes somos?</button> </Link>
+              <Link className='login ' >
+                {isAuthenticated ? <Logout /> : <Login />}
+              </Link>
+              <Profile />
+            </div>
           </div>
         </div>
 
@@ -67,18 +66,20 @@ const NavContainer = styled.nav`
 
 
  .logo{
-    width: 80px;
+    width: 110px;
     margin-left: 40px;
   }
 
   h2{
     color: #ffffff;
     font-weight: 300;
+  
 
     span{
         font-weight:bold;
     }
 }
+
 padding: .4 rem;
 background-color:#000000;
 display: flex;
