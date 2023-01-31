@@ -21,23 +21,27 @@ function Nave() {
 
 
 
-  if (isLoading) {
-    return <img style={{ background: "black", width: "100%" }} src={gif} alt="gif" />
-  }
+  // if (isLoading) {
+  //   return <h1>Loading...</h1>
+  // }
 
   return (
     <>
 
       <NavContainer className='navbar navbar-expand-lg '>
+        <div className='container-fluid'>
+          <div>
+            <h2><img className='logo' src={foto} alt="logo" /> Henry<span> Music</span></h2>
+          </div>
 
-        <h2><img className='logo' src={foto} alt="logo" /> Henry<span> Music</span></h2>
-        <div className="nav">
-          <a className='premium' href='#'><button className="btn btn-warning">¿Quiénes somos?</button> </a>
-          <a className='login' >
-            {isAuthenticated ? <Logout /> : <Login />}
-            <div className='profile'><Profile /></div>
-          </a>
-
+          <div className="nav">
+            <a className='premium' href='#'><button className="btn btn-warning">Cámbiate a Premium </button> </a>
+            <a className='premium' href='#'><button className="btn btn-warning">¿Quiénes somos?</button> </a>
+            <a className='login ' >
+              {isAuthenticated ? <Logout /> : <Login />}
+            </a>
+            <Profile />
+          </div>
         </div>
 
       </NavContainer>
@@ -136,24 +140,4 @@ a{
     }
 }
 
-`
-const BgDiv = styled.div`
-  background-color: #222;
-  position: absolute;
-  top: -1000px;
-  left: -1000px;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transition: all .6s ease ;
-  
-  &.active{
-    border-radius: 0 0 80% 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
- 
 `
