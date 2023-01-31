@@ -1,43 +1,55 @@
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
-const Joi = require("joi");
-const passwordComplexity = require("joi-password-complexity");
+import Country from './Country.js';
 
-const userSchema = new mongoose.Schema({
-	name: { type: String, required: true },
-	email: { type: String, unique: true, required: true },
-	password: { type: String, required: true },
-	gender: { type: String, required: true },
-	month: { type: String, required: true },
-	date: { type: String, required: true },
-	year: { type: String, required: true },
-	likedSongs: { type: [String], default: [] },
-	playlists: { type: [String], default: [] },
-	isAdmin: { type: Boolean, default: false },
-});
+const { DataTypes } = require('sequelize');
+const { conn } = require('../db.js');
 
-userSchema.methods.generateAuthToken = function () {
-	const token = jwt.sign(
-		{ _id: this._id, name: this.name, isAdmin: this.isAdmin },
-		process.env.JWTPRIVATEKEY,
-		{ expiresIn: "7d" }
-	);
-	return token;
-};
 
-const validate = (user) => {
-	const schema = Joi.object({
-		name: Joi.string().min(5).max(10).required(),
-		email: Joi.string().email().required(),
-		password: passwordComplexity().required(),
-		month: Joi.string().required(),
-		date: Joi.string().required(),
-		year: Joi.string().required(),
-		gender: Joi.string().valid("male", "female", "non-binary").required(),
-	});
-	return schema.validate(user);
-};
+export default conn.define('User', {
 
-const User = mongoose.model("user", userSchema);
+    id: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        unique: true,
+        allowNull: false,
+    },
 
-module.exports = { User, validate };
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    username: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
+    },
+
+    email: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
+    },
+
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    plan: {
+        type: DataTypes.NUMBER
+    },
+
+    active: {
+        type: DataTypes.BOOLEAN
+    },
+
+    country_id: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        references: {
+            model: Country,
+            key: 'id',
+        }
+    }
+
+})
