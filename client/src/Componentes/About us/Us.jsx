@@ -98,7 +98,7 @@ function Us() {
                         <Card.Title className='text-center'>Erick</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
-                                Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
+                                Full Stack Developer <a href='https://www.linkedin.com/in/erick-espinoza-g%C3%B3mez-58b9b8231/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
                             </div>
                         </Card.Text>
                     </Card.Body>
