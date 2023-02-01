@@ -18,6 +18,7 @@ function Landing() {
 
             <Nav />
             <Premium />
+            
             <Us />
             <Footer/>
         </div>

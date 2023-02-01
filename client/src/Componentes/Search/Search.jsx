@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchIcon from '@mui/icons-material/Search';
+
 import styled from 'styled-components'
 
 function Search() {
@@ -8,13 +8,8 @@ function Search() {
     return (
 
         <Div className='container-fluid'>
-            <form className="container">
-                <input
-                    className="input"
-                    type="text"
-                    placeholder= " ⚡  ¿Qué te apetece escuchar?" 
-                />
-
+            <form class="d-flex ">
+                <input class="form-control me-2 input" type="search" placeholder=" ⚡  ¿Qué quieres escuchar?" aria-label="Search" />
             </form>
         </Div>
     )
@@ -28,15 +23,13 @@ const Div = styled.div`
 
 .input {
     
-    width: 40vh;
-    border: #ffffff 1px solid;
+    width: 50vh;
     border-radius: 30px;
     text-align: center;
+    width: 300px;
+   height: 30px;
     
 }
-
-
-
 
 
 `
