@@ -1,3 +1,1 @@
-module.exports = {
-    //  Por hacer
-}
+export function test() {}

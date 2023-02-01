@@ -1,11 +1,10 @@
-const { Router } = require('express');
+import { Router } from 'express'
+import { } from '../controllers/controllers.js'
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-
-const { } = require('../Controllers/controllers.js');
 
 const router = Router();
 
 // Por hacer
 
-module.exports = router;
+export default router;

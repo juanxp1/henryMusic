@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
-const { conn } = require('../db.js');
+import { DataTypes } from "sequelize"
+import { connection } from "../database/connection.js"
 
-export default conn.define('Genre', {
+export default connection.define('Genre', {
     
     id: {
         type: DataTypes.STRING,
@@ -16,5 +16,9 @@ export default conn.define('Genre', {
         allowNull: false,
     },
 
-
+},
+{
+  tableName: 'genres',
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 })
