@@ -1,27 +1,50 @@
-const mongoose = require("mongoose");
-const Joi = require("joi");
+import User from './user.js';
+import Image from './Image.js';
 
-const ObjectId = mongoose.Schema.Types.ObjectId;
+const { DataTypes } = require('sequelize');
+const { conn } = require('../db.js');
 
-const playListSchema = new mongoose.Schema({
-	name: { type: String, required: true },
-	user: { type: ObjectId, ref: "user", required: true },
-	desc: { type: String },
-	songs: { type: Array, default: [] },
-	img: { type: String },
-});
+export default conn.define('Playlist', {
+    
+    id: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        unique: true,
+        allowNull: false,
+    },
 
-const validate = (playList) => {
-	const schema = Joi.object({
-		name: Joi.string().required(),
-		user: Joi.string().required(),
-		desc: Joi.string().allow(""),
-		songs: Joi.array().items(Joi.string()),
-		img: Joi.string().allow(""),
-	});
-	return schema.validate(playList);
-};
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 
-const PlayList = mongoose.model("playList", playListSchema);
+    description: {
+        type: DataTypes.STRING,
 
-module.exports = { PlayList, validate };
+    },
+
+    user_id: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        references: {
+            model: User,
+            key: 'id',
+        }
+    },
+
+    image_id: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        references: {
+            model: Image,
+            key: 'id',
+        }
+    },
+
+    public: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    }
+
+
+})
