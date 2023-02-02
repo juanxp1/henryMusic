@@ -1,9 +1,11 @@
 import axios from 'axios';
 
 //Return Artist details from artist name
-const getArtistAPI = async () => {
+
+export const getArtistDetail = async (req, res) => {
     try {
-        const pruebaAPI = await axios.get(`https://www.theaudiodb.com/api/v1/json/2/search.php?s=coldplay`);
+        let { search } = req.query;
+        const pruebaAPI = await axios.get(`https://www.theaudiodb.com/api/v1/json/523532/search.php?s=${search}`);
         let artista = pruebaAPI.data.artists.map(e => {
             return {
                 id: e.idArtist,
@@ -13,34 +15,79 @@ const getArtistAPI = async () => {
                 Genres:e.strStyle,
             }
         })
-      console.log(artista);
-      return artista;
+      res.send(artista);
         
     } catch (error) {
-        console.log(error);
+        res.send({error: error.message});
     }
 }
+
 //Return Album details 
 
-const getAlbumAPI = async () => {
+export const getArtistAlbums = async (req, res) => {
+
     try {
-        const albumAPI = await axios.get(`https://theaudiodb.com/api/v1/json/2/discography.php?s=coldplay`);
+        let { search } = req.query;
+        const albumAPI = await axios.get(`https://theaudiodb.com/api/v1/json/523532/searchalbum.php?s=${search}`);
         let album = albumAPI.data.album.map(e => {
             return {
-                albumName: e.strAlbum,
+                id: e.idAlbum,
+                image: e.strAlbum3DThumb,
+                name: e.strAlbum,
+                genre: e.strGenre,
                 year: e.intYearReleased, 
             }
         })
-      console.log(album);
-      return album;
+      res.send(album)
         
     } catch (error) {
-        console.log(error); 
+        res.send({error: error.message}); 
     }
+
 }
 
+export const getAlbumTracks = async (req, res) => {
 
-export default {
-    getArtistAPI,
-    getAlbumAPI
+    try {
+        let { albumId } = req.query;
+        const tracksAPI = await axios.get(`https://theaudiodb.com/api/v1/json/523532/track.php?m=${albumId}`);
+        const tracks = tracksAPI.data.track.map(e => {
+            return {
+                id: e.idTrack,
+                name: e.strTrack,
+                duration: e.intDuration,
+                genre: e.strGenre,
+            }
+        })
+        res.send({album: tracksAPI.data.track[0].strAlbum,
+                tracks})
+
+    } catch (error) {
+        res.send({error: error.message});
+    }
+
+}
+
+export const getTrackDetail = async (req,res) => {
+
+    try {
+        let { artist, track } = req.query;
+        const trackAPI = await axios.get(`https://theaudiodb.com/api/v1/json/523532/searchtrack.php?s=${artist}&t=${track}`);
+        const trackDetail = trackAPI.data.track.map(e => {
+            return {
+                id: e.idTrack,
+                name: e.strTrack,
+                album: e.strAlbum,
+                artist: e.strArtist,
+                duration: e.intDuration,
+                genre: e.strGenre,
+                description: e.strDescriptionEN,
+            }
+        })
+        res.send(trackDetail);
+
+    } catch (error) {
+        res.send({error: error.message});
+    }
+
 }
