@@ -15,7 +15,7 @@ import { Link } from "react-router-dom"
 
 function Nave() {
 
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   // if (isLoading) {
   //   return <h1>Loading...</h1>
@@ -24,8 +24,8 @@ function Nave() {
   return (
     <>
 
-      <NavContainer className='navbar navbar-expand-lg'>
-        <div className='container-fluid'>
+      <NavContainer className='navbar navbar-expand-lg '>
+        <div className='container-fluid '>
 
           <div>
             <h2><img className='logo' src={foto} alt="logo" />Henry<span> Music</span></h2>
@@ -33,12 +33,14 @@ function Nave() {
           <div className='d-flex justify-content-end'>
             <div className="nav justify-content-end">
               <Link to="/home" className='premium'> <button className="btn btn-warning">Let's go !</button></Link>
-              <Link  to="/#" className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></Link>
-              <Link  to="/#"  className='premium' ><button className="btn btn-warning">¿Quiénes somos?</button> </Link>
+              <Link to="/#" className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></Link>
+              <Link to="/#" className='premium' ><button className="btn btn-warning">¿Quiénes somos?</button> </Link>
               <Link className='login ' >
                 {isAuthenticated ? <Logout /> : <Login />}
               </Link>
-              <Profile />
+             
+              <Profile  />
+
             </div>
           </div>
         </div>
@@ -54,6 +56,7 @@ function Nave() {
 export default Nave;
 
 const NavContainer = styled.nav`
+
 
 .profile{
   padding-top: 10px;
@@ -140,5 +143,6 @@ a{
 
     }
 }
+
 
 `

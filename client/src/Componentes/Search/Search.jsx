@@ -8,8 +8,8 @@ function Search() {
     return (
 
         <Div className='container-fluid'>
-            <form class="d-flex ">
-                <input class="form-control me-2 input" type="search" placeholder=" ⚡  ¿Qué quieres escuchar?" aria-label="Search" />
+            <form className="d-flex justify-content-end ">
+                <input className="row g-0 align-items-center input" type="search" placeholder=" ⚡  ¿Qué quieres escuchar?" aria-label="Search" />
             </form>
         </Div>
     )
@@ -23,12 +23,17 @@ const Div = styled.div`
 
 .input {
     
-    width: 50vh;
+   
     border-radius: 30px;
     text-align: center;
-    width: 300px;
-   height: 30px;
-    
+  
+}
+
+input::placeholder {
+
+  font-size: 13px;
+  
+  text-align: center;
 }
 
 
