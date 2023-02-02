@@ -14,6 +14,23 @@ export default connection.define('Image', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        validate: { notEmpty: true }
+    },
+
+    width: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: false,
+        validate: { notEmpty: true, min: 0 },
+        defaultValue: 0
+    },
+
+    height: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: false,
+        validate: { notEmpty: true, min: 0 },
+        defaultValue: 0
     }
 
 },
