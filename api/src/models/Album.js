@@ -1,9 +1,8 @@
 import Image from './Image.js';
+import { DataTypes } from "sequelize"
+import { connection } from "../database/connection.js"
 
-const { DataTypes } = require('sequelize');
-const { conn } = require('../db.js');
-
-export default conn.define('Album', {
+export default connection.define('Album', {
     
     id: {
         type: DataTypes.STRING,
@@ -24,12 +23,12 @@ export default conn.define('Album', {
     },
 
     total_tracks: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 
     image_id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: Image,
@@ -37,4 +36,9 @@ export default conn.define('Album', {
         }
     }
 
+},
+{
+  tableName: 'albums',
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 })

@@ -17,13 +17,11 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+import server from './src/app.js'
+import { sequelize } from './src/database/relations.js'
 const port = process.env.PORT || 3001
 
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(port, () => {
-    console.log(`%s listening at${port}`); // eslint-disable-line no-console
-  });
-});
+await sequelize.sync({ force: true })
+server.listen(port, ()=> {
+  console.log(`%s listening at${port}`)
+})

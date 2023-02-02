@@ -1,10 +1,8 @@
 import Country from './Country.js';
+import { DataTypes } from "sequelize"
+import { connection } from "../database/connection.js"
 
-const { DataTypes } = require('sequelize');
-const { conn } = require('../db.js');
-
-
-export default conn.define('User', {
+export default connection.define('User', {
 
     id: {
         type: DataTypes.STRING,
@@ -36,7 +34,7 @@ export default conn.define('User', {
     },
 
     plan: {
-        type: DataTypes.NUMBER
+        type: DataTypes.INTEGER
     },
 
     active: {
@@ -44,7 +42,7 @@ export default conn.define('User', {
     },
 
     country_id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: Country,
@@ -52,4 +50,9 @@ export default conn.define('User', {
         }
     }
 
+},
+{
+  tableName: 'users',
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 })

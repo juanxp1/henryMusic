@@ -1,9 +1,9 @@
 import Album from './album.js';
 
-const { DataTypes } = require('sequelize');
-const { conn } = require('../db.js');
+import { DataTypes } from "sequelize"
+import { connection } from "../database/connection.js"
 
-export default conn.define('Track', {
+export default connection.define('Track', {
     
     id: {
         type: DataTypes.STRING,
@@ -19,7 +19,7 @@ export default conn.define('Track', {
     },
 
     album_id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: Album,
@@ -28,12 +28,12 @@ export default conn.define('Track', {
     },
 
     duration: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 
     popularity: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 
@@ -52,5 +52,9 @@ export default conn.define('Track', {
         allowNull: false,
     }
 
-
+},
+{
+  tableName: 'tracks',
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 })

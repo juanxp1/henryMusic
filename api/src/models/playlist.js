@@ -1,10 +1,10 @@
-import User from './user.js';
+import User from './User.js';
 import Image from './Image.js';
 
-const { DataTypes } = require('sequelize');
-const { conn } = require('../db.js');
+import { DataTypes } from "sequelize"
+import { connection } from "../database/connection.js"
 
-export default conn.define('Playlist', {
+export default connection.define('Playlist', {
     
     id: {
         type: DataTypes.STRING,
@@ -24,7 +24,7 @@ export default conn.define('Playlist', {
     },
 
     user_id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: User,
@@ -33,7 +33,7 @@ export default conn.define('Playlist', {
     },
 
     image_id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: Image,
@@ -46,5 +46,9 @@ export default conn.define('Playlist', {
         allowNull: false,
     }
 
-
+},
+{
+  tableName: 'playlists',
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 })
