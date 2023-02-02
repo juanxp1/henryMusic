@@ -17,7 +17,7 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <NavContainer>
-        <div className="div container">
+        <div className="div ">
           <div>
             <Avatar src={user.picture} alt={user.name} />
           </div>
