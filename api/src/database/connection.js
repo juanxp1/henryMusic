@@ -8,14 +8,7 @@ const {
 
 const DB_NAME = 'henry_music'
 
-export const connection = new Sequelize(
-  DB_NAME,
-  DB_USER,
-  DB_PASSWORD,
-  {
-    host: DB_HOST,
-    dialect: 'postgres',
-    logging: false,
-    native: false
-  }
-)
+export const connection = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
