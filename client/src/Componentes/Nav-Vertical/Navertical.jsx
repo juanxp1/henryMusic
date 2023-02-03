@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import home from './home.png'
-import foto from '../NavHome/logosin.png'
+import foto from '../Nav-Vertical/app.png'
 import lupa from './lupa.png'
 import listas from './listas.png'
 import crear from './crear.png'
 import cora from './cora.png'
+import play from './play.mp4'
 
 
 
@@ -16,24 +17,22 @@ function Navertical() {
 
     <Div >
       <div className='nav'>
+
         <div className="sidebar ">
           <div className="logo d-flex justify-content-center">
-            <a href="/">
-              <img src={foto} alt="logo" />
+            <a className='fotaso' href="/">
+              <video className='fotasa' src={play} alt="logo" autoPlay loop muted  />
             </a>
-            <br />
-          </div>
 
+          </div>
           <div className="navigation">
             <ul>
               <li>
                 <a href="#">
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
                   <span>Home</span>
-
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span className="fa fa-search"><img className='home' src={lupa} alt="home" /></span>
@@ -59,6 +58,7 @@ function Navertical() {
                   <span>Liked Songs</span>
                 </a>
               </li>
+
               <hr />
             </ul>
           </div>
@@ -76,21 +76,26 @@ export default Navertical
 
 const Div = styled.div`
 
+.fotasa {
+  width: 140px;
+}
+
+
+
+.sidebar .logo img {
+ height: 100px;
+}
 
 
 .home{
   width: 23px;
-
 }
 
 hr {
   border: 1px solid #FFFF01;
 }
  
-
-
-.sidebar {
-    
+.sidebar {    
   position: fixed;
   left: 0;
   top: 0;
@@ -99,14 +104,16 @@ hr {
   background-color: #000000;
   padding: 24px;
   padding-left: 0;
- 
+
 }
-.sidebar .logo img {
-  width: 180px;
-}
+
+
+
 .sidebar .navigation ul {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px; 
 }
 .sidebar .navigation ul li {
   padding: 10px 0px;

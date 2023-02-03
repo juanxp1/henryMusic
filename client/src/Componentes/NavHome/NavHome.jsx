@@ -56,7 +56,7 @@ export default NavHome
 
 const Div = styled.div`
 
-background-color:#222121;
+background-color:#040303;
 
 
 .probando{
