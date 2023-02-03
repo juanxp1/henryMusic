@@ -1,9 +1,8 @@
-import Image from './Image.js';
 import { DataTypes } from "sequelize"
 import { connection } from "../database/connection.js"
 
 export default connection.define('Album', {
-    
+
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
@@ -15,6 +14,7 @@ export default connection.define('Album', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        validate: { notEmpty: true }
     },
 
     released_date: {
@@ -22,18 +22,19 @@ export default connection.define('Album', {
         allowNull: false,
     },
 
+    type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false,
+        validate: { notEmpty: true, isIn: [['album', 'single', 'compilation']] },
+        defaultValue: 'album'
+    },
+
     total_tracks: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-
-    image_id: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        references: {
-            model: Image,
-            key: 'id'
-        }
+        unique: false,
+        validate: { notEmpty: true, isInt: true, min: 1 }
     }
 
 },

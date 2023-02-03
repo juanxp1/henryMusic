@@ -1,6 +1,4 @@
 import User from './User.js';
-import Image from './Image.js';
-
 import { DataTypes } from "sequelize"
 import { connection } from "../database/connection.js"
 
@@ -15,12 +13,15 @@ export default connection.define('Playlist', {
 
     name: {
         type: DataTypes.STRING,
+        unique: false,
         allowNull: false,
+        validate: { notEmpty: true }
     },
 
     description: {
         type: DataTypes.STRING,
-
+        unique: false,
+        allowNull: true,
     },
 
     user_id: {
@@ -32,15 +33,6 @@ export default connection.define('Playlist', {
         }
     },
 
-    image_id: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        references: {
-            model: Image,
-            key: 'id',
-        }
-    },
-
     public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
@@ -48,7 +40,22 @@ export default connection.define('Playlist', {
 
 },
 {
-  tableName: 'playlists',
-  createdAt: 'created_at',
-  updatedAt: 'updated_at'
+    hooks: {
+        afterFind: (playlist) => {
+            if (!playlist) return;
+            if (Array.isArray(playlist)) {
+                playlist.forEach(playlist => {
+                    playlist.dataValues.owner = playlist.user;
+                    delete playlist.dataValues.user_id;
+                });
+            } else {
+                playlist.dataValues.owner = playlist.user;
+                delete playlist.dataValues.user_id;
+            }
+        }
+    },
+    tableName: 'playlists',
+    paranoid: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
 })

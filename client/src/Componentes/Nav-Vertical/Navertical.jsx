@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import home from './home.png'
-import foto from '../NavHome/logosin.png'
+import foto from '../Nav-Vertical/app.png'
 import lupa from './lupa.png'
 import listas from './listas.png'
 import crear from './crear.png'
 import cora from './cora.png'
+import play from './play.mp4'
 
 
 
@@ -14,59 +15,50 @@ function Navertical() {
   return (
 
 
-    <Div className='container-sm '>
+    <Div >
       <div className='nav'>
+
         <div className="sidebar ">
           <div className="logo d-flex justify-content-center">
-
-            <a href="/">
-              <img src={foto} alt="logo" />
+            <a className='fotaso' href="/">
+              <video className='fotasa' src={play} alt="logo" autoPlay loop muted  />
             </a>
-            <br />
-          </div>
 
+          </div>
           <div className="navigation">
             <ul>
               <li>
                 <a href="#">
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
-                  <span> Home</span>
-
+                  <span>Home</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span className="fa fa-search"><img className='home' src={lupa} alt="home" /></span>
                   <span>Search</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span className="fa fas fa-book"><img className='home' src={listas} alt="home" /></span>
                   <span>Your Library</span>
                 </a>
               </li>
-            </ul>
-          </div>
 
-          <div className="navigation">
-
-            <ul>
               <li>
                 <a href="#">
                   <span className="fa fas fa-plus-square"><img className='home' src={crear} alt="home" /></span>
                   <span>Create Playlist</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span className="fa fas fa-heart"><img className='home' src={cora} alt="home" /></span>
                   <span>Liked Songs</span>
                 </a>
               </li>
+
               <hr />
             </ul>
           </div>
@@ -84,45 +76,54 @@ export default Navertical
 
 const Div = styled.div`
 
-.home{
-  width: 25px;
+.fotasa {
+  width: 140px;
+}
 
+
+
+.sidebar .logo img {
+ height: 100px;
+}
+
+
+.home{
+  width: 23px;
 }
 
 hr {
   border: 1px solid #FFFF01;
 }
  
-
-
-.sidebar {
-    
+.sidebar {    
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 220px;
+  width: 230px;
   background-color: #000000;
   padding: 24px;
   padding-left: 0;
- 
+
 }
-.sidebar .logo img {
-  width: 130px;
-}
+
+
+
 .sidebar .navigation ul {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px; 
 }
 .sidebar .navigation ul li {
   padding: 10px 0px;
 }
 .sidebar .navigation ul li a {
-  color: #b3b3b3;
+  color: #cfcece;
   text-decoration: none;
   font-weight: bold;
   font-size: 15px;
-  font-family: 'Montserrat', sans-serif;
+
   
 }
 .sidebar .navigation ul li a:hover,
