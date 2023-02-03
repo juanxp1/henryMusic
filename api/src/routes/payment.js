@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Stripe = require('stripe');
+const cors = require('cors')
 require('dotenv').config();
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY  || "", null);
@@ -32,14 +33,18 @@ router.post('/precio', async (req, res)=> {
 
     const charge = await stripe.charges.create({
       
-        amount: amount = 99,
+        
+        amount: amount = 10000,
         currency: "USD",
+        name: "Henry Music",
         customer: customerId,
         receipt_email: token.email,
+        confirm:true,
+        image:'/api/src/henry.png',
         description: "Suscription",
     }, {  idempotencyKey: invoceId}).catch(e => {
-        console.log(e);
-        return null;
+        console.log(charge.id);
+        res.render('Bienvenido Al Mundo Premium');
     });
    
 

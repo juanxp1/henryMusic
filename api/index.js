@@ -18,10 +18,11 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import server from './src/app.js'
-import { sequelize } from './src/database/relations.js'
+// const cors = require('cors')
+// import { sequelize } from './src/database/relations.js'
 const port = process.env.PORT || 3001
 
-await sequelize.sync({ force: true })
+// await sequelize.sync({ force: true })
 server.listen(port, ()=> {
   console.log(`%s listening at${port}`)
 })

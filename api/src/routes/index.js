@@ -1,17 +1,28 @@
 import { Router } from 'express'
-// import { getAlbumTracks, getArtistAlbums, getArtistDetail, getTrackDetail } from '../Controllers/controllers.js'
+import { getAlbumTracks, getArtistAlbums, getArtistDetail, getTrackDetail } from '../Controllers/controllers.js'
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
+// const cors = require('cors')
+
 const router = Router();
 
-// router.get('/artistDetail', getArtistDetail);
 
-// router.get('/artistAlbums', getArtistAlbums);
 
-// router.get('/albumTracks', getAlbumTracks);
 
-// router.get('/trackDetail', getTrackDetail);
+router.post('/precio/checkout', (req, res) =>{
+console.log(req.body)
+res.send('received')
+
+
+})
+router.get('/artistDetail', getArtistDetail);
+
+router.get('/artistAlbums', getArtistAlbums);
+
+router.get('/albumTracks', getAlbumTracks);
+
+router.get('/trackDetail', getTrackDetail);
 
 
 
