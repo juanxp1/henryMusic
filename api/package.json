@@ -22,14 +22,9 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
-<<<<<<< HEAD
     "pg": "^8.8.0",
     "sequelize": "^6.25.7",
     "stripe": "^11.9.0"
-=======
-    "pg": "^8.9.0",
-    "sequelize": "^6.28.0"
->>>>>>> main
   },
   "devDependencies": {
     "chai": "^4.2.0",

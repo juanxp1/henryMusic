@@ -11,6 +11,7 @@ import Linke from '../About us/linke.png';
 import Git from '../About us/github.png'
 import Carlos from '../About us/carlos.jpg';
 import Abigail from '../About us/abigail.jpeg';
+import Antonio from '../About us/Antonio.jpeg';
 
 
 
@@ -94,9 +95,9 @@ function Us() {
                     </Card.Footer>
                 </Card>
                 <Card>
-                    <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Erick} />
+                    <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Antonio} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Erick</Card.Title>
+                        <Card.Title className='text-center'>Antonio</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/erick-espinoza-g%C3%B3mez-58b9b8231/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>

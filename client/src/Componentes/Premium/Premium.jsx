@@ -3,13 +3,12 @@ import Lima from '../Premium/lima.png'
 import Ilimi from '../Premium/ilimi.png'
 import Fini from '../Premium/play.png'
 import styled from 'styled-components'
-import Payment from '../Payment'
+
 
 function Premium() {
     return (
         <NavContainer>
-       
-
+    
             <br />
             <h1 className='text-center'>¿Por qué cambiarse a Premium?</h1>
             <br />
@@ -41,8 +40,7 @@ function Premium() {
                 
                 </div>
             </div>
-            <Payment> 
-            </Payment>
+           
         </NavContainer>
 
     )
