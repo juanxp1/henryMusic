@@ -14,6 +14,7 @@ export default connection.define('Country', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        validate: { notEmpty: true }
     }
 
 },

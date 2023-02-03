@@ -23,8 +23,8 @@ function NavHome() {
 
 
 
-      <Div className='p-2 container-fluid d-flex justify-content-end'>
-        <nav className="navbar bg-body-tertiary">
+      <Div className='p-2 container-fluid d-flex justify-content-end '>
+        <nav className="navbar bg-body-tertiary oli">
           <div className='d-flex justify-content-end'>
             <div className="btn-group probando ">
               <Search />
@@ -68,6 +68,7 @@ background-color:#222121;
   padding-right: 10px;
   
 }
+
 
 
 

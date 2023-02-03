@@ -14,11 +14,10 @@ function Navertical() {
   return (
 
 
-    <Div className='container-sm '>
+    <Div >
       <div className='nav'>
         <div className="sidebar ">
           <div className="logo d-flex justify-content-center">
-
             <a href="/">
               <img src={foto} alt="logo" />
             </a>
@@ -30,7 +29,7 @@ function Navertical() {
               <li>
                 <a href="#">
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
-                  <span> Home</span>
+                  <span>Home</span>
 
                 </a>
               </li>
@@ -41,26 +40,19 @@ function Navertical() {
                   <span>Search</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span className="fa fas fa-book"><img className='home' src={listas} alt="home" /></span>
                   <span>Your Library</span>
                 </a>
               </li>
-            </ul>
-          </div>
 
-          <div className="navigation">
-
-            <ul>
               <li>
                 <a href="#">
                   <span className="fa fas fa-plus-square"><img className='home' src={crear} alt="home" /></span>
                   <span>Create Playlist</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span className="fa fas fa-heart"><img className='home' src={cora} alt="home" /></span>
@@ -84,8 +76,10 @@ export default Navertical
 
 const Div = styled.div`
 
+
+
 .home{
-  width: 25px;
+  width: 23px;
 
 }
 
@@ -101,14 +95,14 @@ hr {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 220px;
+  width: 230px;
   background-color: #000000;
   padding: 24px;
   padding-left: 0;
  
 }
 .sidebar .logo img {
-  width: 130px;
+  width: 180px;
 }
 .sidebar .navigation ul {
   list-style: none;
@@ -118,11 +112,11 @@ hr {
   padding: 10px 0px;
 }
 .sidebar .navigation ul li a {
-  color: #b3b3b3;
+  color: #cfcece;
   text-decoration: none;
   font-weight: bold;
   font-size: 15px;
-  font-family: 'Montserrat', sans-serif;
+
   
 }
 .sidebar .navigation ul li a:hover,

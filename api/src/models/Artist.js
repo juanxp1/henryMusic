@@ -15,20 +15,15 @@ export default connection.define('Artist', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        validate: { notEmpty: true }
     },
 
     popularity: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-
-    image_id: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        references: {
-            model: Image,
-            key: 'id'
-        }
+        unique: false,
+        validate: { notEmpty: true, min: 0, max: 100 },
+        defaultValue: 0
     }
 
 },

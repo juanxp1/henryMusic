@@ -14,6 +14,7 @@ export default connection.define('Genre', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        validate: { notEmpty: true }
     },
 
 },
