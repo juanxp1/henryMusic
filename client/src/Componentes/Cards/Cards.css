@@ -5,7 +5,7 @@
 }
 
 .contenedor{
-    height: auto;
+    height: 100vh;
     background: rgb(194,194,45);
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
     margin-left: 230px;
