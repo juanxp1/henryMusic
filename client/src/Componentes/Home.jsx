@@ -12,8 +12,9 @@ function Home() {
 
         <>
             <NavHome />
-            <Cards/>
+
             <Navertical />
+            <Cards />
         </>
 
 
