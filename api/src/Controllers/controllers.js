@@ -32,7 +32,7 @@ export const getArtistAlbums = async (req, res) => {
         let album = albumAPI.data.album.map(e => {
             return {
                 id: e.idAlbum,
-                image: e.strAlbum3DThumb,
+                image: e.strAlbumThumb,
                 name: e.strAlbum,
                 genre: e.strGenre,
                 year: e.intYearReleased, 
