@@ -7,6 +7,7 @@ import listas from './listas.png'
 import crear from './crear.png'
 import cora from './cora.png'
 import play from './play.mp4'
+import mas from './mas.png'
 
 
 
@@ -56,6 +57,12 @@ function Navertical() {
                 <a href="#">
                   <span className="fa fas fa-heart"><img className='home' src={cora} alt="home" /></span>
                   <span>Liked Songs</span>
+                </a>
+              </li>
+              <li>
+                <a href="/new">
+                  <span className="fa fas fa-heart"><img className='home' src={mas} alt="home" /></span>
+                  <span>New Song</span>
                 </a>
               </li>
 

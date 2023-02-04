@@ -1,0 +1,120 @@
+.uno {
+    height: 100vh;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.fot {
+    width: 550px;
+    height: 450px;
+    border: #000000 1px solid;
+    border-radius: 10px;
+    
+}
+
+@import url('https://fonts.cdnfonts.com/css/agresiva');
+
+.dos {
+    background-color: #000000;
+    font-family: 'agresiva', sans-serif;
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 34px;
+    overflow: hidden;
+    transition: 0.1s;
+    border-radius: 5px;
+    border: #FF9900 2px solid;
+}
+
+.dos:hover {
+    color: #ffffff;
+    background: #000000;
+    box-shadow: 0 0 10px #ffffff, 0 0 40px #eff2f5, 0 0 80px #fcfcfc;
+    transition-delay: 0.1s;
+}
+
+.divdos {
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    margin-right: 300px;
+    background-color: #2e2929;
+    background-color: #dd8706;
+
+}
+
+
+
+.divtres {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    margin-left: 0px;
+    width: 800px;
+
+
+}
+
+.creardog {
+    font-size: 50px;
+    color: #FFFF01;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline 2px solid #000000;
+    font-weight: 500;
+  
+
+}
+
+label {
+    font-size: 50px;
+    color: #000000;
+}
+
+
+
+.select{
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    color: #000000;
+    font-size: 1em;
+    resize: none;
+}
+.li{
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+    color: #ffee00;
+    font-size: 1em;
+    resize: none;
+    
+}
+
+
+
+.delete {
+    display: flex;
+    flex-direction:column;
+    justify-content:flex-start;
+   
+    color: rgb(0, 0, 0);
+    background-color: #FF9900;
+}
+
