@@ -2,7 +2,11 @@ import { useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { FormControl } from "@mui/material";
 import styled from 'styled-components'
-
+import visa from '../Pasarela/visa.png';
+import master from '../Pasarela/master.png';
+import paypal from '../Pasarela/paypal.png';
+import mercadopago from '../Pasarela/mercadopago.png';
+import Button from '@mui/material/Button';
 
 
 function Payment() {
@@ -28,24 +32,25 @@ function Payment() {
 
     return (
 
-        <Container className="payment container-fluid">
+        <Container className="payment container-fluid ">
             <h1 className='text-center'>Elegí tu plan Premium</h1>
+
+            <p className="parrafo"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
+            <img src={visa} alt="visa" />
+            <img src={master} alt="master" />
+            <img src={paypal} alt="paypal" />
+            <img src={mercadopago} alt="mercadopago" />
+
             <br />
 
-            <div className="card-group">
+            <div className=" container card-group">
+
                 <div className="card">
                     <FormControl sx={{ n: 1 }} >
-                        <img
-                            src='https://i.pinimg.com/564x/06/f9/6f/06f96f2944fcfabe3a291a1060441511.jpg'
-                            className="rounded mx-auto d-block" alt="k68 keyboard" width="200px" justifyContent="center"
-                        />
-
-                        <h3 className="text-center">Premium: $100</h3>
-                        <p className="text-center">Escucha música sin anuncios
-                            Reproduce tus canciones en cualquier lugar, incluso en modo offline
-                            Reproduce contenido on-demand
-                            Elige la opción prepaga o suscríbete.</p>
-
+                        <button type="button" class="btn btn-dark p-1 rounded-pill">1 mes gratis al suscribirse</button>
+                        <br />
+                        <h2>Individual</h2>
+                        <h3 className="text-center">$ 100,00*** al mes después del período de la oferta 1 cuenta</h3>
                     </FormControl>
                     <div>
                         <StripeCheckout
@@ -58,27 +63,21 @@ function Payment() {
                             image='http://localhost:3000/static/media/logosin.12495e56.png'
                         >
                         </StripeCheckout>
+                        <p className="card-text">*** Después, solo cuesta $ 100,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
                     </div>
                 </div>
 
                 <div className="card">
                     <FormControl sx={{ n: 1 }}>
-
-                        <img
-                            src='https://i.pinimg.com/564x/db/e0/de/dbe0de3fdb7c7e963c9befc19f10f816.jpg'
-                            className="rounded mx-auto d-block" alt="k68 keyboard" width="200px" justifyContent="center"
-                        />
-                        <h3 className="text-center">Duo: $150</h3>
-                        <p className="text-center">Tendras 2 cuentas Premium para parejas que conviven.
-                            Reproducción de música sin anuncios, en modo offline y on demand
-
-                            Elige la opción prepaga o suscríbete.</p>
-
-
+                        <button type="button" class="btn btn-dark p-1 rounded-pill">1 mes gratis al suscribirse</button>
+                        <br />
+                        <h2>Duo</h2>
+                        <h3 className="text-center">$ 150,00*** al mes después del período de la oferta 2 cuentas</h3>
                     </FormControl>
 
                     <div>
                         <StripeCheckout
+
                             stripeKey={process.env.REACT_APP_STRIPE_KEY || ""}
                             token={handleToken}
                             name="Henry Music"
@@ -86,26 +85,21 @@ function Payment() {
                             panelLabel={`Suscription`}
                             currency="USD"
                             amount={15000}
-
                         >
-
                         </StripeCheckout>
+                        <p className="card-text">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
                     </div>
                 </div>
 
                 <div className="card">
                     <FormControl sx={{ n: 1 }}>
-                        <img
-                            src='https://i.pinimg.com/564x/71/3d/f5/713df5246cec6ed1385333f547b56beb.jpg'
-                            className="rounded mx-auto d-block" alt="k68 keyboard" width="200px" justifyContent="center"
-                        />
-                        <h3 className="text-center">Estudiante: $80</h3>
-                        <p className="text-center">Descuento especial para estudiantes universitarios que cumplan con los requisitos.
-                            Escucha tu música.
-                            Reproduce tus canciones favoritas, incluso en modo offline.</p>
+                        <button type="button" class="btn btn-dark p-1 rounded-pill">1 mes gratis al suscribirse</button>
+                        <br />
+                        <h2>Estudiantes</h2>
+                        <h3 className="text-center">$ 80,00**** al mes después del período de la oferta 1 cuenta</h3>
 
                     </FormControl>
-                    <div>
+                    <div className="boton">
                         <StripeCheckout
                             stripeKey={process.env.REACT_APP_STRIPE_KEY || ""}
                             token={handleToken}
@@ -116,10 +110,12 @@ function Payment() {
                             amount={8000}
                         >
                         </StripeCheckout>
+                        <p className="card-text">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
                     </div>
                 </div>
 
             </div>
+            <br />
 
         </Container>
 
@@ -131,14 +127,22 @@ export default Payment;
 
 const Container = styled.div`
 
+img{
+    width: 33px;
+    margin:10px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
 
-background-image: linear-gradient(270deg, #ffa3ff 0, #ff9cff 3.33%, #ff97fe 6.67%, #ff97e5 10%, #ff99cc 13.33%, #ff9fb3 16.67%, #ffa79c 20%, #ffb185 23.33%, #ffbb6f 26.67%, #ffc65a 30%, #ffd145 33.33%, #ffdc30 36.67%, #ffe619 40%, #ffef00 43.33%, #fff700 46.67%, #ffff00 50%, #e6ff20 53.33%, #cbff38 56.67%, #adff4f 60%, #8aff66 63.33%, #5bff7d 66.67%, #00ff96 70%, #00ffaf 73.33%, #00ffc9 76.67%, #00ffe3 80%, #00fffd 83.33%, #00ffff 86.67%, #00ffff 90%, #00ffff 93.33%, #00ffff 96.67%, #00ffff 100%);
 
-color: #000000;
-padding: 20px;
-padding-bottom: 0px;
-padding-left: 0px;
-padding-right: 0px;
+
+
+background: rgb(255,255,1);
+background: linear-gradient(0deg, rgba(255,255,1,1) 0%, rgba(0,0,0,1) 81%);
+
+background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 2%, rgba(255,255,0,1) 43%, rgba(0,0,0,1) 85%);
+
 text-align: center;
 
 
@@ -149,21 +153,61 @@ h3 {
 
 
 h1 {
-    color: #000000
+    text-decoration: underline 4px solid #FFFF01;
+    color: #ffffff;
+    font-weight: 600;
+    padding-top: 20px;
 }
 
 .payment {
     display: flex;
     flex-direction: column;
-
+    
 }
 
-
+h2 {
+    color: black;
+    text-decoration: underline 4px solid #FFFF01;
+}
 
 .card{
-    background-color: black;
-    color: white;
+
+    background-color: whitesmoke;
+    color: #000000;  
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #000000;
+
+   
 }
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.08);
+    transition: all 0.3s;
+}
+
+.parrafo{
+    color: #ffffff;
+    font-size: 20px;
+
+}
+
+
+.card-text{
+    font-size: 13px;
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+
+
+}
+
+.boton { 
+   
+}
+
 
 `
 

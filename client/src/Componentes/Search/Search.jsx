@@ -22,10 +22,9 @@ const Div = styled.div`
 
 
 .input {
-    
-   
     border-radius: 30px;
     text-align: center;
+    width: 240px;
   
 }
 

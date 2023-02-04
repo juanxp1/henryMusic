@@ -157,7 +157,10 @@ const AboutContainer = styled.div`
 
 h1{
     padding-top: 10px;
-    text-decoration: underline #FFFF01
+    text-decoration: underline 4px solid #FFFF01;
+    color: #ffffff;
+    font-weight: 600;
+    padding-top: 10px;
 }
 
 img{
@@ -172,8 +175,7 @@ img{
 }
 
  .card {
-   background-color:black;
-   background-color: rgb(213, 213, 213);
+ 
    background-color: black;
 
  }
@@ -183,7 +185,10 @@ img{
  color: #ffffff;
  background-color: black;
 
+ p {
 
+    font-size: 19px;
+ }
 
  /* @import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
 

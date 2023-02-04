@@ -23,12 +23,15 @@ function NavHome() {
 
 
 
-      <Div className='p-2 container-fluid d-flex justify-content-end '>
+      <Div className='p-5 container-fluid d-flex justify-content-end '>
         <nav className="navbar bg-body-tertiary oli">
-          <div className='d-flex justify-content-end'>
+          
+       
+          
             <div className="btn-group probando ">
-              <Search />
+            <Search />
               <Chip
+            
                 avatar={<Avatar alt="picture" src={user.picture} />}
                 label={user.nickname}
                 variant="outlined"
@@ -37,10 +40,10 @@ function NavHome() {
                 type="button"
               />
               <ul className="dropdown-menu">
-                <li><a className='dropdown-item'>{logout}</a></li>
+                <li>{logout}</li>
               </ul>
             </div>
-          </div>
+          
 
         </nav>
 
@@ -60,16 +63,21 @@ background-color:#040303;
 
 
 .probando{
-  padding-right: 50px;
+  padding-right: 20px;
+
 }
 .avatar{
   color: #ffffff;
   background-color: #222121;
   padding-right: 10px;
   
+  
 }
 
-
+.oli {
+  position: fixed;
+  
+}
 
 
 `
