@@ -32,14 +32,15 @@ function Nave() {
           </div>
           <div className='d-flex justify-content-end'>
             <div className="nav justify-content-end">
-              <Link to="/home" className='premium'> <button className="btn btn-warning">Let's go !</button></Link>
-              <Link to="/#" className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></Link>
-              <Link to="/#" className='premium' ><button className="btn btn-warning">¿Quiénes somos?</button> </Link>
+              {isAuthenticated ? <Link to="/home" className='premium'> <button className="btn btn-warning">Let's go !</button></Link> : ""}
+
+              <a href='#premium' className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></a>
+              <a href="#somos" className='premium' ><button className="btn btn-warning">¿Quiénes somos?</button> </a>
               <Link className='login ' >
                 {isAuthenticated ? <Logout /> : <Login />}
               </Link>
-             
-              <Profile  />
+
+              <Profile />
 
             </div>
           </div>

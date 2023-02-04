@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 function Premium() {
     return (
-        <NavContainer>
+        <NavContainer >
     
             <br />
             <h1 className='text-center'>¿Por qué cambiarse a Premium?</h1>

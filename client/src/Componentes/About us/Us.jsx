@@ -18,10 +18,10 @@ import Antonio from '../About us/Antonio.jpeg';
 function Us() {
     return (
 
-        <AboutContainer>
+        <AboutContainer id='somos'>
             <div>
                 <br />
-                <h1 className='text-center'>Así somos</h1>
+                <h1 className='text-center oli'>Así somos</h1>
                 <p className='text-center container'>Especialistas en crear contenidos. Investigadores de los lugares más recónditos de Google. Amantes de la gente que escucha buena música. Rápidos hasta donde la calidad no se deteriora. Eficaces en llevar a cabo un plan, tu plan. Y más allá de todo eso, Un TEAM</p>
             </div>
             <br />
@@ -143,6 +143,8 @@ export default Us
 
 const AboutContainer = styled.div`
 
+
+
 .linke{
     width: 30px;
     height: 30px;
@@ -161,6 +163,8 @@ h1{
     color: #ffffff;
     font-weight: 600;
     padding-top: 10px;
+    
+    
 }
 
 img{

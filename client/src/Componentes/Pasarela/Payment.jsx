@@ -32,7 +32,7 @@ function Payment() {
 
     return (
 
-        <Container className="payment container-fluid ">
+        <Container className="payment container-fluid " id="premium">
             <h1 className='text-center'>Elegí tu plan Premium</h1>
 
             <p className="parrafo"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
