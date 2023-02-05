@@ -1,6 +1,6 @@
 import Country from './Country.js';
 import { DataTypes } from "sequelize"
-import { connection } from "../database/connection.js"
+import { connection } from "../database/Connection.js"
 
 export default connection.define('User', {
 
