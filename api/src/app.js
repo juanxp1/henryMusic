@@ -7,7 +7,7 @@ import routes from './routes/index.js';
 const server = express();
 // ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
 // el servidor tiene su propia ruta especificada en el archivo .env
-const { STORAGE_PATH } = process.env;
+const { STORAGE_PATH, NODE_ENV } = process.env;
 global.STORAGE_PATH = STORAGE_PATH;
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }))

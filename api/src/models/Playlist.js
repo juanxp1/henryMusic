@@ -1,6 +1,6 @@
 import User from './User.js';
 import { DataTypes } from "sequelize"
-import { connection } from "../database/Connection.js"
+import { connection } from "../database/connection.js"
 
 export default connection.define('Playlist', {
     
