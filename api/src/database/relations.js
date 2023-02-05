@@ -16,7 +16,7 @@ import TrackArtist from "../models/TrackArtist.js";
 // import UserImage from "../models/UserImage.js";
 
 // Album relations ----------------------------
-Album.hasMany(Track, {foreignKey: 'album_id'});
+Album.hasMany(Track, { foreignKey: 'album_id' });
 Album.belongsToMany(Artist, {
   through: { model: AlbumArtist, unique: false },
   foreignKey: 'album_id',
@@ -69,7 +69,7 @@ Genre.belongsToMany(Artist, {
 // });
 
 // Country relations ----------------------------
-Country.hasMany(User, {foreignKey: 'country_id'});
+Country.hasMany(User, { foreignKey: 'country_id' });
 
 // Playlist relations ----------------------------
 // Playlist.belongsToMany(Image, {
@@ -112,7 +112,7 @@ Artist.belongsToMany(Track, {
 });
 
 // User relations ----------------------------
-User.hasMany(Playlist, {foreignKey: 'user_id'});
+User.hasMany(Playlist, { foreignKey: 'user_id' });
 // User.belongsToMany(Image, {
 //   through: { model: UserImage, unique: false },
 //   foreignKey: 'user_id',
