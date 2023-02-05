@@ -18,11 +18,14 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import server from './src/app.js'
-// const cors = require('cors')
-// import { sequelize } from './src/database/relations.js'
-const port = process.env.PORT || 3001
+import { sequelize } from './src/database/relations.js'
 
-// await sequelize.sync({ force: true })
+const { SERVER_PORT, DB_FORCE } = process.env
+const port = SERVER_PORT || 3001
+
+// para no reiniciar la base de datos en el servidor cada vez que se haga un pull
+// no cambiar esta linea sino su valor en el archivo .env
+await sequelize.sync({ force: DB_FORCE })
 server.listen(port, ()=> {
   console.log(`%s listening at${port}`)
 })

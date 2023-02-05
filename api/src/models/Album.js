@@ -12,12 +12,12 @@ export default connection.define('Album', {
 
     name: {
         type: DataTypes.STRING,
-        unique: true,
+        unique: false,
         allowNull: false,
         validate: { notEmpty: true }
     },
 
-    released_date: {
+    release_date: {
         type: DataTypes.STRING,
         allowNull: false,
     },

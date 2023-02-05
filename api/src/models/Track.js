@@ -1,4 +1,4 @@
-import Album from './album.js';
+import Album from './Album.js';
 import { DataTypes } from "sequelize"
 import { connection } from "../database/connection.js"
 
@@ -13,7 +13,7 @@ export default connection.define('Track', {
 
     name: {
         type: DataTypes.STRING,
-        unique: true,
+        unique: false,
         allowNull: false,
         validate: { notEmpty: true }
     },

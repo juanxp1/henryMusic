@@ -12,8 +12,8 @@ export default connection.define('Image', {
 
     path: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
+        unique: false,
+        allowNull: true,
         validate: { notEmpty: true }
     },
 
@@ -31,6 +31,19 @@ export default connection.define('Image', {
         unique: false,
         validate: { notEmpty: true, min: 0 },
         defaultValue: 0
+    },
+    type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false,
+        validate: { notEmpty: true },
+        defaultValue: 'album'
+    },
+    entity_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false,
+        validate: { notEmpty: true },
     }
 
 },

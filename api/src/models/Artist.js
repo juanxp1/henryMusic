@@ -1,4 +1,3 @@
-import Image from './Image.js';
 import { DataTypes } from "sequelize"
 import { connection } from "../database/connection.js"
 
@@ -13,7 +12,7 @@ export default connection.define('Artist', {
 
     name: {
         type: DataTypes.STRING,
-        unique: true,
+        unique: false,
         allowNull: false,
         validate: { notEmpty: true }
     },

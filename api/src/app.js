@@ -5,6 +5,10 @@ import morgan from 'morgan';
 import routes from './routes/index.js';
 
 const server = express();
+// ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
+// el servidor tiene su propia ruta especificada en el archivo .env
+const { STORAGE_PATH } = process.env;
+global.STORAGE_PATH = STORAGE_PATH;
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }))
 server.use(express.json({ limit: '50mb' }))
@@ -18,10 +22,8 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use(express.static('public'))
 server.use('/', routes);
-
-
+server.use('/', express.static(STORAGE_PATH))
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
