@@ -1,4 +1,5 @@
 
+
 export const GET_ARTIST_DETAIL = 'GET_ARTIST_DETAIL';
 export const GET_ARTIST_ALBUMS = 'GET_ARTIST_ALBUMS';
 export const GET_ALBUM_TRACKS = 'GET_ALBUM_TRACKS';
@@ -20,8 +21,12 @@ export const getTrackDetail = (artist, track) => {
         return fetch(`${URL}/trackDetail?artist=${artist}&track=${track}`)
         .then(res => res.json())
         .then(json => dispatch({type: GET_TRACK_DETAIL, payload: json}))
+        
     };
+   
 };
+
+
 
 export const getArtistDetail = (artist) => {
     return async function (dispatch) {
