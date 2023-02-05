@@ -3,10 +3,20 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import Pagination from '../Paginacion/Pagination'
 import styled from 'styled-components';
+import Hardcode from './Hardcode';
 
 
 const Homedos = () => {
     const { user } = useAuth0()
+
+    // //llamada al back
+//     useEffect(()=>{
+//         dispatch(getCards())
+//     }, [dispatch])
+
+// //trae los albunes desde el store
+//    const CurrentCards = allAlbums;
+
     return (
         <Container>
             <div className="contenedor">
@@ -15,8 +25,23 @@ const Homedos = () => {
                     <div className="titulos">
 
                         <h1>¡Buenos días! {user?.nickname} </h1>
+                        
+                        <Hardcode/>
 
-                        <br />
+                         {/* {CurrentCards?.map((el)=> {
+                            return (
+                                
+                                <Link id={el.id} className="#" to={`/info/${el.id}`}>
+                                    <Card 
+                                        name={el.name}
+                                        portada={el.album}
+                                        descripcion={el.descripcion}
+                                        id={el.id}
+                                    />                                                                                                              
+                                </Link>
+                            )
+                        })} */}
+                        
                         <Pagination />
                     </div>
                 </div>
