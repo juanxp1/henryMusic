@@ -35,7 +35,7 @@ export const getArtistAlbums = (artist) => {
     return async function (dispatch) {
         return fetch(`${URL}/artistAlbums?artist=${artist}`)
         .then(res => res.json())
-        .then(json => dispatch({type: GET_SINGLES, payload: json}))
+        .then(json => dispatch({type: GET_ARTIST_ALBUMS, payload: json}))
     };
 };
 
@@ -43,6 +43,6 @@ export const getAlbumTracks = (albumID) => {
     return async function (dispatch) {
         return fetch(`${URL}/albumTracks?albumId=${albumID}`)
         .then(res => res.json())
-        .then(json => dispatch({type: GET_SINGLES, payload: json}))
+        .then(json => dispatch({type: GET_ALBUM_TRACKS, payload: json}))
     };
 };

@@ -16,7 +16,7 @@ const Homedos = () => {
 
                         <h1>¡Buenos días! {user?.nickname} </h1>
 
-                     
+                        <br />
                         <Pagination />
                     </div>
                 </div>

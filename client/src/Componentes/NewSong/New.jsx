@@ -11,71 +11,57 @@ function New() {
 
 
     return (
-        <Container>
-            <div className="">
-                <div className="">
+        <Container className="container-fluid">
+            <div className="container-fluid">
+                <div className="container-fluid d-flex justify-content-center ">
                     <img className="img" src={foto} alt="Foto" />
-                    <Link className="" to="/home"><button className="">go back home</button></Link>
+
+                </div>
+                <div className="container-fluid d-flex justify-content-center ">
+                    <Link className="" to="/home"><button className="btn bg-dark text-light">Go back home</button></Link>
                 </div>
 
+
+
                 <div className="">
-                    <h1 className="">Create new Song</h1>
+                    <h1 className="text-light text-center   ">Create new Song</h1>
                     <form className="" >
-                        {/* //onSubmit={(e) => handleSubmit(e)} */}
-                        <div>
+
+                        <div className="container">
                             <input
-                                className=""
+                                className="input-group mb-3"
                                 placeholder="Name"
                                 type="text"
-                                // value={song.name}
-                                name="name"
-                                required
-                            // onChange={(e) => handleChange(e)}
                             />
-                            {/* {errors.name && (
-                            <p >{errors.name}</p>
-                        )} */}
                         </div>
 
-                        <div>
-                            <input
-                                className=""
-                                placeholder="imagen"
-                                type="text"
-                                // value={dogs.image}
-                                name="image"
-                                required
-                            // onChange={(e) => handleChange(e)}
-                            />
-                            {/* {errors.image && (
-                            <p >{errors.image}</p>
-                        )} */}
-                        </div>
 
-                        <div>
+
+                        <div className="container">
                             <input
-                                className=""
+                                className="input-group mb-3"
                                 placeholder="Album title"
                                 type="text"
-                                // value={dogs.weight}
-                                name="weight"
-                            // onChange={(e) => handleChange(e)}
                             />
-                            {/* {errors.weight && (
-                            <p >{errors.weight}</p>
-                        )} */}
+
                         </div>
 
-                        <div>
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02" />
-                                <label class="input-group-text" for="inputGroupFile02">Upload song</label>
+                        <div className="container">
+                            <div className="input-group mb-3">
+                                <input className="form-control" id="inputGroupFile02" placeholder="Cargar una cancion" />
+                                <label className="input-group-text bg-dark text-light" for="inputGroupFile02">Upload song</label>
+                            </div>
+                        </div>
+                        <div className="container">
+                            <div className="input-group mb-3">
+                                <input className="form-control" id="inputGroupFile02" placeholder="Cargar una Img" />
+                                <label className="input-group-text bg-dark text-light" for="inputGroupFile02">Upload Img</label>
                             </div>
                         </div>
 
-                        <div>
-                            <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" />
-                            <button className="btn btn-primary"> New</button>
+                        <div className="container-fluid d-flex justify-content-center ">
+
+                            <button className="btn btn-dark"> New</button>
                         </div>
                     </form>
 
@@ -93,7 +79,11 @@ export default New
 
 const Container = styled.div`
 
+background-color: black;
+
 .img {
-    width: 200px;
+    width: 100%;
+    height: 400px;
 }
+
 `
