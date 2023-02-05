@@ -3,24 +3,28 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
-
-
+import { Provider } from 'react-redux';
+import store from './Store/store';
 
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="dev-183wwf4clw7n6848.us.auth0.com"
-      clientId="av3cM1zeJYnKSe8DhGlCtpmE7t05KMFY"
-      authorizationParams={{
-        redirect_uri: window.location.origin
-      }}
-    >
-      <App />
+    
+    <Provider store={store}>
+      <Auth0Provider
+        domain="dev-183wwf4clw7n6848.us.auth0.com"
+        clientId="av3cM1zeJYnKSe8DhGlCtpmE7t05KMFY"
+        authorizationParams={{
+          redirect_uri: window.location.origin
+        }}
+      >
+        <App />
 
-    </Auth0Provider>
+      </Auth0Provider>
+
+    </Provider>
 
   </React.StrictMode >,
   document.getElementById('root')
