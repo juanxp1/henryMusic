@@ -1,7 +1,7 @@
 import React from 'react'
 import NavHome from './NavHome/NavHome'
 import Navertical from '../Componentes/Nav-Vertical/Navertical'
-import Cards from './Cards/Cards'
+import Homedos from './Homedos/Homedos'
 
 
 
@@ -12,9 +12,8 @@ function Home() {
 
         <>
             <NavHome />
-
             <Navertical />
-            <Cards />
+            <Homedos />
         </>
 
 
