@@ -174,9 +174,10 @@ h2 {
 
     background-color: whitesmoke;
     color: #000000;  
-    padding: 40px;
-    border-radius: 20px;
+    padding: 30px;
+    border-radius: 10px;
     border: 1px solid #000000;
+    margin: 10px;
 
    
 }

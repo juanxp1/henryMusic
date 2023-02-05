@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv';dotenv.config()
+import * as dotenv from 'dotenv'; dotenv.config()
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
@@ -7,7 +7,7 @@ import routes from './routes/index.js';
 const server = express();
 // ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
 // el servidor tiene su propia ruta especificada en el archivo .env
-const { STORAGE_PATH, NODE_ENV } = process.env;
+const { STORAGE_PATH } = process.env;
 global.STORAGE_PATH = STORAGE_PATH;
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }))

@@ -20,13 +20,12 @@
 import server from './src/app.js'
 import { sequelize } from './src/database/relations.js'
 
-const { SERVER_PORT, DB_FORCE } = process.env
-const port = SERVER_PORT || 3001
+const SERVER_PORT = process.env.SERVER_PORT || 3001
+const DB_FORCE = process.env.DB_FORCE === 'true'
 
-console.log('DB_FORCE', DB_FORCE)
 // para no reiniciar la base de datos en el servidor cada vez que se haga un pull
 // no cambiar esta linea sino su valor en el archivo .env
 sequelize.sync({ force: DB_FORCE })
-server.listen(port, ()=> {
-  console.log(`%s listening at${port}`)
+server.listen(SERVER_PORT, ()=> {
+    console.log(`%s listening at ${SERVER_PORT}`)
 })

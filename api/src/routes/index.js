@@ -1,11 +1,8 @@
+import * as ArtistController from '../controllers/ArtistController.js'
 import { Router } from 'express'
-import * as ArtistController from '../Controllers/ArtistController.js'
-
-import { getAlbumTracks, getArtistAlbums, getArtistDetail, getTrackDetail } from '../Controllers/Controllers.js'
+import { getAlbumTracks, getArtistAlbums, getArtistDetail, getTrackDetail, getRenderSingles } from '../controllers/Controllers.js'
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-
-// const cors = require('cors')
 
 const router = Router();
 
@@ -22,6 +19,8 @@ router.get('/artistAlbums', getArtistAlbums);
 router.get('/albumTracks', getAlbumTracks);
 
 router.get('/trackDetail', getTrackDetail);
+
+router.get("/Cards", getRenderSingles);
 
 
 
