@@ -4,17 +4,17 @@ import axios from 'axios';
 
 export const getArtistDetail = async (req, res) => {
     try {
-        let { search } = req.query;
-        const pruebaAPI = await axios.get(`https://www.theaudiodb.com/api/v1/json/523532/search.php?s=${search}`);
-        let artista = pruebaAPI.data.artists.map(e => {
-            return {
-                id: e.idArtist,
-                name: e.strArtist,
-                image: e.strArtistThumb,
-                country: e.strCountry,
-                Genres:e.strStyle,
-            }
-        })
+        let { artist } = req.query;
+        const pruebaAPI = await axios.get(`https://www.theaudiodb.com/api/v1/json/523532/search.php?s=${artist}`);
+         let artista = pruebaAPI.data.artists.map(e => {
+             return {
+                 id: e.idArtist,
+                 name: e.strArtist,
+                 image: e.strArtistThumb,
+                 country: e.strCountry,
+                 Genres:e.strStyle,
+             }
+         })
       res.send(artista);
         
     } catch (error) {
@@ -27,8 +27,8 @@ export const getArtistDetail = async (req, res) => {
 export const getArtistAlbums = async (req, res) => {
 
     try {
-        let { search } = req.query;
-        const albumAPI = await axios.get(`https://theaudiodb.com/api/v1/json/523532/searchalbum.php?s=${search}`);
+        let { artist } = req.query;
+        const albumAPI = await axios.get(`https://theaudiodb.com/api/v1/json/523532/searchalbum.php?s=${artist}`);
         let album = albumAPI.data.album.map(e => {
             return {
                 id: e.idAlbum,
@@ -85,6 +85,28 @@ export const getTrackDetail = async (req,res) => {
             }
         })
         res.send(trackDetail);
+
+    } catch (error) {
+        res.send({error: error.message});
+    }
+
+}
+
+export const getRenderSingles = async (req,res) => {
+
+    try {
+        const singlesAPI = await axios.get(`https://theaudiodb.com/api/v1/json/523532/trending.php?country=us&type=itunes&format=singles`);
+        const renderDetail = singlesAPI.data.trending.map(e => {
+            return {
+                id: e.idTrend,
+                name: e.strArtist,
+                album: e.strAlbum,
+                cancion: e.strTrack,
+                imagen: e.strTrackThumb
+
+            }
+        })
+        res.send(renderDetail);
 
     } catch (error) {
         res.send({error: error.message});

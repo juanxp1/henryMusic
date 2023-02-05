@@ -25,7 +25,8 @@ const port = SERVER_PORT || 3001
 
 // para no reiniciar la base de datos en el servidor cada vez que se haga un pull
 // no cambiar esta linea sino su valor en el archivo .env
-await sequelize.sync({ force: DB_FORCE })
-server.listen(port, ()=> {
-  console.log(`%s listening at${port}`)
+
+sequelize.sync({ force: DB_FORCE })
+  server.listen(port, ()=> {
+    console.log(`%s listening at ${port}`)
 })

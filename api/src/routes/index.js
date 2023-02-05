@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getAlbumTracks, getArtistAlbums, getArtistDetail, getTrackDetail } from '../Controllers/Controllers.js'
+import { getAlbumTracks, getArtistAlbums, getArtistDetail, getTrackDetail, getRenderSingles } from '../Controllers/Controllers.js'
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -23,6 +23,8 @@ router.get('/artistAlbums', getArtistAlbums);
 router.get('/albumTracks', getAlbumTracks);
 
 router.get('/trackDetail', getTrackDetail);
+
+router.get("/Cards", getRenderSingles);
 
 
 
