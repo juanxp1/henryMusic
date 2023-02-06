@@ -16,59 +16,64 @@ const Homedos = () => {
     // const currentinfoTotal = infoMusic.slice()(firstIndex, lastIndex)
 
 
-
     useEffect(() => {
         dispatch(getArtistDetail('coldplay'));
         dispatch(getArtistAlbums('coldplay'));
 
     }, []);
 
-    // console.log(infoMusic.artistAlbums)
+    //console.log(infoMusic.artistAlbums)
     //    const CurrentCards = allAlbums;
-    console.log('ARTISTA', infoMusic?.artistDetail[0]?.name)
+    console.log('ARTISTA', infoMusic?.artistDetail)
 
     return (
-        // <div style={{marginTop: "100px", marginLeft:"100px"}}>{infoMusic?.artistDetail[0]?.name} </div>
+
         <Container>
-            <Pagination />
-            <div className="contenedor">
-                <div className="contenedor_contenido">
-                    <div className="titulos">
 
-                        <h1>¡Buenos días! {user?.nickname} </h1>
+            <div className="contenedor mt-0 container">
+                <div className="container-fluid">
+                    <h1 className='h1'>¡Buenos días! <span>{user?.nickname}</span>  </h1>
+                    <div className='container'><Hardcode /></div>
+                    {/* <div className='container  d-flex justify-content-around bg-dark'>
+                        {
+                            infoMusic.artistDetail.length > 0 ?
+                                infoMusic.artistDetail.map(c => {
+                                    return (
+                                        <div>
+                                            <h1 className='h1 d-flex justify-content-center'>Foto del Album</h1>
+                                            <Card key={c.id} id={c.id} name={c.name}  image={c.image} country={c.country} />
+                                        </div>
 
-                        <Hardcode />
-                        <div className="cards">
-                            {
-                                infoMusic.artistDetail.length > 0 ?
-                                    infoMusic.artistDetail.map(c => {
-                                        return (
-                                            <Card key={c.id} id={c.id} name={c.name} image={c.image} capital={c.country} />
-                                        )
-                                    }) :
-                                    <div>
-                                        <p>
-                                            No artist were found with these parameters.
-                                        </p>
-                                    </div>
-                            }
+                                    )
+                                }) :
+                                <p>
+                                    Loading...
+                                </p>
+                        }
+                 
+                    </div> */}
+                    <h1 className='d-flex justify-content-around h1'>Canciones</h1>
+                    <div className='card-group  d-flex justify-content-around'>
 
-                            {
-                                infoMusic.artistAlbums.length > 0 ?
-                                    infoMusic.artistAlbums.map(c => {
-                                        return (
-                                            <Card key={c.id} id={c.id} name={c.name} image={c.image} continents={c.year} />
-                                        )
-                                    }) :
-                                    <div>
-                                        <p>
-                                            No Albums were found with these parameters.
-                                        </p>
-                                    </div>
-                            }
-                        </div>
+
+                        {
+                            infoMusic.artistAlbums.length > 0 ?
+                                infoMusic?.artistAlbums.map(c => {
+                                    return (
+                                        <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
+                                    )
+                                }) :
+
+                                <p>
+                                    Loading....
+                                </p>
+
+                        }
                     </div>
+                    <Pagination />
                 </div>
+            </div>
+            <div>
             </div>
         </Container>
     )
@@ -81,18 +86,27 @@ const Container = styled.div`
 *{
     margin: 0;
     padding: auto;
-    box-sizing: border-box;
+    color: white;
+    
 }
 
+.h1{
+    color: #FFFF01;
+    text-decoration: underline;
+}
+
+
 .contenedor{
-    height: 140vh;
+    
+    height: auto;
     background: rgb(194,194,45);
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
-    margin-left: 230px;
-    text-align: start;
+    margin-left: 230px  !important;
     color: white;
     width: auto;
+    display: flex;
 }
+
 
 
 `

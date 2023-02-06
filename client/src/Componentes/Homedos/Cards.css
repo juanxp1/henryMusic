@@ -97,8 +97,8 @@
 }
 
 .imagen {
-    height: 80px;
-    width: 110px;
+    height: auto;
+    width: auto;
     /* justify-content: center; */
     border-radius: 5%;
     filter: saturate(200%);
