@@ -13,7 +13,7 @@ const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state);
-    // const currentinfoTotal = infoMusic.slice()(firstIndex, lastIndex)
+   
 
 
     useEffect(() => {
@@ -64,9 +64,9 @@ const Homedos = () => {
                                     )
                                 }) :
 
-                                <p>
+                                <h1>
                                     Loading....
-                                </p>
+                                </h1>
 
                         }
                     </div>
@@ -93,6 +93,7 @@ const Container = styled.div`
 .h1{
     color: #FFFF01;
     text-decoration: underline;
+    padding-bottom: 10px;
 }
 
 

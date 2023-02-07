@@ -9,7 +9,6 @@ function App() {
     <>
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
-
         <Route path="/home" component={Home} />
         <Route path="/new" component={New} />
 

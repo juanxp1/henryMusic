@@ -29,7 +29,7 @@ const Container = styled.div`
 
 
  .oli {
-    width: 200px;
+    width: 250px;
 min-width: 200px;
 max-width: auto;
    
@@ -43,6 +43,6 @@ max-width: auto;
 }
 
 img {
-    width: 150px;
+    width: 180px;
 }
 `
