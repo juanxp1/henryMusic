@@ -5,8 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from 'react-redux';
 import store from './Store/store';
-
-
+//estilos de audio
+import "@madzadev/audio-player/dist/index.css";
 
 
 ReactDOM.render(
