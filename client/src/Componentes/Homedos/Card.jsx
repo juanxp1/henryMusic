@@ -1,5 +1,4 @@
 import React from "react";
-
 import styled from "styled-components";
 
 
@@ -30,9 +29,8 @@ const Container = styled.div`
 
  .oli {
     width: 200px;
-min-width: 200px;
-max-width: auto;
-   
+    min-width: 200px;
+    max-width: auto;   
  }
  
  .oli:hover {

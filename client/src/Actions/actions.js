@@ -16,6 +16,7 @@ export const getSingles = () => {
     };
 };
 
+
 export const getTrackDetail = (artist, track) => {
     return async function (dispatch) {
         return fetch(`${URL}/trackDetail?artist=${artist}&track=${track}`)

@@ -9,10 +9,6 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom"
 
 
-
-
-
-
 function Nave() {
 
   const { user, isAuthenticated, isLoading } = useAuth0();
