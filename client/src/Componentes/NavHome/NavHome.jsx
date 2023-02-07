@@ -21,13 +21,9 @@ function NavHome() {
 
     isAuthenticated && (
 
-
-
       <Div className='p-5 container-fluid d-flex justify-content-end '>
         <nav className="navbar bg-body-tertiary oli">
-          
-       
-          
+                          
             <div className="btn-group probando ">
             <Search />
               <Chip

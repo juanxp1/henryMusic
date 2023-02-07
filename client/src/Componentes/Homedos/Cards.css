@@ -17,7 +17,6 @@
 }
 
 .cards {
-
     transition: var(--efecto);
     flex-basis: calc((100% / 3) - 20px);
     height: 50%;
@@ -27,18 +26,7 @@
     cursor: pointer;
     border-radius: 10px;
     margin: 50px;
-    flex-direction: column;
-
-
-
-
-
-
-
-
-
-
-}
+    flex-direction: column;}
 
 .card_imagen {
     width: 80px;
@@ -60,11 +48,9 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-
 }
 
 .card_album {
-
     transition: var(--efecto);
     display: flex;
     justify-content: center;
@@ -88,7 +74,6 @@
 }
 
 .card_podcast p {
-
     color: rgba(255, 255, 255, 0.212);
 }
 
@@ -107,6 +92,4 @@
     padding-top: 20px;
     margin-top: 0px;
     align-self: center;
-
-
 }
