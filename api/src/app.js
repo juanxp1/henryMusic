@@ -3,6 +3,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import routes from './routes/index.js';
+import { auth } from 'express-openid-connect'
 
 const server = express();
 // ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
@@ -32,11 +33,5 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
-
-
-
-
-
-
 
 export default server

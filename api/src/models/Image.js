@@ -44,6 +44,10 @@ export default connection.define('Image', {
     allowNull: false,
     unique: false,
     validate: { notEmpty: true },
+  },
+  url: {
+    type: DataTypes.VIRTUAL,
+    get() { return `https://henrymusic.tech/images/${this.id}.jpg` }
   }
 
 },
