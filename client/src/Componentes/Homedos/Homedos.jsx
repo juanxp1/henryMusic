@@ -13,7 +13,7 @@ const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state);
-    // const currentinfoTotal = infoMusic.slice()(firstIndex, lastIndex)
+
 
 
     useEffect(() => {
@@ -52,24 +52,38 @@ const Homedos = () => {
                         }
                  
                     </div> */}
-                    <h1 className='d-flex justify-content-around h1'>Canciones</h1>
-                    <div className='card-group  d-flex justify-content-around'>
+                    <h1 className='d-flex justify-content-around h1'>Lo mas escuchado </h1>
 
 
-                        {
-                            infoMusic.artistAlbums.length > 0 ?
-                                infoMusic?.artistAlbums.map(c => {
-                                    return (
-                                        <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
-                                    )
-                                }) :
+                    <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+                        <div className="carousel-inner">
+                            <div className=" container-fluid d-flex justify-content-center carousel-item active" data-bs-interval="10000000">
+                                {
+                                    infoMusic.artistAlbums.length > 0 ?
+                                        infoMusic?.artistAlbums.map(c => {
+                                            return (
+                                                <div className='carousel-item active'>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
+                                                </div>
 
-                                <p>
-                                    Loading....
-                                </p>
-
-                        }
+                                            )
+                                        }) :
+                                        <h1>
+                                            Loading....
+                                        </h1>
+                                }
+                            </div>
+                        </div>
+                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
                     </div>
+
                     <Pagination />
                 </div>
             </div>
@@ -93,6 +107,7 @@ const Container = styled.div`
 .h1{
     color: #FFFF01;
     text-decoration: underline;
+    padding-bottom: 10px;
 }
 
 

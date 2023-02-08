@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from "react-router-dom"
 import styled from "styled-components";
 import foto from "../NewSong/foto.jpg"
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -11,20 +12,21 @@ function New() {
 
     return (
         <Container className="container-fluid">
-            <div className="container-fluid">
+            <div >
                 <div className="container-fluid d-flex justify-content-center ">
                     <img className="img" src={foto} alt="Foto" />
 
                 </div>
                 <div className="container-fluid d-flex justify-content-center ">
-                    <Link className="" to="/home"><button className="btn bg-dark text-light">Go back home</button></Link>
+                    <Link className="" to="/home"><Button type="button" className="btn btn-warning" >Go back home</Button></Link>
                 </div>
 
 
 
                 <div className="">
-                    <h1 className="text-light text-center   ">Create new Song</h1>
+                    <h1 className=" text-center">Create new Song</h1>
                     <form className="" >
+
 
                         <div className="container">
                             <input
@@ -32,8 +34,16 @@ function New() {
                                 placeholder="Name"
                                 type="text"
                             />
-                        </div>
 
+                        </div>
+                        <div className="container">
+                            <input
+                                className="input-group mb-3"
+                                placeholder="Genero"
+                                type="text"
+                            />
+
+                        </div>
 
 
                         <div className="container">
@@ -44,6 +54,8 @@ function New() {
                             />
 
                         </div>
+
+
 
                         <div className="container">
                             <div className="input-group mb-3">
@@ -79,10 +91,21 @@ export default New
 const Container = styled.div`
 
 background-color: black;
+height: 100vh;
 
 .img {
-    width: 100%;
-    height: 400px;
+    width: auto;
+    height: 300px;
 }
 
+.btn {
+    background-color: #FFFF01;
+    color: black;
+    font-family: var(--bs-font-sans-serif);
+}
+
+h1 {
+    font-family: var(--bs-font-sans-serif);
+    color: white;
+}
 `

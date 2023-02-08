@@ -7,9 +7,43 @@ import Login from '../Login/Login'
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+
+const pages = ['Products', 'Pricing', 'Blog'];
+const settings = ['Profile', <Login />, 'Dashboard', <Logout />];
 
 
 function Nave() {
+
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const { user, isAuthenticated, isLoading } = useAuth0();
 
@@ -20,29 +54,35 @@ function Nave() {
   return (
     <>
 
-      <NavContainer className='navbar navbar-expand-lg '>
-        <div className='container-fluid '>
-
-          <div>
+      <NavContainer className='navbar navbar-expand-lg container-fluid'>
+        <div className='container-fluid'>
+          <div className='container-fluid'>
             <h2><img className='logo' src={foto} alt="logo" />Henry<span> Music</span></h2>
           </div>
-          <div className='d-flex justify-content-end'>
-            <div className="nav justify-content-end">
-              {isAuthenticated ? <Link to="/home" className='premium'> <button className="btn btn-warning">Let's go !</button></Link> : ""}
 
-              <a href='#premium' className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></a>
-              <a href="#somos" className='premium' ><button className="btn btn-warning">¿Quiénes somos?</button> </a>
-              <Link className='login ' >
-                {isAuthenticated ? <Logout /> : <Login />}
-              </Link>
+          <div className='container-fluid d-inline-flex '>
 
-              <Profile />
+            {isAuthenticated ? <Link to="/home" className='premium'> <button className="btn btn-warning">Let's go !</button></Link> : ""}
 
-            </div>
+
+            <a href='#premium' className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></a>
+
+
+            <a href="#somos" className='premium' ><button className="btn btn-warning">¿Quiénes somos?</button> </a>
+
+
+            <Link className='login ' >
+              {isAuthenticated ? <Logout /> : <Login />}
+            </Link>
+            <Profile />
+
           </div>
+
+
         </div>
 
       </NavContainer>
+
 
 
     </>
@@ -56,18 +96,20 @@ const NavContainer = styled.nav`
 
 
 .profile{
-  padding-top: 10px;
+  padding-top: auto;
 }
 
 .btn {
   background-color: #FFFF01;
+  
+  
 }
 
 
 
  .logo{
     width: 110px;
-    margin-left: 40px;
+    margin-left: auto;
   }
 
   h2{
@@ -80,17 +122,15 @@ const NavContainer = styled.nav`
     }
 }
 
-padding: .4 rem;
+
 background-color:#000000;
-display: flex;
-align-items: center;
-justify-content: space-between;
+
 
 a{
 
     color: white;
     text-decoration: none;
-    margin-right: 2rem;
+    margin-right: auto;
     
 }
 .links{
