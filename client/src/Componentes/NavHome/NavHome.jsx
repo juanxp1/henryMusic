@@ -70,10 +70,7 @@ background-color:#040303;
   
 }
 
-.oli {
-  position: fixed;
-  
-}
+
 
 
 `

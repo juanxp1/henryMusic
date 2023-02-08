@@ -1,41 +1,51 @@
 import React from "react";
 import Player from "@madzadev/audio-player";
+import styled from 'styled-components'
 
 const tracks = [
-    {
-      url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
-      title: "Caramelo Dj - Chords of Life",
-     tags: ["house"],
-    },
-    {
-      url: "https://audioplayer.madza.dev/Madza-Late_Night_Drive.mp3",
-      title: "Erick Dj - Late Night Drive",
-      tags: ["dnb"],
-    },
-    {
-      url: "https://audioplayer.madza.dev/Madza-Persistence.mp3",
-      title: "AbiMex Dj- Persistence",
-      tags: ["dubstep"],
-    },
-  ];
+  {
+    url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
+    title: "Caramelo Dj - Chords of Life",
+    tags: ["house"],
+  },
+  {
+    url: "https://audioplayer.madza.dev/Madza-Late_Night_Drive.mp3",
+    title: "Erick Dj - Late Night Drive",
+    tags: ["dnb"],
+  },
+  {
+    url: "https://audioplayer.madza.dev/Madza-Persistence.mp3",
+    title: "AbiMex Dj- Persistence",
+    tags: ["dubstep"],
+  },
+];
 
 
 
 export default function Player1() {
-    return (
-        <div>
-         <Player 
-         trackList={tracks}
-         includeTags={false}
-         includeSearch={false}
-         showPlaylist={true}
-         autoPlayNextTrack={true}
-         customColorScheme={colors}
-         />
-        </div>
-    );
+  return (
+    <Container>
+      <div className="d-flex m-t-2">
+        <Player
+        className="repro"
+          trackList={tracks}
+          includeTags={false}
+          includeSearch={false}
+          showPlaylist={false}
+          autoPlayNextTrack={false}
+          customColorScheme={colors}
+        />
+      </div>
+    </Container>
+  );
 }
 
+const Container = styled.div`
+width: auto;
+.repro{
+  width: 100px;
+}
+`
 const colors = `html {
           --tagsBackground: #ffe433;
           --tagsText: #ffe433;
@@ -44,7 +54,7 @@ const colors = `html {
           --searchBackground: #18191f;
           --searchText: #ffe433;
           --searchPlaceHolder: #575a77;
-          --playerBackground: #18191f;
+          --playerBackground: #101010;
           --titleColor: #ffe433; 
           --timeColor: #ffe433;
           --progressSlider: #ffe433;
