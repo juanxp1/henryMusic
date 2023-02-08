@@ -84,20 +84,6 @@ const Homedos = () => {
                         </button>
                     </div>
 
-
-
-                    {/* {
-                            infoMusic.artistAlbums.length > 0 ?
-                                infoMusic?.artistAlbums.map(c => {
-                                    return (
-                                        <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
-                                    )
-                                }) :
-                                <h1>
-                                    Loading....
-                                </h1>
-                        } */}
-
                     <Pagination />
                 </div>
             </div>
