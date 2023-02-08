@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 // vamos hacer un llamado a la carpeta de actions
-import {  getArtistAlbums } from '../../Actions/actions'
+import {  searchArtist } from '../../Actions/actions'
 
 function Search() {
 
@@ -25,7 +25,7 @@ function Search() {
             return
         }
         setError(false)
-        dispatch(getArtistAlbums(input))
+        dispatch(searchArtist(input))
         setInput('')
     }
 

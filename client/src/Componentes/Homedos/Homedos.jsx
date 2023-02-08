@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import Pagination from '../Paginacion/Pagination'
 import styled from 'styled-components';
 import Hardcode from './Hardcode';
-import { getArtistDetail, getArtistAlbums } from '.././../Actions/actions.js'
+import { getAllArtists } from '.././../Actions/actions.js'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
@@ -12,19 +12,19 @@ import Card from './Card';
 const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
-    const infoMusic = useSelector((state) => state);
-
+    const infoMusic = useSelector((state) => state.artists);
+    const URL = 'https://henrymusic.tech/images/';
 
 
     useEffect(() => {
-        dispatch(getArtistDetail('coldplay'));
-        dispatch(getArtistAlbums('coldplay'));
+        dispatch(getAllArtists(30));
+        // dispatch(getArtistAlbums('coldplay'));
 
     }, []);
 
     //console.log(infoMusic.artistAlbums)
     //    const CurrentCards = allAlbums;
-    console.log('ARTISTA', infoMusic?.artistDetail)
+    console.log('ARTIST', infoMusic?.artists)
 
     return (
 
@@ -59,11 +59,11 @@ const Homedos = () => {
                         <div className="carousel-inner">
                             <div className=" container-fluid d-flex justify-content-center carousel-item active" data-bs-interval="10000000">
                                 {
-                                    infoMusic.artistAlbums.length > 0 ?
-                                        infoMusic?.artistAlbums.map(c => {
+                                    infoMusic.artists ?
+                                        infoMusic?.artists.map(c => {
                                             return (
                                                 <div className='carousel-item active'>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
+                                                    <Card key={c.id} id={c.id} name={c.name} genre={c.genres.map(el => (<div>{el.name}</div>))} image={URL + c.images[0].path + '.jpg'} />
                                                 </div>
 
                                             )

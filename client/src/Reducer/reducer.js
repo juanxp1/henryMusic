@@ -1,13 +1,10 @@
-import { GET_ALBUM, GET_ALBUM_TRACKS, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_ARTIST_ALBUMS, GET_ARTIST_DETAIL, GET_SINGLES, GET_TRACK, GET_TRACK_DETAIL, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK } from "../Actions/actions";
+import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST,  GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK } from "../Actions/actions";
 
 
 export const initialState = {
-    singles: [],
     trackDetail: [],
     tracks: [],
     artistDetail: [],
-    artistAlbums: [],
-    albumTracks: [],
     albumDetail: [],
     albums: [],
     artists: [],
@@ -15,38 +12,6 @@ export const initialState = {
 
 const reducer = (state=initialState, action) => {
     switch(action.type) {
-
-        // API AUDIODB CASES
-
-        case GET_SINGLES:
-            return {
-                ...state,
-                singles: action.payload,
-            }
-
-        case GET_TRACK_DETAIL:
-            return {
-                ...state,
-                trackDetail: action.payload,
-            }
-
-        case GET_ALBUM_TRACKS:
-            return {
-                ...state,
-                albumTracks: action.payload,
-            }
-
-        case GET_ARTIST_ALBUMS:
-            return {
-                ...state,
-                artistAlbums: action.payload,
-            }
-
-        case GET_ARTIST_DETAIL:
-            return {
-                ...state,
-                artistDetail: action.payload,
-            }
 
         // NUESTRA BASE DE DATOS CASES
 
