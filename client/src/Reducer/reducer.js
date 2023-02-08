@@ -1,4 +1,4 @@
-import { GET_ALBUM, GET_ALBUM_TRACKS, GET_ARTIST, GET_ARTIST_ALBUMS, GET_ARTIST_DETAIL, GET_SINGLES, GET_TRACK, GET_TRACK_DETAIL, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK } from "../Actions/actions";
+import { GET_ALBUM, GET_ALBUM_TRACKS, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_ARTIST_ALBUMS, GET_ARTIST_DETAIL, GET_SINGLES, GET_TRACK, GET_TRACK_DETAIL, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK } from "../Actions/actions";
 
 
 export const initialState = {
@@ -81,6 +81,24 @@ const reducer = (state=initialState, action) => {
             }
 
         case SEARCH_ARTIST:
+            return {
+                ...state,
+                artists: action.payload,
+            }
+
+        case GET_ALL_TRACKS:
+            return {
+                ...state,
+                tracks: action.payload,
+            }
+
+        case GET_ALL_ALBUMS:
+            return {
+                ...state,
+                albums: action.payload,
+            }
+
+        case GET_ALL_ARTISTS:
             return {
                 ...state,
                 artists: action.payload,
