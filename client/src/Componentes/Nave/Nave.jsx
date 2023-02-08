@@ -16,7 +16,6 @@ const settings = ['Profile', <Login />, 'Dashboard', <Logout />];
 function Nave() {
 
 
-
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   // if (isLoading) {

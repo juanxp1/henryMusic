@@ -61,3 +61,33 @@ export async function searchAlbum(req, res) {
   }
   catch (error) { jsonError(res, error.message) }
 }
+
+export async function getAllAlbums(req, res) {
+  const validator = new Validator(req.query, {
+    limit: "integer|min:1",
+    offset: "integer|min:0"
+  })
+  if (validator.fails()) return jsonError(res, validator.errors)
+  const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
+
+  try {
+    const result = await Album.findAll({
+      include: [
+        { model: Track, as : 'tracks', attributes: { exclude: ["created_at", "updated_at", "album_id"] } },
+        { model: Image, as: 'images', attributes: { exclude: ["created_at", "updated_at", "entity_id"] } },
+        { model: Artist, as: 'artists', attributes: {
+          exclude: ["created_at", "updated_at"] },
+          through: { attributes: [] }
+        }
+      ],
+      distinct: true,
+      limit, offset
+    })
+    jsonOk(res, {
+      total: result.count,
+      albums: result,
+      limit, offset
+    })
+  }
+  catch (error) { jsonError(res, error.message) }
+}
