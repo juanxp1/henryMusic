@@ -25,7 +25,7 @@ const Homedos = () => {
     //console.log(infoMusic.artistAlbums)
     //    const CurrentCards = allAlbums;
     console.log('ARTIST', infoMusic?.artists)
-
+    
     return (
 
         <Container>
@@ -63,7 +63,7 @@ const Homedos = () => {
                                         infoMusic?.artists.map(c => {
                                             return (
                                                 <div className='carousel-item active'>
-                                                    <Card key={c.id} id={c.id} name={c.name} genre={c.genres.map(el => (<div>{el.name}</div>))} image={URL + c.images[0].path + '.jpg'} />
+                                                    <Card key={c.id} id={c.id} name={c.name} genre={c.genres.map(el => (<div>{el.name}</div>))} image={c.images[0].url} />
                                                 </div>
 
                                             )
