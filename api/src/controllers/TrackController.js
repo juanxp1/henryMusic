@@ -60,3 +60,32 @@ export async function searchTrack(req, res) {
   }
   catch (error) { jsonError(res, error.message) }
 }
+
+export async function getAllTracks(req, res) {
+  const validator = new Validator(req.query, {
+    limit: "integer|min:1",
+    offset: "integer|min:0"
+  })
+  if (validator.fails()) return jsonError(res, validator.errors)
+  const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
+
+  try {
+    const result = await Track.findAll({
+      include: [
+        { model: Album, as : 'album', attributes: { exclude: ["created_at", "updated_at"] } },
+        { model: Artist, as: 'artists', attributes: {
+          exclude: ["created_at", "updated_at"] },
+          through: { attributes: [] }
+        }
+      ],
+      distinct: true,
+      limit, offset
+    })
+    jsonOk(res, {
+      total: result.count,
+      tracks: result,
+      limit, offset
+    })
+  }
+  catch (error) { jsonError(res, error.message) }
+}
