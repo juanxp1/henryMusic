@@ -3,17 +3,9 @@ import * as AlbumController from '../controllers/AlbumController.js'
 import * as TrackController from '../controllers/TrackController.js'
 import { Router } from 'express'
 import authRouter from './auth.js'
-import { getAlbumTracks, getArtistAlbums, getArtistDetail, getTrackDetail, getRenderSingles } from '../controllers/Controllers.js'
 // Importar todos los routers;
 
 const router = Router();
-
-// rutas de theaudiodb
-router.get('/artistDetail', getArtistDetail);
-router.get('/artistAlbums', getArtistAlbums);
-router.get('/albumTracks', getAlbumTracks);
-router.get('/trackDetail', getTrackDetail);
-router.get("/Cards", getRenderSingles);
 
 // rutas para nuestra api
 router.get('/track/search', TrackController.searchTrack)

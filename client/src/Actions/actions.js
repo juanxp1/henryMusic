@@ -1,58 +1,5 @@
 
-// Actions de la API AudioDB
-
-export const GET_ARTIST_DETAIL = 'GET_ARTIST_DETAIL';
-export const GET_ARTIST_ALBUMS = 'GET_ARTIST_ALBUMS';
-export const GET_ALBUM_TRACKS = 'GET_ALBUM_TRACKS';
-export const GET_TRACK_DETAIL = 'GET_TRACK_DETAIL';
-export const GET_SINGLES = 'GET_SINGLES';
-
 const URL = 'http://localhost:3001';
-
-export const getSingles = () => {
-    return async function (dispatch) {
-        return fetch(`${URL}/Cards`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_SINGLES, payload: json }))
-    };
-};
-
-
-export const getTrackDetail = (artist, track) => {
-    return async function (dispatch) {
-        return fetch(`${URL}/trackDetail?artist=${artist}&track=${track}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_TRACK_DETAIL, payload: json }))
-
-    };
-
-};
-
-
-export const getArtistDetail = (artist) => {
-
-    return async function (dispatch) {
-        return fetch(`${URL}/artistDetail?artist=${artist}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ARTIST_DETAIL, payload: json }))
-    };
-};
-
-export const getArtistAlbums = (artist) => {
-    return async function (dispatch) {
-        return fetch(`${URL}/artistAlbums?artist=${artist}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ARTIST_ALBUMS, payload: json }))
-    };
-};
-
-export const getAlbumTracks = (albumID) => {
-    return async function (dispatch) {
-        return fetch(`${URL}/albumTracks?albumId=${albumID}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ALBUM_TRACKS, payload: json }))
-    };
-};
 
 // Actions de nuestra base de datos
 
@@ -66,6 +13,7 @@ export const GET_ALL_TRACKS = 'GET_ALL_TRACKS';
 export const GET_ALL_ALBUMS = 'GET_ALL_ALBUMS';
 export const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
 
+const initialLimit = 10;
 
 export const getTrack = (ID) => {
     return async function (dispatch) {
@@ -75,17 +23,17 @@ export const getTrack = (ID) => {
     };
 };
 
-export const searchTrack = (track) => {
+export const searchTrack = (track, limit=initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/track/search?q=${track}`)
+        return fetch(`${URL}/track/search?q=${track}&limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: SEARCH_TRACK, payload: json }))
     };
 };
 
-export const getAllTracks = () => {
+export const getAllTracks = (limit=initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/allTracks`)
+        return fetch(`${URL}/allTracks?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_TRACKS, payload: json }))
     };
@@ -99,17 +47,17 @@ export const getAlbum = (ID) => {
     };
 };
 
-export const searchAlbum = (album) => {
+export const searchAlbum = (album, limit=initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/album/search?q=${album}`)
+        return fetch(`${URL}/album/search?q=${album}&limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: SEARCH_ALBUM, payload: json }))
     };
 };
 
-export const getAllAlbums = () => {
+export const getAllAlbums = (limit=initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/allAlbums`)
+        return fetch(`${URL}/allAlbums?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_ALBUMS, payload: json }))
     };
@@ -123,17 +71,17 @@ export const getArtist = (ID) => {
     };
 };
 
-export const searchArtist = (artist) => {
+export const searchArtist = (artist, limit=initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/artist/search?q=${artist}`)
+        return fetch(`${URL}/artist/search?q=${artist}&limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: SEARCH_ARTIST, payload: json }))
     };
 };
 
-export const getAllArtists = () => {
+export const getAllArtists = (limit=initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/allArtists`)
+        return fetch(`${URL}/allArtists?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_ARTISTS, payload: json }))
     };
