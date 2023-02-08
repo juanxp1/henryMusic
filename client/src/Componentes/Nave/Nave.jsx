@@ -9,8 +9,7 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom"
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', <Login />, 'Dashboard', <Logout />];
+
 
 
 function Nave() {
