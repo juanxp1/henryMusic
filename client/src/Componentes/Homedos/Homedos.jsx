@@ -26,7 +26,7 @@ const Homedos = () => {
     //console.log(infoMusic.artistAlbums)
     //    const CurrentCards = allAlbums;
     console.log('ARTIST', infoMusic?.artists)
-    
+
     return (
 
         <Container>
@@ -39,16 +39,15 @@ const Homedos = () => {
                     <h1 className='d-flex justify-content-start h1'>Lo mas escuchado </h1>
 
 
-                    <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
-                        <div className="carousel-inner">
-                            <div className=" container-fluid d-flex justify-content-center carousel-item active" data-bs-interval="10000000">
-                                {
-                                    infoMusic.artistAlbums.length > 0 ?
-                                        infoMusic?.artistAlbums.map(c => {
-                                            return (
-                                                <div className='carousel-item active'>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
-                                                </div>
+                    <div class="swiffy-slider">
+                        <ul class="slider-container">
+                            {
+                                infoMusic.artistAlbums.length > 0 ?
+                                    infoMusic?.artistAlbums.map(c => {
+                                        return (
+                                            <div className='carousel-item active'>
+                                                <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
+                                            </div>
 
 
 
