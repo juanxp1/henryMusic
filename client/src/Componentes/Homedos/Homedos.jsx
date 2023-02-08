@@ -14,12 +14,10 @@ const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state.artists);
-    const URL = 'https://henrymusic.tech/images/';
 
 
     useEffect(() => {
-        dispatch(getArtistDetail('coldplay'));
-        dispatch(getArtistAlbums('coldplay'));
+        dispatch(getAllArtists());
 
     }, []);
 
@@ -42,11 +40,11 @@ const Homedos = () => {
                     <div class="swiffy-slider">
                         <ul class="slider-container">
                             {
-                                infoMusic.artistAlbums.length > 0 ?
-                                    infoMusic?.artistAlbums.map(c => {
+                                infoMusic.artists?
+                                    infoMusic?.artists.map(c => {
                                         return (
                                             <div className='carousel-item active'>
-                                                <Card key={c.id} id={c.id} name={c.name} image={c.image} genre={c.genre} year={c.year} />
+                                                <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<div> {el.name} </div>))} />
                                             </div>
 
 
