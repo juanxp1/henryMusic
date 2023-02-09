@@ -7,6 +7,8 @@ import Login from '../Login/Login'
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
+import { Landing } from '../../Actions/actions';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -14,8 +16,14 @@ import { Link } from "react-router-dom"
 
 function Nave() {
 
+  const dispatch = useDispatch();
 
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const landingOut = () => {
+    dispatch(Landing())
+  }
+
+
+  const { isAuthenticated } = useAuth0();
 
   // if (isLoading) {
   //   return <h1>Loading...</h1>
@@ -24,15 +32,15 @@ function Nave() {
   return (
     <>
 
-      <NavContainer className='navbar navbar-expand-lg container-fluid'>
+      <NavContainer className='navbar navbar-expand-lg '>
         <div className='container-fluid'>
-          <div className='container-fluid'>
+          <div className='container'>
             <h2><img className='logo' src={foto} alt="logo" />Henry<span> Music</span></h2>
           </div>
 
-          <div className='container-fluid d-inline-flex '>
+          <div className='container-fluid  d-inline-flex '>
 
-            {isAuthenticated ? <Link to="/home" className='premium'> <button className="btn btn-warning">Let's go !</button></Link> : ""}
+            {isAuthenticated ? <Link to="/home" className='premium'> <button onClick={landingOut} className="btn btn-warning">Let's go !</button></Link> : ""}
 
 
             <a href='#premium' className='premium' > <button className="btn btn-warning">Cámbiate a Premium </button></a>
