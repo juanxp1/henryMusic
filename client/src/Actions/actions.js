@@ -23,7 +23,7 @@ export const getTrack = (ID) => {
     };
 };
 
-export const searchTrack = (track, limit=initialLimit) => {
+export const searchTrack = (track, limit = initialLimit) => {
     return async function (dispatch) {
         return fetch(`${URL}/track/search?q=${track}&limit=${limit}`)
             .then(res => res.json())
@@ -31,7 +31,7 @@ export const searchTrack = (track, limit=initialLimit) => {
     };
 };
 
-export const getAllTracks = (limit=initialLimit) => {
+export const getAllTracks = (limit = initialLimit) => {
     return async function (dispatch) {
         return fetch(`${URL}/allTracks?limit=${limit}`)
             .then(res => res.json())
@@ -47,7 +47,7 @@ export const getAlbum = (ID) => {
     };
 };
 
-export const searchAlbum = (album, limit=initialLimit) => {
+export const searchAlbum = (album, limit = initialLimit) => {
     return async function (dispatch) {
         return fetch(`${URL}/album/search?q=${album}&limit=${limit}`)
             .then(res => res.json())
@@ -55,7 +55,7 @@ export const searchAlbum = (album, limit=initialLimit) => {
     };
 };
 
-export const getAllAlbums = (limit=initialLimit) => {
+export const getAllAlbums = (limit = initialLimit) => {
     return async function (dispatch) {
         return fetch(`${URL}/allAlbums?limit=${limit}`)
             .then(res => res.json())
@@ -71,7 +71,7 @@ export const getArtist = (ID) => {
     };
 };
 
-export const searchArtist = (artist, limit=initialLimit) => {
+export const searchArtist = (artist, limit = initialLimit) => {
     return async function (dispatch) {
         return fetch(`${URL}/artist/search?q=${artist}&limit=${limit}`)
             .then(res => res.json())
@@ -79,7 +79,7 @@ export const searchArtist = (artist, limit=initialLimit) => {
     };
 };
 
-export const getAllArtists = (limit=initialLimit) => {
+export const getAllArtists = (limit = initialLimit) => {
     return async function (dispatch) {
         return fetch(`${URL}/allArtists?limit=${limit}`)
             .then(res => res.json())
@@ -87,3 +87,11 @@ export const getAllArtists = (limit=initialLimit) => {
     };
 };
 
+
+export const Landing = () => {
+    return {
+        type: "LANDING"
+    }
+
+
+}

@@ -8,6 +8,7 @@ export const initialState = {
     albumDetail: [],
     albums: [],
     artists: [],
+    landing: true,
 };
 
 const reducer = (state=initialState, action) => {
@@ -20,6 +21,13 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 trackDetail: action.payload,
             }
+
+            case "LANDING":
+                return {
+                    ...state,
+                    landing: false,
+
+                } 
 
         case SEARCH_TRACK:
             return {

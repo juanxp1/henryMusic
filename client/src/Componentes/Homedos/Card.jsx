@@ -1,45 +1,46 @@
 import React from "react";
+
+
 import styled from "styled-components";
 
-
-export default function Card({ name, image, album, id, country, year, genre }) {
+export default function Card({ name, image, id, genre }) {
     return (
-        <Container  >
-            <div className="card oli" >
-                <div className="card bg-dark">
-                    <img key={id} src={image} className="card-img-top rounded mx-auto d-block pt-2 d-block w-100" alt={name} />
-                    <div className="card-body">
-                        <h4 className="text-center">{name}</h4>
-                        <h5 className="text-center">{album}</h5>
-                        <h6 className="text-center">{genre}</h6>
-                        <h6 className="text-center">{year}</h6>
-                        <h1 className="text-center">{country}</h1>
-                    </div>
-                </div>
-            </div>
 
-        </Container>
+        <Div className=" card bg-dark text-white card-body">
+            <img key={id} src={image} className="card-img rounded float-end oli" alt={name} />
+            <div className="card-img-overlay ">
+                <div className=" text-light">
+                    <h4 className="card-title olidos">{name}</h4>
+                    <p className="card-text">{genre}</p>
+                </div>
+
+            </div>
+        </Div>
     )
 }
 
-const Container = styled.div`
+const Div = styled.div`
 
-
- .oli {
-    width: 250px;
-min-width: 200px;
-max-width: auto;
-   
- }
- 
- .oli:hover {
-    cursor: pointer;
-    transform: scale(1.08);
-    transition: all 0.3s;
-   
+img {
+    height: 200px;
+    max-height: 200px;
+    border: 1px solid #000000;
 }
 
 img {
-    width: 180px;
+    opacity: 0.8;
 }
+
+
+padding: 0px;
+margin: 0px;
+
+
+.olidos{
+ color: #ffffff;
+ font-weight: 400;
+ text-decoration: underline 1px solid #FFFF01;
+}
+
+
 `

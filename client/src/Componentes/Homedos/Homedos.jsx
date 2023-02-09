@@ -1,13 +1,13 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import Pagination from '../Paginacion/Pagination'
+import { Landing } from '.././../Actions/actions.js';
 import styled from 'styled-components';
 import Hardcode from './Hardcode';
 import { getAllArtists } from '.././../Actions/actions.js'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
-import Player1 from '../Audio-Player/Player1';
+import vide from '../Homedos/vide.mp4'
 
 
 const Homedos = () => {
@@ -18,6 +18,7 @@ const Homedos = () => {
 
     useEffect(() => {
         dispatch(getAllArtists());
+        dispatch(Landing());
 
     }, []);
 
@@ -28,53 +29,115 @@ const Homedos = () => {
     return (
 
         <Container>
-
-            <div className="contenedor mt-0 container-fluid">
-                <div className="container-fluid">
-                    <h1 className='h1 container-fluid'>¡Buenos días! <span>{user?.nickname}</span>  </h1>
+            <div className="contenedor ">
+                <div className='container-fluid'>
+                    <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
                     <div className='container'><Hardcode /></div>
 
-                    <h1 className='d-flex justify-content-start h1'>Lo mas escuchado </h1>
+                  
+                        <h1 className='d-flex justify-content-start h1'>Lo mas escuchado </h1>
+                        <div className="swiffy-slider">
+                            <ul className="slider-container slider-item-show5">
+
+                                {
+                                    infoMusic.artists ?
+                                        infoMusic?.artists.map(c => {
+                                            return (
+                                                <li>
+                                                    <a href='/detail'>
+                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                                </li>
+
+                                            )
+                                        }) :
+                                        <span>Cargando</span>
 
 
-                    <div class="swiffy-slider">
-                        <ul class="slider-container">
-                            {
-                                infoMusic.artists?
-                                    infoMusic?.artists.map(c => {
-                                        return (
-                                            <div className='carousel-item active'>
-                                                <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<div> {el.name} </div>))} />
-                                            </div>
+                                }
+                            </ul>
 
+                            <button type="button" className="slider-nav"></button>
+                            <button type="button" className="slider-nav slider-nav-next"></button>
 
-
-                                        )
-                                    }) :
-                                    <h1>
-                                        Loading....
-                                    </h1>
-                            }
-                        </ul>
-
-                        <button type="button" class="slider-nav"></button>
-                        <button type="button" class="slider-nav slider-nav-next"></button>
-
-                        <div class="slider-indicators">
-                            <button class="active"></button>
-                            <button></button>
-                            <button></button>
+                            <div className="slider-indicators">
+                                <button className="active"></button>
+                                <button></button>
+                                <button></button>
+                            </div>
                         </div>
-                    </div>
 
-                    <Pagination />
-                    <div className='fixed-bottom'>
-                        <Player1 />
-                    </div>
+                        <h1 className='d-flex justify-content-start h1'> Top 50 Argentina </h1>
+                        <div className="swiffy-slider">
+                            <ul className="slider-container slider-item-show5">
+
+                                {
+                                    infoMusic.artists ?
+                                        infoMusic?.artists.map(c => {
+                                            return (
+                                                <li>
+                                                    <a href='/detail'>
+                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                                </li>
+
+                                            )
+                                        }) :
+                                        <h1>
+                                            ""
+                                        </h1>
+                                }
+                            </ul>
+
+                            <button type="button" className="slider-nav"></button>
+                            <button type="button" className="slider-nav slider-nav-next"></button>
+
+                            <div className="slider-indicators">
+                                <button className="active"></button>
+                                <button></button>
+                                <button></button>
+                            </div>
+                        </div>
+
+
+
+
+                        <h1 className='d-flex justify-content-start h1'>Temas para {user?.name}</h1>
+
+
+                        <div className="swiffy-slider">
+                            <ul className="slider-container slider-item-show5 ">
+
+                                {
+                                    infoMusic.artists ?
+                                        infoMusic?.artists.map(c => {
+                                            return (
+                                                <li >
+                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
+                                                </li>
+                                            )
+                                        }) :
+                                        <h1>
+                                            Loading....
+                                        </h1>
+                                }
+                            </ul>
+
+                            <button type="button" className="slider-nav"></button>
+                            <button type="button" className="slider-nav slider-nav-next"></button>
+
+                            <div className="slider-indicators">
+                                <button className="active"></button>
+                                <button></button>
+                                <button></button>
+                            </div>
+                        </div>
+
+
+           
+
+
                 </div>
             </div>
-            <div>
-            </div>
+
         </Container>
     )
 
@@ -89,12 +152,15 @@ const Container = styled.div`
     color: white;
 }
 
+.pit {
+    text-decoration: underline #FFFF01;
+}
 
 
 .h1{
     color: white;
     font-weight: 600;
-    padding-bottom: 10px;
+    padding:10px;
 }
 
 
@@ -106,9 +172,13 @@ const Container = styled.div`
     margin-left: 230px  !important;
     color: white;
     display: flex;
-position: relative;
+    position: relative;
+    padding-bottom: 50px;
+
     
 }
+
+
 
 
 

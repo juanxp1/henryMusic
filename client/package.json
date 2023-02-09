@@ -6,7 +6,6 @@
     "@auth0/auth0-react": "^2.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@madzadev/audio-player": "^1.1.11",
     "@mui/material": "^5.11.7",
     "@stripe/react-stripe-js": "^1.16.4",
     "@stripe/stripe-js": "^1.46.0",
