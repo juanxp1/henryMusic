@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTracks } from "../../Actions/actions";
-import gif from '../Audio-Player/gif.gif'
 
 
 
@@ -15,28 +14,40 @@ export default function Player1() {
 
   const dispatch = useDispatch();
   const tracksDB = useSelector(state => state.tracks);
-  const [validate, setValidate] = useState('');
+  const [songs, setSongs] = useState([]);
+  const [currentSong, setCurrentSong] = useState({
+    index: 0,
+    url: '',
+  });
+
+  const arr = [];
 
   useEffect(() => {
     dispatch(getAllTracks(100))
   }, [])
 
   useEffect(() => {
-    tracksDB.tracks?.length &&
-      setValidate('https://henrymusic.tech/tracks/' + tracksDB.tracks[0].id + '.mp3')
+    if(tracksDB.tracks?.length) {
+      for(let i = 0; i < tracksDB.tracks.length; i++) {
+        arr.push('https://henrymusic.tech/tracks/' + tracksDB.tracks[i].id + '.mp3')
+      }
+      setSongs(arr)
+    } 
   }, [tracksDB])
 
+  useEffect(() => {
+    setCurrentSong({index: 0, url: songs[currentSong.index]})
+  }, [songs])
 
-
-
-  console.log(tracksDB.tracks, validate)
 
   return (
 
     <Container >
       <AudioPlayer
-        src={validate}
+        src={currentSong.url}
         controls
+        onClickNext={() => setCurrentSong({index: currentSong.index == songs.length-1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == songs.length-1 ? currentSong.url : songs[currentSong.index+1]})}
+        onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : songs[currentSong.index-1]})}
         className="repro p-0 m-0"
         showSkipControls
         volumeJumpStep
