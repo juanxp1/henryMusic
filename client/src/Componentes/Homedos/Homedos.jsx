@@ -28,111 +28,111 @@ const Homedos = () => {
 
     return (
 
-        <Container>
+        <Container >
             <div className="contenedor ">
                 <div className='container-fluid'>
                     <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
                     <div className='container'><Hardcode /></div>
 
-                  
-                        <h1 className='d-flex justify-content-start h1'>Lo mas escuchado </h1>
-                        <div className="swiffy-slider">
-                            <ul className="slider-container slider-item-show5">
 
-                                {
-                                    infoMusic.artists ?
-                                        infoMusic?.artists.map(c => {
-                                            return (
-                                                <li>
-                                                    <a href='/detail'>
-                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
-                                                </li>
+                    <h1 className='d-flex justify-content-start h1'>Lo mas escuchado </h1>
+                    <div className="swiffy-slider">
+                        <ul className="slider-container slider-item-show5">
 
-                                            )
-                                        }) :
-                                        <span>Cargando</span>
+                            {
+                                infoMusic.artists ?
+                                    infoMusic?.artists.map(c => {
+                                        return (
+                                            <li>
+                                                <a href='/detail'>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                            </li>
+
+                                        )
+                                    }) :
+                                    <span>Cargando</span>
 
 
-                                }
-                            </ul>
+                            }
+                        </ul>
 
-                            <button type="button" className="slider-nav"></button>
-                            <button type="button" className="slider-nav slider-nav-next"></button>
+                        <button type="button" className="slider-nav"></button>
+                        <button type="button" className="slider-nav slider-nav-next"></button>
 
-                            <div className="slider-indicators">
-                                <button className="active"></button>
-                                <button></button>
-                                <button></button>
-                            </div>
+                        <div className="slider-indicators">
+                            <button className="active"></button>
+                            <button></button>
+                            <button></button>
                         </div>
+                    </div>
 
-                        <h1 className='d-flex justify-content-start h1'> Top 50 Argentina </h1>
-                        <div className="swiffy-slider">
-                            <ul className="slider-container slider-item-show5">
+                    <h1 className='d-flex justify-content-start h1'> Top 50 Argentina </h1>
+                    <div className="swiffy-slider">
+                        <ul className="slider-container slider-item-show5">
 
-                                {
-                                    infoMusic.artists ?
-                                        infoMusic?.artists.map(c => {
-                                            return (
-                                                <li>
-                                                    <a href='/detail'>
-                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
-                                                </li>
+                            {
+                                infoMusic.artists ?
+                                    infoMusic?.artists.map(c => {
+                                        return (
+                                            <li>
+                                                <a href='/detail'>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                            </li>
 
-                                            )
-                                        }) :
-                                        <h1>
-                                            ""
-                                        </h1>
-                                }
-                            </ul>
+                                        )
+                                    }) :
+                                    <h1>
+                                        ""
+                                    </h1>
+                            }
+                        </ul>
 
-                            <button type="button" className="slider-nav"></button>
-                            <button type="button" className="slider-nav slider-nav-next"></button>
+                        <button type="button" className="slider-nav"></button>
+                        <button type="button" className="slider-nav slider-nav-next"></button>
 
-                            <div className="slider-indicators">
-                                <button className="active"></button>
-                                <button></button>
-                                <button></button>
-                            </div>
+                        <div className="slider-indicators">
+                            <button className="active"></button>
+                            <button></button>
+                            <button></button>
                         </div>
+                    </div>
 
 
 
 
-                        <h1 className='d-flex justify-content-start h1'>Temas para {user?.name}</h1>
+                    <h1 className='d-flex justify-content-start h1'>Temas para {user?.name}</h1>
 
 
-                        <div className="swiffy-slider">
-                            <ul className="slider-container slider-item-show5 ">
+                    <div className="swiffy-slider">
+                        <ul className="slider-container slider-item-show5 ">
 
-                                {
-                                    infoMusic.artists ?
-                                        infoMusic?.artists.map(c => {
-                                            return (
-                                                <li >
-                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
-                                                </li>
-                                            )
-                                        }) :
-                                        <h1>
-                                            Loading....
-                                        </h1>
-                                }
-                            </ul>
+                            {
+                                infoMusic.artists ?
+                                    infoMusic?.artists.map(c => {
+                                        return (
+                                            <li >
+                                                <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
+                                            </li>
+                                        )
+                                    }) :
+                                    <h1>
+                                        Loading....
+                                    </h1>
+                            }
+                        </ul>
 
-                            <button type="button" className="slider-nav"></button>
-                            <button type="button" className="slider-nav slider-nav-next"></button>
+                        <button type="button" className="slider-nav"></button>
+                        <button type="button" className="slider-nav slider-nav-next"></button>
 
-                            <div className="slider-indicators">
-                                <button className="active"></button>
-                                <button></button>
-                                <button></button>
-                            </div>
+                        <div className="slider-indicators">
+                            <button className="active"></button>
+                            <button></button>
+                            <button></button>
                         </div>
+                    </div>
 
 
-           
+
 
 
                 </div>

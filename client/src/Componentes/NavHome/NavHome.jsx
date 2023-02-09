@@ -21,25 +21,25 @@ function NavHome() {
 
     isAuthenticated && (
 
-      <Div className='p-5 container-fluid d-flex justify-content-end '>
+      <Div className='p-3 container-fluid d-flex justify-content-end '>
         <nav className="navbar bg-body-tertiary oli">
-                          
-            <div className="btn-group probando ">
+
+          <div className="btn-group probando ">
             <Search />
-              <Chip
-            
-                avatar={<Avatar alt="picture" src={user.picture} />}
-                label={user.nickname}
-                variant="outlined"
-                className=" dropdown-toggle avatar "
-                data-bs-toggle="dropdown"
-                type="button"
-              />
-              <ul className="dropdown-menu">
-                <li>{logout}</li>
-              </ul>
-            </div>
-          
+            <Chip
+
+              avatar={<Avatar alt="picture" src={user.picture} />}
+              label={user.nickname}
+              variant="outlined"
+              className=" dropdown-toggle avatar "
+              data-bs-toggle="dropdown"
+              type="button"
+            />
+            <ul className="dropdown-menu">
+              <li>{logout}</li>
+            </ul>
+          </div>
+
 
         </nav>
 
@@ -55,7 +55,9 @@ export default NavHome
 
 const Div = styled.div`
 
-background-color:#040303;
+height:auto;
+
+background-color:#000000;
 
 
 .probando{

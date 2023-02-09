@@ -31,7 +31,7 @@ function Navertical() {
               <li>
                 <a href="#">
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
-                  <span>Home</span>
+                  <span><a href="/home">Home</a></span>
                 </a>
               </li>
               <li>
