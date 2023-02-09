@@ -3,6 +3,10 @@ import React from "react";
 import styled from 'styled-components'
 import ReactAudioPlayer from 'react-audio-player';
 
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllTracks } from "../../Actions/actions";
+
 const tracks = [
   {
     url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
@@ -24,13 +28,28 @@ const tracks = [
 
 
 export default function Player1() {
+
+  const dispatch = useDispatch();
+  const tracksDB = useSelector(state => state.tracks);
+  const [validate, setValidate] = useState('');
+
+  useEffect(() => {
+    dispatch(getAllTracks(100))
+  }, [])
+
+  useEffect(() => {
+    tracksDB.tracks?.length && 
+    setValidate('https://henrymusic.tech/tracks/' + tracksDB.tracks[0].id + '.mp3')
+  }, [tracksDB])
+
+  console.log(tracksDB.tracks, validate)
+
   return (
 
     <Container>
 
       <ReactAudioPlayer
-        src={tracks}
-        autoPlay
+        src={validate}
         controls
         className="repro"
    
