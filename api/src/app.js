@@ -8,8 +8,9 @@ import { auth } from 'express-openid-connect'
 const server = express();
 // ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
 // el servidor tiene su propia ruta especificada en el archivo .env
-const { STORAGE_PATH } = process.env;
+const { STORAGE_PATH, UPLOADS_PATH } = process.env;
 global.STORAGE_PATH = STORAGE_PATH;
+global.UPLOADS_PATH = UPLOADS_PATH;
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }))
 server.use(express.json({ limit: '50mb' }))

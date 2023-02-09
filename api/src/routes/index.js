@@ -8,17 +8,17 @@ import authRouter from './auth.js'
 const router = Router();
 
 // rutas para nuestra api
+router.get('/track/all', TrackController.getAllTracks)
 router.get('/track/search', TrackController.searchTrack)
 router.get('/track/:id', TrackController.getTrack)
-router.get('/allTracks', TrackController.getAllTracks)
 
+router.get('/album/all', AlbumController.getAllAlbums)
 router.get('/album/search', AlbumController.searchAlbum)
 router.get('/album/:id', AlbumController.getAlbum)
-router.get('/allAlbums', AlbumController.getAllAlbums)
 
+router.get('/artist/all', ArtistController.getAllArtists)
 router.get('/artist/search', ArtistController.searchArtist)
 router.get('/artist/:id', ArtistController.getArtist)
-router.get('/allArtists', ArtistController.getAllArtists)
 
 // rutas para la autenticacion
 router.use('/auth', authRouter);

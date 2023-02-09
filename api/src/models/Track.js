@@ -51,15 +51,12 @@ export default connection.define('Track', {
         validate: { isUrl: true }
     },
 
-    // play_url: {
-    //     type: DataTypes.VIRTUAL,
-    //     allowNull: true,
-    //     unique: false,
-    //     validate: { isUrl: true },
-    //     get() {
-    //         return 'https://henrymusic.tech/tracks/' + this.id + '.mp3'
-    //     }
-    // },
+    play_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+            return 'https://henrymusic.tech/tracks/' + this.id + '.mp3'
+        }
+    },
 
     trac_number: {
         type: DataTypes.INTEGER,
