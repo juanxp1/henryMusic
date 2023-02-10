@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import vide from '../Homedos/vide.mp4'
+import { Link } from 'react-router-dom'
 
 
 const Homedos = () => {
@@ -37,15 +38,16 @@ const Homedos = () => {
 
                     <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show5">
+                        <ul className="slider-container slider-item-show4">
 
                             {
                                 infoMusic.artists ?
                                     infoMusic?.artists.map(c => {
                                         return (
                                             <li>
-                                                <a href='/detail'>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                                <Link to={"/detail/" + c.id}>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
+                                                {/* genre={c.genres.map(el => (<span> {el.name} </span>))} */}
                                             </li>
 
                                         )
@@ -68,15 +70,15 @@ const Homedos = () => {
 
                     <h2 className='d-flex justify-content-start h1'> Top 50 Argentina </h2>
                     <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show5">
+                        <ul className="slider-container slider-item-show4">
 
                             {
                                 infoMusic.artists ?
                                     infoMusic?.artists.map(c => {
                                         return (
                                             <li>
-                                                <a href='/detail'>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                                <Link to={"/detail/" + c.id}>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
                                             </li>
 
                                         )
@@ -104,14 +106,15 @@ const Homedos = () => {
 
 
                     <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show5 ">
+                        <ul className="slider-container slider-item-show4 ">
 
                             {
                                 infoMusic.artists ?
                                     infoMusic?.artists.map(c => {
                                         return (
                                             <li >
-                                                <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
+                                                <Link to={"/detail/" + c.id}>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
                                             </li>
                                         )
                                     }) :
