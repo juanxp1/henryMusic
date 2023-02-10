@@ -29,9 +29,9 @@ function Navertical() {
           <div className="navigation">
             <ul>
               <li>
-                <a href="#">
+                <a href={"/home"}>
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
-                  <span><a href="/home">Home</a></span>
+                  <span>Home</span>
                 </a>
               </li>
               <li>
