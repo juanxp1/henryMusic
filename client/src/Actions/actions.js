@@ -33,7 +33,7 @@ export const searchTrack = (track, limit = initialLimit) => {
 
 export const getAllTracks = (limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/allTracks?limit=${limit}`)
+        return fetch(`${URL}/track/all?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_TRACKS, payload: json }))
     };
@@ -81,10 +81,12 @@ export const searchArtist = (artist, limit = initialLimit) => {
 
 export const getAllArtists = (limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/allArtists?limit=${limit}`)
+        return fetch(`${URL}/artist/all?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_ARTISTS, payload: json }))
+            
     };
+    
 };
 
 

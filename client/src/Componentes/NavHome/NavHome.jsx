@@ -21,7 +21,7 @@ function NavHome() {
 
     isAuthenticated && (
 
-      <Div className='p-3 container-fluid d-flex justify-content-end '>
+      <Div className='p-3 container-fluid d-flex justify-content-end'>
         <nav className="navbar bg-body-tertiary oli">
 
           <div className="btn-group probando ">
@@ -55,17 +55,17 @@ export default NavHome
 
 const Div = styled.div`
 
+
 height:auto;
 
 background-color:#000000;
-
 
 .probando{
   padding-right: 20px;
 
 }
 .avatar{
-  color: #ffffff;
+  color: #FFFF01;
   background-color: #222121;
   padding-right: 10px;
   

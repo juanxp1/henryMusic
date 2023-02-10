@@ -28,9 +28,8 @@ export default Home
 
 const Div = styled.div`
 
-background-color: black;
-min-width: auto;
-width: auto;
+background-color: #000000;
+
 
 `
 

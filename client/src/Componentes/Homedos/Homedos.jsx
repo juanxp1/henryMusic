@@ -35,7 +35,7 @@ const Homedos = () => {
                     <div className='container'><Hardcode /></div>
 
 
-                    <h1 className='d-flex justify-content-start h1'>Lo mas escuchado </h1>
+                    <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider">
                         <ul className="slider-container slider-item-show5">
 
@@ -66,7 +66,7 @@ const Homedos = () => {
                         </div>
                     </div>
 
-                    <h1 className='d-flex justify-content-start h1'> Top 50 Argentina </h1>
+                    <h2 className='d-flex justify-content-start h1'> Top 50 Argentina </h2>
                     <div className="swiffy-slider">
                         <ul className="slider-container slider-item-show5">
 
@@ -81,9 +81,9 @@ const Homedos = () => {
 
                                         )
                                     }) :
-                                    <h1>
-                                        ""
-                                    </h1>
+                                    <span>
+                                        Cargando
+                                    </span>
                             }
                         </ul>
 
@@ -100,7 +100,7 @@ const Homedos = () => {
 
 
 
-                    <h1 className='d-flex justify-content-start h1'>Temas para {user?.name}</h1>
+                    <h2 className='d-flex justify-content-start h1'>Temas para {user?.name}</h2>
 
 
                     <div className="swiffy-slider">
@@ -115,9 +115,9 @@ const Homedos = () => {
                                             </li>
                                         )
                                     }) :
-                                    <h1>
+                                    <span>
                                         Loading....
-                                    </h1>
+                                    </span>
                             }
                         </ul>
 
@@ -158,7 +158,7 @@ const Container = styled.div`
 
 
 .h1{
-    color: white;
+    color: whitesmoke;
     font-weight: 600;
     padding:10px;
 }

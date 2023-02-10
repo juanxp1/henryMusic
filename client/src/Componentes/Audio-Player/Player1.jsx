@@ -42,17 +42,18 @@ export default function Player1() {
 
   return (
 
-    <Container >
+    <Container className="container-fluid d-flex justify-content-around">
       <AudioPlayer
         src={currentSong.url}
         controls
         onClickNext={() => setCurrentSong({index: currentSong.index == songs.length-1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == songs.length-1 ? currentSong.url : songs[currentSong.index+1]})}
         onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : songs[currentSong.index-1]})}
-        className="repro p-0 m-0"
+        className="repro p-0 m-0 "
         showSkipControls
         volumeJumpStep
         showFilledProgress
         header
+     
    
        
 
@@ -66,9 +67,13 @@ export default function Player1() {
 const Container = styled.div`
 .repro {
   background-color: #000000;
-  width: 200vh;
+  width: 120vh;
+  height: auto;
+  opacity: 1;
 }
 
+margin: 0px;
+background-color: #000000;
 
 `
 
