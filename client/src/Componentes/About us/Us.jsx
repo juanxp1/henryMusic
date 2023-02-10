@@ -159,7 +159,6 @@ const AboutContainer = styled.div`
 
 h1{
     padding-top: 10px;
-    text-decoration: underline 4px solid #FFFF01;
     color: #ffffff;
     font-weight: 600;
     padding-top: 10px;
