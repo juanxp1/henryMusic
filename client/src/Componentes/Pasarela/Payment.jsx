@@ -7,6 +7,7 @@ import master from '../Pasarela/master.png';
 import paypal from '../Pasarela/paypal.png';
 import mercadopago from '../Pasarela/mercadopago.png';
 import Button from '@mui/material/Button';
+import Registro from "../Registro/Registro";
 
 
 function Payment() {
@@ -33,8 +34,8 @@ function Payment() {
     return (
 
         <Container className="payment container-fluid " id="premium">
-            <h1 className='text-center'>Elegí tu plan Premium</h1>
-
+            <h1 className='text-center'>¡Registrate Y Elegí Tu Plan Premium!</h1>
+            <Registro></Registro>
             <p className="parrafo"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
             <img src={visa} alt="visa" />
             <img src={master} alt="master" />
@@ -153,7 +154,7 @@ h3 {
 
 
 h1 {
-    text-decoration: underline 4px solid #FFFF01;
+  
     color: #ffffff;
     font-weight: 600;
     padding-top: 20px;
@@ -167,7 +168,7 @@ h1 {
 
 h2 {
     color: black;
-    text-decoration: underline 4px solid #FFFF01;
+  
 }
 
 .card{
@@ -189,8 +190,10 @@ h2 {
 }
 
 .parrafo{
-    color: #ffffff;
-    font-size: 20px;
+    margin-top: 20px;
+    coor:whitesmoke;
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
 
