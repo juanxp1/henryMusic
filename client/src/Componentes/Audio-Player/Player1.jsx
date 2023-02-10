@@ -37,6 +37,7 @@ export default function Player1() {
 
   useEffect(() => {
     setCurrentSong({index: 0, url: songs[currentSong.index]})
+    console.log(songs)
   }, [songs])
 
 

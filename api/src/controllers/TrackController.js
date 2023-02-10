@@ -4,6 +4,7 @@ import Validator from "validatorjs"
 import { sequelize } from "../database/relations.js"
 import { jsonError, jsonOk } from "../lib/utils.js"
 import { Op } from 'sequelize'
+import Song from "../models/Song.js"
 
 const { Album, Artist, Track } = sequelize.models
 const DEF_LIMIT = 10
@@ -88,4 +89,37 @@ export async function getAllTracks(req, res) {
     })
   }
   catch (error) { jsonError(res, error.message) }
+}
+
+export async function postSong(req, res) {
+  const validator = new Validator(req.body, {
+    name: 'string|min:3|max:25',
+    artist: 'string|min:3|max:25',
+    album: 'string|min:3|max:25',
+    genre: 'string|min:3',
+    image: 'string|min:4',
+    song: 'string|min:4'
+  })
+  if (validator.fails()) return jsonError(res, validator.errors)
+
+  try {
+
+    let {name, artist, album, genre, image, song} = req.body
+    const newSong = await Song.findOrCreate({
+      where: {name},
+      defaults: {
+        name,
+        artist,
+        album,
+        genre,
+        image,
+        song
+      }
+    })
+    jsonOk(res, {
+      song: newSong
+    })
+  } catch (error) {
+    jsonError(res, error.message)
+  }
 }

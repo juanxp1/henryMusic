@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 const URL = 'http://localhost:3001';
 
@@ -88,6 +89,13 @@ export const getAllArtists = (limit = initialLimit) => {
     };
     
 };
+
+export const postSong = (song) => {
+    return async function () {
+        let json = await axios.post(`${URL}`, song)
+        return json;
+    }
+}
 
 
 export const Landing = () => {

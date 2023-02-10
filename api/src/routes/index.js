@@ -11,6 +11,7 @@ const router = Router();
 router.get('/track/all', TrackController.getAllTracks)
 router.get('/track/search', TrackController.searchTrack)
 router.get('/track/:id', TrackController.getTrack)
+router.post('/track/create', TrackController.postSong)
 
 router.get('/album/all', AlbumController.getAllAlbums)
 router.get('/album/search', AlbumController.searchAlbum)
