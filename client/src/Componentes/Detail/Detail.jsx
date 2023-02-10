@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import favi from '../Detail/favi.png'
 import { getArtist } from '../../Actions/actions';
 import cerati from '../Detail/cerati.jpg'
+import { Link } from 'react-router-dom'
 
 
 function Detail() {
@@ -27,11 +28,16 @@ function Detail() {
     if (infoMusic) {
         return (
             <Div>
+
                 <div className='contenedor'>
+
                     <div className=" bg-dark mw-100 pt-2 pb-1  container-fluid oki" >
+                        
                         <div className="row g-0 container-fluid">
                             <div className="col-md-4 container-fluid">
                                 <img src={cerati} className="img-thumbnail bg-dark " alt="..." />
+
+
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body">
@@ -45,6 +51,11 @@ function Detail() {
                         </div>
                         <br />
                         <br />
+                        <Link to={"/home"}>
+                            
+                                <button className="btn regresar btn-dark" type="button">Volver al Menu</button>
+                            
+                        </Link>
                     </div>
                 </div>
 
@@ -126,6 +137,12 @@ function Detail() {
 export default Detail
 
 const Div = styled.div`
+
+.regresar {
+   font-weight: 500;
+    font-size: 20px;
+    color: #FFFF01;
+}
 
 span{
     font-size: 15px;
