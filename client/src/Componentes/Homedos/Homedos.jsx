@@ -48,8 +48,9 @@ const Homedos = () => {
                                 infoMusic.artists?.slice(0, 6).map(c => {
                                     return (
                                         <li>
-                                            <a href='/detail'>
-                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                            <Link to={"/detail/" + c.id}>
+                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
+                                            </Link>
                                         </li>
 
                                     )
