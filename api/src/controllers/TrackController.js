@@ -5,6 +5,9 @@ import { sequelize } from "../database/relations.js"
 import { jsonError, jsonOk } from "../lib/utils.js"
 import { Op } from 'sequelize'
 import Song from "../models/Song.js"
+import fs from "fs"
+import path from "path"
+import short from "short-uuid"
 
 const { Album, Artist, Track } = sequelize.models
 const DEF_LIMIT = 10
@@ -92,34 +95,45 @@ export async function getAllTracks(req, res) {
 }
 
 export async function postSong(req, res) {
-  const validator = new Validator(req.body, {
-    name: 'string|min:3|max:25',
-    artist: 'string|min:3|max:25',
+  let validator = new Validator(req.body, {
+    name: 'required|string|min:3|max:25',
+    artist: 'required|string|min:3|max:25',
     album: 'string|min:3|max:25',
     genre: 'string|min:3',
-    image: 'string|min:4',
-    song: 'string|min:4'
   })
+  if (validator.fails()) return jsonError(res, validator.errors)
+  validator = new Validator(req.files, { image: 'required', song: 'required' })
   if (validator.fails()) return jsonError(res, validator.errors)
 
   try {
 
-    let {name, artist, album, genre, image, song} = req.body
+    let [ok, image_file] = moveFile(req.files.image[0], 'image/')
+    if (!ok) return jsonError(res, image_file)
+    let [ok2, song_file] = moveFile(req.files.song[0], 'audio/')
+    if (!ok2) return jsonError(res, song_file)
+
+    let {name, artist, album, genre } = req.body
     const newSong = await Song.findOrCreate({
       where: {name},
-      defaults: {
-        name,
-        artist,
-        album,
-        genre,
-        image,
-        song
-      }
+      defaults: { name, artist, album, genre, image: image_file, song: song_file }
     })
     jsonOk(res, {
-      song: newSong
+      song: newSong[0], is_new: newSong[1]
     })
   } catch (error) {
     jsonError(res, error.message)
   }
+}
+
+function moveFile(file, mimetype) {
+  const tmp_file = path.resolve(file.path)
+  if (!file.mimetype.startsWith(mimetype)) {
+    fs.unlinkSync(tmp_file)
+    return [false, 'the file is not the correct type (' + mimetype + ')']
+  }
+  
+  const extension = file.originalname.substring(file.originalname.lastIndexOf('.') + 1)
+  const file_name = short.generate() + '.' + extension
+  fs.renameSync(tmp_file, path.join(global.STORAGE_PATH, 'songs', file_name))
+  return [true, file_name]
 }
