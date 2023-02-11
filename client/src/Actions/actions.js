@@ -108,7 +108,6 @@ export const Landing = () => {
 }
 
 export const filtroGenero = (payload) => {
-    console.log(payload, "paspada")
     return {
         type: FILTRO_GENERO,
         payload
