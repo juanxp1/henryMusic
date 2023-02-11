@@ -79,7 +79,7 @@ const reducer = (state=initialState, action) => {
                 console.log(filtroGenero)
             return {
                 ...state,
-                artists: filtroGenero
+                artists: {...state.artists, artists: filtroGenero}
             }
 
         case GET_ALL_ARTISTS:

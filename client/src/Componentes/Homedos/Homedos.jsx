@@ -15,7 +15,7 @@ const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state.artists);
-
+    const [info, setInfo] = useState([])
 
     function handleGenero(genero) {
         genero.preventDefault();
@@ -73,10 +73,10 @@ const Homedos = () => {
                     <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider ">
                         <ul className="slider-container slider-item-show4 d-flex justify-content-center h-100 d-inline-block">
-
+                            {console.log(info)}
                             {
                                 infoMusic.artists ?
-                                    infoMusic?.artists.map(c => {
+                                    infoMusic.artists.map(c => {
                                         return (
                                             <li className='ms-0'>
                                                 <Link to={"/detail/" + c.id}>
