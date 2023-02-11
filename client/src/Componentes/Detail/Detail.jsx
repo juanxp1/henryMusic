@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Landing } from '../../Actions/actions';
 import styled from 'styled-components';
@@ -6,26 +6,34 @@ import favi from '../Detail/favi.png'
 import { getArtist } from '../../Actions/actions';
 import cerati from '../Detail/cerati.jpg'
 import { Link } from 'react-router-dom'
+import Player1 from '../Audio-Player/Player1';
 
 
-function Detail() {
+function Detail(props) {
 
     const dispatch = useDispatch();
-    const infoMusic = useSelector((state) => state.artistDetail);
-    console.log(infoMusic, "QONDI");
-
+    const infoMusic = useSelector(state => state.artistDetail);
+    const [data, setData] = useState({
+        name: '',
+        image: '',
+        tracks: [],
+    })
 
     // useEffect(() => dispatch(Landing()), [])
 
     useEffect(() => {
-        dispatch(getArtist());
+        dispatch(getArtist(props.match.params.id));
         dispatch(Landing());
 
     }, []);
 
+    useEffect(() => {
+        if(infoMusic.images?.length) {
+            setData({name: infoMusic.name, image: infoMusic.images[0].url, tracks: infoMusic.tracks})
+        }
+    }, [infoMusic])
 
 
-    if (infoMusic) {
         return (
             <Div>
 
@@ -35,7 +43,7 @@ function Detail() {
                         
                         <div className="row g-0 container-fluid">
                             <div className="col-md-4 container-fluid">
-                                <img src={cerati} className="img-thumbnail bg-dark " alt="..." />
+                                <img src={data.image} className="img-thumbnail bg-dark " alt="..." />
 
 
                             </div>
@@ -43,7 +51,7 @@ function Detail() {
                                 <div className="card-body">
                                     <br />
                                     <p className="card-text p-0">Playlist</p>
-                                    <h1 className="card-title display-1 p-0 m-0 name">Gustavo Cerati</h1>
+                                    <h1 className="card-title display-1 p-0 m-0 name">{data.name}</h1>
 
                                 </div>
 
@@ -65,66 +73,20 @@ function Detail() {
 
                 <div className='contenedor'>
                     <ol className="list-group list-group-numbered container-fluid ">
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Cras justo odio
-                            </div>
-                            <span className="badge bg-dark rounded-pill">3:32</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Cras justo odio
-                            </div>
-                            <span className="badge bg-dark rounded-pill">3:32</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Cras justo odio
-                            </div>
-                            <span className="badge bg-dark rounded-pill">3:32</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Cras justo odio
-                            </div>
-                            <span className="badge bg-dark rounded-pill">3:32</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Cras justo odio
-                            </div>
-                            <span className="badge bg-dark rounded-pill">3:32</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Cras justo odio
-                            </div>
-                            <span className="badge bg-dark rounded-pill">3:32</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Cras justo odio
-                            </div>
-                            <span className="badge bg-dark rounded-pill">3:32</span>
-                        </li>
+                        {data.tracks.map(el => (
+                            <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
+                                <img className='fotico ms-4' src={favi} alt="" />
+                                <div className=" ms-4 me-auto">
+                                    <div className="fw-bold">{el.name}</div>
+                                </div>
+                            </li>
+                        ))}
                     </ol>
                 </div>
 
-
+                <div>
+                    <Player1 tracks={data.tracks}/>
+                </div>
 
 
 
@@ -132,7 +94,6 @@ function Detail() {
         )
 
     }
-}
 
 export default Detail
 

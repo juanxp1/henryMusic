@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/" component={Landing} />
         <Route path="/new" component={New} />
         <Route path="/home" component={Homedos} />
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/:id" component={Detail} />
       </BrowserRouter>
 
     </>

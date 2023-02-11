@@ -4,7 +4,7 @@ import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST,
 export const initialState = {
     trackDetail: [],
     tracks: {},
-    artistDetail: [],
+    artistDetail: {},
     albumDetail: [],
     albums: [],
     artists: [],

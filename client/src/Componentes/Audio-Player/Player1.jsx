@@ -10,35 +10,42 @@ import { getAllTracks } from "../../Actions/actions";
 
 
 
-export default function Player1() {
+export default function Player1(tracks) {
 
-  const dispatch = useDispatch();
-  const tracksDB = useSelector(state => state.tracks);
+  // const dispatch = useDispatch();
+  // const tracksDB = useSelector(state);
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState({
     index: 0,
     url: '',
   });
 
-  const arr = [];
+  let arr = [];
+
+  console.log(tracks)
+
+  // const arr = [];
+
+  // useEffect(() => {
+  //   dispatch(action())
+  // }, [])
+
+  // useEffect(() => {
+  //   if(tracksDB.tracks?.length) {
+  //     for(let i = 0; i < tracksDB.tracks.length; i++) {
+  //       arr.push('https://henrymusic.tech/tracks/' + tracksDB.tracks[i].id + '.mp3')
+  //     }
+  //     setSongs(arr)
+  //   } 
+  // }, [tracksDB])
 
   useEffect(() => {
-    dispatch(getAllTracks(100))
-  }, [])
+    tracks.tracks.map(el=> arr.push(el.play_url))
+  }, [arr])
 
   useEffect(() => {
-    if(tracksDB.tracks?.length) {
-      for(let i = 0; i < tracksDB.tracks.length; i++) {
-        arr.push('https://henrymusic.tech/tracks/' + tracksDB.tracks[i].id + '.mp3')
-      }
-      setSongs(arr)
-    } 
-  }, [tracksDB])
-
-  useEffect(() => {
-    setCurrentSong({index: 0, url: songs[currentSong.index]})
-    console.log(songs)
-  }, [songs])
+    setCurrentSong({index: 0, url: arr[currentSong.index]})
+  }, [tracks])
 
 
   return (
@@ -47,8 +54,9 @@ export default function Player1() {
       <AudioPlayer
         src={currentSong.url}
         controls
-        onClickNext={() => setCurrentSong({index: currentSong.index == songs.length-1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == songs.length-1 ? currentSong.url : songs[currentSong.index+1]})}
-        onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : songs[currentSong.index-1]})}
+        autoPlay={false}
+        onClickNext={() => setCurrentSong({index: currentSong.index == arr.length-1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == arr.length-1 ? currentSong.url : arr[currentSong.index+1]})}
+        onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : arr[currentSong.index-1]})}
         className="repro p-0 m-0 "
         showSkipControls
         volumeJumpStep

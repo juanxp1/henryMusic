@@ -7,8 +7,8 @@ import { getAllArtists } from '.././../Actions/actions.js'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
-import vide from '../Homedos/vide.mp4'
 import { Link } from 'react-router-dom'
+import Player1 from '../Audio-Player/Player1.jsx';
 
 
 const Homedos = () => {
@@ -134,14 +134,12 @@ const Homedos = () => {
                         </div>
                     </div>
 
-
-
-
-
+                            
                 </div>
             </div>
 
         </Container>
+        
     )
 
 }
