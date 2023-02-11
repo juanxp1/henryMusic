@@ -1,4 +1,4 @@
-import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST,  GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK } from "../Actions/actions";
+import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK,FILTRO_GENERO } from "../Actions/actions";
 
 
 export const initialState = {
@@ -11,8 +11,8 @@ export const initialState = {
     landing: true,
 };
 
-const reducer = (state=initialState, action) => {
-    switch(action.type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
 
         // NUESTRA BASE DE DATOS CASES
 
@@ -22,12 +22,12 @@ const reducer = (state=initialState, action) => {
                 trackDetail: action.payload,
             }
 
-            case "LANDING":
-                return {
-                    ...state,
-                    landing: false,
+        case "LANDING":
+            return {
+                ...state,
+                landing: false,
 
-                } 
+            }
 
         case SEARCH_TRACK:
             return {
@@ -70,6 +70,23 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 albums: action.payload,
             }
+
+        case FILTRO_GENERO:
+            const allGeneros = state.artists;
+            console.log("holis", allGeneros)
+            console.log("genero", action.payload)
+            const filtroGenero = action.payload === "All" ? allGeneros :
+                allGeneros.filter(r => r.artists?.split("  ").find(d => (
+                    d === action.payload
+                )))
+            console.log("aaaaaaaaaa", filtroGenero)
+
+            return {
+                ...state,
+                artists: filtroGenero
+            }
+
+
 
         case GET_ALL_ARTISTS:
             return {

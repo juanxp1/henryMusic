@@ -3,44 +3,32 @@ import styled from "styled-components";
 
 
 export default function Card({ name, image, id, genre }) {
-    return (
+  return (
 
-        <Div className=" container-fluid text-white ">
-            {/* <img key={id} src={image} classNameName="card-img float-end oli " alt={name} />
-            <div classNameName="card-img-overlay ">
-                <div classNameName=" text-light">
-                    <h4 classNameName="card-title olidos">{name}</h4>
-                    <p classNameName="card-text">{genre}</p>
-                </div>
-            </div> */}
-            {/* <div classNameName="card" >
-                <img key={id} src={image} classNameName="card-img-top" alt={name} />
-                <div classNameName="card-body bg-dark">
-                    <h3 classNameName="card-text mw-100 olidos">{name}.</h3>
-                </div>
-            </div> */}
+    <Div className=" container-fluid text-white ">
 
 
-             <div className="container  ">
+      <div className="container  ">
 
-                <div className="card container p-0 ">
-                    <div className="face face1">
-                        <div className="content">
-                            <span className="stars"></span>
-                            <h2 className="java">{name}</h2>
-                        </div>
-                    </div>
-                    <div className="face face2">
-                        <img className="img-fluid" src={image} alt="" />
-                    </div>
-                </div>
-            </div> 
+        <div className="card container p-0 ">
+          <div className="face face1">
+            <div className="content">
+              <span className="stars"></span>
+              <h2 className="java">{name}</h2>
+              <p classNameName="card-text">{genre}</p>
+            </div>
+          </div>
+          <div className="face face2">
+            <img key={id} className="img-fluid" src={image} alt="" />
+          </div>
+        </div>
+      </div>
 
 
 
-        
-        </Div>
-    )
+
+    </Div>
+  )
 }
 
 const Div = styled.div`

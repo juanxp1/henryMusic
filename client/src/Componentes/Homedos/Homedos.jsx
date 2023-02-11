@@ -3,8 +3,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Landing } from '.././../Actions/actions.js';
 import styled from 'styled-components';
 import Hardcode from '../HardCode/Hardcode';
-import { getAllArtists } from '.././../Actions/actions.js'
-import { useEffect,useState } from 'react';
+import { getAllArtists, filtroGenero } from '.././../Actions/actions.js'
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import { Link } from 'react-router-dom'
@@ -15,14 +15,21 @@ const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state.artists);
-    
 
-    
+
+
+    function handleGenero(genero) {
+        genero.preventDefault();
+        dispatch(filtroGenero(genero.target.value))
+        console.log("genero", genero.target.value)
+    }
+
+
 
     useEffect(() => {
         dispatch(getAllArtists(80));
         dispatch(Landing());
-        
+
     }, []);
 
     //console.log(infoMusic.artistAlbums)
@@ -34,24 +41,35 @@ const Homedos = () => {
         <Container >
             <div className="contenedor ">
                 <div className='container-fluid'>
-                    <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>                 
-                        
-                        <div className='hcode'>
-                            {
-                                
-                                infoMusic.artists?                                
-                                    infoMusic.artists?.slice(0, 6).map(c => {
-                                        return (
-                                            <li>
-                                                <a href='/detail'>
-                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
-                                            </li>
+                    <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
 
-                                        )
-                                    }) :
-                                    <span>Cargando...</span>
-                            }
-                        </div>       
+                    <div className='hcode'>
+                        {
+
+                            infoMusic.artists ?
+                                infoMusic.artists?.slice(0, 6).map(c => {
+                                    return (
+                                        <li>
+                                            <a href='/detail'>
+                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                        </li>
+
+                                    )
+                                }) :
+                                <span>Cargando...</span>
+                        }
+                    </div>
+
+
+                    <div>
+                        <select onChange={e => handleGenero(e)} className='text-dark'>
+                            <option className='text-dark' value="All">All Generos</option>
+                            <option className='text-dark' value="Pop">Pop</option>
+                            <option className='text-dark' value="Trap">Trap</option>
+                            <option className='text-dark' value="Latin">Latin </option>
+                            <option className='text-dark' value="Rock">Rock </option>
+                        </select>
+                    </div>
 
                     <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider ">
@@ -63,7 +81,7 @@ const Homedos = () => {
                                         return (
                                             <li className='ms-0'>
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
                                                 {/* genre={c.genres.map(el => (<span> {el.name} </span>))} */}
                                             </li>
 
@@ -90,7 +108,7 @@ const Homedos = () => {
                                         return (
                                             <li>
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
                                             </li>
 
                                         )
@@ -120,7 +138,7 @@ const Homedos = () => {
                                         return (
                                             <li className='' >
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
                                             </li>
                                         )
                                     }) :
