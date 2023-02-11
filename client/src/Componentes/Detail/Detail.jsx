@@ -43,7 +43,7 @@ function Detail(props) {
                         
                         <div className="row g-0 container-fluid">
                             <div className="col-md-4 container-fluid">
-                                <img src={data.image} className="img-thumbnail bg-dark " alt="..." />
+                                <img src={data.image} className="img-thumbnail bg-dark pancho " alt="..." />
 
 
                             </div>
@@ -84,7 +84,7 @@ function Detail(props) {
                     </ol>
                 </div>
 
-                <div>
+                <div className='fixed-bottom'>
                     <Player1 tracks={data.tracks}/>
                 </div>
 
@@ -135,9 +135,18 @@ color: white;
 img {
     width: 350px;
     border-radius: 20px;
- 
-   
+    max-width: 350px;  
+    
 }
+
+.pancho {
+    max-width: 350px;
+    max-height: 400px;
+    box-shadow: 19px 17px 13px -9px rgba(255,255,1,0.89);
+-webkit-box-shadow: 19px 17px 13px -9px rgba(255,255,1,0.89);
+-moz-box-shadow: 19px 17px 13px -9px rgba(255,255,1,0.89);
+}
+
 background-color: black;
 
 .contenedor{

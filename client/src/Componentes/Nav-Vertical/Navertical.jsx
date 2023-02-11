@@ -34,12 +34,12 @@ function Navertical() {
                   <span>Home</span>
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#">
                   <span className="fa fa-search"><img className='home' src={lupa} alt="home" /></span>
                   <span>Search</span>
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="#">
                   <span className="fa fas fa-book"><img className='home' src={listas} alt="home" /></span>

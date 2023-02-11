@@ -18,7 +18,7 @@ const Homedos = () => {
 
 
     useEffect(() => {
-        dispatch(getAllArtists());
+        dispatch(getAllArtists(80));
         dispatch(Landing());
 
     }, []);
@@ -37,14 +37,14 @@ const Homedos = () => {
 
 
                     <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
-                    <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show4">
+                    <div className="swiffy-slider ">
+                        <ul className="slider-container slider-item-show4 d-flex justify-content-center h-100 d-inline-block">
 
                             {
                                 infoMusic.artists ?
                                     infoMusic?.artists.map(c => {
                                         return (
-                                            <li>
+                                            <li className='ms-0'>
                                                 <Link to={"/detail/" + c.id}>
                                                     <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
                                                 {/* genre={c.genres.map(el => (<span> {el.name} </span>))} */}
@@ -61,16 +61,11 @@ const Homedos = () => {
                         <button type="button" className="slider-nav"></button>
                         <button type="button" className="slider-nav slider-nav-next"></button>
 
-                        <div className="slider-indicators">
-                            <button className="active"></button>
-                            <button></button>
-                            <button></button>
-                        </div>
                     </div>
 
                     <h2 className='d-flex justify-content-start h1'> Top 50 Argentina </h2>
                     <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show4">
+                        <ul className="slider-container slider-item-show4 d-flex justify-content-center">
 
                             {
                                 infoMusic.artists ?
@@ -91,12 +86,6 @@ const Homedos = () => {
 
                         <button type="button" className="slider-nav"></button>
                         <button type="button" className="slider-nav slider-nav-next"></button>
-
-                        <div className="slider-indicators">
-                            <button className="active"></button>
-                            <button></button>
-                            <button></button>
-                        </div>
                     </div>
 
 
@@ -106,13 +95,13 @@ const Homedos = () => {
 
 
                     <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show4 ">
+                        <ul className="slider-container slider-item-show4  d-flex justify-content-center">
 
                             {
                                 infoMusic.artists ?
                                     infoMusic?.artists.map(c => {
                                         return (
-                                            <li >
+                                            <li className='' >
                                                 <Link to={"/detail/" + c.id}>
                                                     <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
                                             </li>
@@ -126,20 +115,15 @@ const Homedos = () => {
 
                         <button type="button" className="slider-nav"></button>
                         <button type="button" className="slider-nav slider-nav-next"></button>
-
-                        <div className="slider-indicators">
-                            <button className="active"></button>
-                            <button></button>
-                            <button></button>
-                        </div>
                     </div>
 
-                            
+
+
                 </div>
             </div>
 
         </Container>
-        
+
     )
 
 }
@@ -153,13 +137,18 @@ const Container = styled.div`
     color: white;
 }
 
+
+
 .pit {
     text-decoration: underline #FFFF01;
 }
 
 
+
+
+
 .h1{
-    color: whitesmoke;
+    color: #d8d8d8;
     font-weight: 600;
     padding:10px;
 }
@@ -168,8 +157,8 @@ const Container = styled.div`
 .contenedor{
     width: auto;
     height: auto;
-    background: rgb(194,194,45);
-    background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
+    background: rgb(0,0,0);
+    background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px  !important;
     color: white;
     display: flex;
