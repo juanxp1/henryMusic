@@ -2,9 +2,9 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Landing } from '.././../Actions/actions.js';
 import styled from 'styled-components';
-import Hardcode from './Hardcode';
+import Hardcode from '../HardCode/Hardcode';
 import { getAllArtists } from '.././../Actions/actions.js'
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import { Link } from 'react-router-dom'
@@ -15,12 +15,14 @@ const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state.artists);
+    
 
+    
 
     useEffect(() => {
         dispatch(getAllArtists());
         dispatch(Landing());
-
+        
     }, []);
 
     //console.log(infoMusic.artistAlbums)
@@ -32,9 +34,24 @@ const Homedos = () => {
         <Container >
             <div className="contenedor ">
                 <div className='container-fluid'>
-                    <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
-                    <div className='container'><Hardcode /></div>
+                    <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>                 
+                        
+                        <div className='hcode'>
+                            {
+                                
+                                infoMusic.artists?                                
+                                    infoMusic.artists?.slice(0, 6).map(c => {
+                                        return (
+                                            <li>
+                                                <a href='/detail'>
+                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                            </li>
 
+                                        )
+                                    }) :
+                                    <span>Cargando...</span>
+                            }
+                        </div>       
 
                     <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider">
@@ -148,9 +165,21 @@ export default Homedos
 
 const Container = styled.div`
 *{
+    text-decoration: none;
     margin: auto;
     padding: auto;
     color: white;
+}
+li{
+    list-style: none;
+    text-decoration: none;
+}
+.hcode{   
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 1px;
 }
 
 .pit {
@@ -166,6 +195,7 @@ const Container = styled.div`
 
 
 .contenedor{
+
     width: auto;
     height: auto;
     background: rgb(194,194,45);
