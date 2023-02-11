@@ -40,7 +40,7 @@ const Homedos = () => {
             <div className="contenedor ">
                 <div className='container-fluid'>
                     <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
-
+                    <h2 className='d-flex justify-content-start h1'>Top artistas </h2>
                     <div className='hcode'>
                         {
 
