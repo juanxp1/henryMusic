@@ -20,7 +20,7 @@ const Homedos = () => {
     
 
     useEffect(() => {
-        dispatch(getAllArtists(80));
+        dispatch(getAllArtists(100));
         dispatch(Landing());
         
     }, []);
@@ -44,7 +44,7 @@ const Homedos = () => {
                                         return (
                                             <li>
                                                 <a href='/detail'>
-                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0].url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
+                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></a>
                                             </li>
 
                                         )
@@ -63,7 +63,7 @@ const Homedos = () => {
                                         return (
                                             <li className='ms-0'>
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} /></Link>
                                                 {/* genre={c.genres.map(el => (<span> {el.name} </span>))} */}
                                             </li>
 
@@ -90,7 +90,7 @@ const Homedos = () => {
                                         return (
                                             <li>
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} /></Link>
                                             </li>
 
                                         )
@@ -120,7 +120,7 @@ const Homedos = () => {
                                         return (
                                             <li className='' >
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0].url} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} /></Link>
                                             </li>
                                         )
                                     }) :
