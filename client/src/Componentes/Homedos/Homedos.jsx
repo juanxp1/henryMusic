@@ -61,7 +61,7 @@ const Homedos = () => {
                         {
 
                             infoMusic.artists ?
-                                infoMusic.artists?.slice(0, 6).map(c => {
+                                infoMusic.artists?.slice(6, 12).map(c => {
                                     return (
                                         <li>
                                             <Link to={"/detail/" + c.id}>
@@ -219,7 +219,7 @@ li{
 .contenedor{
     
     width: auto;
-    height: 220vh;
+    height: auto;
     background: rgb(0,0,0);
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px  !important;
