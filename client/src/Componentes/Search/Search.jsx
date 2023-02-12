@@ -28,7 +28,6 @@ function Search() {
         dispatch(searchArtist(input))
         setInput('')
     }
-  }
     return (
       <Div className="container-fluid">
         <form className="d-flex justify-content-end" onSubmit={handleSubmit}>
@@ -47,7 +46,7 @@ function Search() {
         </form>
       </Div>
     );
-
+}
   export default Search;
   
 
