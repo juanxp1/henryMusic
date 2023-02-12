@@ -3,6 +3,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import routes from './routes/index.js';
+import { setupAuth0 } from './auth0.js';
 
 const server = express();
 // ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
@@ -23,6 +24,8 @@ server.use((req, res, next) => {
   next();
 });
 
+setupAuth0(server)
+
 server.use('/', routes);
 server.use('/', express.static(STORAGE_PATH))
 
@@ -33,21 +36,6 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
-
-// Auth0 section ---------------------------------------------------------
-import expressSession from 'express-session'
-import passport from 'passport'
-import ESS from 'express-session-sequelize'
-
-const SessionStore = ESS(expressSession.Store)
-
-server.use(expressSession({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  store: new SessionStore({ db: sequelize }),
-}))
-
 
 export default server
 

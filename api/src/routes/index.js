@@ -28,6 +28,6 @@ router.get('/artist/search', ArtistController.searchArtist)
 router.get('/artist/:id', ArtistController.getArtist)
 
 // rutas para la autenticacion
-router.use('/auth', authRouter);
+router.use('/', authRouter);
 
 export default router;
