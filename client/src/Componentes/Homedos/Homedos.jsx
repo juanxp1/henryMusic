@@ -216,12 +216,13 @@ li{
 }
 
 .btn-wrapper {
+    border-radius: 10px;
     margin-top:20px;
     width: 220px;
     height: 50px;
     position: relative;
     z-index: 1;
-    background: linear-gradient(270deg, #96f061, #a259d3, #1d9de0, #e790b0);
+    background: linear-gradient(270deg, yellow, white, orange, red);
     box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.363);
     background-size: 800% 800%;
     animation: animateBorder 9s ease infinite;
