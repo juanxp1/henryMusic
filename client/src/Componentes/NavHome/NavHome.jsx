@@ -37,7 +37,6 @@ function NavHome() {
             />
             <ul className="dropdown-menu">
               <li>{logout}</li>
-              <li>holis</li>
             </ul>
           </div>
 
@@ -72,6 +71,25 @@ background-color:#000000;
   
   
 }
+
+.logout{
+  margin-left: 2px;
+  color: white;
+  padding-left: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.btn:hover{
+  color: yellow;
+  font-size: 17px;
+}
+
+.dropdown-menu.show{
+  background-color: rgb(10, 10, 10); 
+  float: left;
+  margin-left: 17rem;
+} */
 
 
 

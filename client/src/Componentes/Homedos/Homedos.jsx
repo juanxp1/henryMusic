@@ -222,6 +222,9 @@ li{
 }
 
 
+
+
+
 .h1{
     color: #d8d8d8;
     font-weight: 600;
@@ -232,7 +235,7 @@ li{
 .contenedor{
     
     width: auto;
-    min-height: 100vh;
+    height: auto;
     background: rgb(0,0,0);
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px  !important;
@@ -262,7 +265,7 @@ li{
 
 .btn-wrapper {
     border-radius: 10px;
-    margin-top:40px;
+    margin-top:20px;
     width: 220px;
     height: 50px;
     position: relative;
@@ -306,7 +309,7 @@ li{
 
   .uwu{
     animation-name: uwu;
-    animation-duration: 7s;
+    animation-duration: 6s;
     opacity: 0;
     position: absolute;
     top: 300px;
