@@ -38,12 +38,12 @@ h2{
 }
 
 .div{
-  display: flex;
-    flex-direction:row;
+  display: flex; 
+     flex-direction:row; 
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  
+    /* justify-content: center; */
+     align-items: center;
+   
 }
 
 `
