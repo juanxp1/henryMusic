@@ -262,7 +262,7 @@ li{
 
 .btn-wrapper {
     border-radius: 10px;
-    margin-top:20px;
+    margin-top:40px;
     width: 220px;
     height: 50px;
     position: relative;

@@ -79,6 +79,7 @@ font-weight: 400;
 export const MenuItemLink = styled.a`
 text-decoration: none;
 color: #ffff01;
+
 `
 
 //hacer que el icono de hamburguesa aparezca menor a 960px
