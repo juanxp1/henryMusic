@@ -40,13 +40,10 @@ function Search() {
             onChange={handleInputChange}
           />
           {error && <p className="text-danger">Debes ingresar un artista</p>}
-          {artistNotFound && (
-            <p className="text-danger">No se encontró el artista</p>
-          )}
         </form>
       </Div>
     );
-}
+  }
   export default Search;
   
 
