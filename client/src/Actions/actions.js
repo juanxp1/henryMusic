@@ -59,7 +59,7 @@ export const searchAlbum = (album, limit = initialLimit) => {
 
 export const getAllAlbums = (limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/allAlbums?limit=${limit}`)
+        return fetch(`${URL}/album/all?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_ALBUMS, payload: json }))
     };

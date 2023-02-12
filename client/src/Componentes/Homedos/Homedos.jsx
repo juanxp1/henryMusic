@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Landing } from '.././../Actions/actions.js';
+import { getAllAlbums, Landing } from '.././../Actions/actions.js';
 import styled from 'styled-components';
 import Hardcode from '../HardCode/Hardcode';
 import { getAllArtists, filtroGenero } from '.././../Actions/actions.js'
@@ -16,7 +16,7 @@ const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state.artists);
-    const [info, setInfo] = useState([])
+    const infoAlbum = useSelector(state => state.albums)
 
     function handleGenero(genero) {
         genero.preventDefault();
@@ -28,8 +28,11 @@ const Homedos = () => {
     useEffect(() => {
         dispatch(getAllArtists(100));
         dispatch(Landing());
+        dispatch(getAllAlbums(50))
     }, []);
 
+
+    console.log('ALBUM', infoAlbum.albums)
 
     //console.log(infoMusic.artistAlbums)
     //    const CurrentCards = allAlbums;
@@ -63,14 +66,12 @@ const Homedos = () => {
                     <div className='hcode'>
 
                         {
-                            infoMusic.artists ?
-                                infoMusic.artists?.slice(6, 12).map(c => {
+                            infoAlbum.albums ?
+                                infoAlbum.albums?.slice(0, 6).map(c => {
                                     return (
 
                                         <li>
-                                            <Link to={"/detail/" + c.id}>
-                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
-                                            </Link>
+                                            <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} tracks={c.tracks} />
                                         </li>
 
                                     )
@@ -99,7 +100,6 @@ const Homedos = () => {
                     <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider ">
                         <ul className="slider-container slider-item-show5 d-flex justify-content-start h-100 d-inline-block">
-                            {console.log(info)}
                             {
                                 infoMusic.artists ?
                                     infoMusic.artists.map(c => {

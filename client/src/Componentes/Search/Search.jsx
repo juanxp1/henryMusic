@@ -30,19 +30,11 @@ const Search = () => {
           setArtistNotFound(true);
           return;
         }
-<<<<<<< Updated upstream
         setError(false)
         dispatch(searchArtist(input))
         setInput('')
-    }
-
-=======
-        setArtistNotFound(false);
-      });
-      setInput("");
-    };
-  
->>>>>>> Stashed changes
+    })
+  }
     return (
       <Div className="container-fluid">
         <form className="d-flex justify-content-end" onSubmit={handleSubmit}>
@@ -62,7 +54,6 @@ const Search = () => {
       </Div>
     );
   };
-  
   export default Search;
   
 

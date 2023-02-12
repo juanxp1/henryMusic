@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
+import Player1 from '../Audio-Player/Player1';
 
 
-const Hardcode = ({ name, image, id}) => {
+const Hardcode = ({ name, image, id, tracks}) => {
    
+    const [isPlaying, setIsPlaying] = useState(false)
+
+    function handleClick (e) {
+        e.preventDefault()
+        setIsPlaying(true)
+    }
+
     return (
         <Container>
 
@@ -16,13 +24,14 @@ const Hardcode = ({ name, image, id}) => {
                         <div ><img className="card_imagen"key={id} src={image}alt={name} /></div>
                         <div className="card_text">
                             <h4>{name}</h4>
-                            <a href="">
+                            <button onClick={e => handleClick(e)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="yellow" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
                                 </svg>
-                            </a>
-                        </div>    
+                            </button>
+                        </div>  
                         </div>
+                        {isPlaying ? <Player1 tracks={tracks} /> : <div> </div>}  
                     </div>
                     
                     
