@@ -95,7 +95,8 @@ const Homedos = () => {
 
 
 
-
+                    
+                    <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider ">
                         <ul className="slider-container slider-item-show5 d-flex justify-content-start h-100 d-inline-block">
                             {console.log(info)}
