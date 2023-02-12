@@ -8,13 +8,11 @@ import crear from './crear.png'
 import cora from './cora.png'
 import play from './play.mp4'
 import mas from './mas.png'
-// import React, { useState } from 'react';
 
 
 
-    
 
-function Navertical({setfocus } ) {
+function Navertical() {
   return (
 
 
@@ -31,24 +29,13 @@ function Navertical({setfocus } ) {
           <div className="navigation">
             <ul>
               <li>
-<<<<<<< Updated upstream
                 <a href={"/home"}>
-=======
-                <a href="Search/Search.jsx">
->>>>>>> Stashed changes
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
-                  {/* colocar el cursor en el search del componente Search */}
-                  
                   <span>Home</span>
                 </a>
               </li>
-<<<<<<< Updated upstream
               {/* <li>
                 <a href="#">
-=======
-              <li>
-                <a href="busca">
->>>>>>> Stashed changes
                   <span className="fa fa-search"><img className='home' src={lupa} alt="home" /></span>
                   <span>Search</span>
                 </a>
@@ -85,10 +72,12 @@ function Navertical({setfocus } ) {
         </div>
       </div>
     </Div>
+
+
+
+
   )
 }
-
-
 
 export default Navertical
 
@@ -190,6 +179,7 @@ ul {
 
   padding-top: 40px;
 }
+
 
 
 `
