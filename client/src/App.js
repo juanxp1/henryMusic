@@ -18,7 +18,6 @@ function App() {
       {
         !landing && <Home />
       }
-
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
         <Route path="/new" component={New} />
