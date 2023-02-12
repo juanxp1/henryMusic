@@ -232,7 +232,7 @@ li{
 }
 .container-fluid{
     animation-name: container-fluid;
-    animation-duration: 7s;
+    animation-duration: 6s;
 }
 @keyframes container-fluid{
     0% {
@@ -293,7 +293,7 @@ li{
 
   .uwu{
     animation-name: uwu;
-    animation-duration: 10s;
+    animation-duration: 6s;
     opacity: 0;
     position: absolute;
     top: 300px;
