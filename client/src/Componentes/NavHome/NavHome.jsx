@@ -37,6 +37,7 @@ function NavHome() {
             />
             <ul className="dropdown-menu">
               <li>{logout}</li>
+              <li>holis</li>
             </ul>
           </div>
 

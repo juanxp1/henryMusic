@@ -8,13 +8,11 @@ import crear from './crear.png'
 import cora from './cora.png'
 import play from './play.mp4'
 import mas from './mas.png'
-// import React, { useState } from 'react';
 
 
 
-    
 
-function Navertical({setfocus } ) {
+function Navertical() {
   return (
 
 
@@ -33,8 +31,6 @@ function Navertical({setfocus } ) {
               <li>
                 <a href={"/home"}>
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
-                  {/* colocar el cursor en el search del componente Search */}
-                  
                   <span>Home</span>
                 </a>
               </li>
@@ -76,10 +72,12 @@ function Navertical({setfocus } ) {
         </div>
       </div>
     </Div>
+
+
+
+
   )
 }
-
-
 
 export default Navertical
 
@@ -181,6 +179,7 @@ ul {
 
   padding-top: 40px;
 }
+
 
 
 `
