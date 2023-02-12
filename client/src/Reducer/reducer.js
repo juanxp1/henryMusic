@@ -76,7 +76,7 @@ const reducer = (state=initialState, action) => {
             const allGeneros = state.allArtists.artists;
             const filtroGenero = action.payload === "All" ? allGeneros :
                 allGeneros.filter(el => el.genres[0]?.name.toLowerCase().includes(action.payload.toLowerCase()))
-                console.log(filtroGenero)
+                console.log("asdasdsad",filtroGenero)
             return {
                 ...state,
                 artists: {...state.artists, artists: filtroGenero}

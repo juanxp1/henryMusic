@@ -15,7 +15,7 @@ export default function Card({ name, image, id, genre }) {
             <div className="content">
               <span className="stars"></span>
               <h2 className="java">{name}</h2>
-              <p classNameName="card-text">{genre}</p>
+              <p className="card-text">{genre}</p>
             </div>
           </div>
           <div className="face face2">
@@ -70,10 +70,9 @@ img {
       margin: 0 auto;
       background: #000;
       border-radius: 5px;
-      box-shadow: 11px 11px 0px -3px rgba(255,255,1,1);
--webkit-box-shadow: 11px 11px 0px -3px rgba(255,255,1,1);
--moz-box-shadow: 11px 11px 0px -3px rgba(255,255,1,1);
-margin: 0px;
+      box-shadow: 3px 3px 6px -1px rgba(255,255,1,0.75);
+-webkit-box-shadow: 3px 3px 6px -1px rgba(255,255,1,0.75);
+-moz-box-shadow: 3px 3px 6px -1px rgba(255,255,1,0.75);
 
       .face {
         position: absolute;

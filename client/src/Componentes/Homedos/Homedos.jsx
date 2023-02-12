@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import Player1 from '../Audio-Player/Player1.jsx';
 
 
+
 const Homedos = () => {
     const { user } = useAuth0()
     const dispatch = useDispatch();
@@ -57,12 +58,15 @@ const Homedos = () => {
                 <div className='container-fluid'>
                     <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
                     <h2 className='d-flex justify-content-start h1'>Top artistas </h2>
-                    <div className='hcode'>
-                        {
 
+
+                    <div className='hcode'>
+
+                        {
                             infoMusic.artists ?
                                 infoMusic.artists?.slice(6, 12).map(c => {
                                     return (
+
                                         <li>
                                             <Link to={"/detail/" + c.id}>
                                                 <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
@@ -73,6 +77,9 @@ const Homedos = () => {
                                 }) :
                                 <span>Cargando...</span>
                         }
+
+
+
                     </div>
 
 
@@ -86,9 +93,11 @@ const Homedos = () => {
                         </select>
                     </div>
 
-                    <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
+
+
+
                     <div className="swiffy-slider ">
-                        <ul className="slider-container slider-item-show4 d-flex justify-content-center h-100 d-inline-block">
+                        <ul className="slider-container slider-item-show5 d-flex justify-content-start h-100 d-inline-block">
                             {console.log(info)}
                             {
                                 infoMusic.artists ?
@@ -96,7 +105,7 @@ const Homedos = () => {
                                         return (
                                             <li className='ms-0'>
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[2]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
                                                 {/* genre={c.genres.map(el => (<span> {el.name} </span>))} */}
                                             </li>
 
@@ -115,7 +124,7 @@ const Homedos = () => {
 
                     <h2 className='d-flex justify-content-start h1'> Top 50 Argentina </h2>
                     <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show4 d-flex justify-content-center">
+                        <ul className="slider-container slider-item-show5 d-flex justify-content-end">
 
                             {
                                 infoMusic.artists ?
@@ -187,6 +196,12 @@ const Container = styled.div`
     padding: auto;
     color: white;
 }
+
+.pikachu{
+    font-size: 13px;
+    color: #FFFF01;
+}
+
 li{
     list-style: none;
     text-decoration: none;
