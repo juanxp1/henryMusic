@@ -222,9 +222,6 @@ li{
 }
 
 
-
-
-
 .h1{
     color: #d8d8d8;
     font-weight: 600;
@@ -235,7 +232,7 @@ li{
 .contenedor{
     
     width: auto;
-    height: auto;
+    min-height: 100vh;
     background: rgb(0,0,0);
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px  !important;
@@ -309,7 +306,7 @@ li{
 
   .uwu{
     animation-name: uwu;
-    animation-duration: 6s;
+    animation-duration: 7s;
     opacity: 0;
     position: absolute;
     top: 300px;
