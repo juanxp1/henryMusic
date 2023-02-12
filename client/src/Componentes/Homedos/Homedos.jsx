@@ -60,13 +60,13 @@ const Homedos = () => {
                     </div>
 
 
-                    <div>
-                        <select onChange={e => handleGenero(e)} className='text-dark'>
-                            <option className='text-dark' value="All">All Generos</option>
-                            <option className='text-dark' value="Pop">Pop</option>
-                            <option className='text-dark' value="Trap">Trap</option>
-                            <option className='text-dark' value="Latin">Latin </option>
-                            <option className='text-dark' value="Rock">Rock </option>
+                    <div className='btn-wrapper'>
+                        <select onChange={e => handleGenero(e)} className='btn'>
+                            <option value="All">All Generos</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Trap">Trap</option>
+                            <option value="Latin">Latin </option>
+                            <option value="Rock">Rock </option>
                         </select>
                     </div>
 
@@ -215,7 +215,48 @@ li{
     
 }
 
-
+.btn-wrapper {
+    margin-top:20px;
+    width: 220px;
+    height: 50px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(270deg, #96f061, #a259d3, #1d9de0, #e790b0);
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.363);
+    background-size: 800% 800%;
+    animation: animateBorder 9s ease infinite;
+  }
+  
+  .btn {
+    width: 95%;
+    height: 90%;
+    position: absolute;
+    padding: 5px;
+    border: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #212121;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 4.5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  @keyframes animateBorder {
+    0% {
+      background-position: 0% 50%
+    }
+  
+    50% {
+      background-position: 100% 50%
+    }
+  
+    100% {
+      background-position: 0% 50%
+    }
+  }
 
 
 
