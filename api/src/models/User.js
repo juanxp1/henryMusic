@@ -13,7 +13,7 @@ export default connection.define('User', {
 
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: false,
         validate: { notEmpty: true }
     },
@@ -21,20 +21,20 @@ export default connection.define('User', {
     username: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: false,
+        allowNull: true,
         validate: { notEmpty: true, isAlphanumeric: true }
     },
 
     email: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: false,
+        allowNull: true,
         validate: { isEmail: true }
     },
 
     password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: false,
         validate: { notEmpty: true }
     },
@@ -59,7 +59,7 @@ export default connection.define('User', {
     country_id: {
         type: DataTypes.STRING,
         unique: false,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Country,
             key: 'id',

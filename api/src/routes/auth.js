@@ -1,7 +1,37 @@
 import { Router } from 'express'
+import { requiresAuth } from '../auth0.js'
+import User from '../models/User.js'
 
 const router = Router()
+const { BASE_URL } = process.env
 
-// router.post('login', AuthController.login)
+router.get('/login', (req, res) => {
+  res.oidc.login({
+    returnTo: '/',
+    authorizationParams: { redirect_uri: BASE_URL + '/callback' }
+  })
+})
+
+router.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user, null, 2));
+});
+
+router.post('/register-user', (req, res) => {
+  const { user } = req.body
+  try {
+    User.findOrCreate({
+      where: { id: user.user_id },
+      defaults: {
+        name: user.name || null,
+        username: user.username || null,
+        email: user.email || null,
+        password: null,
+        country_id: null,
+      }
+    })
+  }
+  catch (error) { console.log(error) }
+  res.send('ok')
+})
 
 export default router

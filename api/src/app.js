@@ -3,7 +3,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import routes from './routes/index.js';
-import { auth } from 'express-openid-connect'
+import { setupAuth0 } from './auth0.js';
 
 const server = express();
 // ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
@@ -23,6 +23,8 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
+
+setupAuth0(server)
 
 server.use('/', routes);
 server.use('/', express.static(STORAGE_PATH))
