@@ -15,16 +15,11 @@ function App() {
   return (
 
     <>
-<<<<<<< HEAD
      
 
-=======
-      {
-        !landing && <Home />
-      }
->>>>>>> 3882d89933a14fd87a1910cab083ce28aa900a88
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
+        <Route path="/home" component={Home}/>
         <Route path="/new" component={New} />
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
