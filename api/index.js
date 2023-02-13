@@ -20,9 +20,6 @@
 import server from './src/app.js'
 import { sequelize } from './src/database/relations.js'
 
-import { seed } from './src/database/seeder.js'
-seed().then(() => console.log('seeded'))
-
 const SERVER_PORT = process.env.SERVER_PORT || 3001
 const DB_FORCE = process.env.DB_FORCE === 'true'
 

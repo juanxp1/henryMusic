@@ -26,7 +26,7 @@ router.post('/register-user', (req, res) => {
       username: user.username || null,
       email: user.email,
       password: 'no_password',
-      country_id: 'gjdymd5f7g4d7df',
+      country_id: 'khYZgSs4AUve9VHtY8qa1U',
     })
   }
   catch (error) { console.log(error) }
