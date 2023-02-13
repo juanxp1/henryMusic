@@ -61,7 +61,7 @@ function Detail(props) {
                     <br />
                     <Link to={"/home"}>
 
-                        <button className="btn regresar btn-dark" type="button">Volver al Menu</button>
+                        <button className=" regresar btn-dark" type="button">Volver al Menu</button>
 
                     </Link>
                 </div>
