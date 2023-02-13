@@ -35,3 +35,32 @@ export function setupAuth0(server) {
 }
 
 export const requiresAuth = eoidc.requiresAuth
+
+/*
+import { expressjwt } from 'express-jwt'
+import jwksRsa from 'jwks-rsa'
+
+const checkJwt = expressjwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: 'https://dev-1qthsdxhtwz6pywj.us.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'https://henrymusic.tech',
+  issuer: 'https://dev-1qthsdxhtwz6pywj.us.auth0.com/',
+  algorithms: ['RS256']
+});
+
+server.get('/api/public', function(req, res) {
+  res.json({
+    message: 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'
+  });
+});
+
+server.get('/api/private', checkJwt, function(req, res) {
+  res.json({
+    message: 'Hello from a private endpoint! You need to be authenticated to see this.'
+  });
+});
+*/

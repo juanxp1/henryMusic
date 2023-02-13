@@ -25,7 +25,7 @@ const DB_FORCE = process.env.DB_FORCE === 'true'
 
 // para no reiniciar la base de datos en el servidor cada vez que se haga un pull
 // no cambiar esta linea sino su valor en el archivo .env
-sequelize.sync({ force: DB_FORCE, alter: true })
+sequelize.sync({ force: DB_FORCE })
 server.listen(SERVER_PORT, ()=> {
     console.log(`%s listening at ${SERVER_PORT}`)
 })

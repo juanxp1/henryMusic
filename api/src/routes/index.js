@@ -18,6 +18,7 @@ router.get('/track/all', TrackController.getAllTracks)
 router.get('/track/search', TrackController.searchTrack)
 router.get('/track/:id', TrackController.getTrack)
 router.post('/track/create', fieldsUpload, TrackController.postSong)
+router.get('/song/all', TrackController.getAllSongs)
 
 router.get('/album/all', AlbumController.getAllAlbums)
 router.get('/album/search', AlbumController.searchAlbum)
