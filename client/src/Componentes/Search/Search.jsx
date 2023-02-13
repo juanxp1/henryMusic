@@ -28,19 +28,25 @@ function Search() {
         dispatch(searchArtist(input))
         setInput('')
     }
-
     return (
-        <Div className='container-fluid'>
-            <form className="d-flex justify-content-end " onSubmit={handleSubmit}>
-                <input className="row g-0 align-items-center input" type="search" placeholder=" ⚡  ¿Qué quieres escuchar?" aria-label="Search" value={input} onChange={handleInputChange} />
-                {/* aca colocamos el error */}
-                {error && <p className='text-danger'>Debes ingresar un artista</p>}
-            </form>
-        </Div>
-    )
-}
+      <Div className="container-fluid">
+        <form className="d-flex justify-content-end" onSubmit={handleSubmit}>
+          <input
+            className="row g-0 align-items-center input"
+            type="search"
+            placeholder=" ⚡  ¿Ingrsa el Nombre del Artista?"
+            aria-label="Search"
+            value={input}
+            onChange={handleInputChange}
+          />
+          {error && <p className="text-danger">Debes ingresar un artista</p>}
+        </form>
+      </Div>
+    );
+  }
+  export default Search;
+  
 
-export default Search
 
 const Div = styled.div`
 

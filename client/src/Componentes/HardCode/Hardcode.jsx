@@ -1,34 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
+import Player1 from '../Audio-Player/Player1';
+import play from '../HardCode/play.png'
 
 
-const Hardcode = ({ name, image, id}) => {
-   
+const Hardcode = ({ name, image, id, tracks }) => {
+
+    const [isPlaying, setIsPlaying] = useState(false)
+
+    function handleClick(e) {
+        e.preventDefault()
+        setIsPlaying(true)
+    }
+
     return (
         <Container>
 
-            <div>
-              
-                <div className="generos">
+            <div className="generos">
 
-                    <div className="cards">
-                        <div className='cards-info'>
-                        <div ><img className="card_imagen"key={id} src={image}alt={name} /></div>
-                        <div className="card_text">
-                            <h4>{name}</h4>
-                           
-                        </div>    
+                <div className="cards">
+                    <div className='cards-info'>
+                        <div ><img className="card_imagen" key={id} src={image} alt={name} /></div>
+                        <div className="card_text container">
+                            <p className='d-flex justify-content-start w-100'>{name}</p>
+                            <a className='d-flex ms-3 p-0' onClick={e => handleClick(e)}><img src={play} alt="" /></a>
                         </div>
+                        
                     </div>
-                    
-                    
+                </div>
+                <div className='card_imagen bg-transparent'>
+                    {isPlaying ? <Player1 tracks={tracks} /> : <span> </span>}
                 </div>
             </div>
+
+
         </Container>
     )
 }
 export default Hardcode;
 const Container = styled.div`
+
+img{
+    width: 40px;
+}
+
 .generos{
     flex-wrap: wrap;
     width: 100%;  

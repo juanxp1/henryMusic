@@ -63,6 +63,7 @@ export default function Player1(tracks) {
         showFilledProgress
         header
      
+    
    
        
 
