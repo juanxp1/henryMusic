@@ -26,12 +26,12 @@ export function setupAuth0(server) {
     }
   }))
 
-  server.use(expressSession({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    // store: new SequelizeSessionStore({ db: connection }),
-  }))
+  // server.use(expressSession({
+  //   secret: process.env.SESSION_SECRET,
+  //   resave: false,
+  //   saveUninitialized: true,
+  //   store: new SequelizeSessionStore({ db: connection }),
+  // }))
 }
 
 export const requiresAuth = eoidc.requiresAuth

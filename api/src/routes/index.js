@@ -14,19 +14,19 @@ const fieldsUpload = upload.fields([
 ])
 
 // rutas para nuestra api
-router.get('/track/all', TrackController.getAllTracks)
-router.get('/track/search', TrackController.searchTrack)
-router.get('/track/:id', TrackController.getTrack)
-router.post('/track/create', fieldsUpload, TrackController.postSong)
-router.get('/song/all', TrackController.getAllSongs)
+router.get('/api/track/all', TrackController.getAllTracks)
+router.get('/api/track/search', TrackController.searchTrack)
+router.get('/api/track/:id', TrackController.getTrack)
+router.post('/api/track/create', fieldsUpload, TrackController.postSong)
+router.get('/api/song/all', TrackController.getAllSongs)
 
-router.get('/album/all', AlbumController.getAllAlbums)
-router.get('/album/search', AlbumController.searchAlbum)
-router.get('/album/:id', AlbumController.getAlbum)
+router.get('/api/album/all', AlbumController.getAllAlbums)
+router.get('/api/album/search', AlbumController.searchAlbum)
+router.get('/api/album/:id', AlbumController.getAlbum)
 
-router.get('/artist/all', ArtistController.getAllArtists)
-router.get('/artist/search', ArtistController.searchArtist)
-router.get('/artist/:id', ArtistController.getArtist)
+router.get('/api/artist/all', ArtistController.getAllArtists)
+router.get('/api/artist/search', ArtistController.searchArtist)
+router.get('/api/artist/:id', ArtistController.getArtist)
 
 // rutas para la autenticacion
 router.use('/', authRouter);
