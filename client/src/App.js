@@ -5,6 +5,7 @@ import New from "./Componentes/NewSong/New";
 import Detail from './Componentes/Detail/Detail'
 import { useSelector } from 'react-redux'
 import Homedos from './Componentes/Homedos/Homedos'
+import PlayList from "./Componentes/CreatePlayList/PlayList";
 //audio
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/new" component={New} />
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
+        <Route path="/playlist" component={PlayList} />
       </BrowserRouter>
 
     </>
