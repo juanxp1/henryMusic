@@ -23,7 +23,7 @@ router.post('/register-user', (req, res) => {
     User.create({
       id: user.user_id,
       name: user.name,
-      username: user.username,
+      username: user.username || null,
       email: user.email,
       password: 'no_password',
       country_id: 'gjdymd5f7g4d7df',
