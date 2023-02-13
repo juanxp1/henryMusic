@@ -1,4 +1,6 @@
+
 import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST,  GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO } from "../Actions/actions";
+
 
 
 export const initialState = {
@@ -14,7 +16,8 @@ export const initialState = {
 
 const reducer = (state=initialState, action) => {
     switch(action.type) {
-
+      
+     
         // NUESTRA BASE DE DATOS CASES
 
         case GET_TRACK:

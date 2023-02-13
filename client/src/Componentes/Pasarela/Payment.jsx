@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { FormControl } from "@mui/material";
 import styled from 'styled-components'
@@ -6,13 +6,10 @@ import visa from '../Pasarela/visa.png';
 import master from '../Pasarela/master.png';
 import paypal from '../Pasarela/paypal.png';
 import mercadopago from '../Pasarela/mercadopago.png';
-import Button from '@mui/material/Button';
 import Registro from "../Registro/Registro";
-
 
 function Payment() {
     const [amount, setAmount] = useState(0);
-
     const handleToken = (token) => {
 
         fetch("http://localhost:3001/precio/checkout", {
@@ -27,16 +24,19 @@ function Payment() {
             .then(_ => {
                 window.alert("Transaction Successful.");
             }).catch(_ => window.alert("Transaccion Exitosa.")
+
+
             )
     }
+
 
 
     return (
 
         <Container className="payment container-fluid " id="premium">
-            <h1 className='text-center'>¡Registrate Y Elegí Tu Plan Premium!</h1>
-            <Registro></Registro>
+            <h1 className='text-center'>¡No Esperas Mas Y Adquiere Hoy Tu Plan Premium!</h1>
             <p className="parrafo"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
+
             <img src={visa} alt="visa" />
             <img src={master} alt="master" />
             <img src={paypal} alt="paypal" />
@@ -48,12 +48,14 @@ function Payment() {
 
                 <div className="card">
                     <FormControl sx={{ n: 1 }} >
+
                         <button type="button" class="btn btn-dark p-1 rounded-pill">1 mes gratis al suscribirse</button>
                         <br />
                         <h2>Individual</h2>
                         <h3 className="text-center">$ 100,00*** al mes después del período de la oferta 1 cuenta</h3>
                     </FormControl>
                     <div>
+
                         <StripeCheckout
                             stripeKey={process.env.REACT_APP_STRIPE_KEY || ""}
                             token={handleToken}
@@ -63,10 +65,17 @@ function Payment() {
                             currency="USD"
                             image='http://localhost:3000/static/media/logosin.12495e56.png'
                         >
+
                         </StripeCheckout>
+                        <Registro></Registro>
+
+
                         <p className="card-text">*** Después, solo cuesta $ 100,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
+                        {/* <Link to="/home" className='premium'> <button onClick={Payment} className="btn btn-warning">Elige tu plan</button></Link>  */}
+                        {/* <Registro></Registro> */}
                     </div>
                 </div>
+
 
                 <div className="card">
                     <FormControl sx={{ n: 1 }}>
@@ -77,6 +86,7 @@ function Payment() {
                     </FormControl>
 
                     <div>
+
                         <StripeCheckout
 
                             stripeKey={process.env.REACT_APP_STRIPE_KEY || ""}
@@ -88,6 +98,7 @@ function Payment() {
                             amount={15000}
                         >
                         </StripeCheckout>
+                        <Registro></Registro>
                         <p className="card-text">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
                     </div>
                 </div>
@@ -101,6 +112,7 @@ function Payment() {
 
                     </FormControl>
                     <div className="boton">
+
                         <StripeCheckout
                             stripeKey={process.env.REACT_APP_STRIPE_KEY || ""}
                             token={handleToken}
@@ -111,7 +123,9 @@ function Payment() {
                             amount={8000}
                         >
                         </StripeCheckout>
+                        <Registro></Registro>
                         <p className="card-text">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
+
                     </div>
                 </div>
 
@@ -149,13 +163,14 @@ text-align: center;
 
 h3 {
     font-size: 20px
+    color:whitesmoke; 
 }
 
 
 
 h1 {
   
-    color: #ffffff;
+    color:whitesmoke; 
     font-weight: 600;
     padding-top: 20px;
 }
@@ -167,14 +182,14 @@ h1 {
 }
 
 h2 {
-    color: black;
+    color: whitesmoke;
   
 }
 
 .card{
 
-    background-color: whitesmoke;
-    color: #000000;  
+    background-color: black;
+    color: whitesmoke;  
     padding: 30px;
     border-radius: 10px;
     border: 1px solid #000000;
@@ -191,7 +206,7 @@ h2 {
 
 .parrafo{
     margin-top: 20px;
-    coor:whitesmoke;
+    color:whitesmoke;
     font-size: 18px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 

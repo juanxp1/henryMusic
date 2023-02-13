@@ -3,6 +3,7 @@ import Lima from '../Premium/lima.png'
 import Ilimi from '../Premium/ilimi.png'
 import Fini from '../Premium/play.png'
 import styled from 'styled-components'
+import Registro from '../Registro/Registro'
 
 
 function Premium() {
@@ -13,6 +14,7 @@ function Premium() {
             <h1 className='text-center'>¿Por qué cambiarse a Premium?</h1>
             <br />
             <div className="card-group">
+               
                 <div className="card">
                     <img src={Lima} className="rounded mx-auto d-block" alt="..." />
                     <div className="card-body">

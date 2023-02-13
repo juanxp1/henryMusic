@@ -1,17 +1,22 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
-//import './Logout.css'
+import Button from 'react-bootstrap/Button';
+
+
+
 
 
 function Logout() {
     const { logout } = useAuth0();
 
     return (
-        <button type="button" style={{ backgroundColor: "#FFFF01", color: "black"}} className="btn" onClick={() => logout()}>
+        
+        <Button type="button" className="btn btn-warning" onClick={() => logout()}>
             Logout
-        </button>
+        </Button>
     );
 
 }
 
 export default Logout
+
