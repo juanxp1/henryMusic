@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import Player1 from '../Audio-Player/Player1';
+import play from '../HardCode/play.png'
 
 
-const Hardcode = ({ name, image, id, tracks}) => {
-   
+const Hardcode = ({ name, image, id, tracks }) => {
+
     const [isPlaying, setIsPlaying] = useState(false)
 
-    function handleClick (e) {
+    function handleClick(e) {
         e.preventDefault()
         setIsPlaying(true)
     }
@@ -15,33 +16,34 @@ const Hardcode = ({ name, image, id, tracks}) => {
     return (
         <Container>
 
-            <div>
-              
-                <div className="generos">
+            <div className="generos">
 
-                    <div className="cards">
-                        <div className='cards-info'>
-                        <div ><img className="card_imagen"key={id} src={image}alt={name} /></div>
-                        <div className="card_text">
-                            <h4>{name}</h4>
-                            <button onClick={e => handleClick(e)}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="yellow" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
-                                </svg>
-                            </button>
-                        </div>  
+                <div className="cards">
+                    <div className='cards-info'>
+                        <div ><img className="card_imagen" key={id} src={image} alt={name} /></div>
+                        <div className="card_text container">
+                            <p className='d-flex justify-content-start w-100'>{name}</p>
+                            <a className='d-flex ms-3 p-0' onClick={e => handleClick(e)}><img src={play} alt="" /></a>
                         </div>
-                        {isPlaying ? <Player1 tracks={tracks} /> : <div> </div>}  
+                        
                     </div>
-                    
-                    
+                </div>
+                <div className='card_imagen bg-transparent'>
+                    {isPlaying ? <Player1 tracks={tracks} /> : <span> </span>}
                 </div>
             </div>
+
+
         </Container>
     )
 }
 export default Hardcode;
 const Container = styled.div`
+
+img{
+    width: 40px;
+}
+
 .generos{
     flex-wrap: wrap;
     width: 100%;  

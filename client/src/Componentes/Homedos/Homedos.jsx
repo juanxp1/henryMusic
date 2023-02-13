@@ -42,42 +42,42 @@ const Homedos = () => {
 
         <Container >
 
-            
-                
+
+
 
             <div className="contenedor ">
 
                 <div className='uwu'>
                     <div className="loaderRectangle">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
                 </div>
 
 
                 <div className='container-fluid'>
                     <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
-                    <h2 className='d-flex justify-content-start h1'>Top artistas </h2>
-
+                    <h2 className='d-flex justify-content-center mt-3 mb-3 h1'> Top artistas </h2>
 
                     <div className='hcode'>
 
+
                         {
                             infoAlbum.albums ?
-                                infoAlbum.albums?.slice(0, 6).map(c => {
-                                    return (
 
+                                infoAlbum.albums?.slice(6, 12).map(c => {
+                                    return (
                                         <li>
                                             <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} tracks={c.tracks} />
                                         </li>
-
                                     )
                                 }) :
                                 <span>Cargando...</span>
                         }
+
 
 
 
@@ -96,7 +96,7 @@ const Homedos = () => {
 
 
 
-                    
+
                     <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                     <div className="swiffy-slider ">
                         <ul className="slider-container slider-item-show5 d-flex justify-content-start h-100 d-inline-block">
@@ -163,7 +163,8 @@ const Homedos = () => {
                                         return (
                                             <li className='' >
                                                 <Link to={"/detail/" + c.id}>
-                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} />
+                                                </Link>
                                             </li>
                                         )
                                     }) :
@@ -238,7 +239,7 @@ li{
     height: auto;
     background: rgb(0,0,0);
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
-    margin-left: 230px  !important;
+    margin-left: 230px;
     color: white;
     display: flex;
     position: relative;
