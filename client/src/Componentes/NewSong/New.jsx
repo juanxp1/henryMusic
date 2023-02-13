@@ -171,7 +171,7 @@ function New() {
                                 className="input-group mb-3"
                                 placeholder="Song"
                                 name="song"
-                                type="text"
+                                type="file"
                                 onChange={handleChange}
                             />
                             {errors.song && <p> {errors.song} </p>}
@@ -183,7 +183,7 @@ function New() {
                                 className="input-group mb-3"
                                 placeholder="Image"
                                 name="image"
-                                type="text"
+                                type="file"
                                 onChange={handleChange}
                             />
                             {errors.image && <p> {errors.image} </p>}

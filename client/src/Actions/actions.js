@@ -13,6 +13,7 @@ export const SEARCH_ARTIST = 'SEARCH_ARTIST';
 export const GET_ALL_TRACKS = 'GET_ALL_TRACKS';
 export const GET_ALL_ALBUMS = 'GET_ALL_ALBUMS';
 export const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
+export const FILTRO_GENERO = 'FILTRO_GENERO';
 
 const initialLimit = 10;
 
@@ -58,7 +59,7 @@ export const searchAlbum = (album, limit = initialLimit) => {
 
 export const getAllAlbums = (limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/allAlbums?limit=${limit}`)
+        return fetch(`${URL}/album/all?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_ALBUMS, payload: json }))
     };
@@ -85,9 +86,9 @@ export const getAllArtists = (limit = initialLimit) => {
         return fetch(`${URL}/artist/all?limit=${limit}`)
             .then(res => res.json())
             .then(json => dispatch({ type: GET_ALL_ARTISTS, payload: json }))
-            
+
     };
-    
+
 };
 
 export const postSong = (song) => {
@@ -104,4 +105,11 @@ export const Landing = () => {
     }
 
 
+}
+
+export const filtroGenero = (payload) => {
+    return {
+        type: FILTRO_GENERO,
+        payload
+    }
 }
