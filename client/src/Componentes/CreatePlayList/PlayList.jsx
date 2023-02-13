@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom'
 import Search from '../Search/Search';
 
+
 function PlayList() {
 
     const { user, isAuthenticated } = useAuth0();
@@ -37,7 +38,7 @@ function PlayList() {
                         <br />
                         <Link to={"/home"}>
 
-                            <button className="btn regresar btn-dark" type="button">Volver al Menu</button>
+                            <button className=" regresar btn-dark" type="button">Volver al Menu</button>
 
                         </Link>
                     </div>
@@ -48,6 +49,7 @@ function PlayList() {
                 </div>
 
                 {/* PLAYLIST */}
+            
 
 
                 <div className='contenedordos'>
