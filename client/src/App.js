@@ -10,16 +10,19 @@ import Homedos from './Componentes/Homedos/Homedos'
 
 function App() {
 
-
+  const { landing } = useSelector(state => state);
 
   return (
 
     <>
+    {
+
+      !landing && <Home />
+    }
      
 
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
-        <Route path="/home" component={Home}/>
         <Route path="/new" component={New} />
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
