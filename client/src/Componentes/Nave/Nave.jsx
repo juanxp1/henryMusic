@@ -4,7 +4,7 @@ import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile.jsx';
 import Login from '../Login/Login'
 import { useAuth0 } from "@auth0/auth0-react";
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { Link } from "react-router-dom"
 import { Landing } from '../../Actions/actions';
 import { useDispatch } from 'react-redux';
@@ -18,7 +18,6 @@ import {
   IconLogoMobile
 
 } from "./Navbar.elements";
-
 import { FaBars, FaTimes } from "react-icons/fa";
 
 

@@ -1,79 +1,137 @@
-import React from 'react'
-import styled from 'styled-components'
-import home from './home.png'
-import foto from '../Nav-Vertical/app.png'
-import lupa from './lupa.png'
-import listas from './listas.png'
-import crear from './crear.png'
-import cora from './cora.png'
-import play from './play.mp4'
-import mas from './mas.png'
+import React, {useState} from 'react';
+import styled from 'styled-components';
+import home from './home.png';
+//import foto from '../Nav-Vertical/app.png';
+//import lupa from './lupa.png';
+import listas from './listas.png';
+import crear from './crear.png';
+import cora from './cora.png';
+//import play from './play.mp4';
+import mas from './mas.png';
+import {
+  NavbarContainer,
+  Navbarwrapper,
+ 
+  Menu,
+  MenuItem,
+  MenuItemLink,
+  IconLogoMobile
 
-
+} from "../Nave/Navbar.elements";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 
 function Navertical() {
+
+  const [click, setClick] = useState(false);
+  const ChangeClick = () => {
+    setClick(!click)
+  }
+
+
   return (
 
-
+    <NavbarContainer>
+    <Navbarwrapper>
     <Div >
-      <div className='nav'>
 
+      <div className='nav'>
         <div className="sidebar ">
-          <div className="logo d-flex justify-content-center">
+
+          {/* <div className="logo d-flex justify-content-center">
             <a className='fotaso' href="/">
               <video className='fotasa' src={play} alt="logo" autoPlay loop muted  />
             </a>
+          </div> */}
 
-          </div>
           <div className="navigation">
+
+          <IconLogoMobile onClick={() => ChangeClick()}>
+            {click ? <FaTimes /> : <FaBars />}
+          </IconLogoMobile>
+
+
+          <Menu click={click}>
             <ul>
+
+
+            <MenuItem onClick={() => ChangeClick()}>
               <li>
+              <MenuItemLink>
                 <a href={"/home"}>
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
                   <span>Home</span>
                 </a>
+                </MenuItemLink>
               </li>
+              </MenuItem>
               {/* <li>
                 <a href="#">
                   <span className="fa fa-search"><img className='home' src={lupa} alt="home" /></span>
                   <span>Search</span>
                 </a>
               </li> */}
+             <MenuItem onClick={() => ChangeClick()}>
               <li>
+              <MenuItemLink>
                 <a href="#">
                   <span className="fa fas fa-book"><img className='home' src={listas} alt="home" /></span>
                   <span>Your Library</span>
                 </a>
+                </MenuItemLink>
               </li>
+              </MenuItem>
 
+
+              <MenuItem onClick={() => ChangeClick()}>
               <li>
+              <MenuItemLink>
                 <a href="#">
                   <span className="fa fas fa-plus-square"><img className='home' src={crear} alt="home" /></span>
                   <span>Create Playlist</span>
                 </a>
+                </MenuItemLink>
               </li>
+              </MenuItem>
+
+              <MenuItem onClick={() => ChangeClick()}>
               <li>
+              <MenuItemLink>
                 <a href="#">
                   <span className="fa fas fa-heart"><img className='home' src={cora} alt="home" /></span>
                   <span>Liked Songs</span>
                 </a>
+                </MenuItemLink>
               </li>
+              </MenuItem>
+
+
+              <MenuItem onClick={() => ChangeClick()}>
               <li>
+              <MenuItemLink>
                 <a href="/new">
                   <span className="fa fas fa-heart"><img className='home' src={mas} alt="home" /></span>
                   <span>New Song</span>
                 </a>
+                </MenuItemLink>
               </li>
+              </MenuItem>
+
 
               <hr />
             </ul>
+
+
+            </Menu>
+
           </div>
         </div>
       </div>
     </Div>
-
-
+    
+    </Navbarwrapper>
+    </NavbarContainer>
+       
 
 
   )
