@@ -5,16 +5,19 @@ import New from "./Componentes/NewSong/New";
 import Detail from './Componentes/Detail/Detail'
 import { useSelector } from 'react-redux'
 import Homedos from './Componentes/Homedos/Homedos'
+import PlayList from "./Componentes/CreatePlayList/PlayList";
 //audio
 
 
 function App() {
 
-const {Landing} = useSelector(state=> state)
+  const { landing } = useSelector(state => state);
 
   return (
 
     <>
+
+
       {
         !Landing && <Home />
       }
@@ -23,6 +26,7 @@ const {Landing} = useSelector(state=> state)
         <Route path="/new" component={New} />
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
+        <Route path="/playlist" component={PlayList} />
       </BrowserRouter>
 
     </>

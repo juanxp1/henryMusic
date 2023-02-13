@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser'
 import styled from 'styled-components'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Registro.css'
-//import { accesLogin } from '../../Actions/actions';
+import { accesLogin } from '../../Actions/actions';
 import { Container } from '@mui/system';
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -16,7 +16,7 @@ export default function Registro() {
         emailjs.sendForm("service_n3bfhtp", "template_8ay97f7", form.current, "cfMaTPMB78FGsEJJk").then(
             (result) => {
                 window.alert("Registro Exitoso, Ahora elige tu plan favorito.");
-               
+                dispatch(accesLogin())
             },
             (error) => {
                 console.log(error.text);
