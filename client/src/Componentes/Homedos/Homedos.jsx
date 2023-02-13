@@ -33,6 +33,7 @@ const Homedos = () => {
 
 
     console.log('ALBUM', infoAlbum.albums)
+    console.log('ARTIST', infoMusic.artists)
 
     //console.log(infoMusic.artistAlbums)
     //    const CurrentCards = allAlbums;
@@ -67,7 +68,7 @@ const Homedos = () => {
 
                         {
                             infoAlbum.albums ?
-                                infoAlbum.albums?.slice(30, 36).map(c => {
+                                infoAlbum.albums?.slice(44, 50).map(c => {
                                     return (
 
                                         <li>
@@ -125,7 +126,7 @@ const Homedos = () => {
 
                     <h2 className='d-flex justify-content-start h1'> Top 50 Argentina </h2>
                     <div className="swiffy-slider">
-                        <ul className="slider-container slider-item-show5 d-flex justify-content-end">
+                        <ul className="slider-container slider-item-show5 d-flex">
 
                             {
                                 infoMusic.artists ?
@@ -235,7 +236,7 @@ li{
 .contenedor{
     
     width: auto;
-    height: auto;
+    height: 200vh;
     background: rgb(0,0,0);
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px  !important;
@@ -248,7 +249,7 @@ li{
 }
 .container-fluid{
     animation-name: container-fluid;
-    animation-duration: 6s;
+    animation-duration: 2s;
 }
 @keyframes container-fluid{
     0% {

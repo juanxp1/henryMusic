@@ -34,7 +34,7 @@ function Payment() {
     return (
 
         <Container className="payment container-fluid " id="premium">
-            <h1 className='text-center'>¡No Esperas Mas Y Adquiere Hoy Tu Plan Premium!</h1>
+            <h1 className='text-center'>¡No esperas más y adquiere hoy tu plan premium!</h1>
             <p className="parrafo"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
 
             <img src={visa} alt="visa" />
