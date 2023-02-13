@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST,  GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, ACCES_LOGIN } from "../Actions/actions";
+=======
+import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST,  GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO } from "../Actions/actions";
+>>>>>>> 3882d89933a14fd87a1910cab083ce28aa900a88
 
 
 export const initialState = {
@@ -8,6 +12,7 @@ export const initialState = {
     albumDetail: [],
     albums: [],
     artists: [],
+    allArtists: [],
     landing: true,
 };
 
@@ -72,10 +77,21 @@ const reducer = (state=initialState, action) => {
                 albums: action.payload,
             }
 
+        case FILTRO_GENERO:
+            const allGeneros = state.allArtists.artists;
+            const filtroGenero = action.payload === "All" ? allGeneros :
+                allGeneros.filter(el => el.genres[0]?.name.toLowerCase().includes(action.payload.toLowerCase()))
+                console.log("asdasdsad",filtroGenero)
+            return {
+                ...state,
+                artists: {...state.artists, artists: filtroGenero}
+            }
+
         case GET_ALL_ARTISTS:
             return {
                 ...state,
                 artists: action.payload,
+                allArtists: action.payload
             }
 
         default:

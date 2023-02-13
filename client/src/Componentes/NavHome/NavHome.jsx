@@ -36,6 +36,9 @@ function NavHome() {
               type="button"
             />
             <ul className="dropdown-menu">
+              <li className= "btn btn-warning">Editprofile</li>
+              <br />
+              
               <li>{logout}</li>
             </ul>
           </div>
@@ -55,6 +58,48 @@ export default NavHome
 
 const Div = styled.div`
 
+.editprofile{
+  margin-left: 0px;
+  color: white;
+  padding-left: 5px;
+  text-align: center;
+  align-items: left;
+  cursor:pointer;
+  background-color: FFFF01;
+  border: none;
+}
+
+.editprofile:hover{
+  color: yellow;
+  font-size: 17px;
+}
+
+.logout{
+  margin-left: 2px;
+  color: white;
+  padding-left: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.btn{
+   height: 35px;
+   margin-bottom: 5px;
+   background-color: #FFFF01;
+   border: none;
+}
+
+.btn:hover{
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.dropdown-menu.show{
+  background-color: transparent; 
+  float: left;
+  margin-left: 17rem;
+}
 
 height:auto;
 

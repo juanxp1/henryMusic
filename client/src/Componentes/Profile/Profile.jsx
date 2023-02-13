@@ -8,7 +8,7 @@ import Avatar from '@mui/material/Avatar';
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  console.log(user)
+  console.log("holis",user)
 
   // if (isLoading) {
   //   return <h1>LOADING...</h1>
@@ -38,12 +38,12 @@ h2{
 }
 
 .div{
-  display: flex;
-    flex-direction:row;
+  display: flex; 
+     flex-direction:row; 
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  
+    /* justify-content: center; */
+     align-items: center;
+   
 }
 
 `
