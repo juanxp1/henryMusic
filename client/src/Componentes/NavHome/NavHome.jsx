@@ -89,7 +89,7 @@ background-color:#000000;
   background-color: rgb(10, 10, 10); 
   float: left;
   margin-left: 17rem;
-} */
+} 
 
 
 
