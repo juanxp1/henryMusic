@@ -11,6 +11,7 @@ import Payment from './Pasarela/Payment'
 
 
 
+
 function Landing() {
 
     const {login} = useSelector(state=>state)
@@ -19,7 +20,7 @@ function Landing() {
     }, [login])
 
     return (
-        <div >
+        <div className='bg-dark' >
 
             <Nav />
             <Premium />
