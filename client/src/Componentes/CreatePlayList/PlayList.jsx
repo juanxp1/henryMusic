@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom'
-import Search from '../Search/Search';
+
 
 
 function PlayList() {
@@ -11,7 +11,7 @@ function PlayList() {
 
     return (
 
-        isAuthenticated && (
+        isAuthenticated ? (
             <Div>
 
                 <div className='contenedor'>
@@ -45,7 +45,7 @@ function PlayList() {
                 </div>
                 <div className=' p-0 m-0 d-flex justify-content-center container-fluid'>
                     <p className='container'>Busca tu cancion favorita y agregala a tu lista </p>
-                    <Search />
+                    
                 </div>
 
                 {/* PLAYLIST */}
@@ -64,7 +64,7 @@ function PlayList() {
                 </div>
 
             </Div>
-        )
+         ) : <span> Ni IDEA</span>
     )
 }
 

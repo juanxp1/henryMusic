@@ -9,11 +9,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import { Link } from 'react-router-dom'
 import Player1 from '../Audio-Player/Player1.jsx';
+import registre from './registre.jpg'
 
 
 
 const Homedos = () => {
-    const { user } = useAuth0()
+
+
+    const { user, isAuthenticated } = useAuth0()
     const dispatch = useDispatch();
     const infoMusic = useSelector((state) => state.artists);
     const infoAlbum = useSelector(state => state.albums)
@@ -40,11 +43,12 @@ const Homedos = () => {
     //console.log(infoMusic.artistAlbums)
     //    const CurrentCards = allAlbums;
 
-    
-        return (
+
+
+    return (
+        isAuthenticated ? (
             <Container >
                 <div className="contenedor ">
-
                     <div className='uwu'>
                         <div className="loaderRectangle">
                             <div></div>
@@ -54,15 +58,10 @@ const Homedos = () => {
                             <div></div>
                         </div>
                     </div>
-
-
                     <div className='container-fluid'>
                         <h1 className='h1 '>¡Buenos días! <span className='pit'>{user?.nickname.toUpperCase()}</span>  </h1>
                         <h2 className='d-flex justify-content-center mt-3 mb-2 h1 '>Top artistas </h2>
-
-
                         <div className='hcode'>
-
                             {
                                 infoAlbum.albums ?
                                     infoAlbum.albums?.slice(44, 50).map(c => {
@@ -76,12 +75,7 @@ const Homedos = () => {
                                     }) :
                                     <span>Cargando...</span>
                             }
-
-
-
                         </div>
-
-
                         <div className='btn-wrapper mt-0 pt-0'>
                             <select onChange={e => handleGenero(e)} className='btn'>
                                 <option value="All">All Generos</option>
@@ -91,10 +85,6 @@ const Homedos = () => {
                                 <option value="Rock">Rock </option>
                             </select>
                         </div>
-
-
-
-
                         <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
                         <div className="swiffy-slider ">
                             <ul className="slider-container slider-item-show5 d-flex justify-content-start h-100 d-inline-block">
@@ -111,20 +101,15 @@ const Homedos = () => {
                                             )
                                         }) :
                                         <span>Cargando</span>
-
-
                                 }
                             </ul>
 
                             <button type="button" className="slider-nav"></button>
                             <button type="button" className="slider-nav slider-nav-next"></button>
-
                         </div>
-
                         <h2 className='d-flex justify-content-start h1'> Top 50 Argentina </h2>
                         <div className="swiffy-slider">
                             <ul className="slider-container slider-item-show5 d-flex">
-
                                 {
                                     infoMusic.artists ?
                                         infoMusic?.artists.map(c => {
@@ -141,7 +126,6 @@ const Homedos = () => {
                                         </span>
                                 }
                             </ul>
-
                             <button type="button" className="slider-nav"></button>
                             <button type="button" className="slider-nav slider-nav-next"></button>
                         </div>
@@ -150,7 +134,6 @@ const Homedos = () => {
                         <h2 className='d-flex justify-content-start h1'>Temas para {user?.name}</h2>
                         <div className="swiffy-slider">
                             <ul className="slider-container slider-item-show4  d-flex justify-content-center">
-
                                 {
                                     infoMusic.artists ?
                                         infoMusic?.artists.map(c => {
@@ -171,12 +154,16 @@ const Homedos = () => {
                         </div>
                     </div>
                 </div>
-
             </Container>
 
-        )
+        ) : <Verificado className='container-fluid'>
+            <div className='contenedor'>
+                <h1 className=' w-100 d-flex justify-content-center bg-dark text-light'>Acceso solo para usuarios Registrados</h1> <img className='contenedor img-fluid wx-100 mt-0' src={registre} alt="nofount" />
+            </div>
+        </Verificado>
+    )
 
-    }
+}
 
 
 export default Homedos
@@ -434,13 +421,10 @@ li{
     }
    }
 
+  
+
 `
 // SOLO PARA CORREOS VERIFICADO
-
-
-
-
-
 
 const Verificado = styled.div`
 
@@ -492,7 +476,7 @@ li{
     max-height: 300vh;
     background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,0,1) 100%, rgba(0,0,0,1) 100%);
-    margin-left: 230px  !important;
+    margin-left: auto;
     color: white;
     display: flex;
     position: relative;
