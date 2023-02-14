@@ -35,7 +35,7 @@ export default function Registro() {
                         </div>
                         <div className='form-group was-validated   mb-2'>
                             {/* <label htmlFor='email' className='form-label' color='yellow' >{user?.email}</label> */}
-                            <input type='email' name='user_email' className='form-control' required placeholder='Excribe tu e-mail' ></input>
+                            <input type='email' name='user_email' className='form-control text-center' required placeholder='Excribe tu e-mail' ></input>
                             <div className='invalid-feedback'>
                                 Ingrese su e-mail por favor
                             </div>
