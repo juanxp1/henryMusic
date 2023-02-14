@@ -70,9 +70,10 @@ img {
       margin: 0 auto;
       background: #000;
       border-radius: 5px;
-      box-shadow: 3px 3px 6px -1px rgba(255,255,1,0.75);
--webkit-box-shadow: 3px 3px 6px -1px rgba(255,255,1,0.75);
--moz-box-shadow: 3px 3px 6px -1px rgba(255,255,1,0.75);
+      border: black 3px solid;
+      box-shadow: 9px 9px 0px -4px rgba(255,255,1,1);
+-webkit-box-shadow: 9px 9px 0px -4px rgba(255,255,1,1);
+-moz-box-shadow: 9px 9px 0px -4px rgba(255,255,1,1);
 
       .face {
         position: absolute;

@@ -59,10 +59,10 @@ img{
     cursor: pointer;
     border-radius: 1rem;
     margin: 10px;
-    --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
-    padding: 5px;
+    --background: linear-gradient(to bottom,  #000000 70%, #FFFF01 100%);
+    padding: 4px;
     overflow: visible;
-    background: #f7ba2b;
+    background: #FFFF01;
     background: var(--background);
     position: relative;
     z-index: 1;
@@ -71,7 +71,7 @@ img{
 .cards::after {
     position: absolute;
     content: "";
-    top: 30px;
+    top: 20px;
     left: 0;
     right: 0;
     z-index: -1;
@@ -79,7 +79,7 @@ img{
     width: 100%;
     transform: scale(0.8);
     filter: blur(100px);
-    background: #f7ba2b;
+    background: #FFFF01;
     background: var(--background);
     transition: opacity .5s;
 }
