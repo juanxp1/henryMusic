@@ -46,10 +46,13 @@ const Homedos = () => {
 
 
     return (
-        isAuthenticated ? (
-            <Container >
-                <div className="contenedor ">
-                    <div className='uwu'>
+        // isAuthenticated ? (
+
+        <Container >
+
+            <div className="contenedor">
+                <div className='container-fluid'>
+                    {/* <div className='uwu'>
                         <div className="loaderRectangle">
                             <div></div>
                             <div></div>
@@ -57,90 +60,131 @@ const Homedos = () => {
                             <div></div>
                             <div></div>
                         </div>
-                    </div>
+                    </div> */}
+                    <h1 className='h1'>Bienvenido  <span className='pit'>{user?.nickname.toUpperCase()}</span></h1>
+                    <h2 className='d-flex justify-content-center mt-3 mb-2 h1 '>Top artistas </h2>
+
                     <div className='container-fluid'>
-                        <h1 className='h1 '>Bienvenido  <span className='pit'>{user?.nickname.toUpperCase()}</span></h1>
-                        <h2 className='d-flex justify-content-center mt-3 mb-2 h1 '>Top artistas </h2>
-                        <div className='hcode'>
+                        <div className="container d-flex">
+                            <div className="row container ms-5">
+                                {
+                                    infoAlbum.albums ?
+                                        infoAlbum.albums?.slice(44, 50).map(c => {
+                                            return (
+                                                <div className="col-sm ">
+                                                    <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} tracks={c.tracks} />
+                                                </div>
+                                            )
+                                        }) :
+                                        <span>Cargando...</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className='btn-wrapper mt-0 pt-0'>
+                        <select onChange={e => handleGenero(e)} className='btn'>
+                            <option value="All">All Generos</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Trap">Trap</option>
+                            <option value="Latin">Latin </option>
+                            <option value="Rock">Rock </option>
+                        </select>
+                    </div>
+
+                    {/* Aqui comienzan los carruseles */}
+
+                    <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
+                    {/* carrusel */}
+
+                    <div className="swiffy-slider">
+                        <ul className="slider-container d-flex justify-content-center">
                             {
-                                infoAlbum.albums ?
-                                    infoAlbum.albums?.slice(44, 50).map(c => {
+                                infoMusic.artists ?
+                                    infoMusic?.artists.map(c => {
                                         return (
-
-                                            <li>
-                                                <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} tracks={c.tracks} />
+                                            <li className='d-flex' >
+                                                <Link to={"/detail/" + c.id}>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
                                             </li>
-
                                         )
                                     }) :
-                                    <span>Cargando...</span>
+                                    <span>
+                                        Loading....
+                                    </span>
                             }
-                        </div>
-                        <div className='btn-wrapper mt-0 pt-0'>
-                            <select onChange={e => handleGenero(e)} className='btn'>
-                                <option value="All">All Generos</option>
-                                <option value="Pop">Pop</option>
-                                <option value="Trap">Trap</option>
-                                <option value="Latin">Latin </option>
-                                <option value="Rock">Rock </option>
-                            </select>
-                        </div>
-                        <h2 className='d-flex justify-content-start h1'>Lo mas escuchado </h2>
-                        <div className="swiffy-slider ">
-                            <ul className="slider-container slider-item-show5 d-flex justify-content-start h-100 d-inline-block">
-                                {
-                                    infoMusic.artists ?
-                                        infoMusic.artists.map(c => {
-                                            return (
-                                                <li className='ms-0'>
-                                                    <Link to={"/detail/" + c.id}>
-                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[2]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
-                                                    {/* genre={c.genres.map(el => (<span> {el.name} </span>))} */}
-                                                </li>
+                        </ul>
+                        <button type="button" className="slider-nav"></button>
+                        <button type="button" className="slider-nav slider-nav-next"></button>
+                    </div>
 
-                                            )
-                                        }) :
-                                        <span>Cargando</span>
-                                }
-                            </ul>
 
-                            <button type="button" className="slider-nav"></button>
-                            <button type="button" className="slider-nav slider-nav-next"></button>
-                        </div>
-                        <h2 className='d-flex justify-content-start h1'> Top 50 Argentina </h2>
-                      
-                        <h2 className='d-flex justify-content-start h1'>Temas para {user?.name}</h2>
-                        <div className="swiffy-slider">
-                            <ul className="slider-container slider-item-show4  d-flex justify-content-center">
-                                {
-                                    infoMusic.artists ?
-                                        infoMusic?.artists.map(c => {
-                                            return (
-                                                <li className='' >
-                                                    <Link to={"/detail/" + c.id}>
-                                                        <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
-                                                </li>
-                                            )
-                                        }) :
-                                        <span>
-                                            Loading....
-                                        </span>
-                                }
-                            </ul>
-                            <button type="button" className="slider-nav"></button>
-                            <button type="button" className="slider-nav slider-nav-next"></button>
-                        </div>
+
+
+
+                    <h2 className='d-flex justify-content-start h1'>Temas para {user?.name}</h2>
+                    {/* carrusel */}
+                    <div className="swiffy-slider">
+                        <ul className="slider-container d-flex">
+                            {
+                                infoMusic.artists ?
+                                    infoMusic?.artists.map(c => {
+                                        return (
+                                            <li className='d-flex' >
+                                                <Link to={"/detail/" + c.id}>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
+                                            </li>
+                                        )
+                                    }) :
+                                    <span>
+                                        Loading....
+                                    </span>
+                            }
+                        </ul>
+                        <button type="button" className="slider-nav"></button>
+                        <button type="button" className="slider-nav slider-nav-next"></button>
+                    </div>
+
+
+
+                    <h2 className='d-flex justify-content-start h1'> Canciones creadas por la Comunidad </h2>
+                    {/* carrusel */}
+
+
+                    <div className="swiffy-slider">
+                        <ul className="slider-container d-flex">
+                            {
+                                infoMusic.artists ?
+                                    infoMusic?.artists.map(c => {
+                                        return (
+                                            <li className='d-flex' >
+                                                <Link to={"/detail/" + c.id}>
+                                                    <Card key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} genre={c.genres.map(el => (<span> {el.name} </span>))} /></Link>
+                                            </li>
+                                        )
+                                    }) :
+                                    <span>
+                                        Loading....
+                                    </span>
+                            }
+                        </ul>
+                        <button type="button" className="slider-nav"></button>
+                        <button type="button" className="slider-nav slider-nav-next"></button>
                     </div>
                 </div>
-            </Container>
 
-        ) : <Verificado className='container-fluid'>
-            <div className='contenedor'>
-                <h1 className=' w-100 d-flex justify-content-center bg-dark text-light'>Acceso solo para usuarios Registrados</h1> <img className='contenedor img-fluid wx-100 mt-0' src={registre} alt="nofount" />
             </div>
-        </Verificado>
-    )
 
+        </Container >
+
+        //     ) :
+        //         <Verificado className='container-fluid'>
+        //             <div className='contenedor'>
+        //                 <h1 className=' w-100 d-flex justify-content-center bg-dark text-light'>Acceso solo para usuarios Registrados</h1> <img className='contenedor img-fluid wx-100 mt-0' src={registre} alt="nofount" />
+        //             </div>
+        //         </Verificado>
+    )
 }
 
 
@@ -164,13 +208,15 @@ li{
     list-style: none;
     text-decoration: none;
 }
-.hcode{   
+
+
+/* .hcode{   
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 1px;
-}
+} */
 
 
 
@@ -190,7 +236,6 @@ li{
 
 
 .contenedor{
-    
     width: auto;
     height: auto;
     max-height: 300vh;
@@ -198,17 +243,19 @@ li{
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px  !important;
     color: white;
-    display: flex;
-    position: relative;
-    padding-bottom: 0px;
+ 
 
-    
+
 }
-.container-fluid{
+
+
+
+
+/* .container-fluid{
     animation-name: container-fluid;
     animation-duration: 2s;
-}
-@keyframes container-fluid{
+} */
+/* @keyframes container-fluid{
     0% {
         opacity: 0;
       }
@@ -218,7 +265,7 @@ li{
       100% {
         opacity: 1;
       }
-}
+} */
 
 
 .btn-wrapper {
@@ -419,7 +466,7 @@ const Verificado = styled.div`
     height: auto;
     max-height: 300vh;
     background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,0,1) 100%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,0,1) 100%, rgba(0,0,0,1) 100%);
     margin-left: auto;
     color: white;
     display: flex;
