@@ -11,14 +11,14 @@ import PlayList from "./Componentes/CreatePlayList/PlayList";
 
 function App() {
 
-  const { Landing } = useSelector(state => state);
+  const { landing } = useSelector(state => state);
 
   return (
 
     <>
 
       {
-        !Landing && <Home />
+        !landing && <Home />
       }
       <BrowserRouter>
         <Route exact path="/" component={Landing} />

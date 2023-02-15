@@ -225,9 +225,6 @@ li{
 }
 
 
-
-
-
 .h1{
     color: #ffffff / #fff;
     font-weight: 600;
@@ -242,8 +239,11 @@ li{
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px;
     color: white;
- 
 
+    @media screen and (max-width: 960px){
+        margin-left: 0px;
+
+    }
 
 }
 

@@ -6,18 +6,18 @@ import home from './home.png';
 import listas from './listas.png';
 import crear from './crear.png';
 import cora from './cora.png';
-//import play from './play.mp4';
+import play from './play.mp4';
 import mas from './mas.png';
 import {
-  NavbarContainer,
-  Navbarwrapper,
- 
-  Menu,
-  MenuItem,
-  MenuItemLink,
-  IconLogoMobile
+  NavbarContainer1,
+  Navbarwrapper1,
+  Menu1,
+  MenuItem1,
+  MenuItemLink1,
+  IconLogoMobile1
 
-} from "../Nave/Navbar.elements";
+} from "./Nav-Vertical-E";
+
 import { FaBars, FaTimes } from "react-icons/fa";
 
 
@@ -31,106 +31,105 @@ function Navertical() {
 
   return (
 
-    <NavbarContainer>
-    <Navbarwrapper>
+    <NavbarContainer1>
+    <Navbarwrapper1>
     <Div >
-
       <div className='nav'>
         <div className="sidebar ">
 
-          {/* <div className="logo d-flex justify-content-center">
+          {/* { <div className="logo d-flex justify-content-center">
             <a className='fotaso' href="/">
               <video className='fotasa' src={play} alt="logo" autoPlay loop muted  />
             </a>
-          </div> */}
+          </div> } */}
 
           <div className="navigation">
 
-          <IconLogoMobile onClick={() => ChangeClick()}>
+          <IconLogoMobile1 onClick={() => ChangeClick()}>
             {click ? <FaTimes /> : <FaBars />}
-          </IconLogoMobile>
+          </IconLogoMobile1>
 
 
-          <Menu click={click}>
+          <Menu1 click={click}>
             <ul>
 
 
-            <MenuItem onClick={() => ChangeClick()}>
+            <MenuItem1 onClick={() => ChangeClick()}>
               <li>
-              <MenuItemLink>
+              <MenuItemLink1>
                 <a href={"/home"}>
                   <span className="fa fa-home"><img className='home' src={home} alt="home" /></span>
                   <span>Home</span>
                 </a>
-                </MenuItemLink>
+                </MenuItemLink1>
               </li>
-              </MenuItem>
+              </MenuItem1>
               {/* <li>
                 <a href="#">
                   <span className="fa fa-search"><img className='home' src={lupa} alt="home" /></span>
                   <span>Search</span>
                 </a>
               </li> */}
-             <MenuItem onClick={() => ChangeClick()}>
+             <MenuItem1 onClick={() => ChangeClick()}>
               <li>
-              <MenuItemLink>
+              <MenuItemLink1>
                 <a href="#">
                   <span className="fa fas fa-book"><img className='home' src={listas} alt="home" /></span>
                   <span>Your Library</span>
                 </a>
-                </MenuItemLink>
+                </MenuItemLink1>
               </li>
-              </MenuItem>
+              </MenuItem1>
 
 
-              <MenuItem onClick={() => ChangeClick()}>
+              <MenuItem1 onClick={() => ChangeClick()}>
               <li>
-              <MenuItemLink>
+              <MenuItemLink1>
                 <a href="#">
                   <span className="fa fas fa-plus-square"><img className='home' src={crear} alt="home" /></span>
                   <span>Create Playlist</span>
                 </a>
-                </MenuItemLink>
+                </MenuItemLink1>
               </li>
-              </MenuItem>
+              </MenuItem1>
 
-              <MenuItem onClick={() => ChangeClick()}>
+              <MenuItem1 onClick={() => ChangeClick()}>
               <li>
-              <MenuItemLink>
+              <MenuItemLink1>
                 <a href="#">
                   <span className="fa fas fa-heart"><img className='home' src={cora} alt="home" /></span>
                   <span>Liked Songs</span>
                 </a>
-                </MenuItemLink>
+                </MenuItemLink1>
               </li>
-              </MenuItem>
+              </MenuItem1>
 
 
-              <MenuItem onClick={() => ChangeClick()}>
+              <MenuItem1 onClick={() => ChangeClick()}>
               <li>
-              <MenuItemLink>
+              <MenuItemLink1>
                 <a href="/new">
                   <span className="fa fas fa-heart"><img className='home' src={mas} alt="home" /></span>
                   <span>New Song</span>
                 </a>
-                </MenuItemLink>
+                </MenuItemLink1>
               </li>
-              </MenuItem>
+              </MenuItem1>
 
 
               <hr />
             </ul>
 
 
-            </Menu>
+            </Menu1>
 
           </div>
         </div>
       </div>
     </Div>
     
-    </Navbarwrapper>
-    </NavbarContainer>
+    </Navbarwrapper1>
+    </NavbarContainer1>
        
 
 
@@ -161,7 +160,7 @@ hr {
 }
  
 .sidebar {    
-  position: fixed;
+  position: fixed;  //me quita la parte de abajo del menu en pc 
   left: 0;
   top: 0;
   bottom: 0;
@@ -170,9 +169,14 @@ hr {
   padding: 24px;
   padding-left: 0;
 
+  @media screen and (max-width: 960px){
+
+    height: 20px;
+    padding:1px;
+    
+  }
+
 }
-
-
 
 .sidebar .navigation ul {
   list-style: none;
@@ -236,7 +240,14 @@ hr {
 ul {
 
   padding-top: 40px;
+
+
 }
+
+
+
+
+
 
 
 
