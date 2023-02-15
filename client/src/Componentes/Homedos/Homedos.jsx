@@ -48,10 +48,10 @@ const Homedos = () => {
     return (
         // isAuthenticated ? (
 
-        <Container >
+        <Container>
 
-            <div className="contenedor">
-                <div className='container-fluid'>
+            <div className="contenedor ">
+                <div className='container-fluid mw-100 p-0 m-0'>
                     {/* <div className='uwu'>
                         <div className="loaderRectangle">
                             <div></div>
@@ -66,7 +66,7 @@ const Homedos = () => {
 
                     <div className='container-fluid'>
                         <div className="container d-flex">
-                            <div className="row container ms-5">
+                            <div className="row ms-5">
                                 {
                                     infoAlbum.albums ?
                                         infoAlbum.albums?.slice(44, 50).map(c => {
@@ -238,10 +238,9 @@ li{
 .contenedor{
     width: auto;
     height: auto;
-    max-height: 300vh;
     background: rgb(0,0,0);
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
-    margin-left: 230px  !important;
+    margin-left: 230px;
     color: white;
  
 

@@ -14,9 +14,9 @@ const Hardcode = ({ name, image, id, tracks }) => {
     }
 
     return (
-        <Container>
+        <Container container-fluid>
 
-            <div className="generos">
+            <div className="generos mx-100">
 
                 <div className="cards">
                     <div className='cards-info'>
