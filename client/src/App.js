@@ -6,15 +6,20 @@ import Detail from './Componentes/Detail/Detail'
 import { useSelector } from 'react-redux'
 import Homedos from './Componentes/Homedos/Homedos'
 import PlayList from "./Componentes/CreatePlayList/PlayList";
+import video from './Fotos/publi.mp4';
 //audio
+//Publicidad
+import Ads from './Componentes/publicidad/Ads'
 
 
 function App() {
 
   const { landing } = useSelector(state => state);
 
-  return (
+  // <audio src={video}></audio>
+  // Ads(() => <video src={video}> </video>, 100)
 
+  return (
     <>
 
       {
@@ -28,18 +33,7 @@ function App() {
         <Route path="/detail/:id" component={Detail} />
         <Route path="/playlist" component={PlayList} />
       </BrowserRouter>
-
     </>
-
   );
-
-
 }
-
-
-
-
-
-
-
 export default App;

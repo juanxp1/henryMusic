@@ -8,8 +8,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import { Link } from 'react-router-dom'
-import Player1 from '../Audio-Player/Player1.jsx';
-import registre from './registre.jpg'
+
 
 
 
@@ -55,13 +54,13 @@ const Homedos = () => {
                     <h2 className='d-flex justify-content-center mt-3 mb-2 h1 '>Top artistas </h2>
 
                     <div className='container-fluid'>
-                        <div className="container d-flex">
-                            <div className="row ms-5">
+                        <div className="container">
+                            <div className="row ms-5 ">
                                 {
                                     infoAlbum.albums ?
-                                        infoAlbum.albums?.slice(44, 50).map(c => {
+                                        infoAlbum.albums?.slice(30, 36).map(c => {
                                             return (
-                                                <div className="col-sm ">
+                                                <div className="col-sm m-0 p-0">
                                                     <Hardcode key={c.id} id={c.id} name={c.name} image={c.images[0]?.url} tracks={c.tracks} />
                                                 </div>
                                             )
@@ -73,7 +72,7 @@ const Homedos = () => {
                     </div>
 
 
-                    <div className='btn-wrapper mt-0 pt-0'>
+                    <div className='btn-wrapper mt-0 pt-0  justify-content-center container-fluid'>
                         <select onChange={e => handleGenero(e)} className='btn'>
                             <option value="All">All Generos</option>
                             <option value="Pop">Pop</option>
@@ -202,10 +201,8 @@ const Container = styled.div`
 
 *{
     text-decoration: none;
-    margin: auto;
-    padding: auto;
     color: #ffffff;
-}
+} 
 
 .pikachu{
     font-size: 13px;
@@ -217,14 +214,6 @@ li{
     text-decoration: none;
 }
 
-
-/* .hcode{   
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    grid-row-gap: 1px;
-} */
 
 
 
@@ -246,13 +235,12 @@ li{
 .contenedor{
     width: auto;
     height: auto;
+    margin: 0;
+    padding: 0;
     background: rgb(0,0,0);
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
     margin-left: 230px;
     color: white;
- 
-
-
 }
 
 
