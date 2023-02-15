@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from "react-redux";
 import Nav from '../Componentes/Nave/Nave'
 import Premium from './Premium/Premium'
@@ -14,21 +14,20 @@ import Pagos from './Pagos/Pagos';
 
 function Landing() {
 
-    const {login} = useSelector(state=>state)
-    useEffect(()=>{
+    const { login } = useSelector(state => state)
+    useEffect(() => {
 
     }, [login])
 
     return (
-        <div className='bg-dark' >
-
+        <div style={{ background: "black" }} >
             <Nav />
             <Premium />
-             {/* { !login && <Registro/>} */}
-           {/* { login && <Payment/>} */}
-           {/* <Payment></Payment> */}
-           <Pagos></Pagos>
-            <Us />  
+            {/* { !login && <Registro/>} */}
+            {/* { login && <Payment/>} */}
+            {/* <Payment></Payment> */}
+            <Pagos></Pagos>
+            <Us />
             <Footer />
         </div>
     )

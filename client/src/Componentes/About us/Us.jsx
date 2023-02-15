@@ -22,7 +22,7 @@ function Us() {
             <div>
                 <br />
                 <h1 className='text-center text-white'>Así somos</h1>
-                 <hr className='oli' />
+                 
               
                 
                
@@ -147,7 +147,7 @@ export default Us
 
 const AboutContainer = styled.div`
 
-.oli{
+/* .oli{
     height: 16px;
     position: relative;
     top: -19px;
@@ -157,7 +157,7 @@ const AboutContainer = styled.div`
     background-color: #FFFF01;
     border: #FFFF01 1px solid;
     margin: auto;
-}
+} */
 
 .linke{
     width: 30px;
@@ -171,12 +171,38 @@ const AboutContainer = styled.div`
     margin-bottom:22px
 }
 
-h1{
-    padding-top: 10px;
-    color: #ffffff;
-    font-weight: 600;
-    padding-top: 10px;
+
+    
+h1 {
+  width: 0;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-bottom:10px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 2.2rem;
+  margin: 0 auto;
+  border-right: 0.15em solid #000000;
+  animation: typing 4s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+
+
+
 
 
 img{
