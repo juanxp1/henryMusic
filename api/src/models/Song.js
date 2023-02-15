@@ -46,11 +46,21 @@ export default connection.define('Song', {
     validate: { notEmpty: true }
   },
 
+  image_url: {
+    type: DataTypes.VIRTUAL,
+    get() { return `${process.env.BASE_URL}/songs/${this.image}` }
+  },
+
   song: {
     type: DataTypes.STRING,
     unique: false,
     allowNull: true,
     validate: { notEmpty: true }
+  },
+  
+  song_url: {
+    type: DataTypes.VIRTUAL,
+    get() { return `${process.env.BASE_URL}/songs/${this.song}` }
   }
 
 },

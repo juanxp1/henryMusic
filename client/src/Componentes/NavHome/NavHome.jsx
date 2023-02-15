@@ -71,7 +71,7 @@ const Div = styled.div`
 
 .editprofile:hover{
   color: yellow;
-  font-size: 17px;
+  font-size: 12px;
 }
 
 .logout{

@@ -21,7 +21,11 @@ function Us() {
         <AboutContainer id='somos'>
             <div>
                 <br />
-                <h1 className='text-center oli'>Así somos</h1>
+                <h1 className='text-center text-white'>Así somos</h1>
+                 <hr className='oli' />
+              
+                
+               
                 <p className='text-center container'>Especialistas en crear contenidos. Investigadores de los lugares más recónditos de Google. Amantes de la gente que escucha buena música. Rápidos hasta donde la calidad no se deteriora. Eficaces en llevar a cabo un plan, tu plan. Y más allá de todo eso, Un TEAM</p>
             </div>
             <br />
@@ -143,7 +147,17 @@ export default Us
 
 const AboutContainer = styled.div`
 
-
+.oli{
+    height: 16px;
+    position: relative;
+    top: -19px;
+    z-index: 0;
+    width: 400px;
+    color: #FFFF01;
+    background-color: #FFFF01;
+    border: #FFFF01 1px solid;
+    margin: auto;
+}
 
 .linke{
     width: 30px;
@@ -162,9 +176,8 @@ h1{
     color: #ffffff;
     font-weight: 600;
     padding-top: 10px;
-    
-    
 }
+
 
 img{
   width: 200px;
