@@ -1,14 +1,31 @@
+import User from './User.js'
 import { DataTypes } from "sequelize"
 import { connection } from "../database/connection.js"
 
 export default connection.define('Song', {
 
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     primaryKey: true,
     unique: true,
     allowNull: false,
-    autoIncrement: true
+  },
+
+  user_id: {
+    type: DataTypes.STRING,
+    unique: false,
+    allowNull: false,
+    references: {
+      model: User,
+      key: 'id'
+    }
+  },
+
+  extension: {
+    type: DataTypes.STRING,
+    unique: false,
+    allowNull: false,
+    validate: { notEmpty: true }
   },
 
   name: {
@@ -39,28 +56,26 @@ export default connection.define('Song', {
     validate: { notEmpty: true }
   },
 
-  image: {
-    type: DataTypes.STRING,
+  duration: {
+    type: DataTypes.INTEGER,
     unique: false,
     allowNull: true,
-    validate: { notEmpty: true }
+    validate: { notEmpty: true, isInt: true, min: 0 }
   },
 
-  image_url: {
-    type: DataTypes.VIRTUAL,
-    get() { return `${process.env.BASE_URL}/songs/${this.image}` }
-  },
-
-  song: {
-    type: DataTypes.STRING,
+  explicit: {
+    type: DataTypes.BOOLEAN,
     unique: false,
-    allowNull: true,
-    validate: { notEmpty: true }
+    allowNull: false,
+    defaultValue: false
   },
-  
-  song_url: {
-    type: DataTypes.VIRTUAL,
-    get() { return `${process.env.BASE_URL}/songs/${this.song}` }
+
+  public: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    unique: false,
+    validate: { notEmpty: true },
+    defaultValue: false
   }
 
 },

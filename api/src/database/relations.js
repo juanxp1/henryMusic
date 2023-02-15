@@ -10,6 +10,8 @@ import Album from "../models/Album.js";
 import Playlist from "../models/Playlist.js";
 import PlaylistTrack from "../models/PlaylistTrack.js";
 import TrackArtist from "../models/TrackArtist.js";
+import '../models/Song.js'
+import '../models/Review.js'
 
 // Album relations ----------------------------
 Album.hasMany(Track, { as: 'tracks', foreignKey: 'album_id' });
