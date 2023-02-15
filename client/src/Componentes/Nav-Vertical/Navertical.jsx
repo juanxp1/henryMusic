@@ -17,12 +17,12 @@ function Navertical() {
 
 
     <Div >
-      <div className='nav'>
+      <div className='nav container-fluid'>
 
         <div className="sidebar ">
           <div className="logo d-flex justify-content-center">
             <a className='fotaso' href="/">
-              <video className='fotasa' src={play} alt="logo" autoPlay loop muted  />
+              <video className='fotasa' src={play} alt="logo" autoPlay loop muted />
             </a>
 
           </div>
@@ -103,7 +103,7 @@ hr {
 }
  
 .sidebar {    
-  position: fixed;
+position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
@@ -111,7 +111,6 @@ hr {
   background-color: #000000;
   padding: 24px;
   padding-left: 0;
-
 }
 
 
