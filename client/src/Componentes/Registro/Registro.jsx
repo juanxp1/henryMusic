@@ -15,6 +15,7 @@ export default function Registro() {
         emailjs.sendForm("service_n3bfhtp", "template_8ay97f7", form.current, "cfMaTPMB78FGsEJJk").then(
             (result) => {
                 window.alert("Registro Exitoso, Ahora elige tu plan favorito.");
+                
             },
             (error) => {
                 console.log(error.text);

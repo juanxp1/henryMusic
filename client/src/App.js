@@ -21,10 +21,16 @@ function App() {
 
   return (
     <>
+    {
+
+<<<<<<< HEAD
+      !landing && <Home />
+    }
+     
+=======
       {
         !landing && <Home />
       }
-
 
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
