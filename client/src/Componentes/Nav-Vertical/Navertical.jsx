@@ -34,12 +34,17 @@ function Navertical() {
     <NavbarContainer1>
     <Navbarwrapper1>
     <Div >
+<<<<<<< HEAD
       <div className='nav'>
+=======
+      <div className='nav container-fluid'>
+
+>>>>>>> 611be3c526fa578f6cf15ce336bb4bf1d1ce5b6a
         <div className="sidebar ">
 
           {/* { <div className="logo d-flex justify-content-center">
             <a className='fotaso' href="/">
-              <video className='fotasa' src={play} alt="logo" autoPlay loop muted  />
+              <video className='fotasa' src={play} alt="logo" autoPlay loop muted />
             </a>
           </div> } */}
 
@@ -160,7 +165,11 @@ hr {
 }
  
 .sidebar {    
+<<<<<<< HEAD
   position: fixed;  //me quita la parte de abajo del menu en pc 
+=======
+position: fixed;
+>>>>>>> 611be3c526fa578f6cf15ce336bb4bf1d1ce5b6a
   left: 0;
   top: 0;
   bottom: 0;
@@ -168,6 +177,7 @@ hr {
   background-color: #000000;
   padding: 24px;
   padding-left: 0;
+<<<<<<< HEAD
 
   @media screen and (max-width: 960px){
 
@@ -176,6 +186,8 @@ hr {
     
   }
 
+=======
+>>>>>>> 611be3c526fa578f6cf15ce336bb4bf1d1ce5b6a
 }
 
 .sidebar .navigation ul {

@@ -49,18 +49,8 @@ const Homedos = () => {
         // isAuthenticated ? (
 
         <Container>
-
             <div className="contenedor ">
                 <div className='container-fluid mw-100 p-0 m-0'>
-                    {/* <div className='uwu'>
-                        <div className="loaderRectangle">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div> */}
                     <h1 className='h1'>Bienvenido  <span className='pit'>{user?.nickname.toUpperCase()}</span></h1>
                     <h2 className='d-flex justify-content-center mt-3 mb-2 h1 '>Top artistas </h2>
 
@@ -110,9 +100,15 @@ const Homedos = () => {
                                             </li>
                                         )
                                     }) :
-                                    <span>
-                                        Loading....
-                                    </span>
+                                    <div className='uwu mw-100 container-fluid'>
+                                        <div className="loaderRectangle d-flex justify-content-center">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
                             }
                         </ul>
                         <button type="button" className="slider-nav"></button>
@@ -137,9 +133,15 @@ const Homedos = () => {
                                             </li>
                                         )
                                     }) :
-                                    <span>
-                                        Loading....
-                                    </span>
+                                    <div className='uwu mw-100 container-fluid'>
+                                        <div className="loaderRectangle d-flex justify-content-center">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
                             }
                         </ul>
                         <button type="button" className="slider-nav"></button>
@@ -164,9 +166,15 @@ const Homedos = () => {
                                             </li>
                                         )
                                     }) :
-                                    <span>
-                                        Loading....
-                                    </span>
+                                    <div className='uwu mw-100 container-fluid'>
+                                        <div className="loaderRectangle d-flex justify-content-center">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
                             }
                         </ul>
                         <button type="button" className="slider-nav"></button>
@@ -315,9 +323,6 @@ li{
     animation-name: uwu;
     animation-duration: 6s;
     opacity: 0;
-    position: absolute;
-    top: 300px;
-    left: 550px;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -339,6 +344,7 @@ li{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 500px;
     gap: 0 3px;
    }
    
