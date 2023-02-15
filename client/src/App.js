@@ -11,7 +11,7 @@ import PlayList from "./Componentes/CreatePlayList/PlayList";
 
 function App() {
 
-  const { landing } = useSelector(state => state);
+  const { Landing } = useSelector(state => state);
 
   return (
 
