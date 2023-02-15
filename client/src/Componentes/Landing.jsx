@@ -4,7 +4,7 @@ import Nav from '../Componentes/Nave/Nave'
 import Premium from './Premium/Premium'
 import Us from './About us/Us'
 import Footer from './Footer/Footer'
-import Payment from './Pasarela/Payment'
+import Pagos from './Pagos/Pagos';
 
 
 
@@ -25,8 +25,9 @@ function Landing() {
             <Premium />
              {/* { !login && <Registro/>} */}
            {/* { login && <Payment/>} */}
-           <Payment></Payment>
-            <Us />
+           {/* <Payment></Payment> */}
+           <Pagos></Pagos>
+            <Us />  
             <Footer />
         </div>
     )
