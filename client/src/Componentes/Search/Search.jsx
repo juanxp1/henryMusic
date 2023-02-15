@@ -29,8 +29,8 @@ function Search() {
     setInput('')
   }
   return (
-    <Div className="container-fluid">
-      <form className="d-flex justify-content-end" onSubmit={handleSubmit}>
+    <Div className="container px-0 m-2">
+      <form className="d-flex" onSubmit={handleSubmit}>
         <input
           className="row g-0 align-items-center input"
           type="search"
@@ -53,14 +53,12 @@ const Div = styled.div`
 .input {
     border-radius: 30px;
     text-align: center;
-    width: 240px;
+    width: 200px;
 
 }
 
 input::placeholder {
-
     font-size: 13px;
-
     text-align: center;
 
 }
