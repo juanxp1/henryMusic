@@ -21,13 +21,7 @@ function App() {
 
   return (
     <>
-    {
 
-<<<<<<< HEAD
-      !landing && <Home />
-    }
-     
-=======
       {
         !landing && <Home />
       }
