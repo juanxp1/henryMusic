@@ -10,15 +10,28 @@ import play from '../Detail/play.png'
 
 function Detail(props) {
 
+    const convertidor = (milisegundos) => {
+        const minutos = Math.floor(milisegundos / 1000 / 60);
+        milisegundos -= Math.floor(minutos * 60 * 1000);
+        const segundos = Math.floor(milisegundos / 1000);
+        return `${minutos}:${segundos}`;
+    }
+
     const dispatch = useDispatch();
     const infoMusic = useSelector(state => state.artistDetail);
     const [data, setData] = useState({
         name: '',
         image: '',
         tracks: [],
+        genres: [],
+        i: 0,
     })
 
     // useEffect(() => dispatch(Landing()), [])
+
+    function handleClick(e) {
+        setData({...data, i: e})
+    }
 
     useEffect(() => {
         dispatch(getArtist(props.match.params.id));
@@ -28,11 +41,11 @@ function Detail(props) {
 
     useEffect(() => {
         if (infoMusic.images?.length) {
-            setData({ name: infoMusic.name, image: infoMusic.images[0].url, tracks: infoMusic.tracks })
+            setData({ name: infoMusic.name, image: infoMusic.images[0].url, tracks: infoMusic.tracks, i: 0, genres: infoMusic.genres.map(el => el.name) })
         }
     }, [infoMusic])
 
-    console.log(infoMusic)
+    console.log(data)
 
 
     return (
@@ -53,7 +66,7 @@ function Detail(props) {
                                 <br />
                                 <p className="card-text p-0">Playlist</p>
                                 <h1 className="card-title display-1 p-0 m-0 name">{data.name}</h1>
-
+                                <h3> {data.genres.map(el => el + ', ')} </h3>
                             </div>
 
                         </div>
@@ -75,18 +88,21 @@ function Detail(props) {
             <div className='contenedordos'>
                 <ol className="list-group list-group-numbered container-fluid ">
                     {data.tracks.map(el => (
-                        <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={play} alt="" />
-                            <div className=" ms-4 me-auto">
-                                <div className="fw-bold">{el.name}</div>
-                            </div>
-                        </li>
+                        <button className='detail-button' onClick={() => handleClick(data.tracks.indexOf(el))}>
+                            <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
+                                <img className='fotico ms-4' src={play} alt="" />
+                                <div className=" ms-4 me-auto">
+                                    <div className="fw-bold">{el.name}</div>
+                                    <div className='fw-bold'> {convertidor(el.duration)} </div>
+                                </div>
+                            </li>
+                        </button>
                     ))}
                 </ol>
             </div>
 
             <div className='fixed-bottom'>
-                <Player1 tracks={data.tracks} />
+                <Player1 tracks={data.tracks} i={data.i} />
             </div>
 
 
@@ -175,5 +191,8 @@ background-color: black;
 
 }
 
+.detail-button{
+    background-color: transparent;
+}
 
 `

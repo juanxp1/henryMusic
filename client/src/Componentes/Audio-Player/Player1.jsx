@@ -14,7 +14,6 @@ export default function Player1(tracks) {
 
   // const dispatch = useDispatch();
   // const tracksDB = useSelector(state);
-  const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState({
     index: 0,
     url: '',
@@ -46,17 +45,18 @@ export default function Player1(tracks) {
   useEffect(() => {
     setCurrentSong({index: 0, url: arr[currentSong.index]})
   }, [tracks])
-
+  
+  console.log(arr)
 
   return (
 
     <Container className="container-fluid d-flex justify-content-around">
       <AudioPlayer
-        src={currentSong.url}
+        src={currentSong.index === tracks.i ? currentSong.url : tracks.tracks[tracks.i].play_url}
         controls
         autoPlay={false}
-        onClickNext={() => setCurrentSong({index: currentSong.index == arr.length-1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == arr.length-1 ? currentSong.url : arr[currentSong.index+1]})}
-        onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : arr[currentSong.index-1]})}
+        // onClickNext={() => setCurrentSong({index: currentSong.index == tracks.tracks.length - 1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == tracks.tracks.length-1 ? currentSong.url : arr[currentSong.index+1]})}
+        // onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : arr[currentSong.index-1]})}
         className="repro p-0 m-0 "
         showSkipControls
         volumeJumpStep
