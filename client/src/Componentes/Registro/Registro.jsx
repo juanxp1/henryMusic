@@ -32,12 +32,12 @@ export default function Registro() {
                     <h2 className='letras'>Activar Notificaciones al mail</h2>
                     <form ref={form} onSubmit={sendEmail} className='needs-validation'>
                         <div className='form-group  was-validated   mb-2'>
-                            <label htmlFor='name' className='form-label' ><h2>{user?.name}</h2>
+                            <label htmlFor='name' className='form-label' ><h2 className='text-muted'>{user?.name[0].toUpperCase() + user?.name.substring(1)}</h2>
                             </label>
                         </div>
                         <div className='form-group was-validated   mb-2'>
-                            <label htmlFor='email' className='form-label' color='yellow' >{user?.email}</label>
-                            <input type='email' name='user_email' className='form-control' required placeholder='Excribe tu e-mail' ></input>
+                            {/* <label htmlFor='email' className='form-label' color='yellow' >{user?.email}</label> */}
+                            <input type='email' name='user_email' className='form-control text-center' required placeholder='Excribe tu e-mail' ></input>
                             <div className='invalid-feedback'>
                                 Ingrese su e-mail por favor
                             </div>

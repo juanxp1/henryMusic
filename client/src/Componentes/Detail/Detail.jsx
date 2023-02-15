@@ -4,10 +4,9 @@ import { Landing } from '../../Actions/actions';
 import styled from 'styled-components';
 import favi from '../Detail/favi.png'
 import { getArtist } from '../../Actions/actions';
-import cerati from '../Detail/cerati.jpg'
 import { Link } from 'react-router-dom'
 import Player1 from '../Audio-Player/Player1';
-
+import play from '../Detail/play.png'
 
 function Detail(props) {
 
@@ -32,6 +31,8 @@ function Detail(props) {
             setData({ name: infoMusic.name, image: infoMusic.images[0].url, tracks: infoMusic.tracks })
         }
     }, [infoMusic])
+
+    console.log(infoMusic)
 
 
     return (
@@ -75,7 +76,7 @@ function Detail(props) {
                 <ol className="list-group list-group-numbered container-fluid ">
                     {data.tracks.map(el => (
                         <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                            <img className='fotico ms-4' src={favi} alt="" />
+                            <img className='fotico ms-4' src={play} alt="" />
                             <div className=" ms-4 me-auto">
                                 <div className="fw-bold">{el.name}</div>
                             </div>
@@ -114,7 +115,7 @@ li{
 }
 
 .fotico{
-    width: 50px;
+    width: 25px;
 }
 
 .name {

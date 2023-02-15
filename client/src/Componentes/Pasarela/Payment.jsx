@@ -8,8 +8,11 @@ import paypal from '../Pasarela/paypal.png';
 import mercadopago from '../Pasarela/mercadopago.png';
 import Registro from "../Registro/Registro";
 
+
 function Payment() {
     const [amount, setAmount] = useState(0);
+
+    console.log("holisssssssssssssssssss", amount)
     const handleToken = (token) => {
 
         fetch("http://localhost:3001/precio/checkout", {
@@ -23,9 +26,8 @@ function Payment() {
             .then(res => res.json())
             .then(_ => {
                 window.alert("Transaction Successful.");
-            }).catch(_ => window.alert("Transaccion Exitosa.")
-
-
+            }).catch(_ =>   window.alert("Pago exitoso.")
+              
             )
     }
 
@@ -34,8 +36,8 @@ function Payment() {
     return (
 
         <Container className="payment container-fluid " id="premium">
-            <h1 className='text-center'>¡No Esperas Mas Y Adquiere Hoy Tu Plan Premium!</h1>
-            <p className="parrafo"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
+            <h1 className='text-center '>¡No esperes más y adquiere hoy tu plan premium!</h1>
+            <p className="parrafo text-muted"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
 
             <img src={visa} alt="visa" />
             <img src={master} alt="master" />
@@ -52,7 +54,7 @@ function Payment() {
                         <button type="button" class="btn btn-dark p-1 rounded-pill">1 mes gratis al suscribirse</button>
                         <br />
                         <h2>Individual</h2>
-                        <h3 className="text-center">$ 100,00*** al mes después del período de la oferta 1 cuenta</h3>
+                        <h3 className="text-center ">$ 100,00*** al mes después del período de la oferta 1 cuenta</h3>
                     </FormControl>
                     <div>
 
@@ -70,7 +72,7 @@ function Payment() {
                         <Registro></Registro>
 
 
-                        <p className="card-text">*** Después, solo cuesta $ 100,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
+                        <p className="card-text text-muted">*** Después, solo cuesta $ 100,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
                         {/* <Link to="/home" className='premium'> <button onClick={Payment} className="btn btn-warning">Elige tu plan</button></Link>  */}
                         {/* <Registro></Registro> */}
                     </div>
@@ -99,7 +101,7 @@ function Payment() {
                         >
                         </StripeCheckout>
                         <Registro></Registro>
-                        <p className="card-text">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
+                        <p className="card-text text-muted">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
                     </div>
                 </div>
 
@@ -124,7 +126,7 @@ function Payment() {
                         >
                         </StripeCheckout>
                         <Registro></Registro>
-                        <p className="card-text">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
+                        <p className="card-text text-muted">*** Después, solo cuesta $ 549,00 al mes + impuestos (incluye IVA [21%], PAIS [8%], IG/IBP [45%], que vas a ver en tu extracto bancario). El mes gratis no está disponible para usuarios que ya hayan probado Premium. <u>Se aplican Términos y Condiciones.</u> </p>
 
                     </div>
                 </div>
@@ -162,7 +164,7 @@ text-align: center;
 
 
 h3 {
-    font-size: 20px
+    font-size: 20px;
     color:whitesmoke; 
 }
 
@@ -178,6 +180,8 @@ h1 {
 .payment {
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
+   
     
 }
 
@@ -206,8 +210,8 @@ h2 {
 
 .parrafo{
     margin-top: 20px;
-    color:whitesmoke;
-    font-size: 18px;
+    color: whitesmoke;
+    font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 
 }

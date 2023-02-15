@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:3001';
+const URL = process.env.NODE_ENV === 'production' ? 'https://henrymusic.tech' : 'http://localhost:3001';
 
 // Actions de nuestra base de datos
 

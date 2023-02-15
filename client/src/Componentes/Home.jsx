@@ -1,7 +1,9 @@
 import React from 'react'
 import NavHome from './NavHome/NavHome'
 import Navertical from '../Componentes/Nav-Vertical/Navertical'
-import styled from 'styled-components'
+
+// import Homedos from '../Componentes/Homedos/Homedos'
+
 
 
 
@@ -13,7 +15,8 @@ function Home() {
         <>
             <NavHome />
             <Navertical />
-           
+            {/* <Homedos /> */}
+
         </>
 
     )
@@ -21,13 +24,4 @@ function Home() {
 }
 
 export default Home
-
-const Div = styled.div`
-
-background-color: #000000;
-
-
-`
-
-
 

@@ -125,6 +125,25 @@ export async function postSong(req, res) {
   }
 }
 
+export async function getAllSongs(req, res) {
+  const validator = new Validator(req.query, {
+    limit: "integer|min:1",
+    offset: "integer|min:0"
+  })
+  if (validator.fails()) return jsonError(res, validator.errors)
+  const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
+
+  try {
+    const songs = await Song.findAll({
+      attributes: { exclude: ["created_at", "updated_at"] },
+      limit, offset, distinct: true
+    })
+    jsonOk(res, songs)
+  } catch (error) {
+    jsonError(res, error.message)
+  }
+}
+
 function moveFile(file, mimetype) {
   const tmp_file = path.resolve(file.path)
   if (!file.mimetype.startsWith(mimetype)) {
