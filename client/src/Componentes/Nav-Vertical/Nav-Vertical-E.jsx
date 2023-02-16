@@ -44,13 +44,13 @@ export const Menu1 = styled.ul`
 
  @media screen and (max-width: 960px){
  width: 100%;
- height: 98vh;
+ height: 80vh;
  position: absolute;
- top: 80px;
+ top: 110px;
  left: ${({ click }) => (click ? 0 : "-100%")};
  flex-direction: column;
  transition: 0.5s all ease-in;
- background-color: #0c0c0c;
+ background-color: #000000;
 
 }
 
