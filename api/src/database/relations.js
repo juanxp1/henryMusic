@@ -100,6 +100,8 @@ Artist.belongsToMany(Track, {
 });
 
 // User relations ----------------------------
+User.belongsTo(Image, { as: 'avatar', foreignKey: 'image_id' });
+Image.hasOne(User, { as: 'owner', foreignKey: 'image_id' });
 User.hasMany(Image, {
   foreignKey: 'entity_id',
   constraints: false,
@@ -112,3 +114,4 @@ User.hasMany(Playlist, { foreignKey: 'user_id' });
 Playlist.belongsTo(User, { foreignKey: 'user_id' });
 
 export const sequelize = User.sequelize
+export const models = User.sequelize.models

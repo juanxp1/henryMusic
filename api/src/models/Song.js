@@ -76,11 +76,22 @@ export default connection.define('Song', {
     unique: false,
     validate: { notEmpty: true },
     defaultValue: false
+  },
+
+  play_url: {
+    type: DataTypes.VIRTUAL,
+    get() { return `https://henrymusic.tech/songs/${this.id}.${this.extension}` }
   }
 
 },
   {
     tableName: 'songs',
     createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    updatedAt: 'updated_at',
+    hooks: {
+      afterCreate: (song) => {
+        if (!song) return;
+        song.setDataValue('play_url', `https://henrymusic.tech/songs/${song.id}.${song.extension}`)
+      },
+    }
   })

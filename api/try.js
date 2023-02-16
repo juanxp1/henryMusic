@@ -1,12 +1,9 @@
-import sharp from 'sharp';
+import {sequelize} from './src/database/relations.js'
 
-const file_path = 'D:/Images/sharp/'
-const image = sharp(file_path + '1.jpg')
-console.log(await image.metadata())
+const { User } = sequelize.models
 
-image
-  .resize(200, 200)
-  .toFile(file_path + '1_200x200.jpg', (err, info) => {
-    if (err) console.log(err)
-    console.log(info)
-  })
+const user = await User.findOne({
+  where: { username: 'mguzman' },
+  include: ['avatar']
+})
+console.log(user.toJSON())

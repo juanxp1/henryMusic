@@ -102,9 +102,6 @@ export async function getAllTracks(req, res) {
 }
 
 export async function createSong(req, res) {
-  console.log(req.auth)
-  jsonOk(res, req.auth)
-  return;
   let validator = new Validator(req.body, {
     name: 'required|string|min:3|max:100',
     artist: 'required|string|min:3|max:100',
@@ -117,12 +114,17 @@ export async function createSong(req, res) {
   validator = new Validator(req.files, { image: 'required', song: 'required' })
   if (validator.fails()) return jsonError(res, validator.errors)
 
-  if (!Song.findOne({ where: { name: req.body.name } })) return jsonError(res, "Song already exists", 409)
+  if (await Song.findOne({ where: { name: req.body.name, artist: req.body.artist, user_id: req.auth.sub } })) {
+    deleteTempFiles([req.files.image[0], req.files.song[0]])
+    jsonError(res, "Song already exists", 409)
+    return
+  }
 
   try {
     const result = await Promise.all([validateImage(req.files.image[0]), validateAudio(req.files.song[0])])
-    const errors = result.filter(r => r[0] !== true)
+    const errors = result.filter(r => r !== true)
     if (errors.length > 0) {
+      deleteTempFiles([req.files.image[0], req.files.song[0]])
       const err_obj = {}
       errors.forEach(err => err_obj[err[0]] = [err[1]])
       return jsonError(res, {errors: err_obj})
@@ -133,19 +135,26 @@ export async function createSong(req, res) {
     const audio = files[1]
 
     let { name, artist, album, genre, explicit } = req.body
-    await Song.create({
+    const song = await Song.create({
       id: audio.name,
+      user_id: req.auth.sub,
       extension: audio.extension,
-      user_id: '',
       public: req.body.public,
       duration: audio.duration,
       name, artist, album, genre, explicit,
     })
     Image.create({ id: image.name, width: image.width, height: image.height, type: 'song', entity_id: audio.name })
 
-
     jsonOk(res, {
-      song: { id: audio.name, name, artist, album, genre, explicit },
+      song: {
+        ...song.dataValues,
+        images: [{
+          id: image.name,
+          url: process.env.BASE_URL + '/images/' + image.name + '.jpg',
+          width: image.width,
+          height: image.height
+        }]
+      }
     })
   } catch (error) {
     jsonError(res, error.message)
@@ -207,19 +216,27 @@ async function processFiles(fimage, faudio) {
   const metadata = await image.metadata()
   if (metadata.width > MAX_IMG_WIDTH || metadata.height > MAX_IMG_HEIGHT) {
     image.resize(MAX_IMG_WIDTH, MAX_IMG_HEIGHT)
+    metadata.width = MAX_IMG_WIDTH
+    metadata.height = MAX_IMG_HEIGHT
   }
   await image.toFile(path.join(global.STORAGE_PATH, 'images', file_name + '.jpg'))
   fs.unlink(tmp_file, blank)
   names.push({ name: file_name, width: metadata.width, height: metadata.height })
 
   tmp_file = path.resolve(faudio.path)
-  const extension = file.originalname.substring(file.originalname.lastIndexOf('.') + 1)
+  const extension = faudio.originalname.substring(faudio.originalname.lastIndexOf('.') + 1)
   file_name = short.generate()
   const duration = await getAudioDurationInSeconds(tmp_file)
   fs.rename(tmp_file, path.join(global.STORAGE_PATH, 'songs', file_name + '.' + extension), blank)
   names.push({ name: file_name, extension, duration: duration * 1000 })
 
   return names
+}
+
+function deleteTempFiles(files) {
+  files.forEach(file => {
+    fs.unlink(file.path, blank)
+  })
 }
 
 function blank() {}

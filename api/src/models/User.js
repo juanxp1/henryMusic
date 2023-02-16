@@ -1,6 +1,7 @@
 import Country from './Country.js';
 import { DataTypes } from "sequelize"
 import { connection } from "../database/connection.js"
+import Image from './Image.js';
 
 export default connection.define('User', {
 
@@ -39,6 +40,16 @@ export default connection.define('User', {
         validate: { notEmpty: true }
     },
 
+    image_id: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true,
+        references: {
+            model: Image,
+            key: 'id',
+        }
+    },
+
     // tipo de plan: free, premium, etc
     plan: {
         type: DataTypes.INTEGER,
@@ -68,8 +79,18 @@ export default connection.define('User', {
 
 },
 {
-  tableName: 'users',
-  paranoid: true,
-  createdAt: 'created_at',
-  updatedAt: 'updated_at'
+    tableName: 'users',
+    paranoid: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+    hooks: {
+        afterFind: (users, options) => {
+            if (!users) return;
+            if (!Array.isArray(users)) users = [users];
+            users.forEach(user => {
+                delete user.deletedAt;
+                delete user.dataValues.deletedAt;
+            });
+        }
+    }
 })

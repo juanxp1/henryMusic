@@ -1,6 +1,7 @@
 import * as ArtistController from '../controllers/ArtistController.js'
 import * as AlbumController from '../controllers/AlbumController.js'
 import * as TrackController from '../controllers/TrackController.js'
+import * as UserController from '../controllers/UserController.js'
 import authRouter from './auth.js'
 import multer from 'multer'
 import { Router } from 'express'
@@ -32,6 +33,9 @@ secured.get('/artist/all', ArtistController.getAllArtists)
 secured.get('/artist/search', ArtistController.searchArtist)
 secured.get('/artist/:id', ArtistController.getArtist)
 
+secured.get('/user', UserController.getUser)
+
+// setup de las rutas
 router.use('/', authRouter);// ruta para la autenticacion
 router.use('/api', checkJwt, secured);
 
