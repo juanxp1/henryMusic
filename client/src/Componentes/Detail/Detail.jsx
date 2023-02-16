@@ -30,7 +30,7 @@ function Detail(props) {
     // useEffect(() => dispatch(Landing()), [])
 
     function handleClick(e) {
-        setData({...data, i: e})
+        setData({ ...data, i: e })
     }
 
     useEffect(() => {
@@ -50,16 +50,13 @@ function Detail(props) {
 
     return (
         <Div>
-
             <div className='contenedor'>
 
                 <div className=" bg-dark mw-100 pt-2 pb-1  container-fluid oki" >
 
-                    <div className="row g-0 container-fluid">
+                    <div className="row g-0 pt-2 container-fluid">
                         <div className="col-md-4 container-fluid">
-                            <img src={data.image} className="img-thumbnail bg-dark pancho " alt="..." />
-
-
+                            <img src={data.image} className="img-thumbnail bg-dark pancho " alt="artista" />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
@@ -93,8 +90,8 @@ function Detail(props) {
                                 <img className='fotico ms-4' src={play} alt="" />
                                 <div className=" ms-4 me-auto">
                                     <div className="fw-bold">{el.name}</div>
-                                    <div className='fw-bold'> {convertidor(el.duration)} </div>
                                 </div>
+                                <div className='fw-bold'> {convertidor(el.duration)} </div>
                             </li>
                         </button>
                     ))}
@@ -155,7 +152,9 @@ img {
 -webkit-box-shadow: 19px 17px 13px -9px rgba(255,255,1,0.89);
 -moz-box-shadow: 19px 17px 13px -9px rgba(255,255,1,0.89);
 }
-background-color: black;
+
+
+
 .contenedor{
     width: auto;
     height: auto;
@@ -180,6 +179,7 @@ background-color: black;
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
     /* margin-left: 230px  !important; */
     color: white;
+    border:none;
     /* display: flex;
     position: relative; */
 
@@ -190,5 +190,7 @@ background-color: black;
 } 
 .detail-button{
     background-color: transparent;
+    border: none;
+    
 }
 `

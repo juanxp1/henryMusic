@@ -21,7 +21,7 @@ const Homedos = () => {
   }
 
   useEffect(() => {
-    dispatch(getAllArtists(100));
+    dispatch(getAllArtists(200));
     dispatch(Landing());
     dispatch(getAllAlbums(50));
   }, []);

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import home from "./home.png";
 //import foto from '../Nav-Vertical/app.png';
 //import lupa from './lupa.png';
+import logo3 from '../Nav-Vertical/logo3.mp4';
 import listas from "./listas.png";
 import crear from "./crear.png";
 import cora from "./cora.png";
@@ -42,11 +43,10 @@ function Navertical() {
                       <a className="fotaso" href="/">
                         <video
                           className="fotasa"
-                          src={play}
+                          src={logo3}
                           alt="logo"
-                          autoPlay
-                          loop
-                          muted
+                        autoPlay
+                        loop
                         />
                       </a>
                     </div>
@@ -132,7 +132,7 @@ export default Navertical;
 
 const Div = styled.div`
   .fotasa {
-    width: 140px;
+    width: 150px;
   }
 
   .sidebar .logo img {
