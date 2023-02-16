@@ -16,6 +16,7 @@ ReactDOM.render(
         domain="dev-183wwf4clw7n6848.us.auth0.com"
         clientId="av3cM1zeJYnKSe8DhGlCtpmE7t05KMFY"
         authorizationParams={{
+          audience: 'https://henrymusic.tech/',
           redirect_uri: window.location.origin
         }}
       >

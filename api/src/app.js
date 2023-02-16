@@ -1,9 +1,9 @@
 import * as dotenv from 'dotenv'; dotenv.config()
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import morgan from 'morgan';
 import routes from './routes/index.js';
-import { setupAuth0 } from './auth0.js';
 
 const server = express();
 // ruta donde se guardaran todos los archivos que se suban al servidor, ex: D:\proyectos\henry\public
@@ -14,6 +14,7 @@ global.UPLOADS_PATH = UPLOADS_PATH;
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }))
 server.use(express.json({ limit: '50mb' }))
+server.use(cors());
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
@@ -23,8 +24,6 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
-
-setupAuth0(server)
 
 server.use('/', routes);
 server.use('/', express.static(STORAGE_PATH))
