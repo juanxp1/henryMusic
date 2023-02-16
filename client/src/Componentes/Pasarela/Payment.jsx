@@ -144,6 +144,7 @@ export default Payment;
 
 const Container = styled.div`
 
+
 img{
     width: 33px;
     margin:10px;
@@ -161,6 +162,7 @@ background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,1) 2%, rgba(255,255,0,1) 43%, rgba(0,0,0,1) 85%);
 
 text-align: center;
+
 
 
 h3 {

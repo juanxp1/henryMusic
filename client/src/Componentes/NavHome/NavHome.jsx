@@ -21,31 +21,32 @@ function NavHome() {
 
     isAuthenticated && (
 
-      <Div className='p-3 container-fluid d-flex justify-content-end'>
-        <nav className="navbar bg-body-tertiary oli">
+      <Div className='container-fluid'>
+        <nav className="navbar navbar-expand-lg container-fluid d-flex justify-content-end">
+          <div className='container-fluid d-flex justify-content-end'>
+            <div className='m-0 pt-0 px-3'>
+              <Search />
+            </div>
+            <form className="d-flex" role="search">
 
-          <div className="btn-group probando ">
-            <Search />
-            <Chip
-
-              avatar={<Avatar alt="picture" src={user.picture} />}
-              label={user.nickname}
-              variant="outlined"
-              className=" dropdown-toggle avatar "
-              data-bs-toggle="dropdown"
-              type="button"
-            />
-            <ul className="dropdown-menu">
-              <li className= "btn btn-warning">Editprofile</li>
-              <br />
-              
-              <li>{logout}</li>
-            </ul>
+              <nav className="navbar bg-body-tertiary m-0 pt-2">
+                <Chip
+                  avatar={<Avatar alt="picture" src={user.picture} />}
+                  label={user.nickname}
+                  variant="outlined"
+                  className=" dropdown-toggle avatar "
+                  data-bs-toggle="dropdown"
+                  type="button"
+                />
+                <ul className="dropdown-menu">
+                  <li className="btn btn-warning">Editprofile</li>
+                  <br />
+                  <li>{logout}</li>
+                </ul>
+              </nav>
+            </form>
           </div>
-
-
         </nav>
-
       </Div>
 
 
@@ -57,30 +58,6 @@ function NavHome() {
 export default NavHome
 
 const Div = styled.div`
-
-.editprofile{
-  margin-left: 0px;
-  color: white;
-  padding-left: 5px;
-  text-align: center;
-  align-items: left;
-  cursor:pointer;
-  background-color: FFFF01;
-  border: none;
-}
-
-.editprofile:hover{
-  color: yellow;
-  font-size: 12px;
-}
-
-.logout{
-  margin-left: 2px;
-  color: white;
-  padding-left: 10px;
-  text-align: center;
-  align-items: center;
-}
 
 .btn{
    height: 35px;
@@ -97,27 +74,23 @@ const Div = styled.div`
 
 .dropdown-menu.show{
   background-color: transparent; 
-  float: left;
-  margin-left: 17rem;
+  padding: 0;
+  margin:0;
+  height: auto;
+
 }
 
-height:auto;
 
 background-color:#000000;
+height: auto;
+max-height: 150px;
 
-.probando{
-  padding-right: 20px;
-
-}
 .avatar{
   color: #FFFF01;
   background-color: #222121;
   padding-right: 10px;
-  
-  
+  margin-right:30px;
 }
-
-
 
 
 `

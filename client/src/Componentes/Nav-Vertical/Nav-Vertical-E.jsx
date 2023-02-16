@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const NavbarContainer1 = styled.div`
  width: 100%;
- height: 30px;
+ height: 10px;
  position: sticky;
  top:0;
  z-index: 99;
@@ -89,8 +89,8 @@ display: none;
 
 @media screen and (max-width: 960px){
 
-  padding: 60px;
-  padding-left: 10px;
+  padding: 30px;
+  padding-left: 30px;
   height: 30px;
   display: flex;
   color: #ffff01;

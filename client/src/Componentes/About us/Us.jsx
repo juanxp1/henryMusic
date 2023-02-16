@@ -22,7 +22,7 @@ function Us() {
             <div>
                 <br />
                 <h1 className='text-center text-white'>Así somos</h1>
-                 <hr className='oli' />
+                 
               
                 
                
@@ -33,7 +33,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail  mx-auto d-block' variant="top" src={Bianchi} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Bianchi</Card.Title>
+                        <Card.Title className='text-center'>Bianchi (◣ _ ◢)</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
 
@@ -47,7 +47,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Rodolfo} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Rodolfo</Card.Title>
+                        <Card.Title className='text-center'>Rodolfo ヽ( ▀̿ Ĺ̯ ▀̿)ノ♪♬</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -60,7 +60,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Carlos} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Carlos</Card.Title>
+                        <Card.Title className='text-center'>Carlos ヾ(⌐■_■)ノ♪</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/carlos-da-gra%C3%A7a-284049239/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -73,7 +73,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Abigail} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Abigail</Card.Title>
+                        <Card.Title className='text-center'>Abigail ♪(๑ᴖ◡ᴖ๑)♪ ♡</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -88,7 +88,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Felipe} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Felipe</Card.Title>
+                        <Card.Title className='text-center'>Felipe (◡ ‿ ◡ .)</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -101,7 +101,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Antonio} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Antonio</Card.Title>
+                        <Card.Title className='text-center'>Antonio (⌐■_■)</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/erick-espinoza-g%C3%B3mez-58b9b8231/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -114,7 +114,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Agustin} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Agustin</Card.Title>
+                        <Card.Title className='text-center'>Agustin ～(■_■)～♪🖐</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/agust%C3%ADn-guerrero-66700721b/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -127,7 +127,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Erick} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Erick</Card.Title>
+                        <Card.Title className='text-center'>Erick ヾ(⌐■_■)ノ♪</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -147,7 +147,7 @@ export default Us
 
 const AboutContainer = styled.div`
 
-.oli{
+/* .oli{
     height: 16px;
     position: relative;
     top: -19px;
@@ -157,7 +157,7 @@ const AboutContainer = styled.div`
     background-color: #FFFF01;
     border: #FFFF01 1px solid;
     margin: auto;
-}
+} */
 
 .linke{
     width: 30px;
@@ -171,12 +171,38 @@ const AboutContainer = styled.div`
     margin-bottom:22px
 }
 
-h1{
-    padding-top: 10px;
-    color: #ffffff;
-    font-weight: 600;
-    padding-top: 10px;
+
+    
+h1 {
+  width: 0;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-bottom:10px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 2.2rem;
+  margin: 0 auto;
+  border-right: 0.15em solid #000000;
+  animation: typing 4s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+
+
+
 
 
 img{
