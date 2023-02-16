@@ -3,7 +3,7 @@ import styled from "styled-components";
 import home from "./home.png";
 //import foto from '../Nav-Vertical/app.png';
 //import lupa from './lupa.png';
-import logo3 from '../Nav-Vertical/logo3.mp4';
+import logo3 from '../Nav-Vertical/play.mp4';
 import listas from "./listas.png";
 import crear from "./crear.png";
 import cora from "./cora.png";
