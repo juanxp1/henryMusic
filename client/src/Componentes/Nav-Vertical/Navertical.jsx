@@ -158,8 +158,8 @@ const Div = styled.div`
     padding-left: 0;
 
     @media screen and (max-width: 960px) {
-      height: 20px;
-      padding: 1px;
+      height: 0px;
+      padding: 0px;
     }
   }
 

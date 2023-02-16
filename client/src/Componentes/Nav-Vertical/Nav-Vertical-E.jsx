@@ -8,7 +8,7 @@ export const NavbarContainer1 = styled.div`
  top:0;
  z-index: 99;
  background-color: black;
-`;
+`
 
 //estilo para modificar cuando sea responsive dentro del nave
 export const Navbarwrapper1 = styled.div`
@@ -21,7 +21,7 @@ export const Navbarwrapper1 = styled.div`
  flex-wrap: wrap;
  justify-content: space-between;
  border: 1px solid black;
-`;
+`
 
 //estilo del logo 
 export const Icon1 = styled.div`
@@ -32,24 +32,27 @@ export const Icon1 = styled.div`
  font-size: 1.2rem;
  color: #fff;
  padding-left: 0.5rem;
-`;
+`
 
 //estilos para la lista 
 export const Menu1 = styled.ul`
- height: 100%;
+ height: auto;
  display: flex;
  justify-content: center;
  align-items: center;
- padding: 20px; 
+ padding-right: 60px ;
 
  @media screen and (max-width: 960px){
- width: 100%;
- height: 80vh;
+ width:auto;
+ min-width: 400px;
+ min-height: 100vh;
+ height: auto;
  position: absolute;
- top: 110px;
- left: ${({ click }) => (click ? 0 : "-100%")};
+ top:  auto;
+ border: none;
+ left: ${({ click }) => (click ? 0 : "-190%")};
  flex-direction: column;
- transition: 0.5s all ease-in;
+ transition: 0.3s all ease-in;
  background-color: #000000;
 
 }
@@ -60,7 +63,7 @@ export const MenuItem1 = styled.li`
 height: 100%;
 padding: 0.5rem 1.5rem;
 display: flex;
-justify-content: center;
+justify-content: start;
 align-items: center;
 font-size: 1.2rem;
 font-weight: 400;
