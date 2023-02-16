@@ -15,17 +15,14 @@ const Hardcode = ({ name, image, id, tracks }) => {
 
     return (
         <Container container-fluid>
-
-            <div className="generos mx-100">
-
+            <div className="generos w-100 ">
                 <div className="cards">
                     <div className='cards-info'>
                         <div ><img className="card_imagen" key={id} src={image} alt={name} /></div>
                         <div className="card_text container">
                             <p className='d-flex justify-content-start w-100'>{name}</p>
                             <a className='d-flex ms-3 p-0' onClick={e => handleClick(e)}><img src={play} alt="" /></a>
-                        </div>
-                        
+                        </div>               
                     </div>
                 </div>
                 <div className='card_imagen bg-transparent'>
@@ -62,7 +59,7 @@ img{
     --background: linear-gradient(to bottom,  #000000 70%, #FFFF01 100%);
     padding: 4px;
     overflow: visible;
-    background: #FFFF01;
+    background: #000000;
     background: var(--background);
     position: relative;
     z-index: 1;
@@ -79,7 +76,7 @@ img{
     width: 100%;
     transform: scale(0.8);
     filter: blur(100px);
-    background: #FFFF01;
+    background: #000000;
     background: var(--background);
     transition: opacity .5s;
 }
@@ -98,10 +95,10 @@ img{
 .cards:hover::after {
     opacity: 0;
 }   
-.cards:hover .card-info {
-    color: #f7ba2b;
+ .cards:hover .card-info {
+    color: #000000;
     transition: color 1s;
-}
+} 
 
 .card_imagen{
     

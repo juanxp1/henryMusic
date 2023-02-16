@@ -36,53 +36,61 @@ const Homedos = () => {
     // isAuthenticated ? (
 
     <Container>
-      <div className="contenedor ">
-        <div className="container-fluid mw-100 p-0 m-0">
-          <h1 className="h1">
+      <div className="contenedor  d-flex justify-content-center container-fluid">
+        <div className="container-fluid w-100 p-0 m-0">
+          <h1 className="h1 ms-3">
             Bienvenido{" "}
             <span className="pit">{user?.nickname.toUpperCase()}</span>
           </h1>
-          <h2 className="d-flex justify-content-center mt-3 mb-2 h1 ">
-            Top artistas{" "}
+          <h2 className=" d-flex justify-content-center mt-4 mb-3  h1 text-white">
+            Top artistas
           </h2>
 
-          <div className="container-fluid">
-            <div className="container">
-              <div className="row ms-5 ">
-                {infoAlbum.albums ? (
-                  infoAlbum.albums?.slice(30, 36).map((c) => {
-                    return (
-                      <div className="col-sm m-0 p-0">
-                        <Hardcode
-                          key={c.id}
-                          id={c.id}
-                          name={c.name}
-                          image={c.images[0]?.url}
-                          tracks={c.tracks}
-                        />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <span>Cargando...</span>
-                )}
-              </div>
+          <div className="container-fluid d-flex justify-content-center">
+            <div className="row container-sm">
+              {infoAlbum.albums ? (
+                infoAlbum.albums?.slice(30, 36).map((c) => {
+                  return (
+                    <div className="col-md-4">
+                      <Hardcode
+                        key={c.id}
+                        id={c.id}
+                        name={c.name}
+                        image={c.images[0]?.url}
+                        tracks={c.tracks}
+                      />
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="uwu w-100 container-fluid">
+                  <div className="loaderRectangle d-flex justify-content-center">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              )}
+
             </div>
           </div>
 
-          <div className="btn-wrapper mt-0 pt-0  justify-content-center container-fluid">
+          <div className="btn-wrapper mt-0 mb-3 container-fluid">
             <select onChange={(e) => handleGenero(e)} className="btn">
               <option value="All">All Generos</option>
               <option value="Pop">Pop</option>
               <option value="Trap">Trap</option>
               <option value="Latin">Latin </option>
               <option value="Rock">Rock </option>
+              <option value="hip hop">hip hop</option>
             </select>
           </div>
 
           {/* Aqui comienzan los carruseles */}
 
-          <h2 className="d-flex justify-content-start h1">Lo mas escuchado </h2>
+          <h2 className="d-flex justify-content-start h1 ms-3">Lo mas escuchado </h2>
           {/* carrusel */}
 
           <div className="swiffy-slider">
@@ -106,7 +114,7 @@ const Homedos = () => {
                   );
                 })
               ) : (
-                <div className="uwu mw-100 container-fluid">
+                <div className="uwu w-100 container-fluid">
                   <div className="loaderRectangle d-flex justify-content-center">
                     <div></div>
                     <div></div>
@@ -124,7 +132,7 @@ const Homedos = () => {
             ></button>
           </div>
 
-          <h2 className="d-flex justify-content-start h1">
+          <h2 className="d-flex justify-content-start h1 ms-3">
             Temas para {user?.name}
           </h2>
           {/* carrusel */}
@@ -167,9 +175,9 @@ const Homedos = () => {
             ></button>
           </div>
 
-          <h2 className="d-flex justify-content-start h1">
-            {" "}
-            Canciones creadas por la Comunidad{" "}
+          <h2 className="d-flex justify-content-start h1 ms-3">
+
+            Canciones creadas por la Comunidad
           </h2>
           {/* carrusel */}
 
@@ -247,9 +255,7 @@ const Container = styled.div`
   }
 
   .h1 {
-    color: #ffffff / #fff;
-    font-weight: 600;
-    padding: 10px;
+   font-weight: 600; 
   }
 
   .contenedor {
@@ -257,7 +263,7 @@ const Container = styled.div`
     height: auto;
     margin: 0;
     padding: 0;
-    background: rgb(0, 0, 0);
+    /* background: rgb(0, 0, 0);
     background: linear-gradient(
       124deg,
       rgba(0, 0, 0, 1) 5%,
@@ -265,7 +271,10 @@ const Container = styled.div`
       rgba(63, 28, 87, 1) 100%,
       rgba(91, 40, 125, 1) 100%,
       rgba(131, 58, 180, 1) 100%
-    );
+    ); */
+
+    background: rgb(0,0,0);
+    background: linear-gradient(138deg, rgba(0,0,0,1) 8%, rgba(0,1,24,1) 100%, rgba(0,1,27,1) 100%, rgba(0,1,54,1) 100%, rgba(0,3,122,1) 100%);
     margin-left: 230px;
     color: white;
     @media screen and (max-width: 960px) {
@@ -273,21 +282,7 @@ const Container = styled.div`
     }
   }
 
-  /* .container-fluid{
-    animation-name: container-fluid;
-    animation-duration: 2s;
-} */
-  /* @keyframes container-fluid{
-    0% {
-        opacity: 0;
-      }
-      90% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-} */
+
 
   .btn-wrapper {
     border-radius: 10px;
