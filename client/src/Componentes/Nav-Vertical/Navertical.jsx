@@ -26,9 +26,9 @@ function Navertical() {
   };
 
   return (
-    <NavbarContainer1>
-      <Navbarwrapper1>
-        <Div>
+    <Div>
+      <NavbarContainer1>
+        <Navbarwrapper1>
           <div className="nav">
             <div className="sidebar ">
               <div className="navigation">
@@ -63,12 +63,7 @@ function Navertical() {
                         </MenuItemLink1>
                       </li>
                     </MenuItem1>
-                    {/* <li>
-                <a href="#">
-                  <span className="fa fa-search"><img className='home' src={lupa} alt="home" /></span>
-                  <span>Search</span>
-                </a>
-              </li> */}
+               
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
@@ -127,9 +122,9 @@ function Navertical() {
               </div>
             </div>
           </div>
-        </Div>
-      </Navbarwrapper1>
-    </NavbarContainer1>
+        </Navbarwrapper1>
+      </NavbarContainer1>
+    </Div>
   );
 }
 
@@ -227,4 +222,4 @@ const Div = styled.div`
   ul {
     padding-top: 40px;
   }
-`;
+`
