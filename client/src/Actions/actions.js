@@ -14,6 +14,7 @@ export const GET_ALL_TRACKS = 'GET_ALL_TRACKS';
 export const GET_ALL_ALBUMS = 'GET_ALL_ALBUMS';
 export const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
 export const FILTRO_GENERO = 'FILTRO_GENERO';
+export const RESET_DETALLES = "RESET_DETALLES;"
 
 
 const initialLimit = 10;
@@ -97,8 +98,13 @@ export const Landing = () => {
     return {
         type: "LANDING"
     }
+}
 
-
+  //reset  detail
+export function resetDetalles() {
+    return async function (dispatch) {
+        dispatch({ type: RESET_DETALLES })
+    }
 }
 
 export const filtroGenero = (payload) => {

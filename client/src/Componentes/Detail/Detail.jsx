@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Landing } from '../../Actions/actions';
 import styled from 'styled-components';
 import favi from '../Detail/favi.png'
-import { getArtist } from '../../Actions/actions';
+import { getArtist, resetDetalles } from '../../Actions/actions';
 import { Link } from 'react-router-dom'
 import Player1 from '../Audio-Player/Player1';
 import play from '../Detail/play.png'
@@ -27,7 +27,10 @@ function Detail(props) {
         i: 0,
     })
 
-    // useEffect(() => dispatch(Landing()), [])
+    function reset() {
+        dispatch(resetDetalles());
+    }
+
 
     function handleClick(e) {
         setData({ ...data, i: e })
@@ -36,7 +39,6 @@ function Detail(props) {
     useEffect(() => {
         dispatch(getArtist(props.match.params.id));
         dispatch(Landing());
-
     }, []);
 
     useEffect(() => {
@@ -64,16 +66,15 @@ function Detail(props) {
                                 <p className="card-text p-0">Playlist</p>
                                 <h1 className="card-title display-1 p-0 m-0 name">{data.name}</h1>
                                 <h3> {data.genres.map(el => el + ', ')} </h3>
+
                             </div>
 
                         </div>
                     </div>
                     <br />
                     <br />
-                    <Link to={"/home"}>
-
+                    <Link onClick={reset} to={"/home"}>
                         <button className=" regresar btn-dark" type="button">Volver al Menu</button>
-
                     </Link>
                 </div>
             </div>
@@ -85,15 +86,15 @@ function Detail(props) {
             <div className='contenedordos'>
                 <ol className="list-group list-group-numbered container-fluid ">
                     {data.tracks.map(el => (
-                        <button className='detail-button' onClick={() => handleClick(data.tracks.indexOf(el))}>
-                            <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
-                                <img className='fotico ms-4' src={play} alt="" />
-                                <div className=" ms-4 me-auto">
-                                    <div className="fw-bold">{el.name}</div>
-                                </div>
-                                <div className='fw-bold'> {convertidor(el.duration)} </div>
-                            </li>
-                        </button>
+
+                        <li className=" ms-0 list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
+                            <img onClick={() => handleClick(data.tracks.indexOf(el))} className='fotico ms-2' src={play} alt="play" />
+                            <div className=" ms-4 me-auto">
+                                <div className="fw-bold">{el.name}</div>
+                            </div>
+                            <div className='fw-bold'> {convertidor(el.duration)} </div>
+                        </li>
+
                     ))}
                 </ol>
             </div>
@@ -122,10 +123,23 @@ span{
 }
 li{
     border:none;
+   
 }
+
 .fotico{
-    width: 25px;
+    width: 28px;
+    cursor: pointer;
 }
+
+.fotico:hover {
+    cursor: pointer;
+    transform: scale(1.08);
+    transition: all 0.3s;
+  
+}
+
+
+
 .name {
     font-weight: 600;
     text-decoration: overline #FFFF01;
@@ -139,12 +153,14 @@ p{
     background: linear-gradient(124deg, rgba(0,0,0,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
 }
 color: white;
+
 img {
     width: 350px;
     border-radius: 20px;
-    max-width: 350px;  
-    
+    max-width: 350px; 
+    max-height: 400px;   
 }
+
 .pancho {
     max-width: 350px;
     max-height: 400px;
