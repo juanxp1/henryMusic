@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom"
 import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 import { postSong } from "../../Actions/actions";
-
+import imagen from "../NewSong/lol6.jpg";
 
 function New() {
 
@@ -100,6 +100,7 @@ function New() {
 
     return (
         <Container >
+            
             <div className="owo">
 
                 <div class="login-box">
@@ -205,7 +206,8 @@ const Container = styled.div`
     height: 100vh;
     display:grid;
     place-items:center;
-    background: linear-gradient(124deg, rgba(10,0,8,1) 5%, rgba(53,24,74,1) 100%, rgba(63,28,87,1) 100%, rgba(91,40,125,1) 100%, rgba(131,58,180,1) 100%);
+    background-image: url(${imagen});
+    
 }
 .iwi{
     color: yellow;
