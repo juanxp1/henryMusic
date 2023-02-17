@@ -17,76 +17,69 @@ export const FILTRO_GENERO = 'FILTRO_GENERO';
 
 
 const initialLimit = 10;
+const token = window.localStorage.getItem('token')
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 export const getTrack = (ID) => {
     return async function (dispatch) {
-        return fetch(`${URL}/track/${ID}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_TRACK, payload: json }))
+        const info = await axios.get(`${URL}/track/${ID}`)
+        return dispatch({ type: GET_TRACK, payload: info.data })
     };
 };
 
 export const searchTrack = (track, limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/track/search?q=${track}&limit=${limit}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: SEARCH_TRACK, payload: json }))
+        const info = await axios.get(`${URL}/track/search?q=${track}&limit=${limit}`)
+        return dispatch({ type: SEARCH_TRACK, payload: info.data })
     };
 };
 
 export const getAllTracks = (limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/track/all?limit=${limit}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ALL_TRACKS, payload: json }))
+        const info = await axios.get(`${URL}/track/all?limit=${limit}`)
+        return dispatch({ type: GET_ALL_TRACKS, payload: info.data })
     };
 };
 
 export const getAlbum = (ID) => {
     return async function (dispatch) {
-        return fetch(`${URL}/album/${ID}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ALBUM, payload: json }))
+        const info = await axios.get(`${URL}/album/${ID}`)
+        return dispatch({ type: GET_ALBUM, payload: info.data })
     };
 };
 
 export const searchAlbum = (album, limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/album/search?q=${album}&limit=${limit}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: SEARCH_ALBUM, payload: json }))
+        const info = await axios.get(`${URL}/album/search?q=${album}&limit=${limit}`)
+        return dispatch({ type: SEARCH_ALBUM, payload: info.data })
     };
 };
 
 export const getAllAlbums = (limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/album/all?limit=${limit}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ALL_ALBUMS, payload: json }))
+        const info = await axios.get(`${URL}/album/all?limit=${limit}`)
+        return dispatch({ type: GET_ALL_ALBUMS, payload: info.data })
     };
 };
 
 export const getArtist = (ID) => {
     return async function (dispatch) {
-        return fetch(`${URL}/artist/${ID}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ARTIST, payload: json }))
+        const info = await axios.get(`${URL}/artist/${ID}`)
+        return dispatch({ type: GET_ARTIST, payload: info.data })
     };
 };
 
 export const searchArtist = (artist, limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/artist/search?q=${artist}&limit=${limit}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: SEARCH_ARTIST, payload: json }))
+        const info = await axios.get(`${URL}/artist/search?q=${artist}&limit=${limit}`)
+        return dispatch({ type: SEARCH_ARTIST, payload: info.data })
     };
 };
 
 export const getAllArtists = (limit = initialLimit) => {
     return async function (dispatch) {
-        return fetch(`${URL}/artist/all?limit=${limit}`)
-            .then(res => res.json())
-            .then(json => dispatch({ type: GET_ALL_ARTISTS, payload: json }))
+        const info = await axios.get(`${URL}/artist/all?limit=${limit}`)
+        return dispatch({ type: GET_ALL_ARTISTS, payload: info.data })
 
     };
 

@@ -5,7 +5,7 @@ import Premium from './Premium/Premium'
 import Us from './About us/Us'
 import Footer from './Footer/Footer'
 import Pagos from './Pagos/Pagos';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 
@@ -15,8 +15,12 @@ import Pagos from './Pagos/Pagos';
 function Landing() {
 
     const { login } = useSelector(state => state)
-    useEffect(() => {
+    const {getAccessTokenSilently} = useAuth0();
 
+    useEffect(async () => {
+        const token = await getAccessTokenSilently({})
+        window.localStorage.setItem('token', token)
+        console.log(token)
     }, [login])
 
     return (

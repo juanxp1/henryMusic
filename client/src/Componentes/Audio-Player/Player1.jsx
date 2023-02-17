@@ -58,7 +58,7 @@ export default function Player1(tracks) {
         // onClickNext={() => setCurrentSong({index: currentSong.index == tracks.tracks.length - 1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == tracks.tracks.length-1 ? currentSong.url : arr[currentSong.index+1]})}
         // onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : arr[currentSong.index-1]})}
         className="repro p-0 m-0 "
-        showSkipControls
+        // showSkipControls
         volumeJumpStep
         showFilledProgress
         header
