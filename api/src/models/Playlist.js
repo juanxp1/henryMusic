@@ -36,6 +36,8 @@ export default connection.define('Playlist', {
     public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        unique: false,
+        defaultValue: false
     }
 
 },

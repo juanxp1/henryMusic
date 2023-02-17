@@ -75,7 +75,7 @@ export default connection.define('Song', {
     allowNull: false,
     unique: false,
     validate: { notEmpty: true },
-    defaultValue: false
+    defaultValue: true
   },
 
   play_url: {

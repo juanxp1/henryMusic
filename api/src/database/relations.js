@@ -100,8 +100,12 @@ Artist.belongsToMany(Track, {
 });
 
 // User relations ----------------------------
+User.hasMany(Playlist, { as: 'playlists', foreignKey: 'user_id' });
+Playlist.belongsTo(User, { as: 'user', foreignKey: 'user_id' });
+
 User.belongsTo(Image, { as: 'avatar', foreignKey: 'image_id' });
 Image.hasOne(User, { as: 'owner', foreignKey: 'image_id' });
+
 User.hasMany(Image, {
   foreignKey: 'entity_id',
   constraints: false,

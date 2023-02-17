@@ -80,9 +80,10 @@ export default connection.define('User', {
 },
 {
     tableName: 'users',
-    paranoid: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
+    paranoid: true,
+    deletedAt: 'deleted_at',
     hooks: {
         afterFind: (users, options) => {
             if (!users) return;

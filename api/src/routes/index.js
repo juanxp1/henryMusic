@@ -17,12 +17,13 @@ const fieldsUpload = upload.fields([
 
 // rutas publicas eg:
 // router.get('/public', PublicController.getSomething)
+router.post('/api/register-auth0-user', UserController.createUser)
 
 // rutas privadas, se necesita un token valido para acceder a ellas
 secured.get('/track/all', TrackController.getAllTracks)
 secured.get('/track/search', TrackController.searchTrack)
 secured.get('/track/:id', TrackController.getTrack)
-secured.post('/track/create', fieldsUpload, TrackController.createSong)
+secured.post('/song/create', fieldsUpload, TrackController.createSong)
 secured.get('/song/all', TrackController.getAllSongs)
 
 secured.get('/album/all', AlbumController.getAllAlbums)
@@ -34,6 +35,7 @@ secured.get('/artist/search', ArtistController.searchArtist)
 secured.get('/artist/:id', ArtistController.getArtist)
 
 secured.get('/user', UserController.getUser)
+secured.get('/user/edit', UserController.getUser)
 
 // setup de las rutas
 router.use('/', authRouter);// ruta para la autenticacion
