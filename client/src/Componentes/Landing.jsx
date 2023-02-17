@@ -9,9 +9,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 
 
-
-
-
 function Landing() {
 
     const { login } = useSelector(state => state)
@@ -20,7 +17,7 @@ function Landing() {
     useEffect(async () => {
         const token = await getAccessTokenSilently({})
         window.localStorage.setItem('token', token)
-        console.log(token)
+    
     }, [login])
 
     return (

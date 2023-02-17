@@ -8,7 +8,7 @@ import Avatar from '@mui/material/Avatar';
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  console.log("holis",user)
+  
 
   // if (isLoading) {
   //   return <h1>LOADING...</h1>
