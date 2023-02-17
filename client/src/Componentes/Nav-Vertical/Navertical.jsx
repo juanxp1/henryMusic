@@ -45,8 +45,8 @@ function Navertical() {
                           className="fotasa"
                           src={logo3}
                           alt="logo"
-                        autoPlay
-                        loop
+                          autoPlay
+                          loop
                         />
                       </a>
                     </div>
@@ -63,7 +63,7 @@ function Navertical() {
                         </MenuItemLink1>
                       </li>
                     </MenuItem1>
-               
+
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
@@ -77,7 +77,7 @@ function Navertical() {
                       </li>
                     </MenuItem1>
 
-                    <MenuItem1 onClick={() => ChangeClick()}>
+                    {/* <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
                           <a href="#">
@@ -88,7 +88,7 @@ function Navertical() {
                           </a>
                         </MenuItemLink1>
                       </li>
-                    </MenuItem1>
+                    </MenuItem1> */}
 
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>

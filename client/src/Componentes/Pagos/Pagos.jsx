@@ -12,6 +12,8 @@ export default function Pagos() {
   const [price, setPrice] = useState(0);
   const [opcion, setOpcion] = useState(5);
 
+  
+
   useEffect(() => {
     {
       if (opcion)
@@ -34,6 +36,7 @@ export default function Pagos() {
   const onApprove = (data, actions) => {
     return actions.order.capture(window.alert("Transaccion Exitosa."));
   };
+
 
 
 
