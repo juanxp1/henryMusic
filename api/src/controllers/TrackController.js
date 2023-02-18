@@ -114,7 +114,7 @@ export async function createSong(req, res) {
   validator = new Validator(req.files, { image: 'required', song: 'required' })
   if (validator.fails()) return jsonError(res, validator.errors)
 
-  if (await Song.findOne({ where: { name: req.body.name, artist: req.body.artist, user_id: req.auth.sub } })) {
+  if (await Song.findOne({ where: { name: req.body.name, artist: req.body.artist, user_id: req.auth.payload.sub } })) {
     deleteTempFiles([req.files.image[0], req.files.song[0]])
     jsonError(res, "Song already exists", 409)
     return
@@ -137,7 +137,7 @@ export async function createSong(req, res) {
     let { name, artist, album, genre, explicit } = req.body
     const song = await Song.create({
       id: audio.name,
-      user_id: req.auth.sub,
+      user_id: req.auth.payload.sub,
       extension: audio.extension,
       public: req.body.public,
       duration: audio.duration,

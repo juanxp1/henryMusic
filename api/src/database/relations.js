@@ -61,7 +61,8 @@ Genre.belongsToMany(Artist, {
 });
 
 // Country relations ----------------------------
-Country.hasMany(User, { foreignKey: 'country_id' });
+Country.hasMany(User, { as: 'users', foreignKey: 'country_id' });
+User.belongsTo(Country, { as: 'country', foreignKey: 'country_id' });
 
 // Playlist relations ----------------------------
 Playlist.hasMany(Image, {

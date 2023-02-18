@@ -89,8 +89,9 @@ export default connection.define('User', {
             if (!users) return;
             if (!Array.isArray(users)) users = [users];
             users.forEach(user => {
-                delete user.deletedAt;
-                delete user.dataValues.deletedAt;
+                user.country && (user.dataValues.country = user.country.name)
+                delete user.deleted_at;
+                delete user.dataValues.deleted_at;
             });
         }
     }
