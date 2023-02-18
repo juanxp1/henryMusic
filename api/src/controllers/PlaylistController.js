@@ -67,9 +67,9 @@ export async function searchPlaylists(req, res) {
   });
   if (validator.fails()) { return jsonError(res, validator.errors, 422) }
 
-  req.query.public = req.query.public === 'true'
   const where = { name: { [Op.iLike]: `%${req.query.q}%` } }
-  !req.query.public && (where.public = true)
+  req.query.public = req.query.public === 'true'
+  req.query.public ? where.public = true : where.user_id = req.user.id
 
   try {
     const page = req.query.page || 1;

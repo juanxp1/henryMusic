@@ -101,6 +101,56 @@ export async function getAllTracks(req, res) {
   catch (error) { jsonError(res, error.message) }
 }
 
+export async function getAllSongs(req, res) {
+  const validator = new Validator(req.query, {
+    limit: "integer|min:1",
+    offset: "integer|min:0",
+    public: "boolean"
+  })
+  if (validator.fails()) return jsonError(res, validator.errors)
+  const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
+
+  req.query.public = req.query.public === 'true'
+
+  try {
+    const songs = await Song.findAndCountAll({
+      where: req.query.public ? { public: true } : { user_id: req.user.id },
+      attributes: { exclude: ["created_at", "updated_at"] },
+      include: [ { model: Image, as: 'images', attributes: ['id', 'url', 'width', 'height'] } ],
+      limit, offset, distinct: true
+    })
+    jsonOk(res, { total: songs.count, songs: songs.rows, limit, offset })
+  }
+  catch (error) { jsonError(res, error.message) }
+}
+
+export async function searchSongs(req, res) {
+  const validator = new Validator(req.query, {
+    q: "required|string|min:2",
+    limit: "integer|min:1",
+    offset: "integer|min:0",
+    public: "boolean"
+  })
+  if (validator.fails()) return jsonError(res, validator.errors)
+  const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
+
+  req.query.public = req.query.public === 'true'
+
+  try {
+    const songs = await Song.findAndCountAll({
+      where: {
+        name: { [Op.iLike]: '%' + req.query.q + '%' },
+        ...(req.query.public ? { public: true } : { user_id: req.user.id })
+      },
+      attributes: { exclude: ["created_at", "updated_at"] },
+      include: [ { model: Image, as: 'images', attributes: ['id', 'url', 'width', 'height'] } ],
+      limit, offset, distinct: true
+    })
+    jsonOk(res, { total: songs.count, songs: songs.rows, limit, offset })
+  }
+  catch (error) { jsonError(res, error.message) }
+}
+
 export async function createSong(req, res) {
   let validator = new Validator(req.body, {
     name: 'required|string|min:3|max:100',
@@ -156,25 +206,6 @@ export async function createSong(req, res) {
         }]
       }
     })
-  } catch (error) {
-    jsonError(res, error.message)
-  }
-}
-
-export async function getAllSongs(req, res) {
-  const validator = new Validator(req.query, {
-    limit: "integer|min:1",
-    offset: "integer|min:0"
-  })
-  if (validator.fails()) return jsonError(res, validator.errors)
-  const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
-
-  try {
-    const songs = await Song.findAll({
-      attributes: { exclude: ["created_at", "updated_at"] },
-      limit, offset, distinct: true
-    })
-    jsonOk(res, songs)
   } catch (error) {
     jsonError(res, error.message)
   }

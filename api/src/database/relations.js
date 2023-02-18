@@ -10,7 +10,7 @@ import Album from "../models/Album.js";
 import Playlist from "../models/Playlist.js";
 import PlaylistTrack from "../models/PlaylistTrack.js";
 import TrackArtist from "../models/TrackArtist.js";
-import '../models/Song.js'
+import Song from "../models/Song.js";
 import '../models/Review.js'
 
 // Album relations ----------------------------
@@ -117,6 +117,15 @@ Image.belongsTo(User, { as: 'user', foreignKey: 'entity_id', constraints: false 
 
 User.hasMany(Playlist, { foreignKey: 'user_id' });
 Playlist.belongsTo(User, { foreignKey: 'user_id' });
+
+// Song relations ----------------------------
+Song.hasMany(Image, {
+  foreignKey: 'entity_id',
+  constraints: false,
+  scope: { type: 'song' },
+  as: 'images'
+})
+Image.belongsTo(Song, { as: 'song', foreignKey: 'entity_id', constraints: false });
 
 export const sequelize = User.sequelize
 export const models = User.sequelize.models
