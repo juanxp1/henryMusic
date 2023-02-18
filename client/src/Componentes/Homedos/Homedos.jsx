@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { Link } from "react-router-dom";
+import Player1 from "../Audio-Player/Player1.jsx";
+import play from '../HardCode/play.png'
 
 const Homedos = () => {
   const { user, isAuthenticated } = useAuth0();
@@ -20,14 +22,29 @@ const Homedos = () => {
     dispatch(filtroGenero(genero.target.value));
   }
 
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [data, setData] = useState({album: [], i: 0})
+  const [current, setCurrent] = useState({})
+
+  function handleClick(e) {
+      setIsPlaying(true)
+      setData({...data, i: e})
+      setCurrent({tracks: data.album[data.i].tracks, i: 0})
+  }
+
   useEffect(() => {
     dispatch(getAllArtists(200));
     dispatch(Landing());
     dispatch(getAllAlbums(50));
   }, []);
 
-  console.log("ALBUM", infoAlbum.albums);
-  console.log("ARTIST", infoMusic.artists);
+  useEffect(() => {
+    setData({album: infoAlbum.albums, i: 0})
+  }, [infoAlbum])
+
+
+  // console.log("ALBUM", infoAlbum.albums);
+  // console.log("ARTIST", infoMusic.artists);
 
   //console.log(infoMusic.artistAlbums)
   //    const CurrentCards = allAlbums;
@@ -35,7 +52,7 @@ const Homedos = () => {
   return (
     // isAuthenticated ? (
 
-    <Container>
+    <Container1>
       <div className="contenedor  d-flex justify-content-center container-fluid">
         <div className="container-fluid w-100 p-0 m-0">
           <h1 className="h1 ms-3">
@@ -51,15 +68,22 @@ const Homedos = () => {
               {infoAlbum.albums ? (
                 infoAlbum.albums?.slice(30, 36).map((c) => {
                   return (
-                    <div className="col-md-4">
-                      <Hardcode
-                        key={c.id}
-                        id={c.id}
-                        name={c.name}
-                        image={c.images[0]?.url}
-                        tracks={c.tracks}
-                      />
+                    <Container container-fluid>
+                    <div className="generos w-100 ">
+                        <div className="cards">
+                            <div className='cards-info'>
+                                <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
+                                <div className="card_text container">
+                                    <p className='d-flex justify-content-start w-100'>{c.name}</p>
+                                    <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
+                                </div>               
+                            </div>
+                        </div>
+                        {console.log('DATA', data, 'CURRENT', current.tracks)}
                     </div>
+        
+        
+                </Container>
                   );
                 })
               ) : (
@@ -221,7 +245,10 @@ const Homedos = () => {
           </div>
         </div>
       </div>
-    </Container>
+      <div className='card_imagen bg-transparent fixed-bottom'>
+        {isPlaying ? <Player1 tracks={current.tracks} i={current.i} /> : <span> </span>}
+      </div>
+    </Container1>
 
     //     ) :
     //         <Verificado className='container-fluid'>
@@ -234,7 +261,7 @@ const Homedos = () => {
 
 export default Homedos;
 
-const Container = styled.div`
+const Container1 = styled.div`
   * {
     text-decoration: none;
     color: #ffffff;
@@ -460,6 +487,89 @@ const Container = styled.div`
     }
   }
 `;
+
+const Container = styled.div`
+
+img{
+    width: 40px;
+}
+
+.generos{
+    flex-wrap: wrap;
+    width: 100%;  
+    margin-bottom: 10px;
+}
+.cards{
+    width: 300px;
+    height: 80px;
+    transition: var(--efecto);
+    flex-basis: calc((100% / 3) - 20px);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin: 10px;
+    --background: linear-gradient(to bottom,  #000000 70%, #FFFF01 100%);
+    padding: 4px;
+    overflow: visible;
+    background: #000000;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+
+}
+.cards::after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.8);
+    filter: blur(100px);
+    background: #000000;
+    background: var(--background);
+    transition: opacity .5s;
+}
+.cards-info {
+    --color: #181818;
+    background: var(--color);
+    color: var(--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: .7rem;
+}
+.cards:hover::after {
+    opacity: 0;
+}   
+ .cards:hover .card-info {
+    color: #000000;
+    transition: color 1s;
+} 
+
+.card_imagen{
+    
+    width: 80px;
+    height: 70px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.card_text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: calc(100% - 80px);
+}
+`
+
 // SOLO PARA CORREOS VERIFICADO
 
 const Verificado = styled.div`
