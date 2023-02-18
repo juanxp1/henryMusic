@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import visa from '../Pagos/visa.png'
 import master from '../Pagos/master.png'
 import paypal from '../Pagos/paypal.png'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -12,6 +13,8 @@ export default function Pagos() {
   const [price, setPrice] = useState(0);
   const [opcion, setOpcion] = useState(5);
 
+  
+
   useEffect(() => {
     {
       if (opcion)
@@ -19,6 +22,8 @@ export default function Pagos() {
     }
   }, [opcion]);
 
+
+  const { isAuthenticated } = useAuth0();
 
   const createOrder = (data, actions) => {
     return actions.order.create({
@@ -31,23 +36,28 @@ export default function Pagos() {
       ],
     });
   };
+
+
   const onApprove = (data, actions) => {
+    console.log(actions,"aveeeqalora")
     return actions.order.capture(window.alert("Transaccion Exitosa."));
   };
 
 
+const alert =() => {
+  return window.alert("Registrate para continuar")
+}
 
   const handleCambio = (e) => {
     setOpcion(e.target.value)
   }
 
 
+
   return (
-
-
     <Container className="payment container-fluid" id="premium">
 
-      <h1 className='text-center pt-5'>¡No Esperes Mas Y Adquiere Hoy Tu Plan Premium!</h1>
+      <h1 className='text-center pt-5'>¡No esperes mas y adquiere hoy tu plan Premium!</h1>
       <h2 className='text-center Music'>ᴺᴼᵂ ᴾᴸᴬᵞᴵᴺᴳ♫♬♪</h2>
       <p className="parrafo text-center"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
       <img src={visa} alt="visa" />
@@ -83,6 +93,7 @@ export default function Pagos() {
         </div>
       </div>
 
+{isAuthenticated? 
       <div className=' wrapper d-flex aling-items-center justify-content-center w-100'>
         <div className="card mb-2">
           <h2>Elige tu plan Premium por US$ {price}</h2>
@@ -95,9 +106,10 @@ export default function Pagos() {
             createOrder={(data, actions) => createOrder(data, actions)}
             onApprove={(data, actions) => onApprove(data, actions)}
           />
+
           <hr />
         </div>
-      </div>
+      </div> : <button onClick={alert} className="btn bg-dark"><h2>Realizar Compra</h2></button> }
     </Container>
   );
 }

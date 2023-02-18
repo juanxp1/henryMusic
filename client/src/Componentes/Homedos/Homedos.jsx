@@ -137,7 +137,7 @@ const Homedos = () => {
           </h2>
           {/* carrusel */}
           <div className="swiffy-slider">
-            <ul className="slider-container d-flex">
+            <ul className="slider-container d-flex justify-content-end">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
