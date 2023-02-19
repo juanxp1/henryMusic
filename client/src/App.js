@@ -6,18 +6,11 @@ import Detail from './Componentes/Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
 import Homedos from './Componentes/Homedos/Homedos'
 import PlayList from "./Componentes/CreatePlayList/PlayList";
-<<<<<<< HEAD
-=======
-import video from './Fotos/publi.mp4';
-//audio
-//Publicidad
-import Ads from './Componentes/publicidad/Ads'
 import { getToken } from "./Actions/actions";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Player1 from "./Componentes/Audio-Player/Player1";
->>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
 
 
 function App() {
@@ -29,10 +22,6 @@ function App() {
   const { getAccessTokenSilently } = useAuth0();
   const dispatch = useDispatch();
 
-<<<<<<< HEAD
-=======
-  // <audio src={video}></audio>
-  // Ads(() => <video src={video}> </video>, 100)
   useEffect(() => {
     (async () => {
       const token = await getAccessTokenSilently();
@@ -40,7 +29,6 @@ function App() {
       dispatch(getToken(token));
     })()
   }, [])
->>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
 
   return (
 

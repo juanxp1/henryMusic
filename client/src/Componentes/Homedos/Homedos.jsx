@@ -2,42 +2,32 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import { getAllArtists, filtroGenero} from ".././../Actions/actions.js";
+import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import registre from '../Homedos/registre.jpg'
-
-
-=======
 import play from './play.png'
->>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
 
 const Homedos = () => {
-
-
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const infoMusic = useSelector((state) => state.artists);
   const infoAlbum = useSelector((state) => state.albums);
   const infoPlayer = useSelector(state => state.player)
 
-
-
   function handleGenero(genero) {
     genero.preventDefault();
     dispatch(filtroGenero(genero.target.value));
   }
 
-  const [data, setData] = useState({album: []})
+  const [data, setData] = useState({ album: [] })
 
   function handleClick(e) {
-      setData({...data, i: e})
-      dispatch(getPlayer({tracks: data.album[e].tracks, i: 0}))
-      dispatch(isPlaying())
-      
+    setData({ ...data, i: e })
+    dispatch(getPlayer({ tracks: data.album[e].tracks, i: 0 }))
+    dispatch(isPlaying())
+
   }
 
   useEffect(() => {
@@ -49,53 +39,15 @@ const Homedos = () => {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    setData({album: infoAlbum.albums, i: 0})
+    setData({ album: infoAlbum.albums, i: 0 })
   }, [infoAlbum])
 
 
   console.log(infoPlayer)
 
   return (
-    isAuthenticated ? (
+    // isAuthenticated ? (
 
-<<<<<<< HEAD
-      <Container>
-        <div className="contenedor  d-flex justify-content-center container-fluid">
-          <div className="container-fluid w-100 p-0 m-0">
-            <h1 className="h1 ms-3">
-              Bienvenido{" "}
-              <span className="pit">{user?.nickname.toUpperCase()}</span>
-            </h1>
-            <h2 className=" d-flex justify-content-center mt-4 mb-3  h1 text-white">
-              Top artistas
-            </h2>
-
-            <div className="container-fluid d-flex justify-content-center">
-              <div className="row container-sm">
-                {infoAlbum.albums ? (
-                  infoAlbum.albums?.slice(30, 36).map((c) => {
-                    return (
-                      <div className="col-md-4">
-                        <Hardcode
-                          key={c.id}
-                          id={c.id}
-                          name={c.name}
-                          image={c.images[0]?.url}
-                          tracks={c.tracks}
-                        />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div className="uwu w-100 container-fluid">
-                    <div className="loaderRectangle d-flex justify-content-center">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
-=======
     <Container1>
       <div className="contenedor  d-flex justify-content-center container-fluid">
         <div className="container-fluid w-100 p-0 m-0">
@@ -107,27 +59,93 @@ const Homedos = () => {
             Top artistas
           </h2>
 
-          <div className="container-fluid d-flex justify-content-center">
-            <div className="row container-sm">
+
+          {/* HARCODE */}
+
+
+          <div className="swiffy-slider container">
+            <ul className="slider-container d-flex justify-content-center">
               {infoAlbum.albums ? (
-                infoAlbum.albums?.slice(30, 36).map((c) => {
+                infoAlbum.albums?.slice(20, 26).map((c) => {
                   return (
-                    <Container container-fluid>
-                    <div className="generos w-100 ">
-                        <div className="cards">
+
+                    <Container >
+                      <li className="">
+                        <div className="d-flex justify-content-center">
+                          <div className="cards">
                             <div className='cards-info'>
-                                <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
-                                <div className="card_text container">
-                                    <p className='d-flex justify-content-start w-100'>{c.name}</p>
-                                    <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
-                                </div>               
+                              <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
+                              <div className="card_text container">
+                                <p className='d-flex justify-content-start w-100 '>{c.name}</p>
+                                <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
+                              </div>
                             </div>
+                          </div>
                         </div>
-                        {console.log('DATA', data)}
-                    </div>
-        
-        
-                </Container>
+                      </li>
+                    </Container>
+                  )
+                })
+              ) : (
+                <div className="uwu w-100 container-fluid">
+                  <div className="loaderRectangle d-flex justify-content-center">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              )}
+            </ul>
+            <button type="button" className="slider-nav"></button>
+            <button
+              type="button"
+              className="slider-nav slider-nav-next"
+            ></button>
+          </div>
+
+
+
+
+          {/* BOTON FILTRO POR GENERO */}
+
+          <div className="btn-wrapper mt-5 mb-3 container-fluid">
+            <select onChange={(e) => handleGenero(e)} className="btn">
+              <option value="All">All Generos</option>
+              <option value="Pop">Pop</option>
+              <option value="Trap">Trap</option>
+              <option value="Latin">Latin </option>
+              <option value="Rock">Rock </option>
+              <option value="hip hop">hip hop</option>
+            </select>
+          </div>
+
+
+
+          {/* Aqui comienzan los carruseles */}
+
+          <h2 className="d-flex justify-content-start h1 ms-3">Lo mas escuchado </h2>
+          {/* carrusel */}
+
+          <div className="swiffy-slider">
+            <ul className="slider-container d-flex justify-content-center">
+              {infoMusic.artists ? (
+                infoMusic?.artists.map((c) => {
+                  return (
+                    <li className="d-flex">
+                      <Link to={"/detail/" + c.id}>
+                        <Card
+                          key={c.id}
+                          id={c.id}
+                          name={c.name}
+                          image={c.images[0]?.url}
+                          genre={c.genres.map((el) => (
+                            <span> {el.name} </span>
+                          ))}
+                        />
+                      </Link>
+                    </li>
                   );
                 })
               ) : (
@@ -138,172 +156,116 @@ const Homedos = () => {
                     <div></div>
                     <div></div>
                     <div></div>
->>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
                   </div>
-                )}
+                </div>
+              )}
+            </ul>
+            <button type="button" className="slider-nav"></button>
+            <button
+              type="button"
+              className="slider-nav slider-nav-next"
+            ></button>
+          </div>
 
-              </div>
-            </div>
-
-            <div className="btn-wrapper mt-0 mb-3 container-fluid">
-              <select onChange={(e) => handleGenero(e)} className="btn">
-                <option value="All">All Generos</option>
-                <option value="Pop">Pop</option>
-                <option value="Trap">Trap</option>
-                <option value="Latin">Latin </option>
-                <option value="Rock">Rock </option>
-                <option value="hip hop">hip hop</option>
-              </select>
-            </div>
-
-            {/* Aqui comienzan los carruseles */}
-
-            <h2 className="d-flex justify-content-start h1 ms-3">Lo mas escuchado </h2>
-            {/* carrusel */}
-
-            <div className="swiffy-slider">
-              <ul className="slider-container d-flex justify-content-center">
-                {infoMusic.artists ? (
-                  infoMusic?.artists.map((c) => {
-                    return (
-                      <li className="d-flex">
-                        <Link to={"/detail/" + c.id}>
-                          <Card
-                            key={c.id}
-                            id={c.id}
-                            name={c.name}
-                            image={c.images[0]?.url}
-                            genre={c.genres.map((el) => (
-                              <span> {el.name} </span>
-                            ))}
-                          />
-                        </Link>
-                      </li>
-                    );
-                  })
-                ) : (
-                  <div className="uwu w-100 container-fluid">
-                    <div className="loaderRectangle d-flex justify-content-center">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+          <h2 className="d-flex justify-content-start h1 ms-3">
+            Temas para {user?.name}
+          </h2>
+          {/* carrusel */}
+          <div className="swiffy-slider">
+            <ul className="slider-container d-flex justify-content-end">
+              {infoMusic.artists ? (
+                infoMusic?.artists.map((c) => {
+                  return (
+                    <li className="d-flex">
+                      <Link to={"/detail/" + c.id}>
+                        <Card
+                          key={c.id}
+                          id={c.id}
+                          name={c.name}
+                          image={c.images[0]?.url}
+                          genre={c.genres.map((el) => (
+                            <span> {el.name} </span>
+                          ))}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })
+              ) : (
+                <div className="uwu mw-100 container-fluid">
+                  <div className="loaderRectangle d-flex justify-content-center">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                   </div>
-                )}
-              </ul>
-              <button type="button" className="slider-nav"></button>
-              <button
-                type="button"
-                className="slider-nav slider-nav-next"
-              ></button>
-            </div>
+                </div>
+              )}
+            </ul>
+            <button type="button" className="slider-nav"></button>
+            <button
+              type="button"
+              className="slider-nav slider-nav-next"
+            ></button>
+          </div>
 
-            <h2 className="d-flex justify-content-start h1 ms-3">
-              Temas para {user?.name}
-            </h2>
-            {/* carrusel */}
-            <div className="swiffy-slider">
-              <ul className="slider-container d-flex justify-content-end">
-                {infoMusic.artists ? (
-                  infoMusic?.artists.map((c) => {
-                    return (
-                      <li className="d-flex">
-                        <Link to={"/detail/" + c.id}>
-                          <Card
-                            key={c.id}
-                            id={c.id}
-                            name={c.name}
-                            image={c.images[0]?.url}
-                            genre={c.genres.map((el) => (
-                              <span> {el.name} </span>
-                            ))}
-                          />
-                        </Link>
-                      </li>
-                    );
-                  })
-                ) : (
-                  <div className="uwu mw-100 container-fluid">
-                    <div className="loaderRectangle d-flex justify-content-center">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+          <h2 className="d-flex justify-content-start h1 ms-3">
+
+            Canciones creadas por la Comunidad
+          </h2>
+          {/* carrusel */}
+
+          <div className="swiffy-slider">
+            <ul className="slider-container d-flex">
+              {infoMusic.artists ? (
+                infoMusic?.artists.map((c) => {
+                  return (
+                    <li className="d-flex">
+                      <Link to={"/detail/" + c.id}>
+                        <Card
+                          key={c.id}
+                          id={c.id}
+                          name={c.name}
+                          image={c.images[0]?.url}
+                          genre={c.genres.map((el) => (
+                            <span> {el.name} </span>
+                          ))}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })
+              ) : (
+                <div className="uwu mw-100 container-fluid">
+                  <div className="loaderRectangle d-flex justify-content-center">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                   </div>
-                )}
-              </ul>
-              <button type="button" className="slider-nav"></button>
-              <button
-                type="button"
-                className="slider-nav slider-nav-next"
-              ></button>
-            </div>
-
-            <h2 className="d-flex justify-content-start h1 ms-3">
-
-              Canciones creadas por la Comunidad
-            </h2>
-            {/* carrusel */}
-
-            <div className="swiffy-slider">
-              <ul className="slider-container d-flex">
-                {infoMusic.artists ? (
-                  infoMusic?.artists.map((c) => {
-                    return (
-                      <li className="d-flex">
-                        <Link to={"/detail/" + c.id}>
-                          <Card
-                            key={c.id}
-                            id={c.id}
-                            name={c.name}
-                            image={c.images[0]?.url}
-                            genre={c.genres.map((el) => (
-                              <span> {el.name} </span>
-                            ))}
-                          />
-                        </Link>
-                      </li>
-                    );
-                  })
-                ) : (
-                  <div className="uwu mw-100 container-fluid">
-                    <div className="loaderRectangle d-flex justify-content-center">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
-                  </div>
-                )}
-              </ul>
-              <button type="button" className="slider-nav"></button>
-              <button
-                type="button"
-                className="slider-nav slider-nav-next"
-              ></button>
-            </div>
+                </div>
+              )}
+            </ul>
+            <button type="button" className="slider-nav"></button>
+            <button
+              type="button"
+              className="slider-nav slider-nav-next"
+            ></button>
           </div>
         </div>
-<<<<<<< HEAD
-      </Container>
-=======
       </div>
       <div className='card_imagen bg-transparent fixed-bottom'>
       </div>
     </Container1>
->>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
 
-    ) :
-      <Verificado className='container-fluid'>
-        <div className='contenedor'>
-          <h1 className=' w-100 d-flex justify-content-center bg-dark text-light'>Acceso solo para usuarios Registrados</h1> <img className='contenedor img-fluid wx-100 mt-0' src={registre} alt="nofount" />
-        </div>
-      </Verificado>
+    //     ) :
+    //         <Verificado className='container-fluid'>
+    //             <div className='contenedor'>
+    //                 <h1 className=' w-100 d-flex justify-content-center bg-dark text-light'>Acceso solo para usuarios Registrados</h1> <img className='contenedor img-fluid wx-100 mt-0' src={registre} alt="nofount" />
+    //             </div>
+    //         </Verificado>
   );
 };
 
@@ -540,6 +502,11 @@ const Container = styled.div`
 
 img{
     width: 40px;
+}
+
+.deah{
+  font-size: 30px;
+  color: white;
 }
 
 .generos{
