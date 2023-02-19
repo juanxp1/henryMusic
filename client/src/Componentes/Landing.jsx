@@ -5,6 +5,7 @@ import Premium from './Premium/Premium'
 import Us from './About us/Us'
 import Footer from './Footer/Footer'
 import Pagos from './Pagos/Pagos';
+<<<<<<< HEAD
 import { useAuth0 } from '@auth0/auth0-react';
 import Ads from '../Componentes/publicidad/Ads'
 
@@ -27,6 +28,11 @@ function Landing() {
 
     }, [login])
 
+=======
+
+function Landing() {
+
+>>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
     return (
         <div style={{ background: "black" }} >
             <Nav />

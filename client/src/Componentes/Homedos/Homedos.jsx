@@ -1,16 +1,19 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllAlbums, Landing } from ".././../Actions/actions.js";
+import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import Hardcode from "../HardCode/Hardcode";
-import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
+import { getAllArtists, filtroGenero} from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import registre from '../Homedos/registre.jpg'
 
 
+=======
+import play from './play.png'
+>>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
 
 const Homedos = () => {
 
@@ -19,6 +22,7 @@ const Homedos = () => {
   const dispatch = useDispatch();
   const infoMusic = useSelector((state) => state.artists);
   const infoAlbum = useSelector((state) => state.albums);
+  const infoPlayer = useSelector(state => state.player)
 
 
 
@@ -27,21 +31,34 @@ const Homedos = () => {
     dispatch(filtroGenero(genero.target.value));
   }
 
+  const [data, setData] = useState({album: []})
+
+  function handleClick(e) {
+      setData({...data, i: e})
+      dispatch(getPlayer({tracks: data.album[e].tracks, i: 0}))
+      dispatch(isPlaying())
+      
+  }
+
   useEffect(() => {
-    dispatch(getAllArtists(200));
+    if (isAuthenticated) {
+      dispatch(getAllArtists(200));
+      dispatch(getAllAlbums(50));
+    }
     dispatch(Landing());
-    dispatch(getAllAlbums(50));
-  }, []);
+  }, [isAuthenticated]);
 
-  console.log("ALBUM", infoAlbum.albums);
-  console.log("ARTIST", infoMusic.artists);
+  useEffect(() => {
+    setData({album: infoAlbum.albums, i: 0})
+  }, [infoAlbum])
 
-  //console.log(infoMusic.artistAlbums)
-  //    const CurrentCards = allAlbums;
+
+  console.log(infoPlayer)
 
   return (
     isAuthenticated ? (
 
+<<<<<<< HEAD
       <Container>
         <div className="contenedor  d-flex justify-content-center container-fluid">
           <div className="container-fluid w-100 p-0 m-0">
@@ -78,6 +95,50 @@ const Homedos = () => {
                       <div></div>
                       <div></div>
                     </div>
+=======
+    <Container1>
+      <div className="contenedor  d-flex justify-content-center container-fluid">
+        <div className="container-fluid w-100 p-0 m-0">
+          <h1 className="h1 ms-3">
+            Bienvenido{" "}
+            <span className="pit">{user?.nickname.toUpperCase()}</span>
+          </h1>
+          <h2 className=" d-flex justify-content-center mt-4 mb-3  h1 text-white">
+            Top artistas
+          </h2>
+
+          <div className="container-fluid d-flex justify-content-center">
+            <div className="row container-sm">
+              {infoAlbum.albums ? (
+                infoAlbum.albums?.slice(30, 36).map((c) => {
+                  return (
+                    <Container container-fluid>
+                    <div className="generos w-100 ">
+                        <div className="cards">
+                            <div className='cards-info'>
+                                <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
+                                <div className="card_text container">
+                                    <p className='d-flex justify-content-start w-100'>{c.name}</p>
+                                    <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
+                                </div>               
+                            </div>
+                        </div>
+                        {console.log('DATA', data)}
+                    </div>
+        
+        
+                </Container>
+                  );
+                })
+              ) : (
+                <div className="uwu w-100 container-fluid">
+                  <div className="loaderRectangle d-flex justify-content-center">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+>>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
                   </div>
                 )}
 
@@ -228,7 +289,14 @@ const Homedos = () => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </Container>
+=======
+      </div>
+      <div className='card_imagen bg-transparent fixed-bottom'>
+      </div>
+    </Container1>
+>>>>>>> 41cbd0bd34a1de6faeb5e23eef38c244a9d5065f
 
     ) :
       <Verificado className='container-fluid'>
@@ -241,7 +309,7 @@ const Homedos = () => {
 
 export default Homedos;
 
-const Container = styled.div`
+const Container1 = styled.div`
   * {
     text-decoration: none;
     color: #ffffff;
@@ -467,6 +535,89 @@ const Container = styled.div`
     }
   }
 `;
+
+const Container = styled.div`
+
+img{
+    width: 40px;
+}
+
+.generos{
+    flex-wrap: wrap;
+    width: 100%;  
+    margin-bottom: 10px;
+}
+.cards{
+    width: 300px;
+    height: 80px;
+    transition: var(--efecto);
+    flex-basis: calc((100% / 3) - 20px);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin: 10px;
+    --background: linear-gradient(to bottom,  #000000 70%, #FFFF01 100%);
+    padding: 4px;
+    overflow: visible;
+    background: #000000;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+
+}
+.cards::after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.8);
+    filter: blur(100px);
+    background: #000000;
+    background: var(--background);
+    transition: opacity .5s;
+}
+.cards-info {
+    --color: #181818;
+    background: var(--color);
+    color: var(--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: .7rem;
+}
+.cards:hover::after {
+    opacity: 0;
+}   
+ .cards:hover .card-info {
+    color: #000000;
+    transition: color 1s;
+} 
+
+.card_imagen{
+    
+    width: 80px;
+    height: 70px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.card_text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: calc(100% - 80px);
+}
+`
+
 // SOLO PARA CORREOS VERIFICADO
 
 const Verificado = styled.div`

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Landing } from '../../Actions/actions';
+import { getPlayer, Landing, isPlaying } from '../../Actions/actions';
 import styled from 'styled-components';
-import favi from '../Detail/favi.png'
 import { getArtist, resetDetalles } from '../../Actions/actions';
 import { Link } from 'react-router-dom'
-import Player1 from '../Audio-Player/Player1';
 import play from '../Detail/play.png'
 
 function Detail(props) {
@@ -34,6 +32,8 @@ function Detail(props) {
 
     function handleClick(e) {
         setData({ ...data, i: e })
+        dispatch(getPlayer({tracks: data.tracks, i: e}))
+        dispatch(isPlaying())
     }
 
     useEffect(() => {
@@ -46,8 +46,6 @@ function Detail(props) {
             setData({ name: infoMusic.name, image: infoMusic.images[0].url, tracks: infoMusic.tracks, i: 0, genres: infoMusic.genres.map(el => el.name) })
         }
     }, [infoMusic])
-
-    console.log(data)
 
 
     return (
@@ -97,10 +95,6 @@ function Detail(props) {
 
                     ))}
                 </ol>
-            </div>
-
-            <div className='fixed-bottom'>
-                <Player1 tracks={data.tracks} i={data.i} />
             </div>
 
 
