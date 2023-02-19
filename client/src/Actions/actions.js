@@ -4,6 +4,7 @@ const URL = process.env.NODE_ENV === 'production' ? 'https://henrymusic.tech/api
 
 // Actions de nuestra base de datos
 
+export const GET_TOKEN = 'GET_TOKEN';
 export const GET_TRACK = 'GET_TRACK';
 export const SEARCH_TRACK = 'SEARCH_TRACK';
 export const GET_ALBUM = 'GET_ALBUM';
@@ -16,10 +17,14 @@ export const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
 export const FILTRO_GENERO = 'FILTRO_GENERO';
 export const RESET_DETALLES = "RESET_DETALLES;"
 
-
 const initialLimit = 10;
-const token = window.localStorage.getItem('token')
-axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+export const getToken = (token) => {
+    return {
+        type: GET_TOKEN,
+        payload: token
+    }
+}
 
 export const getTrack = (ID) => {
     return async function (dispatch) {

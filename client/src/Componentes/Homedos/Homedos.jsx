@@ -33,10 +33,12 @@ const Homedos = () => {
   }
 
   useEffect(() => {
-    dispatch(getAllArtists(200));
+    if (isAuthenticated) {
+      dispatch(getAllArtists(200));
+      dispatch(getAllAlbums(50));
+    }
     dispatch(Landing());
-    dispatch(getAllAlbums(50));
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     setData({album: infoAlbum.albums, i: 0})

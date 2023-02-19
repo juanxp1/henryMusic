@@ -1,7 +1,8 @@
-import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES } from "../Actions/actions";
+import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES } from "../Actions/actions";
 
 
 export const initialState = {
+    token: null,
     trackDetail: [],
     tracks: {},
     artistDetail: {},
@@ -14,9 +15,13 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-
-
+        
         // NUESTRA BASE DE DATOS CASES
+        case GET_TOKEN:
+            return {
+                ...state,
+                token: action.payload,
+            }
 
         case GET_TRACK:
             return {
