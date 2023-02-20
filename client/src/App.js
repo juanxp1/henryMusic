@@ -6,7 +6,6 @@ import Detail from './Componentes/Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
 import Homedos from './Componentes/Homedos/Homedos'
 import PlayList from "./Componentes/CreatePlayList/PlayList";
-import Fav from "./Componentes/Favoritos/Fav"
 import video from './Fotos/publi.mp4';
 //audio
 //Publicidad
@@ -20,13 +19,13 @@ import Player1 from "./Componentes/Audio-Player/Player1";
 
 function App() {
 
+
+
   const { landing } = useSelector(state => state);
   const infoPlayer = useSelector(state => state.player)
   const { getAccessTokenSilently } = useAuth0();
   const dispatch = useDispatch();
 
-  // <audio src={video}></audio>
-  // Ads(() => <video src={video}> </video>, 100)
   useEffect(() => {
     (async () => {
       const token = await getAccessTokenSilently();
@@ -36,7 +35,10 @@ function App() {
   }, [])
 
   return (
+
+
     <>
+
 
       {
         !landing && <Home />
@@ -52,6 +54,6 @@ function App() {
       </BrowserRouter>
       {infoPlayer.playing ? <div className="fixed-bottom"> <Player1 tracks={infoPlayer.tracks.tracks} i={infoPlayer.tracks.i} /> </div> : null}
     </>
-  );
+  )
 }
 export default App;
