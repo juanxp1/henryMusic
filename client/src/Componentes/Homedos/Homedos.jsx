@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import { getAllArtists, filtroGenero} from ".././../Actions/actions.js";
+import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
@@ -21,36 +21,34 @@ const Homedos = () => {
     dispatch(filtroGenero(genero.target.value));
   }
 
-  const [data, setData] = useState({album: []})
+  const [data, setData] = useState({ album: [] })
 
   function handleClick(e) {
-      setData({...data, i: e})
-      dispatch(getPlayer({tracks: data.album[e].tracks, i: 0}))
-      dispatch(isPlaying())
-      
+    setData({ ...data, i: e })
+    dispatch(getPlayer({ tracks: data.album[e].tracks, i: 0 }))
+    dispatch(isPlaying())
+
   }
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(getAllArtists(200));
-      dispatch(getAllAlbums(50));
+      dispatch(getAllArtists(20));
+      dispatch(getAllAlbums(40));
     }
     dispatch(Landing());
   }, [isAuthenticated]);
 
   useEffect(() => {
-    setData({album: infoAlbum.albums, i: 0})
+    setData({ album: infoAlbum.albums, i: 0 })
   }, [infoAlbum])
 
 
   console.log(infoPlayer)
 
   return (
-    // isAuthenticated ? (
-
     <Container1>
-      <div className="contenedor  d-flex justify-content-center container-fluid">
-        <div className="container-fluid w-100 p-0 m-0">
+      <div className="contenedor d-flex justify-content-center container-fluid">
+        <div className="container-fluid">
           <h1 className="h1 ms-3">
             Bienvenido{" "}
             <span className="pit">{user?.nickname.toUpperCase()}</span>
@@ -59,45 +57,53 @@ const Homedos = () => {
             Top artistas
           </h2>
 
-          <div className="container-fluid d-flex justify-content-center">
-            <div className="row container-sm">
-              {infoAlbum.albums ? (
-                infoAlbum.albums?.slice(30, 36).map((c) => {
+
+
+          {/* HARCODE */}
+
+          <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
+            <ul className="slider-container">
+              {infoAlbum.albums ?
+                infoAlbum.albums?.slice(30, 40).map((c) => {
                   return (
-                    <Container container-fluid>
-                    <div className="generos w-100 ">
+                    <li id="slide1" className=" container-fluid d-flex justify-content-center">
+                      <Container>
                         <div className="cards">
-                            <div className='cards-info'>
-                                <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
-                                <div className="card_text container">
-                                    <p className='d-flex justify-content-start w-100'>{c.name}</p>
-                                    <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
-                                </div>               
+                          <div className='cards-info'>
+                            <img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} />
+                            <div className="card_text container">
+                              <p className='d-flex justify-content-start w-100'>{c.name}</p>
+                              <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
                             </div>
+                          </div>
                         </div>
-                        {console.log('DATA', data)}
-                    </div>
-        
-        
-                </Container>
+                      </Container>
+                    </li>
                   );
                 })
-              ) : (
-                <div className="uwu w-100 container-fluid">
-                  <div className="loaderRectangle d-flex justify-content-center">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                : (
+                  <div className="uwu w-100 container-fluid">
+                    <div className="loaderRectangle d-flex justify-content-center">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+            </ul>
 
-            </div>
           </div>
 
-          <div className="btn-wrapper mt-0 mb-3 container-fluid">
+
+
+
+
+
+          {/* BOTON FILTRO POR GENERO */}
+
+          <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
             <select onChange={(e) => handleGenero(e)} className="btn">
               <option value="All">All Generos</option>
               <option value="Pop">Pop</option>
@@ -114,11 +120,11 @@ const Homedos = () => {
           {/* carrusel */}
 
           <div className="swiffy-slider">
-            <ul className="slider-container d-flex justify-content-center">
+            <ul className="slider-container d-flex">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                    <li className="d-flex">
+                    <li className=" container-fluid d-flex justify-content-center">
                       <Link to={"/detail/" + c.id}>
                         <Card
                           key={c.id}
@@ -152,16 +158,17 @@ const Homedos = () => {
             ></button>
           </div>
 
-          <h2 className="d-flex justify-content-start h1 ms-3">
-            Temas para {user?.name}
-          </h2>
+          <h2 className=" d-flex justify-content-start h1 ms-3">Temas para {user?.name}</h2>
+
+
           {/* carrusel */}
+
           <div className="swiffy-slider">
-            <ul className="slider-container d-flex justify-content-end">
+            <ul className="slider-container d-flex">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                    <li className="d-flex">
+                    <li className=" container-fluid d-flex justify-content-center">
                       <Link to={"/detail/" + c.id}>
                         <Card
                           key={c.id}
@@ -177,7 +184,7 @@ const Homedos = () => {
                   );
                 })
               ) : (
-                <div className="uwu mw-100 container-fluid">
+                <div className="uwu w-100 container-fluid">
                   <div className="loaderRectangle d-flex justify-content-center">
                     <div></div>
                     <div></div>
@@ -195,13 +202,12 @@ const Homedos = () => {
             ></button>
           </div>
 
-          <h2 className="d-flex justify-content-start h1 ms-3">
 
-            Canciones creadas por la Comunidad
-          </h2>
+          <h2 className="d-flex justify-content-start h1 ms-3 pb-4">  Canciones creadas por la Comunidad </h2>
+
+          <br /><br /><br /><br /><br />
           {/* carrusel */}
-
-          <div className="swiffy-slider">
+          {/* <div className="swiffy-slider">
             <ul className="slider-container d-flex">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
@@ -238,19 +244,13 @@ const Homedos = () => {
               type="button"
               className="slider-nav slider-nav-next"
             ></button>
-          </div>
+          </div> */}
         </div>
       </div>
-      <div className='card_imagen bg-transparent fixed-bottom'>
-      </div>
+
     </Container1>
 
-    //     ) :
-    //         <Verificado className='container-fluid'>
-    //             <div className='contenedor'>
-    //                 <h1 className=' w-100 d-flex justify-content-center bg-dark text-light'>Acceso solo para usuarios Registrados</h1> <img className='contenedor img-fluid wx-100 mt-0' src={registre} alt="nofount" />
-    //             </div>
-    //         </Verificado>
+
   );
 };
 
@@ -285,16 +285,6 @@ const Container1 = styled.div`
     height: auto;
     margin: 0;
     padding: 0;
-    /* background: rgb(0, 0, 0);
-    background: linear-gradient(
-      124deg,
-      rgba(0, 0, 0, 1) 5%,
-      rgba(53, 24, 74, 1) 100%,
-      rgba(63, 28, 87, 1) 100%,
-      rgba(91, 40, 125, 1) 100%,
-      rgba(131, 58, 180, 1) 100%
-    ); */
-
     background: rgb(0,0,0);
     background: linear-gradient(138deg, rgba(0,0,0,1) 8%, rgba(0,1,24,1) 100%, rgba(0,1,27,1) 100%, rgba(0,1,54,1) 100%, rgba(0,3,122,1) 100%);
     margin-left: 230px;
@@ -485,17 +475,13 @@ const Container1 = styled.div`
 
 const Container = styled.div`
 
+
 img{
     width: 40px;
 }
 
-.generos{
-    flex-wrap: wrap;
-    width: 100%;  
-    margin-bottom: 10px;
-}
 .cards{
-    width: 300px;
+    min-width:300px;
     height: 80px;
     transition: var(--efecto);
     flex-basis: calc((100% / 3) - 20px);
