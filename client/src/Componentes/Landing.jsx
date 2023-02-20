@@ -12,9 +12,6 @@ function Landing() {
         <div style={{ background: "black" }} >
             <Nav />
             <Premium />
-            {/* { !login && <Registro/>} */}
-            {/* { login && <Payment/>} */}
-            {/* <Payment></Payment> */}
             <Pagos></Pagos>
             <Us />
             <Footer />

@@ -3,17 +3,11 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import styled from 'styled-components'
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllTracks } from "../../Actions/actions";
-
-
 
 
 
 export default function Player1(tracks) {
 
-  // const dispatch = useDispatch();
-  // const tracksDB = useSelector(state);
   const [currentSong, setCurrentSong] = useState({
     index: 0,
     url: '',
@@ -23,29 +17,14 @@ export default function Player1(tracks) {
 
   console.log(tracks)
 
-  // const arr = [];
-
-  // useEffect(() => {
-  //   dispatch(action())
-  // }, [])
-
-  // useEffect(() => {
-  //   if(tracksDB.tracks?.length) {
-  //     for(let i = 0; i < tracksDB.tracks.length; i++) {
-  //       arr.push('https://henrymusic.tech/tracks/' + tracksDB.tracks[i].id + '.mp3')
-  //     }
-  //     setSongs(arr)
-  //   } 
-  // }, [tracksDB])
-
   useEffect(() => {
-    tracks.tracks.map(el=> arr.push(el.play_url))
+    tracks.tracks.map(el => arr.push(el.play_url))
   }, [arr])
 
   useEffect(() => {
-    setCurrentSong({index: tracks.i, url: arr[currentSong.index]})
+    setCurrentSong({ index: tracks.i, url: arr[currentSong.index] })
   }, [tracks])
-  
+
   console.log(arr)
 
   return (
@@ -55,18 +34,13 @@ export default function Player1(tracks) {
         src={currentSong.url}
         controls
         autoPlay={false}
-        onClickNext={() => setCurrentSong({index: currentSong.index == arr.length - 1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == arr.length-1 ? currentSong.url : arr[currentSong.index+1]})}
-        onClickPrevious={() => setCurrentSong({index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : arr[currentSong.index-1]})}
+        onClickNext={() => setCurrentSong({ index: currentSong.index == arr.length - 1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == arr.length - 1 ? currentSong.url : arr[currentSong.index + 1] })}
+        onClickPrevious={() => setCurrentSong({ index: currentSong.index == 0 ? currentSong.index : currentSong.index - 1, url: currentSong.index == 0 ? currentSong.url : arr[currentSong.index - 1] })}
         className="repro p-0 m-0 "
         showSkipControls
         volumeJumpStep
         showFilledProgress
-        header
-     
-    
-   
-       
-
+      
 
       />
     </Container>
@@ -87,7 +61,7 @@ background-color: #000000;
 
 `
 
- // lISTA DE COMANDOS QUE SE PUEDE PONER AL REPRODUCTOR 
+ // lISTA DE COMANDOS QUE SE PUEDE PONER AL REPRODUCTOR
 
 // showSkipControls	boolean	false	Show Previous/Next buttons
 // showJumpControls	boolean	true	Show Rewind/Forward buttons

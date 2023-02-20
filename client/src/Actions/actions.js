@@ -16,6 +16,8 @@ export const GET_ALL_ALBUMS = 'GET_ALL_ALBUMS';
 export const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
 export const FILTRO_GENERO = 'FILTRO_GENERO';
 export const RESET_DETALLES = "RESET_DETALLES;"
+export const GET_PLAYER = "GET_PLAYER;"
+export const IS_PLAYING = 'IS_PLAYING';
 
 const initialLimit = 10;
 
@@ -116,5 +118,18 @@ export const filtroGenero = (payload) => {
     return {
         type: FILTRO_GENERO,
         payload
+    }
+}
+
+export const getPlayer = (payload) => {
+    return {
+        type: GET_PLAYER,
+        payload
+    }
+}
+
+export const isPlaying = () => {
+    return {
+        type: IS_PLAYING
     }
 }

@@ -1,35 +1,33 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllAlbums, Landing } from ".././../Actions/actions.js";
+import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import Hardcode from "../HardCode/Hardcode";
-import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
+import { getAllArtists, filtroGenero} from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { Link } from "react-router-dom";
-import Player1 from "../Audio-Player/Player1.jsx";
-import play from '../HardCode/play.png'
+import play from './play.png'
 
 const Homedos = () => {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const infoMusic = useSelector((state) => state.artists);
   const infoAlbum = useSelector((state) => state.albums);
+  const infoPlayer = useSelector(state => state.player)
 
   function handleGenero(genero) {
     genero.preventDefault();
     dispatch(filtroGenero(genero.target.value));
   }
 
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [data, setData] = useState({album: [], i: 0})
-  const [current, setCurrent] = useState({})
+  const [data, setData] = useState({album: []})
 
   function handleClick(e) {
-      setIsPlaying(true)
       setData({...data, i: e})
-      setCurrent({tracks: data.album[data.i].tracks, i: 0})
+      dispatch(getPlayer({tracks: data.album[e].tracks, i: 0}))
+      dispatch(isPlaying())
+      
   }
 
   useEffect(() => {
@@ -45,11 +43,7 @@ const Homedos = () => {
   }, [infoAlbum])
 
 
-  // console.log("ALBUM", infoAlbum.albums);
-  // console.log("ARTIST", infoMusic.artists);
-
-  //console.log(infoMusic.artistAlbums)
-  //    const CurrentCards = allAlbums;
+  console.log(infoPlayer)
 
   return (
     // isAuthenticated ? (
@@ -81,7 +75,7 @@ const Homedos = () => {
                                 </div>               
                             </div>
                         </div>
-                        {console.log('DATA', data, 'CURRENT', current.tracks)}
+                        {console.log('DATA', data)}
                     </div>
         
         
@@ -248,7 +242,6 @@ const Homedos = () => {
         </div>
       </div>
       <div className='card_imagen bg-transparent fixed-bottom'>
-        {isPlaying ? <Player1 tracks={current.tracks} i={current.i} /> : <span> </span>}
       </div>
     </Container1>
 
