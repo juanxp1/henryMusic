@@ -15,10 +15,20 @@ export const GET_ALL_ALBUMS = 'GET_ALL_ALBUMS';
 export const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
 export const FILTRO_GENERO = 'FILTRO_GENERO';
 export const RESET_DETALLES = "RESET_DETALLES;"
+export const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
+
+export const updateUserData = (user) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/users/${user.id}`, user);
+    dispatch({ type: UPDATE_USER_DATA, payload: data });
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 
 const initialLimit = 10;
-const token = window.localStorage.getItem('token')
+var token = window.localStorage.getItem('token')
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 export const getTrack = (ID) => {

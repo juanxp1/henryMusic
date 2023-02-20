@@ -8,26 +8,23 @@ import Pagos from './Pagos/Pagos';
 import { useAuth0 } from '@auth0/auth0-react';
 
 
-
 function Landing() {
+    const { getAccessTokenSilently } = useAuth0();
 
-    const { login } = useSelector(state => state)
-    const {getAccessTokenSilently} = useAuth0();
-
-    useEffect(async () => {
-        const token = await getAccessTokenSilently({})
-        window.localStorage.setItem('token', token)
-    
-    }, [login])
+    // Actualizar el token en el local storage
+    useEffect(() => {
+        const updateToken = async () => {
+            const token = await getAccessTokenSilently();
+            window.localStorage.setItem('token', token);
+        };
+        updateToken();
+    }, []);
 
     return (
-        <div style={{ background: "black" }} >
+        <div style={{ background: "black" }}>
             <Nav />
             <Premium />
-            {/* { !login && <Registro/>} */}
-            {/* { login && <Payment/>} */}
-            {/* <Payment></Payment> */}
-            <Pagos></Pagos>
+            <Pagos />
             <Us />
             <Footer />
         </div>
