@@ -6,6 +6,7 @@ import Detail from './Componentes/Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
 import Homedos from './Componentes/Homedos/Homedos'
 import PlayList from "./Componentes/CreatePlayList/PlayList";
+import Fav from "./Componentes/Favoritos/Fav"
 import video from './Fotos/publi.mp4';
 //audio
 //Publicidad
@@ -46,6 +47,8 @@ function App() {
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
         <Route path="/playlist" component={PlayList} />
+        <Route path="/Fav" component={Fav} />
+
       </BrowserRouter>
       {infoPlayer.playing ? <div className="fixed-bottom"> <Player1 tracks={infoPlayer.tracks.tracks} i={infoPlayer.tracks.i} /> </div> : null}
     </>

@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { getArtist, resetDetalles } from '../../Actions/actions';
 import { Link } from 'react-router-dom'
 import play from '../Detail/play.png'
+import CounterScreen from "./CounterScreen"
+
 
 function Detail(props) {
 
@@ -17,6 +19,7 @@ function Detail(props) {
 
     const dispatch = useDispatch();
     const infoMusic = useSelector(state => state.artistDetail);
+    console.log({informacion: infoMusic});
     const [data, setData] = useState({
         name: '',
         image: '',
@@ -50,6 +53,8 @@ function Detail(props) {
 
     return (
         <Div>
+
+
             <div className='contenedor'>
 
                 <div className=" bg-dark mw-100 pt-2 pb-1  container-fluid oki" >
@@ -87,10 +92,11 @@ function Detail(props) {
 
                         <li className=" ms-0 list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
                             <img onClick={() => handleClick(data.tracks.indexOf(el))} className='fotico ms-2' src={play} alt="play" />
+                            
                             <div className=" ms-4 me-auto">
-                                <div className="fw-bold">{el.name}</div>
+                                <div className="fw-bold">{el.name} </div>
                             </div>
-                            <div className='fw-bold'> {convertidor(el.duration)} </div>
+                            <div className='fw-bold'> {convertidor(el.duration)}<CounterScreen/>  </div>
                         </li>
 
                     ))}
