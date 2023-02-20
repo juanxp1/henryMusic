@@ -1,4 +1,6 @@
 import { auth } from 'express-oauth2-jwt-bearer'
+import axios from 'axios'
+import shortUUID from 'short-uuid'
 import User from '../models/User.js'
 
 const { AUTH0_AUDIENCE, AUTH0_ISSUER_BASE_URL } = process.env
@@ -12,14 +14,41 @@ export const checkJwt = auth({
 export const injectUser = async (req, res, next) => {
   if (!req.auth) return next()
   try {
-    let user = await User.findByPk(req.auth.payload.sub)
-    if (!user) return req.user = { id: req.auth.payload.sub }
+    const { sub } = req.auth.payload
+    let user = await User.findByPk(sub)
+    if (!user) {
+      user = await createUser(req.headers)
+      user || (user = { id: sub, dataValues: {} })
+    }
     delete user.dataValues.password
     delete user.dataValues.deleted_at
     req.user = user
     next()
   }
   catch (_) { next() }
+}
+
+async function createUser(headers) {
+  try {
+    const bearer = headers.authorization
+    const { data } = await axios.get(`${AUTH0_ISSUER_BASE_URL}/userinfo`, {headers: {Authorization: bearer}})
+
+    const user = await User.create({
+      id: data.sub,
+      name: data.name || null,
+      username: data.nickname || null,
+      email: data.email || null,
+      password: null,
+      country_id: null,
+    })
+    user.createPlaylist({
+      id: shortUUID.generate(),
+      name: 'liked songs',
+      description: 'songs you liked',
+    })
+    return user
+  }
+  catch (err) { return null }
 }
 
 // Old style auth0 code
@@ -32,9 +61,9 @@ export const injectUser = async (req, res, next) => {
 //     cache: true,
 //     rateLimit: true,
 //     jwksRequestsPerMinute: 5,
-//     jwksUri: 'https://dev-183wwf4clw7n6848.us.auth0.com/.well-known/jwks.json'
+//     jwksUri: AUTH0_ISSUER_BASE_URL + '/.well-known/jwks.json'
 //   }),
-//   audience: 'https://henrymusic.tech/',
-//   issuer: 'https://dev-183wwf4clw7n6848.us.auth0.com/',
+//   audience: AUTH0_AUDIENCE,
+//   issuer: AUTH0_ISSUER_BASE_URL + '/',
 //   algorithms: ['RS256']
 // });

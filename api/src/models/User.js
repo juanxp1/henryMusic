@@ -23,7 +23,7 @@ export default connection.define('User', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: true,
-        validate: { notEmpty: true, isAlphanumeric: true }
+        validate: { notEmpty: true }
     },
 
     email: {
