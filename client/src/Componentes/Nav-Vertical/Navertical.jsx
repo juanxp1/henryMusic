@@ -21,7 +21,6 @@ import {
 
 import { FaBars, FaTimes } from "react-icons/fa";
 import Fav from "../Favoritos/Fav"
-import { Link } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 

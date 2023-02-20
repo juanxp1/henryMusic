@@ -6,15 +6,13 @@ import Detail from './Componentes/Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
 import Homedos from './Componentes/Homedos/Homedos'
 import PlayList from "./Componentes/CreatePlayList/PlayList";
-import video from './Fotos/publi.mp4';
-//audio
-//Publicidad
 import Ads from './Componentes/publicidad/Ads'
 import { getToken } from "./Actions/actions";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Player1 from "./Componentes/Audio-Player/Player1";
+import Fav from "./Componentes/Favoritos/Fav";
 
 
 function App() {

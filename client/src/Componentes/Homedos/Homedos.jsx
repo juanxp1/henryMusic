@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
+import { getAllArtists, filtroGenero} from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
@@ -21,13 +21,13 @@ const Homedos = () => {
     dispatch(filtroGenero(genero.target.value));
   }
 
-  const [data, setData] = useState({ album: [] })
+  const [data, setData] = useState({album: []})
 
   function handleClick(e) {
-    setData({ ...data, i: e })
-    dispatch(getPlayer({ tracks: data.album[e].tracks, i: 0 }))
-    dispatch(isPlaying())
-
+      setData({...data, i: e})
+      dispatch(getPlayer({tracks: data.album[e].tracks, i: 0}))
+      dispatch(isPlaying())
+      
   }
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Homedos = () => {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    setData({ album: infoAlbum.albums, i: 0 })
+    setData({album: infoAlbum.albums, i: 0})
   }, [infoAlbum])
 
 
@@ -59,32 +59,28 @@ const Homedos = () => {
             Top artistas
           </h2>
 
-
-          {/* HARCODE */}
-
-
-          <div className="swiffy-slider container">
-            <ul className="slider-container d-flex justify-content-center">
+          <div className="container-fluid d-flex justify-content-center">
+            <div className="row container-sm">
               {infoAlbum.albums ? (
-                infoAlbum.albums?.slice(20, 26).map((c) => {
+                infoAlbum.albums?.slice(30, 36).map((c) => {
                   return (
-
-                    <Container >
-                      <li className="">
-                        <div className="d-flex justify-content-center">
-                          <div className="cards">
+                    <Container container-fluid>
+                    <div className="generos w-100 ">
+                        <div className="cards">
                             <div className='cards-info'>
-                              <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
-                              <div className="card_text container">
-                                <p className='d-flex justify-content-start w-100 '>{c.name}</p>
-                                <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
-                              </div>
+                                <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
+                                <div className="card_text container">
+                                    <p className='d-flex justify-content-start w-100'>{c.name}</p>
+                                    <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
+                                </div>               
                             </div>
-                          </div>
                         </div>
-                      </li>
-                    </Container>
-                  )
+                        {console.log('DATA', data)}
+                    </div>
+        
+        
+                </Container>
+                  );
                 })
               ) : (
                 <div className="uwu w-100 container-fluid">
@@ -97,20 +93,11 @@ const Homedos = () => {
                   </div>
                 </div>
               )}
-            </ul>
-            <button type="button" className="slider-nav"></button>
-            <button
-              type="button"
-              className="slider-nav slider-nav-next"
-            ></button>
+
+            </div>
           </div>
 
-
-
-
-          {/* BOTON FILTRO POR GENERO */}
-
-          <div className="btn-wrapper mt-5 mb-3 container-fluid">
+          <div className="btn-wrapper mt-0 mb-3 container-fluid">
             <select onChange={(e) => handleGenero(e)} className="btn">
               <option value="All">All Generos</option>
               <option value="Pop">Pop</option>
@@ -120,8 +107,6 @@ const Homedos = () => {
               <option value="hip hop">hip hop</option>
             </select>
           </div>
-
-
 
           {/* Aqui comienzan los carruseles */}
 
@@ -502,11 +487,6 @@ const Container = styled.div`
 
 img{
     width: 40px;
-}
-
-.deah{
-  font-size: 30px;
-  color: white;
 }
 
 .generos{
