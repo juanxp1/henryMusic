@@ -43,8 +43,8 @@ const Homedos = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(getAllArtists(20));
-      dispatch(getAllAlbums(40));
+      dispatch(getAllArtists(200));
+      dispatch(getAllAlbums(50));
     }
     dispatch(Landing());
   }, [isAuthenticated]);
