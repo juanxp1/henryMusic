@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
+import { getAllArtists, filtroGenero, ordenPorAbc } from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
@@ -23,12 +23,23 @@ const Homedos = () => {
 
   const [data, setData] = useState({ album: [] })
 
+  const [orden, setOrden] = useState('')
+
+
   function handleClick(e) {
     setData({ ...data, i: e })
     dispatch(getPlayer({ tracks: data.album[e].tracks, i: 0 }))
     dispatch(isPlaying())
-
   }
+
+  function handleAbc(e) {
+    e.preventDefault();
+    dispatch(ordenPorAbc(e.target.value))
+    //setCurrentPage(1);
+    setOrden(`ordenado ${e.target.value}`)
+    console.log("caradechot", e.target.value)
+  }
+
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -97,21 +108,27 @@ const Homedos = () => {
           </div>
 
 
+          {/* FILTRO POR ABC */}
+          <div className="d-flex contianer justify-content-center">
+            <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
+              <select onChange={e => handleAbc(e)} className="btn">
+                <option value="asc">ascendent A-Z</option>
+                <option value="des">descendent Z-A</option>
+              </select>
+            </div>
 
+            {/* BOTON FILTRO POR GENERO */}
 
-
-
-          {/* BOTON FILTRO POR GENERO */}
-
-          <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
-            <select onChange={(e) => handleGenero(e)} className="btn">
-              <option value="All">All Generos</option>
-              <option value="Pop">Pop</option>
-              <option value="Trap">Trap</option>
-              <option value="Latin">Latin </option>
-              <option value="Rock">Rock </option>
-              <option value="hip hop">hip hop</option>
-            </select>
+            <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
+              <select onChange={(e) => handleGenero(e)} className="btn">
+                <option value="All">All Generos</option>
+                <option value="Pop">Pop</option>
+                <option value="Trap">Trap</option>
+                <option value="Latin">Latin </option>
+                <option value="Rock">Rock </option>
+                <option value="hip hop">hip hop</option>
+              </select>
+            </div>
           </div>
 
           {/* Aqui comienzan los carruseles */}
