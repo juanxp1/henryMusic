@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import home from "./home.png";
-//import foto from '../Nav-Vertical/app.png';
-//import lupa from './lupa.png';
 import logo3 from '../Nav-Vertical/play.mp4';
 import listas from "./listas.png";
 import crear from "./crear.png";
@@ -20,9 +18,7 @@ import {
 } from "./Nav-Vertical-E";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import Fav from "../Favoritos/Fav"
 
-import { Link } from "react-router-dom";
 
 function Navertical() {
   const [click, setClick] = useState(false);
@@ -75,7 +71,7 @@ function Navertical() {
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
-                        <a href="/Fav">
+                        <a href="/playlist">
                             <span className="fa fas fa-heart">
                               <img className="home" src={cora} alt="home" />
                             </span>

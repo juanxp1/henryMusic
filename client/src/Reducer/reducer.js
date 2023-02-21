@@ -1,8 +1,9 @@
-import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES, GET_PLAYER, IS_PLAYING, ORDEN_BY_NAME } from "../Actions/actions";
+import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES, GET_PLAYER, IS_PLAYING, GET_USER, ORDEN_BY_NAME } from "../Actions/actions";
 
 
 export const initialState = {
     token: null,
+    user: {},
     trackDetail: [],
     tracks: {},
     artistDetail: {},
@@ -114,6 +115,11 @@ const reducer = (state = initialState, action) => {
                 player: { ...state.player, playing: true }
             }
 
+        case GET_USER:
+            return {
+                ...state,
+                user: {...state.user, userInfo: action.payload}
+            }
         case ORDEN_BY_NAME:
             let order = action.payload === 'asc' ?
             state.allArtists.artists.sort(function (a, b) {
@@ -141,10 +147,6 @@ const reducer = (state = initialState, action) => {
             ORDEN_BY_NAME: order
 
         }
-
-
-
-
 
 
         default:
