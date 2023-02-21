@@ -33,7 +33,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail  mx-auto d-block' variant="top" src={Bianchi} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Bianchi (◣ _ ◢)</Card.Title>
+                        <Card.Title className='text-center'>Bianchi Juan Jose</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
 
@@ -47,7 +47,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Rodolfo} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Rodolfo ヽ( ▀̿ Ĺ̯ ▀̿)ノ♪♬</Card.Title>
+                        <Card.Title className='text-center'>Rodolfo Alvarez</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -60,7 +60,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Carlos} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Carlos ヾ(⌐■_■)ノ♪</Card.Title>
+                        <Card.Title className='text-center'>Carlos  Da Graça</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/carlos-da-gra%C3%A7a-284049239/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -73,7 +73,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Abigail} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Abigail ♪(๑ᴖ◡ᴖ๑)♪ ♡</Card.Title>
+                        <Card.Title className='text-center'>Abigail Cortes</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -88,7 +88,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Felipe} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Felipe (◡ ‿ ◡ .)</Card.Title>
+                        <Card.Title className='text-center'>Felipe Chiquito</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -101,7 +101,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Antonio} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Antonio (⌐■_■)</Card.Title>
+                        <Card.Title className='text-center'>Antonio Muelle</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/erick-espinoza-g%C3%B3mez-58b9b8231/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -114,7 +114,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Agustin} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Agustin ～(■_■)～♪🖐</Card.Title>
+                        <Card.Title className='text-center'>Agustin Guerrero</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/agust%C3%ADn-guerrero-66700721b/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
@@ -127,7 +127,7 @@ function Us() {
                 <Card>
                     <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Erick} />
                     <Card.Body>
-                        <Card.Title className='text-center'>Erick ヾ(⌐■_■)ノ♪</Card.Title>
+                        <Card.Title className='text-center'>Erick Espinoza</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
                                 Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>

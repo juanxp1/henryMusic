@@ -11,7 +11,7 @@ import Playlist from "../models/Playlist.js";
 import PlaylistTrack from "../models/PlaylistTrack.js";
 import TrackArtist from "../models/TrackArtist.js";
 import Song from "../models/Song.js";
-import '../models/Review.js'
+import Review from "../models/Review.js";
 
 // Album relations ----------------------------
 Album.hasMany(Track, { as: 'tracks', foreignKey: 'album_id' });
@@ -99,6 +99,14 @@ Artist.belongsToMany(Track, {
   otherKey: 'track_id',
   as: 'tracks'
 });
+
+Track.hasMany(Review, {
+  foreignKey: 'entity_id',
+  constraints: false,
+  scope: { type: 'track' },
+  as: 'reviews'
+})
+Review.belongsTo(Track, { as: 'track', foreignKey: 'entity_id', constraints: false });
 
 // User relations ----------------------------
 User.hasMany(Playlist, { as: 'playlists', foreignKey: 'user_id' });
