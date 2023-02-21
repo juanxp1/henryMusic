@@ -135,9 +135,15 @@ export const isPlaying = () => {
     }
 }
 
+<<<<<<< HEAD
 export const getUser = (payload) => {
     return {
         type: GET_USER,
+=======
+export const ordenPorAbc = (payload) => {
+    return {
+        type: ORDEN_BY_NAME,
+>>>>>>> 5c5f7c6fe849a0e0e1f07eae50b961475b61c041
         payload
     }
 }

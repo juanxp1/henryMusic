@@ -25,7 +25,12 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const token = await getAccessTokenSilently();
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: 'https://henrymusic.tech/',
+          scope: 'read:posts',
+        },
+      });
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       dispatch(getToken(token));
     })()

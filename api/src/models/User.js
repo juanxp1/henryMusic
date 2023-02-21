@@ -23,7 +23,7 @@ export default connection.define('User', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: true,
-        validate: { notEmpty: true, isAlphanumeric: true }
+        validate: { notEmpty: true }
     },
 
     email: {
@@ -65,6 +65,14 @@ export default connection.define('User', {
         unique: false,
         validate: { notEmpty: true },
         defaultValue: true
+    },
+
+    rol: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: false,
+        validate: { notEmpty: true, min: 0 },
+        defaultValue: 0
     },
 
     country_id: {

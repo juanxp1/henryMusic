@@ -88,6 +88,8 @@ export default connection.define('Song', {
     tableName: 'songs',
     createdAt: 'created_at',
     updatedAt: 'updated_at',
+    paranoid: true,
+    deletedAt: 'deleted_at',
     hooks: {
       afterCreate: (song) => {
         if (!song) return;

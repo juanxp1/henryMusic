@@ -11,13 +11,13 @@ export const initialState = {
     albums: [],
     artists: [],
     allArtists: [],
-    player: {tracks: [], playing: false},
+    player: { tracks: [], playing: false },
     landing: true,
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        
+
         // NUESTRA BASE DE DATOS CASES
         case GET_TOKEN:
             return {
@@ -106,20 +106,54 @@ const reducer = (state = initialState, action) => {
         case GET_PLAYER:
             return {
                 ...state,
-                player: {...state.player, tracks: action.payload}
+                player: { ...state.player, tracks: action.payload }
             }
 
         case IS_PLAYING:
             return {
                 ...state,
-                player: {...state.player, playing: true}
+                player: { ...state.player, playing: true }
             }
 
+<<<<<<< HEAD
         case GET_USER:
             return {
                 ...state,
                 user: {...state.user, userInfo: action.payload}
             }
+=======
+        case ORDEN_BY_NAME:
+            let order = action.payload === 'asc' ?
+            state.allArtists.artists.sort(function (a, b) {
+
+                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+
+                    return 1
+                }
+                if (b.name.toLowerCase() > a.name.toLowerCase()) {
+                    return -1
+                }
+                return 0
+            }) :
+            state.allArtists.artists.sort(function (a, b) {
+                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return -1
+                }
+                if (b.name.toLowerCase() > a.name.toLowerCase()) {
+                    return 1
+                }
+                return 0
+            })
+        return {
+            ...state,
+            ORDEN_BY_NAME: order
+
+        }
+
+
+
+
+>>>>>>> 5c5f7c6fe849a0e0e1f07eae50b961475b61c041
 
 
         default:
