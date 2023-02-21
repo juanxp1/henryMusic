@@ -64,7 +64,7 @@ const Homedos = () => {
           <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
             <ul className="slider-container">
               {infoAlbum.albums ?
-                infoAlbum.albums?.slice(30, 40).map((c) => {
+                infoAlbum.albums?.slice(1, 20).map((c) => {
                   return (
                     <li id="slide1" className=" container-fluid d-flex justify-content-center">
                       <Container>

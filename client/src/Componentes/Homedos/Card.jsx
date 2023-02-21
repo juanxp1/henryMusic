@@ -33,9 +33,9 @@ const Div = styled.div`
 
 .cards {
   margin: 30px auto;
-  width: 300px;
-  height: 300px;
-  border-radius: 40px;
+  width: 200px;
+  height: 250px;
+  border-radius: 10px;
   box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
 -webkit-box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
 -moz-box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
@@ -46,25 +46,25 @@ const Div = styled.div`
 .cards .card_image {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
+  border-radius: 10px;
 }
 
 .cards .card_image img {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
+  border-radius: 10px;
   object-fit: cover;
+  opacity: 1;
 }
 
-.cards .card_title {
+.card_title {
   text-align: center;
   border-radius: 0px 0px 40px 40px;
-  font-family: sans-serif;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   margin-top: -80px;
-  height: 40px;
-  
+  height: 20px;
+ color: white;
 }
 
 
@@ -76,24 +76,12 @@ const Div = styled.div`
 -moz-box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
 }
 
-.title-white {
-  box-shadow: 7px 7px 5px -4px rgba(255, 255, 255, 0.75);
--webkit-box-shadow: 7px 7px 5px -4px rgba(255, 255, 255, 0.75);
--moz-box-shadow: 7px 7px 5px -4px rgba(0, 0, 0, 0.75);
 
-}
 
 .title-black {
   color: black;
 }
 
-
-@media all and (max-width: 500px) {
-  .card-list {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-  }
-}
 
 
 `
