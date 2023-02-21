@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../Actions/actions';
 
 
 
 function PlayList() {
 
     const { user, isAuthenticated } = useAuth0();
+    const infoUser = useSelector(state => state.user)
+    const dispatch = useDispatch()
+    const local = window.localStorage.getItem(`${infoUser?.nickname} liked songs`)
+    console.log(local)
+    useEffect(() => {
+        if(isAuthenticated){
+            dispatch(getUser(user))
+        }
+    }, [isAuthenticated])
+
+    console.log(infoUser)
 
     return (
 
@@ -57,7 +70,7 @@ function PlayList() {
                         <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
                             <img className='fotico ms-4' src="" alt="" />
                             <div className=" ms-4 me-auto">
-                                <div className="fw-bold">holis</div>
+                                <div className="fw-bold">{local}</div>
                             </div>
                         </li>
                     </ol>

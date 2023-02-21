@@ -18,8 +18,13 @@ export const FILTRO_GENERO = 'FILTRO_GENERO';
 export const RESET_DETALLES = "RESET_DETALLES;"
 export const GET_PLAYER = "GET_PLAYER;"
 export const IS_PLAYING = 'IS_PLAYING';
+<<<<<<< HEAD
 export const ORDEN_BY_NAME= "ORDEN_BY_NAME";
 export const UPDATE = "UPDATE";
+=======
+export const GET_USER = "GET_USER;"
+export const ORDEN_BY_NAME = "ORDEN_BY_NAME;"
+>>>>>>> 71d741d8ac7b4a81995469a246590408de0544d5
 
 const initialLimit = 10;
 
