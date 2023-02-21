@@ -12,8 +12,7 @@ export const initialState = {
     artists: [],
     allArtists: [],
     player: { tracks: [], playing: false },
-    landing: true,
-    update: false,
+    landing: true,   
 };
 
 const reducer = (state = initialState, action) => {

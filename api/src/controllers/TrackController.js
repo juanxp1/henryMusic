@@ -238,26 +238,26 @@ export async function createSong(req, res) {
   }
 }
 
-export async function updateSong(req, res) {
-  const validator = new Validator(req.body, {
-    id: 'required|string|min:1',
-    name: 'string|min:3|max:100',
-    artist: 'string|min:3|max:100',
-    album: 'string|min:3|max:100',
-    genre: 'string|min:3',
-    explicit: 'boolean',
-    public: 'boolean'
-  })
-  if (validator.fails()) return jsonError(res, validator.errors)
+// export async function updateSong(req, res) {
+//   const validator = new Validator(req.body, {
+//     id: 'required|string|min:1',
+//     name: 'string|min:3|max:100',
+//     artist: 'string|min:3|max:100',
+//     album: 'string|min:3|max:100',
+//     genre: 'string|min:3',
+//     explicit: 'boolean',
+//     public: 'boolean'
+//   })
+//   if (validator.fails()) return jsonError(res, validator.errors)
 
-  try {
-    const song = await Song.findOne({ where: { id: req.body.id, user_id: req.user.id } })
-    if (!song) return jsonError(res, "Song not found", 404)
-    await song.update(req.body)
-    jsonOk(res, { song })
-  }
-  catch (error) { jsonError(res, error.message) }
-}
+//   try {
+//     const song = await Song.findOne({ where: { id: req.body.id, user_id: req.user.id } })
+//     if (!song) return jsonError(res, "Song not found", 404)
+//     await song.update(req.body)
+//     jsonOk(res, { song })
+//   }
+//   catch (error) { jsonError(res, error.message) }
+// }
 
 export async function deleteSong(req, res) {
   const validator = new Validator(req.body, { id: 'required|string|min:1' })

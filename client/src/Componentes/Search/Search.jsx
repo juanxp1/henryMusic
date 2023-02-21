@@ -15,7 +15,8 @@ function Search() {
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.preventDefault();    
     setShow(false);
     setInput('');
   };
