@@ -71,7 +71,7 @@ function Navertical() {
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
-                        <a href="/Fav">
+                        <a href="/playlist">
                             <span className="fa fas fa-heart">
                               <img className="home" src={cora} alt="home" />
                             </span>
