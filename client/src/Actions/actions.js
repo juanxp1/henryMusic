@@ -18,6 +18,7 @@ export const FILTRO_GENERO = 'FILTRO_GENERO';
 export const RESET_DETALLES = "RESET_DETALLES;"
 export const GET_PLAYER = "GET_PLAYER;"
 export const IS_PLAYING = 'IS_PLAYING';
+export const GET_USER = "GET_USER;"
 
 const initialLimit = 10;
 
@@ -131,5 +132,12 @@ export const getPlayer = (payload) => {
 export const isPlaying = () => {
     return {
         type: IS_PLAYING
+    }
+}
+
+export const getUser = (payload) => {
+    return {
+        type: GET_USER,
+        payload
     }
 }

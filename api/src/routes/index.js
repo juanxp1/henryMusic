@@ -52,6 +52,6 @@ secured.post('/playlist/track/remove', PlaylistController.removeTrackFromPlaylis
 
 // --- setup de las rutas ---
 router.use('/', authRouter);// ruta para la autenticacion
-router.use('/api', injectUser, secured);
+router.use('/api', checkJwt, injectUser, secured);
 
 export default router;

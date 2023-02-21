@@ -1,8 +1,9 @@
-import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES,GET_PLAYER, IS_PLAYING } from "../Actions/actions";
+import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES,GET_PLAYER, IS_PLAYING, GET_USER } from "../Actions/actions";
 
 
 export const initialState = {
     token: null,
+    user: {},
     trackDetail: [],
     tracks: {},
     artistDetail: {},
@@ -113,6 +114,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 player: {...state.player, playing: true}
             }
+
+        case GET_USER:
+            return {
+                ...state,
+                user: {...state.user, userInfo: action.payload}
+            }
+
 
         default:
             return { ...state };

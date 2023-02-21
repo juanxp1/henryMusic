@@ -19,7 +19,6 @@ function Detail(props) {
 
     const dispatch = useDispatch();
     const infoMusic = useSelector(state => state.artistDetail);
-    console.log({informacion: infoMusic});
     const [data, setData] = useState({
         name: '',
         image: '',
@@ -96,7 +95,7 @@ function Detail(props) {
                             <div className=" ms-4 me-auto">
                                 <div className="fw-bold">{el.name} </div>
                             </div>
-                            <div className='fw-bold'> {convertidor(el.duration)}<CounterScreen/>  </div>
+                            <div className='fw-bold'> {convertidor(el.duration)}<CounterScreen track ={el}/>  </div>
                         </li>
 
                     ))}
