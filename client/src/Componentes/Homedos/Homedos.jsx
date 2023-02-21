@@ -13,6 +13,7 @@ const Homedos = () => {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const infoMusic = useSelector((state) => state.artists);
+  const infoToken = useSelector(state => state.token)
   const infoAlbum = useSelector((state) => state.albums);
   const infoPlayer = useSelector(state => state.player)
 
@@ -42,12 +43,12 @@ const Homedos = () => {
 
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (infoToken) {
       dispatch(getAllArtists(200));
       dispatch(getAllAlbums(50));
     }
     dispatch(Landing());
-  }, [isAuthenticated]);
+  }, [infoToken]);
 
   useEffect(() => {
     setData({ album: infoAlbum.albums, i: 0 })

@@ -147,6 +147,13 @@ export const isPlaying = () => {
     }
 }
 
+export const getUser = (payload) => {
+    return {
+        type: GET_USER,
+        payload
+    }
+}
+
 export const ordenPorAbc = (payload) => {
     return {
         type: ORDEN_BY_NAME,
