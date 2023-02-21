@@ -30,4 +30,5 @@ const Contenedor = styled.div`
   background-color: black;
   color: white;
   text-align: center;
+  height: 100vh;
 `;
