@@ -2,14 +2,16 @@ import * as ArtistController from '../controllers/ArtistController.js'
 import * as AlbumController from '../controllers/AlbumController.js'
 import * as TrackController from '../controllers/TrackController.js'
 import * as UserController from '../controllers/UserController.js'
+import * as AdminController from '../controllers/AdminController.js'
 import * as PlaylistController from '../controllers/PlaylistController.js'
 import authRouter from './auth.js'
 import multer from 'multer'
 import { Router } from 'express'
-import { checkJwt, injectUser } from '../auth/auth0Api.js'
+import { checkJwt, injectUser, checkAdmin } from '../auth/auth0Api.js'
 
 const router = Router();
 const secured = Router();
+const admin = Router();
 const upload = multer({ dest: process.env.UPLOADS_PATH })
 const fieldsUpload = upload.fields([
   { name: 'image', maxCount: 1 },
@@ -22,8 +24,15 @@ router.post('/api/register-auth0-user', UserController.createUser)
 
 // --- rutas privadas, se necesita un token valido para acceder a ellas
 secured.get('/user', UserController.getUser)
-secured.post('/user/update', UserController.updateUser)
+secured.post('/user/update', UserController.updateMyUser)
 secured.post('/user/delete', UserController.deleteUser)
+
+admin.get('/user/all', AdminController.getAllUsers)
+admin.get('/user/search', AdminController.searchUser)
+admin.get('/user/:id', AdminController.getUser)
+admin.post('/user/update', AdminController.updateUser)
+admin.post('/user/delete', AdminController.deleteUser)
+admin.post('/user/restore', AdminController.restoreUser)
 
 secured.get('/track/all', TrackController.getAllTracks)
 secured.get('/track/search', TrackController.searchTrack)
@@ -55,5 +64,6 @@ secured.post('/playlist/track/remove', PlaylistController.removeTrackFromPlaylis
 // --- setup de las rutas ---
 router.use('/', authRouter);// ruta para la autenticacion
 router.use('/api', checkJwt, injectUser, secured);
+router.use('/api/admin', checkJwt, injectUser, checkAdmin, admin);
 
 export default router;

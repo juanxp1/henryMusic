@@ -10,6 +10,12 @@ export const checkJwt = auth({
   issuerBaseURL: AUTH0_ISSUER_BASE_URL,
 });
 
+export const checkAdmin = (req, res, next) => {
+  if (req.user.rol !== 100)
+    return res.status(401).json({message: 'Unauthorized'})
+  next()
+}
+
 // middleware para inyectar el usuario en el request
 export const injectUser = async (req, res, next) => {
   if (!req.auth) return next()
