@@ -1,30 +1,33 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Error() {
   return (
     <Contenedor>
-         <h1> 404 Not found </h1>
-    <div>
-    <Link to={"/home"}>
-     
-      <button type="button" className="btn btn-warning"> 
-      Go Home</button>
-     </Link>
-    </div>
+      <br />
+      <br />
+      <br />
+      <h1> 404 Not found </h1>
+      <br />
+      <br />
+      <br />
+      <div>
+        <Link to={"/home"}>
+          <button type="button" className="btn btn-warning">
+            Go Home
+          </button>
+        </Link>
+        <br />
+        <br />
+        <br />
+      </div>
     </Contenedor>
-  )
+  );
 }
 const Contenedor = styled.div`
-background: black;
-color: white;
-text-align: center;
-
-
-`
-
-
-
-
+  background-color: black;
+  color: white;
+  text-align: center;
+`;
