@@ -73,7 +73,7 @@ const Homedos = () => {
           {/* HARCODE */}
 
           <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
-            <ul className="slider-container">
+            <ul className="slider-container slider-nav-autoplay">
               {infoAlbum.albums ?
                 infoAlbum.albums?.slice(1, 20).map((c) => {
                   return (
