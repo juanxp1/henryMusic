@@ -31,6 +31,8 @@ secured.get('/track/:id', TrackController.getTrack)
 secured.get('/song/all', TrackController.getAllSongs)
 secured.get('/song/search', TrackController.searchSongs)
 secured.post('/song/create', fieldsUpload, TrackController.createSong)
+secured.post('/song/update', TrackController.updateSong)
+secured.post('/song/delete', TrackController.deleteSong)
 
 secured.get('/album/all', AlbumController.getAllAlbums)
 secured.get('/album/search', AlbumController.searchAlbum)

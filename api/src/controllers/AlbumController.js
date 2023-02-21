@@ -71,7 +71,7 @@ export async function getAllAlbums(req, res) {
   const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
 
   try {
-    const result = await Album.findAll({
+    const result = await Album.findAndCountAll({
       include: [
         { model: Track, as : 'tracks', attributes: { exclude: ["created_at", "updated_at", "album_id"] } },
         { model: Image, as: 'images', attributes: { exclude: ["created_at", "updated_at", "entity_id"] } },
@@ -85,7 +85,7 @@ export async function getAllAlbums(req, res) {
     })
     jsonOk(res, {
       total: result.count,
-      albums: result,
+      albums: result.rows,
       limit, offset
     })
   }

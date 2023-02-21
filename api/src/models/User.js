@@ -67,6 +67,14 @@ export default connection.define('User', {
         defaultValue: true
     },
 
+    rol: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: false,
+        validate: { notEmpty: true, min: 0 },
+        defaultValue: 0
+    },
+
     country_id: {
         type: DataTypes.STRING,
         unique: false,
