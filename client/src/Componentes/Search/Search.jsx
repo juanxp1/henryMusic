@@ -14,7 +14,6 @@ function Search() {
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleClose = () => {
     setShow(false);
@@ -26,7 +25,7 @@ function Search() {
     setInput(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (input.trim() === '') {
@@ -35,17 +34,13 @@ function Search() {
     }
 
     setError(false);
-    setIsLoading(true);
-    const result = await dispatch(searchArtist(input));
-    setIsLoading(false);
+    const result = dispatch(searchArtist(input));
 
-    if (!result.payload && !isLoading) {
+    if (!result.payload) {
       handleShow();
-    } else {
-      handleClose();
-      setInput('');
-      history.replace('/');
+      return;
     }
+
     setInput('');
     history.replace('/');
   };
@@ -82,6 +77,7 @@ function Search() {
 }
 
 export default Search;
+
 
 
 

@@ -18,7 +18,8 @@ export const FILTRO_GENERO = 'FILTRO_GENERO';
 export const RESET_DETALLES = "RESET_DETALLES;"
 export const GET_PLAYER = "GET_PLAYER;"
 export const IS_PLAYING = 'IS_PLAYING';
-export const UPDATE = 'UPDATE';
+export const ORDEN_BY_NAME= "ORDEN_BY_NAME";
+export const UPDATE = "UPDATE";
 
 const initialLimit = 10;
 
@@ -101,13 +102,12 @@ export const postSong = (song) => {
     }
 }
 
-export const updateSong = (song) => {
+export const update = (user) => {
     return async function () {
-        let json = await axios.put(`${URL}`, song)
+        let json = await axios.put(`${URL}`, user)
         return json;
     }
 }
-
 
 export const Landing = () => {
     return {
@@ -139,5 +139,12 @@ export const getPlayer = (payload) => {
 export const isPlaying = () => {
     return {
         type: IS_PLAYING
+    }
+}
+
+export const ordenPorAbc = (payload) => {
+    return {
+        type: ORDEN_BY_NAME,
+        payload
     }
 }

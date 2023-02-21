@@ -20,6 +20,7 @@ import {
 } from "./Nav-Vertical-E";
 
 import { FaBars, FaTimes } from "react-icons/fa";
+import Fav from "../Favoritos/Fav"
 
 import { Link } from "react-router-dom";
 
@@ -74,7 +75,7 @@ function Navertical() {
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
-                          <a href="#">
+                        <a href="/Fav">
                             <span className="fa fas fa-heart">
                               <img className="home" src={cora} alt="home" />
                             </span>
