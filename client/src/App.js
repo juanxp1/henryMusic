@@ -13,6 +13,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Player1 from "./Componentes/Audio-Player/Player1";
 import Error from "./Componentes/Error/Error"
+import Dashboard from "./Componentes/Dashboard/Dashboard";
+import PrivateRoute from "./Componentes/Dashboard/PrivateRoute";
 
 
 function App() {
@@ -52,6 +54,9 @@ function App() {
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
         <Route path="/playlist" component={PlayList} />
+
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+
         <Route path="*" component={Error}/> 
        
     
