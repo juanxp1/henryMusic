@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Player1 from "./Componentes/Audio-Player/Player1";
+import Error from "./Componentes/Error/Error"
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
         <Route path="/playlist" component={PlayList} />
-        <Route path="*"  component={Error}/> 
+        <Route path="*" component={Error}/> 
        
     
 
