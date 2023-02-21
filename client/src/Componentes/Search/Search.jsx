@@ -1,33 +1,55 @@
-/* eslint-disable no-undef */
-import React from 'react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import styled from 'styled-components'
-// vamos hacer un llamado a la carpeta de actions
-import { searchArtist } from '../../Actions/actions'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { Modal, Button } from 'react-bootstrap';
+import { searchArtist } from '../../Actions/actions';
+import styled from 'styled-components';
+
+import { useState } from 'react';
 
 function Search() {
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const dispatch = useDispatch()
-  const [input, setInput] = useState('')
-  const [error, setError] = useState(false)
+  const [input, setInput] = useState('');
+  const [error, setError] = useState(false);
+  const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+    setInput('');
+  };
+  const handleShow = () => setShow(true);
 
   const handleInputChange = (e) => {
-    e.preventDefault()
-    setInput(e.target.value)
+    setInput(e.target.value);
+  };
 
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
     if (input.trim() === '') {
-      setError(true)
-      return
+      setError(true);
+      return;
     }
-    setError(false)
-    dispatch(searchArtist(input))
-    setInput('')
-  }
+
+    setError(false);
+    setIsLoading(true);
+    const result = await dispatch(searchArtist(input));
+    setIsLoading(false);
+
+    if (!result.payload && !isLoading) {
+      handleShow();
+    } else {
+      handleClose();
+      setInput('');
+      history.replace('/');
+    }
+    setInput('');
+    history.replace('/');
+  };
+
   return (
     <Div className="container px-0 m-2">
       <form className="d-flex" onSubmit={handleSubmit}>
@@ -41,10 +63,60 @@ function Search() {
         />
         {error && <p className="text-danger">Debes ingresar un artista</p>}
       </form>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Artista no encontrado</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Lo sentimos, no se ha encontrado ningún artista con el nombre "{input}".
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Div>
   );
 }
+
 export default Search;
+
+
+
+// export default function Search() {
+//     const [input, setInput] = useState('')
+//     const dispatch = useDispatch()
+//     const history = useHistory();
+
+//     function handleChange(e) {
+//         setInput(e.target.value)
+//     }
+
+//     function handleSubmit(e) {
+//         e.preventDefault()
+//         dispatch(searchArtist(input))
+//         setInput('')
+//         history.push('/artist')
+//     }
+
+//     return (
+//         <Div>
+//             <form onSubmit={handleSubmit}>
+//                 <input
+//                     className="input"
+//                     type="text"
+//                     placeholder="Search Artist"
+//                     value={input}
+//                     onChange={handleChange}
+//                 />
+//             </form>
+//         </Div>
+//     )
+// }
+
+
 
 
 
@@ -62,5 +134,42 @@ input::placeholder {
     text-align: center;
 
 }
+
+@media (max-width: 768px) {
+    .input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px) {
+    .input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+    .input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 280px) {
+    .input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 240px) {
+    .input {
+        width: 100%;
+    }
+}
+
 
 `

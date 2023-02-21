@@ -39,7 +39,7 @@ function NavHome() {
                   type="button"
                 />
                 <ul className="dropdown-menu">
-                  <li className="btn btn-warning">Editprofile</li>
+                  <li className="btn btn-warning" a href="update">Editprofile</li>
                   <br />
                   <li>{logout}</li>
                 </ul>

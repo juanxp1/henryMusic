@@ -9,6 +9,7 @@ import crear from "./crear.png";
 import cora from "./cora.png";
 import play from "./play.mp4";
 import mas from "./mas.png";
+import foto from "./app.png"
 import {
   NavbarContainer1,
   Navbarwrapper1,
@@ -19,6 +20,8 @@ import {
 } from "./Nav-Vertical-E";
 
 import { FaBars, FaTimes } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 
 function Navertical() {
   const [click, setClick] = useState(false);
@@ -39,22 +42,13 @@ function Navertical() {
 
                 <Menu1 click={click}>
                   <ul>
-                    <div className="logo d-flex justify-content-center">
-                      <a className="fotaso" href="/">
-                        <video
-                          className="fotasa"
-                          src={logo3}
-                          alt="logo"
-                          autoPlay
-                          loop
-                        />
-                      </a>
+                    <div className=" d-flex justify-content-center">
+                      <h1 style={{ color: "#ffff01" }}> <span className="text-white">H</span>Music</h1>
                     </div>
-
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
-                          <a href={"/home"}>
+                          <a href="/home">
                             <span className="fa fa-home">
                               <img className="home" src={home} alt="home" />
                             </span>
@@ -76,19 +70,6 @@ function Navertical() {
                         </MenuItemLink1>
                       </li>
                     </MenuItem1>
-
-                    {/* <MenuItem1 onClick={() => ChangeClick()}>
-                      <li>
-                        <MenuItemLink1>
-                          <a href="#">
-                            <span className="fa fas fa-plus-square">
-                              <img className="home" src={crear} alt="home" />
-                            </span>
-                            <span>Create Playlist</span>
-                          </a>
-                        </MenuItemLink1>
-                      </li>
-                    </MenuItem1> */}
 
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
@@ -135,6 +116,8 @@ const Div = styled.div`
     width: 150px;
   }
 
+  
+
   .sidebar .logo img {
     height: 100px;
   }
@@ -152,9 +135,9 @@ const Div = styled.div`
     left: 0;
     top: 0;
     bottom: 0;
-    width: 230px;
+    width: 250px;
     background-color: #000000;
-    padding: 24px;
+    padding-top: 70px;
     padding-left: 0;
 
     @media screen and (max-width: 960px) {

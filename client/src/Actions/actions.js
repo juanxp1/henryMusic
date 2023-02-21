@@ -4,6 +4,7 @@ const URL = process.env.NODE_ENV === 'production' ? 'https://henrymusic.tech/api
 
 // Actions de nuestra base de datos
 
+export const GET_TOKEN = 'GET_TOKEN';
 export const GET_TRACK = 'GET_TRACK';
 export const SEARCH_TRACK = 'SEARCH_TRACK';
 export const GET_ALBUM = 'GET_ALBUM';
@@ -15,21 +16,18 @@ export const GET_ALL_ALBUMS = 'GET_ALL_ALBUMS';
 export const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
 export const FILTRO_GENERO = 'FILTRO_GENERO';
 export const RESET_DETALLES = "RESET_DETALLES;"
-export const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
-
-export const updateUserData = (user) => async (dispatch) => {
-  try {
-    const { data } = await axios.put(`/users/${user.id}`, user);
-    dispatch({ type: UPDATE_USER_DATA, payload: data });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
+export const GET_PLAYER = "GET_PLAYER;"
+export const IS_PLAYING = 'IS_PLAYING';
+export const UPDATE = 'UPDATE';
 
 const initialLimit = 10;
-var token = window.localStorage.getItem('token')
-axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+export const getToken = (token) => {
+    return {
+        type: GET_TOKEN,
+        payload: token
+    }
+}
 
 export const getTrack = (ID) => {
     return async function (dispatch) {
@@ -103,6 +101,13 @@ export const postSong = (song) => {
     }
 }
 
+export const updateSong = (song) => {
+    return async function () {
+        let json = await axios.put(`${URL}`, song)
+        return json;
+    }
+}
+
 
 export const Landing = () => {
     return {
@@ -121,5 +126,18 @@ export const filtroGenero = (payload) => {
     return {
         type: FILTRO_GENERO,
         payload
+    }
+}
+
+export const getPlayer = (payload) => {
+    return {
+        type: GET_PLAYER,
+        payload
+    }
+}
+
+export const isPlaying = () => {
+    return {
+        type: IS_PLAYING
     }
 }

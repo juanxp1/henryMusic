@@ -124,6 +124,30 @@ export async function getAllSongs(req, res) {
   catch (error) { jsonError(res, error.message) }
 }
 
+
+export async function updateSong(req, res){
+  const validator = new Validator(req.params, { id: "required|alpha_dash|min:10"})
+  if (validator.fails()) return jsonError(res, validator.errors)
+
+  try{
+    const song = await Song.findByPk(req.params.id)
+    if (!song) return jsonError(res, "Song not found", 404)
+    if (song.user_id !== req.user.id) return jsonError(res, "Unauthorized", 403)
+
+    const validator = new Validator(req.body, {
+      name: "required|string|min:2",
+      public: "boolean"
+    })
+    if (validator.fails()) return jsonError(res, validator.errors)
+
+    req.body.public = req.body.public === 'true'
+
+    await song.update(req.body)
+    jsonOk(res, song)
+  }
+  catch (error) { jsonError(res, error.message) }
+}
+
 export async function searchSongs(req, res) {
   const validator = new Validator(req.query, {
     q: "required|string|min:2",

@@ -1,53 +1,49 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllAlbums, Landing } from ".././../Actions/actions.js";
+import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import Hardcode from "../HardCode/Hardcode";
 import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { Link } from "react-router-dom";
-import Player1 from "../Audio-Player/Player1.jsx";
-import play from '../HardCode/play.png'
+import play from './play.png'
 
 const Homedos = () => {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const infoMusic = useSelector((state) => state.artists);
   const infoAlbum = useSelector((state) => state.albums);
+  const infoPlayer = useSelector(state => state.player)
 
   function handleGenero(genero) {
     genero.preventDefault();
     dispatch(filtroGenero(genero.target.value));
   }
 
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [data, setData] = useState({album: [], i: 0})
-  const [current, setCurrent] = useState({})
+  const [data, setData] = useState({ album: [] })
 
   function handleClick(e) {
-      setIsPlaying(true)
-      setData({...data, i: e})
-      setCurrent({tracks: data.album[data.i].tracks, i: 0})
+    setData({ ...data, i: e })
+    dispatch(getPlayer({ tracks: data.album[e].tracks, i: 0 }))
+    dispatch(isPlaying())
+
   }
 
   useEffect(() => {
-    dispatch(getAllArtists(200));
+    if (isAuthenticated) {
+      dispatch(getAllArtists(200));
+      dispatch(getAllAlbums(50));
+    }
     dispatch(Landing());
-    dispatch(getAllAlbums(50));
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
-    setData({album: infoAlbum.albums, i: 0})
+    setData({ album: infoAlbum.albums, i: 0 })
   }, [infoAlbum])
 
 
-  // console.log("ALBUM", infoAlbum.albums);
-  // console.log("ARTIST", infoMusic.artists);
-
-  //console.log(infoMusic.artistAlbums)
-  //    const CurrentCards = allAlbums;
+  console.log(infoPlayer)
 
   return (
     // isAuthenticated ? (
@@ -63,28 +59,32 @@ const Homedos = () => {
             Top artistas
           </h2>
 
-          <div className="container-fluid d-flex justify-content-center">
-            <div className="row container-sm">
+
+          {/* HARCODE */}
+
+
+          <div className="swiffy-slider container">
+            <ul className="slider-container d-flex justify-content-center">
               {infoAlbum.albums ? (
-                infoAlbum.albums?.slice(30, 36).map((c) => {
+                infoAlbum.albums?.slice(20, 26).map((c) => {
                   return (
-                    <Container container-fluid>
-                    <div className="generos w-100 ">
-                        <div className="cards">
+
+                    <Container >
+                      <li className="">
+                        <div className="d-flex justify-content-center">
+                          <div className="cards">
                             <div className='cards-info'>
-                                <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
-                                <div className="card_text container">
-                                    <p className='d-flex justify-content-start w-100'>{c.name}</p>
-                                    <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
-                                </div>               
+                              <div ><img className="card_imagen" key={c.id} src={c.images[0]?.url} alt={c.name} /></div>
+                              <div className="card_text container">
+                                <p className='d-flex justify-content-start w-100 '>{c.name}</p>
+                                <a className='d-flex ms-3 p-0' onClick={() => handleClick(infoAlbum.albums.indexOf(c))}><img src={play} alt="" /></a>
+                              </div>
                             </div>
+                          </div>
                         </div>
-                        {console.log('DATA', data, 'CURRENT', current.tracks)}
-                    </div>
-        
-        
-                </Container>
-                  );
+                      </li>
+                    </Container>
+                  )
                 })
               ) : (
                 <div className="uwu w-100 container-fluid">
@@ -97,11 +97,20 @@ const Homedos = () => {
                   </div>
                 </div>
               )}
-
-            </div>
+            </ul>
+            <button type="button" className="slider-nav"></button>
+            <button
+              type="button"
+              className="slider-nav slider-nav-next"
+            ></button>
           </div>
 
-          <div className="btn-wrapper mt-0 mb-3 container-fluid">
+
+
+
+          {/* BOTON FILTRO POR GENERO */}
+
+          <div className="btn-wrapper mt-5 mb-3 container-fluid">
             <select onChange={(e) => handleGenero(e)} className="btn">
               <option value="All">All Generos</option>
               <option value="Pop">Pop</option>
@@ -111,6 +120,8 @@ const Homedos = () => {
               <option value="hip hop">hip hop</option>
             </select>
           </div>
+
+
 
           {/* Aqui comienzan los carruseles */}
 
@@ -246,7 +257,6 @@ const Homedos = () => {
         </div>
       </div>
       <div className='card_imagen bg-transparent fixed-bottom'>
-        {isPlaying ? <Player1 tracks={current.tracks} i={current.i} /> : <span> </span>}
       </div>
     </Container1>
 
@@ -492,6 +502,11 @@ const Container = styled.div`
 
 img{
     width: 40px;
+}
+
+.deah{
+  font-size: 30px;
+  color: white;
 }
 
 .generos{

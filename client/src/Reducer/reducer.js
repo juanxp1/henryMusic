@@ -1,7 +1,8 @@
-import { GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES, UPDATE_USER_DATA } from "../Actions/actions";
+import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES,GET_PLAYER, IS_PLAYING, UPDATE } from "../Actions/actions";
 
 
 export const initialState = {
+    token: null,
     trackDetail: [],
     tracks: {},
     artistDetail: {},
@@ -9,14 +10,20 @@ export const initialState = {
     albums: [],
     artists: [],
     allArtists: [],
+    player: {tracks: [], playing: false},
     landing: true,
+    update: false,
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-
-
+        
         // NUESTRA BASE DE DATOS CASES
+        case GET_TOKEN:
+            return {
+                ...state,
+                token: action.payload,
+            }
 
         case GET_TRACK:
             return {
@@ -96,11 +103,25 @@ const reducer = (state = initialState, action) => {
                 allArtists: action.payload
             }
 
-            case UPDATE_USER_DATA:
-                return { ...state, ...action.payload };
-              default:                
+        case GET_PLAYER:
+            return {
+                ...state,
+                player: {...state.player, tracks: action.payload}
+            }
 
-        
+        case IS_PLAYING:
+            return {
+                ...state,
+                player: {...state.player, playing: true}
+            }
+
+            case UPDATE:
+                return {
+                    ...state,
+                    update: true,
+                }
+
+        default:
             return { ...state };
 
     }

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createElement } from "react";
 import ReactDOM from "react-dom"
 import styled from 'styled-components'
 import visa from '../Pagos/visa.png'
 import master from '../Pagos/master.png'
 import paypal from '../Pagos/paypal.png'
 import { useAuth0 } from '@auth0/auth0-react'
+import Publicidad from '../publicidad/Video'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -13,7 +14,7 @@ export default function Pagos() {
   const [price, setPrice] = useState(0);
   const [opcion, setOpcion] = useState(5);
 
-  
+
 
   useEffect(() => {
     {
@@ -26,6 +27,7 @@ export default function Pagos() {
   const { isAuthenticated } = useAuth0();
 
   const createOrder = (data, actions) => {
+    console.log(actions.order, "probandoo")
     return actions.order.create({
       purchase_units: [
         {
@@ -39,14 +41,16 @@ export default function Pagos() {
 
 
   const onApprove = (data, actions) => {
-    console.log(actions,"aveeeqalora")
+    console.log(actions, "aveeeqalora")
     return actions.order.capture(window.alert("Transaccion Exitosa."));
   };
 
 
-const alert =() => {
-  return window.alert("Registrate para continuar")
-}
+
+
+  const alert = () => {
+    return window.alert("Registrate para continuar")
+  }
 
   const handleCambio = (e) => {
     setOpcion(e.target.value)
@@ -56,6 +60,10 @@ const alert =() => {
 
   return (
     <Container className="payment container-fluid" id="premium">
+
+      {/* {actions ? <h1>Bienvenido a tu cuenta Premium</h1> : <Publicidad />} */}
+    {/* <Publicidad /> */}
+
 
       <h1 className='text-center pt-5'>¡No esperes mas y adquiere hoy tu plan Premium!</h1>
       <h2 className='text-center Music'>ᴺᴼᵂ ᴾᴸᴬᵞᴵᴺᴳ♫♬♪</h2>
@@ -93,23 +101,23 @@ const alert =() => {
         </div>
       </div>
 
-{isAuthenticated? 
-      <div className=' wrapper d-flex aling-items-center justify-content-center w-100'>
-        <div className="card mb-2">
-          <h2>Elige tu plan Premium por US$ {price}</h2>
-          <select className="select" value={opcion} onChange={handleCambio}>
-            <option className="option text-center" value="5"> PLan Estudiante Cinco Dolares</option>
-            <option className="option text-center" value="8"> Plan Individual Ocho Dolares</option>
-            <option className="option text-center" value="10">Plan Duo Diez Dolares</option>
-          </select>
-          <PayPalButton
-            createOrder={(data, actions) => createOrder(data, actions)}
-            onApprove={(data, actions) => onApprove(data, actions)}
-          />
+      {isAuthenticated ?
+        <div className=' wrapper d-flex aling-items-center justify-content-center w-100'>
+          <div className="card mb-2">
+            <h2>Elige tu plan Premium por US$ {price}</h2>
+            <select className="select" value={opcion} onChange={handleCambio}>
+              <option className="option text-center" value="5"> PLan Estudiante Cinco Dolares</option>
+              <option className="option text-center" value="8"> Plan Individual Ocho Dolares</option>
+              <option className="option text-center" value="10">Plan Duo Diez Dolares</option>
+            </select>
+            <PayPalButton
+              createOrder={(data, actions) => createOrder(data, actions)}
+              onApprove={(data, actions) => onApprove(data, actions)}
+            />
 
-          <hr />
-        </div>
-      </div> : <button onClick={alert} className="btn bg-dark"><h2>Realizar Compra</h2></button> }
+            <hr />
+          </div>
+        </div> : <button onClick={alert} className="btn bg-dark"><h2>Realizar Compra</h2></button>}
     </Container>
   );
 }
