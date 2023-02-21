@@ -81,9 +81,11 @@ export async function getAllTracks(req, res) {
   const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
 
   try {
-    const result = await Track.findAll({
+    const result = await Track.findAndCountAll({
       include: [
-        { model: Album, as : 'album', attributes: { exclude: ["created_at", "updated_at"] } },
+        { model: Album, as: 'album', attributes: { exclude: ["created_at", "updated_at"] }, include: [
+          { model: Image, as: 'images', attributes: ['id', 'url', 'width', 'height']}
+        ] },
         { model: Artist, as: 'artists', attributes: {
           exclude: ["created_at", "updated_at"] },
           through: { attributes: [] }
@@ -94,7 +96,7 @@ export async function getAllTracks(req, res) {
     })
     jsonOk(res, {
       total: result.count,
-      tracks: result,
+      tracks: result.rows,
       limit, offset
     })
   }
@@ -176,6 +178,7 @@ export async function searchSongs(req, res) {
 }
 
 export async function createSong(req, res) {
+  console.log(req.files)
   let validator = new Validator(req.body, {
     name: 'required|string|min:3|max:100',
     artist: 'required|string|min:3|max:100',
@@ -214,7 +217,7 @@ export async function createSong(req, res) {
       user_id: req.auth.payload.sub,
       extension: audio.extension,
       public: req.body.public,
-      duration: audio.duration,
+      duration: parseInt(audio.duration),
       name, artist, album, genre, explicit,
     })
     Image.create({ id: image.name, width: image.width, height: image.height, type: 'song', entity_id: audio.name })
@@ -233,6 +236,40 @@ export async function createSong(req, res) {
   } catch (error) {
     jsonError(res, error.message)
   }
+}
+
+export async function updateSong(req, res) {
+  const validator = new Validator(req.body, {
+    id: 'required|string|min:1',
+    name: 'string|min:3|max:100',
+    artist: 'string|min:3|max:100',
+    album: 'string|min:3|max:100',
+    genre: 'string|min:3',
+    explicit: 'boolean',
+    public: 'boolean'
+  })
+  if (validator.fails()) return jsonError(res, validator.errors)
+
+  try {
+    const song = await Song.findOne({ where: { id: req.body.id, user_id: req.user.id } })
+    if (!song) return jsonError(res, "Song not found", 404)
+    await song.update(req.body)
+    jsonOk(res, { song })
+  }
+  catch (error) { jsonError(res, error.message) }
+}
+
+export async function deleteSong(req, res) {
+  const validator = new Validator(req.body, { id: 'required|string|min:1' })
+  if (validator.fails()) return jsonError(res, validator.errors)
+
+  try {
+    const song = await Song.findOne({ where: { id: req.body.id, user_id: req.user.id } })
+    if (!song) return jsonError(res, "Song not found", 404)
+    await song.destroy()
+    jsonOk(res, { message: "Song deleted" })
+  }
+  catch (error) { jsonError(res, error.message) }
 }
 
 async function validateImage(file) {

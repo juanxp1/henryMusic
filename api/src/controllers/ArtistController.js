@@ -79,7 +79,7 @@ export async function getAllArtists(req, res) {
   const limit = req.query.limit || DEF_LIMIT, offset = req.query.offset || 0
 
   try {
-    const result = await Artist.findAll({
+    const result = await Artist.findAndCountAll({
       include: [
         { model: Album, as : 'albums', attributes: {
           exclude: ["created_at", "updated_at"] },
@@ -96,7 +96,7 @@ export async function getAllArtists(req, res) {
     })
     jsonOk(res, {
       total: result.count,
-      artists: result,
+      artists: result.rows,
       limit, offset
     })
   }

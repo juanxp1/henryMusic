@@ -43,8 +43,8 @@ const Homedos = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(getAllArtists(20));
-      dispatch(getAllAlbums(40));
+      dispatch(getAllArtists(200));
+      dispatch(getAllAlbums(50));
     }
     dispatch(Landing());
   }, [isAuthenticated]);
@@ -73,7 +73,7 @@ const Homedos = () => {
           {/* HARCODE */}
 
           <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
-            <ul className="slider-container">
+            <ul className="slider-container slider-nav-autoplay">
               {infoAlbum.albums ?
                 infoAlbum.albums?.slice(1, 20).map((c) => {
                   return (
