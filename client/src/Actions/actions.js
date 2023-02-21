@@ -19,6 +19,7 @@ export const RESET_DETALLES = "RESET_DETALLES;"
 export const GET_PLAYER = "GET_PLAYER;"
 export const IS_PLAYING = 'IS_PLAYING';
 export const GET_USER = "GET_USER;"
+export const ORDEN_BY_NAME = "ORDEN_BY_NAME;"
 
 const initialLimit = 10;
 
@@ -135,15 +136,9 @@ export const isPlaying = () => {
     }
 }
 
-<<<<<<< HEAD
-export const getUser = (payload) => {
-    return {
-        type: GET_USER,
-=======
 export const ordenPorAbc = (payload) => {
     return {
         type: ORDEN_BY_NAME,
->>>>>>> 5c5f7c6fe849a0e0e1f07eae50b961475b61c041
         payload
     }
 }

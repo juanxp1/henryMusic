@@ -115,13 +115,6 @@ const reducer = (state = initialState, action) => {
                 player: { ...state.player, playing: true }
             }
 
-<<<<<<< HEAD
-        case GET_USER:
-            return {
-                ...state,
-                user: {...state.user, userInfo: action.payload}
-            }
-=======
         case ORDEN_BY_NAME:
             let order = action.payload === 'asc' ?
             state.allArtists.artists.sort(function (a, b) {
@@ -150,10 +143,6 @@ const reducer = (state = initialState, action) => {
 
         }
 
-
-
-
->>>>>>> 5c5f7c6fe849a0e0e1f07eae50b961475b61c041
 
 
         default:
