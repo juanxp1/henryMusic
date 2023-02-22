@@ -35,12 +35,15 @@ function Navertical() {
                 </IconLogoMobile1>
 
                 <Menu1 click={click} className="container-fluid d-flex justify-content-center">
-                  <ul>         
-                  <img style={{width:"150px" , margin:"0", padding:"0"}} src={favi} alt="logo" />
+                  <ul>
+                    <a href="/">
+                      <img style={{ width: "150px", margin: "0", padding: "0" }} src={favi} alt="logo" />
+                    </a>
+
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
-                          <a href="/home">
+                          <a href="#">
                             <span className="fa fa-home">
                               <img className="home" src={home} alt="home" />
                             </span>
@@ -66,7 +69,7 @@ function Navertical() {
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
                         <MenuItemLink1>
-                        <a href="/playlist">
+                          <a href="/playlist">
                             <span className="fa fas fa-heart">
                               <img className="home" src={cora} alt="home" />
                             </span>
