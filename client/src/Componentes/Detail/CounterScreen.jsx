@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 
 import { useDispatch, useSelector } from "react-redux";
-import {useLocation} from "react-router-dom"
-import { getAllPlaylists, getPlaylistTracks, getUser, playlistAddTrack} from "../../Actions/actions";
+import { getAllPlaylists, getUser, playlistAddTrack, playlistDeleteTrack} from "../../Actions/actions";
 
 export default function CounterScreen({track}) {
 
   const [click, setClick] = useState(false);
-  const playlist = useSelector(state => state.playlists)
+  const playlist = useSelector(state => state.playlists.playlists)
   const dispatch = useDispatch()
   const {user, isAuthenticated} = useAuth0()
 
@@ -21,11 +20,15 @@ export default function CounterScreen({track}) {
     }
   }, [isAuthenticated])
 
+
   const ChangeClick = () => {
     setClick(!click);
-    dispatch(playlistAddTrack(playlist[0].id, track.id))
-    dispatch(getPlaylistTracks(playlist[0].id))
-    console.log(playlist)
+    if(!click) {
+      dispatch(playlistAddTrack(playlist[0].id, track.id))
+    }
+    else {
+      dispatch(playlistDeleteTrack(playlist[0].id, track.id))
+    }
   };
 
   return (

@@ -168,7 +168,14 @@ export const getPlaylistTracks = (playlist_id) => {
 
 export const playlistAddTrack = (playlist_id, track_id) => {
     return async function () {
-        const info = await axios.post(`${URL}/playlist/track/add`, playlist_id, track_id)
+        const info = await axios.post(`${URL}/playlist/track/add`, {playlist_id, track_id})
+        return info;
+    };
+}
+
+export const playlistDeleteTrack = (playlist_id, track_id) => {
+    return async function () {
+        const info = await axios.post(`${URL}/playlist/track/remove`, {playlist_id, track_id})
         return info;
     };
 }

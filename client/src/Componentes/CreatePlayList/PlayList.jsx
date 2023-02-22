@@ -1,26 +1,62 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../Actions/actions';
-
+import { getAllPlaylists, getPlaylistTracks, getUser, getPlayer, isPlaying, playlistDeleteTrack } from '../../Actions/actions';
+import play from '../Detail/play.png'
 
 
 function PlayList() {
 
-    const { user, isAuthenticated } = useAuth0();
-    const infoUser = useSelector(state => state.user)
-    const dispatch = useDispatch()
-    const local = window.localStorage.getItem(`${infoUser?.nickname} liked songs`)
-    console.log(local)
-    useEffect(() => {
-        if(isAuthenticated){
-            dispatch(getUser(user))
-        }
-    }, [isAuthenticated])
+    const convertidor = (milisegundos) => {
+        const minutos = Math.floor(milisegundos / 1000 / 60);
+        milisegundos -= Math.floor(minutos * 60 * 1000);
+        const segundos = Math.floor(milisegundos / 1000);
+        return `${minutos}:${segundos}`;
+    }
 
-    console.log(infoUser)
+    const { user, isAuthenticated } = useAuth0();
+    const infoToken = useSelector(state => state.token)
+    const dispatch = useDispatch()
+    const playlistTracks = useSelector(state => state.playlistTracks)
+    const playlist = useSelector(state => state.playlists.playlists)
+
+    const [data, setData] = useState({
+        name: '',
+        tracks: [],
+        i: 0,
+    })
+
+    function handleClick(e) {
+        setData({ ...data, i: e })
+        dispatch(getPlayer({ tracks: data.tracks, i: e }))
+        dispatch(isPlaying())
+    }
+
+    function deleteTrack (track_id) {
+        dispatch(playlistDeleteTrack(playlist[0].id, track_id))
+    }
+
+
+    useEffect(() => {
+        if(infoToken){
+            dispatch(getUser(user))
+            dispatch(getAllPlaylists())
+        }
+    }, [infoToken])
+
+    useEffect(() => {
+        isAuthenticated &&
+        dispatch(getPlaylistTracks(playlist[0].id))
+    }, [playlist, playlistTracks])
+
+    useEffect(() => {
+        if (playlistTracks?.tracks) {
+            setData({ name: playlistTracks.name, tracks: playlistTracks.tracks, i: 0})
+        }
+    }, [playlistTracks])
+
 
     return (
 
@@ -70,7 +106,19 @@ function PlayList() {
                         <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
                             <img className='fotico ms-4' src="" alt="" />
                             <div className=" ms-4 me-auto">
-                                <div className="fw-bold">{local}</div>
+                                {playlistTracks?.tracks?.map(el => (
+
+                                    <li className=" ms-0 list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
+                                        <img onClick={() => handleClick(playlistTracks.tracks.indexOf(el))} className='fotico ms-2' src={play} alt="play" />
+
+                                        <div className=" ms-4 me-auto">
+                                            <div className="fw-bold">{el.name} </div>
+                                        </div>
+                                        <button onClick={() => deleteTrack(el.id)}> Eliminar de favoritos </button>
+                                        {/* <div className='fw-bold'> {convertidor(el.duration)} </div> */}
+                                    </li>
+
+                                ))}
                             </div>
                         </li>
                     </ol>
@@ -162,3 +210,4 @@ background-color: black;
 
 
 `
+
