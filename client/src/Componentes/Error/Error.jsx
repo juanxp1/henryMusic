@@ -14,9 +14,9 @@ export default function Error() {
       <br />
       <br />
       <div>
-        <Link to={"/home"}>
+        <Link to={"/"}>
           <button type="button" className="btn btn-warning">
-            Go Home
+            Login
           </button>
         </Link>
         <br />
