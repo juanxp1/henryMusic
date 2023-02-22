@@ -7,9 +7,9 @@ export default function Card({ name, image, id, genre }) {
 
     <Div className="" id={id}>
 
-      <div class="cards">
-        <div class="card_image"> <img src={image} /> </div>
-        <div class="card_title">
+      <div className="cards">
+        <div className="card_image"> <img src={image} /> </div>
+        <div className="card_title">
           <p className="mt-4">{name}</p>
         </div>
       </div>
@@ -33,7 +33,7 @@ const Div = styled.div`
 
 .cards {
   margin: 30px auto;
-  width: 200px;
+  width: 250px;
   height: 250px;
   border-radius: 10px;
   box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
