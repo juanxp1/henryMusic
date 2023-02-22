@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import home from "./home.png";
-import logo3 from '../Nav-Vertical/play.mp4';
 import listas from "./listas.png";
-import crear from "./crear.png";
 import cora from "./cora.png";
-import play from "./play.mp4";
 import mas from "./mas.png";
-import foto from "./app.png"
+import favi from './favi.png';
 import {
   NavbarContainer1,
   Navbarwrapper1,
@@ -37,10 +34,10 @@ function Navertical() {
                   {click ? <FaTimes /> : <FaBars />}
                 </IconLogoMobile1>
 
-                <Menu1 click={click}>
+                <Menu1 click={click} className="container-fluid d-flex justify-content-center">
                   <ul>
-                    <div className=" d-flex justify-content-center">
-                      <h1 style={{ color: "#ffff01" }}> <span className="text-white">H</span>Music</h1>
+                    <div className="m-0 p-0">
+                    <img style={{width:"150px" , margin:"0", padding:"0"}} src={favi} alt="logo" />
                     </div>
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
@@ -132,7 +129,7 @@ const Div = styled.div`
     left: 0;
     top: 0;
     bottom: 0;
-    width: 250px;
+    width: 230px;
     background-color: #000000;
     padding-top: 70px;
     padding-left: 0;
