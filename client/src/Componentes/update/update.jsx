@@ -5,15 +5,15 @@ import { useHistory } from "react-router-dom";
 
 function Update() {
   const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [picture, setPicture] = useState("");
   const infoToken = useSelector((state) => state.token);
   const history = useHistory();
 
   useEffect(() => {
     if (infoToken) {
-      axios.get("http://localhost:3001/api/user").then((res) => {
+      axios.get("http://localhost:3001/git api/user").then((res) => {
         setUsername(res.data.username);
-        setAvatar(res.data.avatar);
+        setPicture(res.data.image);
       });
     }
   }, [infoToken]);
@@ -21,7 +21,7 @@ function Update() {
   const handleSaveChanges = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:3001/api/user", { username, avatar });
+      await axios.put("http://localhost:3001/api/user", { username, picture });
       history.push("/");
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ function Update() {
   const handleCancel = (e) => {
     e.preventDefault();
     setUsername("");
-    setAvatar("");
+    setPicture("");
   };
 
   return (
@@ -43,9 +43,9 @@ function Update() {
           <div className="col-md-3">
             <div className="text-center">
               <img
-                src={avatar || "//placehold.it/100"}
-                className="avatar img-circle"
-                alt="avatar"
+                src={picture || "//placehold.it/100"}
+                className="picture img-circle"
+                alt="picture"
               />
               <h6>Cargar Nueva Foto de Perfil</h6>
 
@@ -74,11 +74,13 @@ function Update() {
                 <div className="col-md-8">
                   <button className="btn btn-primary" onClick={handleSaveChanges}>
                     Save Changes
-                  </button>
-                  <span></span>
-                  <button className="btn btn-default" onClick={handleCancel}>
+                  </button>                  
+                  <span></span>                  
+                  <a href="/home">
+                  <button className="btn btn-default">
                     Cancel
                   </button>
+                  </a>
                 </div>
               </div>
             </form>

@@ -14,7 +14,7 @@ export const initialState = {
     player: { tracks: [], playing: false },
     landing: true,
     playlists: {},
-    updateMyUser:{},
+    playlistTracks: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -153,13 +153,13 @@ const reducer = (state = initialState, action) => {
         case GET_ALL_PLAYLISTS:
             return {
                 ...state,
-                playlists: action.payload.playlists,
+                playlists: action.payload,
             }
 
         case GET_ALL_PLAYLIST_TRACKS:
             return {
                 ...state,
-                playlists: action.payload
+                playlistTracks: action.payload
             }
 
         case UPDATEMYUSER:        
