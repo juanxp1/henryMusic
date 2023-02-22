@@ -64,7 +64,7 @@ img{
     background-color: black;
     text-align: center;
     color: white;
-    height: 35vh;
+    height: auto;
 }
 .footer_content{
     max-width: 1170px;
