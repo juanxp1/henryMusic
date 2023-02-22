@@ -162,7 +162,7 @@ const reducer = (state = initialState, action) => {
                 playlists: action.payload
             }
 
-        case UPDATEMYUSER:
+        case UPDATEMYUSER:        
             return {
                 ...state,
                 updateMyUser: action.payload
