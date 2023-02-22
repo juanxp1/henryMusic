@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
-import foto from '../NavHome/logosin.png'
+
 import { useAuth0 } from "@auth0/auth0-react";
 import Search from '../Search/Search';
 import Logout from '../Logout/Logout';
-import { Link } from "react-router-dom"
+
 
 
 
@@ -18,34 +18,28 @@ function NavHome() {
 
   return (
 
-
     isAuthenticated && (
-
       <Div className='container-fluid'>
-        <nav className="navbar navbar-expand-lg container-fluid d-flex justify-content-end">
-          <div className='container-fluid d-flex justify-content-end'>
-            <div className='m-0 pt-0 px-3'>
-              <Search />
-            </div>
-            <form className="d-flex" role="search">
+        <nav className="navbar container d-flex justify-content-end">
+          <form className="d-flex justify-content-center" role="search">
+            <div className='mt-2'><Search /></div>
+            <nav className="navbar bg-body-tertiary container-fluid">
+              <Chip
+                avatar={<Avatar alt="picture" src={user.picture} />}
+                label={user.nickname}
+                variant="outlined"
+                className=" dropdown-toggle avatar "
+                data-bs-toggle="dropdown"
+                type="button"
+              />
+              <ul className="dropdown-menu">
+                <li className="btn btn-warning">Editprofile</li>
+                <br />
+                <li>{logout}</li>
+              </ul>
+            </nav>
+          </form>
 
-              <nav className="navbar bg-body-tertiary m-0 pt-2">
-                <Chip
-                  avatar={<Avatar alt="picture" src={user.picture} />}
-                  label={user.nickname}
-                  variant="outlined"
-                  className=" dropdown-toggle avatar "
-                  data-bs-toggle="dropdown"
-                  type="button"
-                />
-                <ul className="dropdown-menu">
-                  <li className="btn btn-warning">Editprofile</li>
-                  <br />
-                  <li>{logout}</li>
-                </ul>
-              </nav>
-            </form>
-          </div>
         </nav>
       </Div>
 
@@ -58,6 +52,15 @@ function NavHome() {
 export default NavHome
 
 const Div = styled.div`
+
+@media screen and (max-width: 960px){
+  background-color: #000000;
+  width: auto;
+  display: flex;
+  direction: column;
+  
+
+}
 
 .btn{
    height: 35px;
@@ -83,7 +86,7 @@ const Div = styled.div`
 
 background-color:#000000;
 height: auto;
-max-height: 150px;
+max-height: 250px;
 
 .avatar{
   color: #FFFF01;
