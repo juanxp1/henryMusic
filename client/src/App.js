@@ -15,6 +15,7 @@ import Player1 from "./Componentes/Audio-Player/Player1";
 import Error from "./Componentes/Error/Error"
 
 
+
 function App() {
 
 
@@ -53,6 +54,9 @@ function App() {
         <Route path="/detail/:id" component={Detail} />
         <Route path="/playlist" component={PlayList} />
         <Route path="*" component={Error}/> 
+        {/* <Route path="/update" component={Update}/>  */}
+
+
        
     
 
