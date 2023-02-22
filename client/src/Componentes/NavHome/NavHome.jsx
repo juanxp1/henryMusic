@@ -16,9 +16,12 @@ function NavHome() {
     isAuthenticated && (
 
       <Div className='container-fluid'>
-        <nav className="navbar container d-flex justify-content-end">
-          <form className="d-flex justify-content-center" role="search">
-            <div className='mt-2'><Search /></div>
+        <div className="navbar container d-flex justify-content-end">
+          <div className=" d-flex justify-content-center">
+            <Search />
+          </div>
+
+          <div className="d-flex justify-content-center" role="search">
             <nav className="navbar bg-body-tertiary container-fluid">
               <Chip
                 avatar={<Avatar alt="picture" src={user.picture} />}
@@ -36,9 +39,8 @@ function NavHome() {
                 <li>{logout}</li>
               </ul>
             </nav>
-          </form>
-
-        </nav>
+          </div>
+        </div>
       </Div>
     )
   );
