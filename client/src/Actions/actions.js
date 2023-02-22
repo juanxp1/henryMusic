@@ -20,6 +20,8 @@ export const GET_PLAYER = "GET_PLAYER;"
 export const IS_PLAYING = 'IS_PLAYING';
 export const GET_USER = "GET_USER;"
 export const ORDEN_BY_NAME = "ORDEN_BY_NAME;"
+export const GET_ALL_PLAYLISTS = 'GET_ALL_PLAYLISTS';
+export const GET_ALL_PLAYLIST_TRACKS = 'GET_ALL_PLAYLIST_TRACKS';
 
 const initialLimit = 10;
 
@@ -148,4 +150,25 @@ export const ordenPorAbc = (payload) => {
         type: ORDEN_BY_NAME,
         payload
     }
+}
+
+export const getAllPlaylists = (limit = initialLimit) => {
+    return async function (dispatch) {
+        const info = await axios.get(`${URL}/playlist/all?limit=${limit}`)
+        return dispatch({ type: GET_ALL_PLAYLISTS, payload: info.data })
+    };
+}
+
+export const getPlaylistTracks = (playlist_id) => {
+    return async function (dispatch) {
+        const info = await axios.get(`${URL}/playlist/track/all/?id=${playlist_id}`)
+        return dispatch({ type: GET_ALL_PLAYLIST_TRACKS, payload: info.data })
+    };
+}
+
+export const playlistAddTrack = (playlist_id, track_id) => {
+    return async function () {
+        const info = await axios.post(`${URL}/playlist/track/add`, playlist_id, track_id)
+        return info;
+    };
 }
