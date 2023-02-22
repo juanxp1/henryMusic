@@ -114,7 +114,7 @@ function New() {
                     
                     <span className="iwi"> Create your song</span>
                     <form>
-                        <div class="user-box">
+                        <div className="user-box">
                         <input
                             
                             placeholder="Name"       
@@ -125,7 +125,7 @@ function New() {
                             {errors.name && <p> {errors.name} </p>}       
                         </div>
 
-                        <div class="user-box">
+                        <div className="user-box">
                         <input
                             className="input-group mb-3"
                             placeholder="Artist"
@@ -136,7 +136,7 @@ function New() {
                             {errors.artist && <p> {errors.artist} </p>}                                     
                         </div>
                         
-                        <div class="user-box">
+                        <div className="user-box">
                         <input
                             className="input-group mb-3"
                             placeholder="Genre"
