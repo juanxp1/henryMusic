@@ -155,7 +155,7 @@ const Homedos = () => {
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                    <li className=" container-fluid d-flex justify-content-center">
+                    <li className="ms-2">
                       <Link to={"/detail/" + c.id}>
                         <Card
                           key={c.id}
@@ -195,11 +195,11 @@ const Homedos = () => {
           {/* carrusel */}
 
           <div className="swiffy-slider">
-            <ul className="slider-container d-flex">
+            <ul className="slider-container d-flex justify-content-center">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                    <li className=" container-fluid d-flex justify-content-center">
+                    <li className="ms-2">
                       <Link to={"/detail/" + c.id}>
                         <Card
                           key={c.id}

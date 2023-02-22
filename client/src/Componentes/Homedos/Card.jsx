@@ -36,17 +36,20 @@ const Div = styled.div`
   width: 250px;
   height: 250px;
   border-radius: 10px;
-  box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
--webkit-box-shadow: 7px 7px 5px 0px rgba(255,255,1,0.75);
--moz-box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
   cursor: pointer;
   transition: 0.1s;
+  box-shadow: 8px 7px 5px 0px rgba(0, 0, 0, 0.75);
+-webkit-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.75);
+-moz-box-shadow: 8px 7px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .cards .card_image {
   width: inherit;
   height: inherit;
   border-radius: 10px;
+  box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
+-webkit-box-shadow: 7px 7px 5px 0px rgba(255,255,1,0.75);
+-moz-box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
 }
 
 .cards .card_image img {
@@ -54,10 +57,6 @@ const Div = styled.div`
   height: inherit;
   border-radius: 10px;
   object-fit: cover;
-  opacity: 1;
-  box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
--webkit-box-shadow: 7px 7px 5px 0px rgba(255,255,1,0.75);
--moz-box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
 }
 
 .card_title {
@@ -74,11 +73,7 @@ const Div = styled.div`
 
 .cards:hover {
   transform: scale(0.9, 0.9);
-  box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
--webkit-box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
--moz-box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
 }
-
 
 
 .title-black {
