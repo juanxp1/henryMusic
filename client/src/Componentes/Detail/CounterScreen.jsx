@@ -4,43 +4,29 @@ import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 
 import { useDispatch, useSelector } from "react-redux";
 import {useLocation} from "react-router-dom"
-import { getUser} from "../../Actions/actions";
+import { getAllPlaylists, getPlaylistTracks, getUser, playlistAddTrack} from "../../Actions/actions";
 
 export default function CounterScreen({track}) {
 
   const [click, setClick] = useState(false);
-
-  const infoUser = useSelector(state => state.user.userInfo)
+  const playlist = useSelector(state => state.playlists)
   const dispatch = useDispatch()
   const {user, isAuthenticated} = useAuth0()
 
-  const [likedSong, setLikedSong] = useState(
-  window.localStorage.getItem(`${infoUser?.nickname} liked songs`)
-  );
-
-  const setLocalStorage = (value) => {
-    try {
-      setLikedSong(value)
-      window.localStorage.setItem(`${infoUser?.nickname} liked songs`, value)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   useEffect(() => {
     if(isAuthenticated) {
       dispatch(getUser(user))
+      dispatch(getAllPlaylists())
     }
   }, [isAuthenticated])
 
   const ChangeClick = () => {
     setClick(!click);
-    if(!click){
-      setLocalStorage(track)
-      console.log(likedSong)
-    }
+    dispatch(playlistAddTrack(playlist[0].id, track.id))
+    dispatch(getPlaylistTracks(playlist[0].id))
+    console.log(playlist)
   };
-
 
   return (
     <div onClick={() => ChangeClick()}>
