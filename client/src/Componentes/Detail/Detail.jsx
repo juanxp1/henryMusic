@@ -34,7 +34,7 @@ function Detail(props) {
 
     function handleClick(e) {
         setData({ ...data, i: e })
-        dispatch(getPlayer({tracks: data.tracks, i: e}))
+        dispatch(getPlayer({ tracks: data.tracks, i: e }))
         dispatch(isPlaying())
     }
 
@@ -53,11 +53,8 @@ function Detail(props) {
     return (
         <Div>
 
-
             <div className='contenedor'>
-
                 <div className=" bg-dark mw-100 pt-2 pb-1  container-fluid oki" >
-
                     <div className="row g-0 pt-2 container-fluid">
                         <div className="col-md-4 container-fluid">
                             <img src={data.image} className="img-thumbnail bg-dark pancho " alt="artista" />
@@ -68,9 +65,7 @@ function Detail(props) {
                                 <p className="card-text p-0">Playlist</p>
                                 <h1 className="card-title display-1 p-0 m-0 name">{data.name}</h1>
                                 <h3> {data.genres.map(el => el + ', ')} </h3>
-
                             </div>
-
                         </div>
                     </div>
                     <br />
@@ -91,11 +86,11 @@ function Detail(props) {
 
                         <li className=" ms-0 list-group-item d-flex justify-content-between align-items-start bg-transparent text-light">
                             <img onClick={() => handleClick(data.tracks.indexOf(el))} className='fotico ms-2' src={play} alt="play" />
-                            
+
                             <div className=" ms-4 me-auto">
                                 <div className="fw-bold">{el.name} </div>
                             </div>
-                            <div className='fw-bold'> {convertidor(el.duration)}<CounterScreen track ={el}/>  </div>
+                            <div className='fw-bold'> {convertidor(el.duration)}<CounterScreen track={el} />  </div>
                         </li>
 
                     ))}
@@ -189,7 +184,7 @@ img {
 } 
  .contenedordos{
     width: auto;
-    height: 250vh;
+    height: 120vh;
     background: rgb(194,194,45);
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
     /* margin-left: 230px  !important; */
