@@ -36,9 +36,9 @@ const Div = styled.div`
   width: 250px;
   height: 250px;
   border-radius: 10px;
-  box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
--webkit-box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
--moz-box-shadow: 7px 7px 5px -4px rgba(255,255,1,0.75);
+  box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
+-webkit-box-shadow: 7px 7px 5px 0px rgba(255,255,1,0.75);
+-moz-box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
   cursor: pointer;
   transition: 0.1s;
 }
@@ -55,6 +55,9 @@ const Div = styled.div`
   border-radius: 10px;
   object-fit: cover;
   opacity: 1;
+  box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
+-webkit-box-shadow: 7px 7px 5px 0px rgba(255,255,1,0.75);
+-moz-box-shadow: 8px 7px 5px 0px rgba(255,255,1,0.75);
 }
 
 .card_title {
