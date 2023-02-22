@@ -47,8 +47,8 @@ function Search() {
   };
 
   return (
-    <Div className="container px-0 m-2">
-      <form className="d-flex" onSubmit={handleSubmit}>
+    <Div className="container-fluid w-100">
+      <form className="d-flex justify-content-center" onSubmit={handleSubmit}>
         <input
           className="row g-0 align-items-center input"
           type="search"
@@ -60,7 +60,7 @@ function Search() {
         {error && <p className="text-danger">Debes ingresar un artista</p>}
       </form>
 
-      <Modal show={show} onHide={handleClose}>
+      {/* <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Artista no encontrado</Modal.Title>
         </Modal.Header>
@@ -72,7 +72,7 @@ function Search() {
             Cerrar
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </Div>
   );
 }
@@ -119,17 +119,21 @@ export default Search;
 
 const Div = styled.div`
 
+@media screen and (max-width: 960px){
+display: none;
+}
+
+
 .input {
-    border-radius: 30px;
+    border-radius: 20px;
     text-align: center;
-    width: 200px;
+    width: auto;
 
 }
 
 input::placeholder {
     font-size: 13px;
     text-align: center;
-
 }
 
 @media (max-width: 768px) {

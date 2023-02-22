@@ -1,4 +1,4 @@
-import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES, GET_PLAYER, IS_PLAYING, GET_USER, ORDEN_BY_NAME, GET_ALL_PLAYLISTS, GET_ALL_PLAYLIST_TRACKS, UPDATE } from "../Actions/actions";
+import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES, GET_PLAYER, IS_PLAYING, GET_USER, ORDEN_BY_NAME, GET_ALL_PLAYLISTS, GET_ALL_PLAYLIST_TRACKS, UPDATEMYUSER } from "../Actions/actions";
 
 
 export const initialState = {
@@ -14,7 +14,7 @@ export const initialState = {
     player: { tracks: [], playing: false },
     landing: true,
     playlists: {},
-    update:{},
+    updateMyUser:{},
 };
 
 const reducer = (state = initialState, action) => {
@@ -162,12 +162,12 @@ const reducer = (state = initialState, action) => {
                 playlists: action.payload
             }
 
-        case UPDATE:
+        case UPDATEMYUSER:
             return {
                 ...state,
-                update: action.payload
+                updateMyUser: action.payload
             }
-            
+                 
 
         default:
             return { ...state };

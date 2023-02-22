@@ -91,9 +91,9 @@ display: none;
 
 @media screen and (max-width: 960px){
 
-  padding: 30px;
-  padding-left: 30px;
-  height: 30px;
+  padding-top: 10px;
+  padding-left: 40px;
+  height: 60px;
   display: flex;
   color: #ffff01;
   font-size: 2rem;

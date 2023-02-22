@@ -22,7 +22,8 @@ export const GET_USER = "GET_USER;"
 export const ORDEN_BY_NAME = "ORDEN_BY_NAME;"
 export const GET_ALL_PLAYLISTS = 'GET_ALL_PLAYLISTS';
 export const GET_ALL_PLAYLIST_TRACKS = 'GET_ALL_PLAYLIST_TRACKS';
-export const UPDATE = 'UPDATE';
+export const UPDATEMYUSER = 'UPDATEMYUSER';
+
 
 const initialLimit = 10;
 
@@ -180,10 +181,13 @@ export const playlistAddTrack = (playlist_id, track_id) => {
     };
 }
 
-export const UPDATE = async function
-    (user) {
-    let json = await axios.put(`${URL}`, user)
-    return json;
+
+export const updateMyUser = (payload) => {
+    return {
+        type: UPDATEMYUSER,
+        payload
+    }
 }
+
 
 
