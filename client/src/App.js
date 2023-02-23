@@ -15,7 +15,8 @@ import Player1 from "./Componentes/Audio-Player/Player1";
 import Error from "./Componentes/Error/Error"
 import Dashboard from "./Componentes/Dashboard/Dashboard";
 import PrivateRoute from "./Componentes/Dashboard/PrivateRoute";
-import Update from "./Componentes/Update/Update.jsx"
+import Update from "./Componentes/Update/Update";
+
 
 
 

@@ -3,6 +3,8 @@ import emailjs from '@emailjs/browser'
 import styled from 'styled-components'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Registro.css'
+import Button from 'react-bootstrap/Button';
+
 
 import { Container } from '@mui/system';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -13,9 +15,9 @@ export default function Registro() {
     const form = useRef();
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.sendForm("service_n3bfhtp", "template_8ay97f7", form.current, "cfMaTPMB78FGsEJJk").then(
+        emailjs.sendForm("service_aryin67", "template_t1ei98q", form.current, "cfMaTPMB78FGsEJJk").then(
             (result) => {
-                window.alert("Registro Exitoso, Ahora elige tu plan favorito.");
+                window.alert("Envio Exitoso, Bienvenido A Henry Music!!.");
                 
             },
             (error) => {
@@ -29,7 +31,7 @@ export default function Registro() {
             <div className=' wrapper d-flex aling-items-center justify-content-center w-100'>
                 <div className='logiin'>
 
-                    <h2 className='letras'>Activar Notificaciones al mail</h2>
+                    <h2 className='letras'>¡Gracias Por Elegir Henry Music!</h2>
                     <form ref={form} onSubmit={sendEmail} className='needs-validation'>
                         <div className='form-group  was-validated   mb-2'>
                             <label htmlFor='name' className='form-label' ><h2 className='text-muted'>{user?.name[0].toUpperCase() + user?.name.substring(1)}</h2>
@@ -38,15 +40,16 @@ export default function Registro() {
                         <div className='form-group was-validated   mb-2'>
                             {/* <label htmlFor='email' className='form-label' color='yellow' >{user?.email}</label> */}
                             <input type='email' name='user_email' className='form-control text-center' required placeholder='Excribe tu e-mail' ></input>
-                            <div className='invalid-feedback'>
-                                Ingrese su e-mail por favor
-                            </div>
+                            {/* <div className='invalid-feedback'>
+                                
+                            </div> */}
                         </div>
                         <div className='form-group  was-validated    mb-2'>
                         </div>
 
-                        <button type='submit' value='send' className='btn btn-success w-100 mt-2'  >Recibir Notificaciones</button>
-
+                        {/* <Button className="btn btn-warning"   type='submit' value='send' color='black' >Activar</Button> */}
+                        <button type="submit" class="btn btn-dark p-1 rounded-pill" value='send' >Activar Notificaciones
+                         ✉</button>
                     </form>
 
                 </div>
@@ -91,6 +94,3 @@ text-align: center;
 
 
 `
-
-
-

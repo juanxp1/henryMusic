@@ -5,6 +5,7 @@ import Premium from './Premium/Premium'
 import Us from './About us/Us'
 import Footer from './Footer/Footer'
 import Pagos from './Pagos/Pagos';
+import { DiscussionEmbed, Recommendations } from 'disqus-react';
 
 function Landing() {
     // const { getAccessTokenSilently } = useAuth0();
@@ -15,7 +16,10 @@ function Landing() {
             <Premium />
             <Pagos></Pagos>
             <Us />
+            <DiscussionEmbed></DiscussionEmbed>
+           <Recommendations></Recommendations>
             <Footer />
+          
         </div>
     )
 }

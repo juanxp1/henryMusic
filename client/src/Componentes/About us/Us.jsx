@@ -10,7 +10,7 @@ import Agustin from '../About us/agustin.jpg';
 import Linke from '../About us/linke.png';
 import Git from '../About us/github.png'
 import Carlos from '../About us/carlos.jpg';
-import Abigail from '../About us/abigail.jpeg';
+import Abii from '../About us/Abii.jpeg';
 import Antonio from '../About us/Antonio.jpeg';
 
 
@@ -71,12 +71,12 @@ function Us() {
                     </Card.Footer>
                 </Card>
                 <Card>
-                    <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Abigail} />
+                    <img className='img-fluid img-thumbnail text-aling  mx-auto d-block' variant="top" src={Abii} />
                     <Card.Body>
                         <Card.Title className='text-center'>Abigail Cortes</Card.Title>
                         <Card.Text className='text-center'>
                             <div className='container'>
-                                Full Stack Developer <a href='https://www.linkedin.com/in/juan-jose-bianchi-928b8416a/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
+                                Full Stack Developer <a href='https://www.linkedin.com/in/abigail-cortés-sánchez-8252381a3/' target="_blank"><img className='linke' src={Linke} alt="linke" /></a>
                             </div>
                         </Card.Text>
                     </Card.Body>

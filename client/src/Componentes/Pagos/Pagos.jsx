@@ -6,6 +6,7 @@ import master from '../Pagos/master.png'
 import paypal from '../Pagos/paypal.png'
 import { useAuth0 } from '@auth0/auth0-react'
 import Publicidad from '../publicidad/Video'
+import Registro from '../Registro/Registro'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -114,7 +115,7 @@ export default function Pagos() {
               createOrder={(data, actions) => createOrder(data, actions)}
               onApprove={(data, actions) => onApprove(data, actions)}
             />
-
+          <Registro></Registro>
             <hr />
           </div>
         </div> : <button onClick={alert} className="btn bg-dark"><h2>Realizar Compra</h2></button>}
