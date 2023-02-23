@@ -22,7 +22,7 @@ function NavHome() {
           </div>
 
           <div className="d-flex justify-content-center" role="search">
-            <nav className="navbar bg-body-tertiary container-fluid">
+            <nav className=" navbar bg-body-tertiary container-fluid">
               <Chip
                 avatar={<Avatar alt="picture" src={user.picture} />}
                 label={user.nickname}
