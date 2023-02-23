@@ -24,7 +24,7 @@ function Update() {
   const handleSaveChanges = async (e) => {
      e.preventDefault();
      try {
-       dispatch(updateMyUser(usuario.nickname, ))
+       dispatch(updateMyUser(usuario.nickname, 'image_id acá'))
        history.push("/");
      } catch (error) {
        console.log(error);
