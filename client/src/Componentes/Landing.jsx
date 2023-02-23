@@ -7,9 +7,10 @@ import Footer from './Footer/Footer'
 import Pagos from './Pagos/Pagos';
 
 function Landing() {
+    // const { getAccessTokenSilently } = useAuth0();
 
     return (
-        <div style={{ background: "black" }} >
+        <div style={{ background: "black" }}>
             <Nav />
             <Premium />
             <Pagos></Pagos>

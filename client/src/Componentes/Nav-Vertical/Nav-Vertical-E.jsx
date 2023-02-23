@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const NavbarContainer1 = styled.div`
  width: 100%;
- height: 10px;
+ height: 100%;
  position: sticky;
  top:0;
  z-index: 99;
@@ -12,10 +12,10 @@ export const NavbarContainer1 = styled.div`
 
 //estilo para modificar cuando sea responsive dentro del nave
 export const Navbarwrapper1 = styled.div`
- margin: auto;
- width: 100%;
- max-width: 1300px;
- height: 100%;
+ margin: 0;
+ min-width: 100%;
+ max-width:auto;
+ min-height: 100%;
  align-items: center;
  display: flex;
  flex-wrap: wrap;
@@ -43,15 +43,14 @@ export const Menu1 = styled.ul`
  padding-right: 60px ;
 
  @media screen and (max-width: 960px){
- width:auto;
- min-width: 400px;
+
+ min-width: 420px;
  min-height: 100vh;
- height: auto;
- position: absolute;
- top:  auto;
- border: none;
+ position: fixed;
+ //top:  auto;
+ //border: none;
  left: ${({ click }) => (click ? 0 : "-190%")};
- flex-direction: column;
+ //flex-direction: column;
  transition: 0.3s all ease-in;
  background-color: #000000;
 
@@ -92,9 +91,9 @@ display: none;
 
 @media screen and (max-width: 960px){
 
-  padding: 30px;
-  padding-left: 30px;
-  height: 30px;
+  padding-top: 10px;
+  padding-left: 40px;
+  height: 60px;
   display: flex;
   color: #ffff01;
   font-size: 2rem;

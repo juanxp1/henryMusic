@@ -10,11 +10,13 @@ import { Link } from "react-router-dom";
 import play from './play.png'
 
 const Homedos = () => {
+  // eslint-disable-next-line 
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const infoMusic = useSelector((state) => state.artists);
   const infoToken = useSelector(state => state.token)
   const infoAlbum = useSelector((state) => state.albums);
+  // eslint-disable-next-line 
   const infoPlayer = useSelector(state => state.player)
 
   function handleGenero(genero) {
@@ -23,9 +25,10 @@ const Homedos = () => {
   }
 
   const [data, setData] = useState({ album: [] })
+  console.log("is", data);
 
+  // eslint-disable-next-line 
   const [orden, setOrden] = useState('')
-
 
   function handleClick(e) {
     setData({ ...data, i: e })
@@ -36,10 +39,18 @@ const Homedos = () => {
   function handleAbc(e) {
     e.preventDefault();
     dispatch(ordenPorAbc(e.target.value))
-    //setCurrentPage(1);
     setOrden(`ordenado ${e.target.value}`)
-    console.log("caradechot", e.target.value)
   }
+
+// useEffect(()=>{
+// setData? ordenPorAbc(e.target.value) : ; 
+
+
+// },[])
+
+
+
+
 
 
   useEffect(() => {
@@ -48,6 +59,7 @@ const Homedos = () => {
       dispatch(getAllAlbums(50));
     }
     dispatch(Landing());
+    // eslint-disable-next-line 
   }, [infoToken]);
 
   useEffect(() => {
@@ -55,7 +67,7 @@ const Homedos = () => {
   }, [infoAlbum])
 
 
-  console.log(infoPlayer)
+ // console.log(infoPlayer)
 
   return (
     <Container1>
@@ -120,6 +132,7 @@ const Homedos = () => {
 
             {/* BOTON FILTRO POR GENERO */}
 
+
             <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
               <select onChange={(e) => handleGenero(e)} className="btn">
                 <option value="All">All Generos</option>
@@ -142,7 +155,7 @@ const Homedos = () => {
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                    <li className=" container-fluid d-flex justify-content-center">
+                    <li className="ms-2">
                       <Link to={"/detail/" + c.id}>
                         <Card
                           key={c.id}
@@ -182,11 +195,11 @@ const Homedos = () => {
           {/* carrusel */}
 
           <div className="swiffy-slider">
-            <ul className="slider-container d-flex">
+            <ul className="slider-container d-flex justify-content-center">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                    <li className=" container-fluid d-flex justify-content-center">
+                    <li className="ms-2">
                       <Link to={"/detail/" + c.id}>
                         <Card
                           key={c.id}
@@ -571,6 +584,7 @@ img{
 
 // SOLO PARA CORREOS VERIFICADO
 
+// eslint-disable-next-line 
 const Verificado = styled.div`
   * {
     text-decoration: none;

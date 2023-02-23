@@ -1,4 +1,4 @@
-import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES, GET_PLAYER, IS_PLAYING, GET_USER, ORDEN_BY_NAME } from "../Actions/actions";
+import { GET_TOKEN, GET_ALBUM, GET_ALL_ALBUMS, GET_ALL_ARTISTS, GET_ALL_TRACKS, GET_ARTIST, GET_TRACK, SEARCH_ALBUM, SEARCH_ARTIST, SEARCH_TRACK, FILTRO_GENERO, RESET_DETALLES, GET_PLAYER, IS_PLAYING, GET_USER, ORDEN_BY_NAME, GET_ALL_PLAYLISTS, GET_ALL_PLAYLIST_TRACKS} from "../Actions/actions";
 
 
 export const initialState = {
@@ -13,6 +13,8 @@ export const initialState = {
     allArtists: [],
     player: { tracks: [], playing: false },
     landing: true,
+    playlists: {},
+    playlistTracks: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -90,7 +92,7 @@ const reducer = (state = initialState, action) => {
             const allGeneros = state.allArtists.artists;
             const filtroGenero = action.payload === "All" ? allGeneros :
                 allGeneros.filter(el => el.genres[0]?.name.toLowerCase().includes(action.payload.toLowerCase()))
-            console.log("asdasdsad", filtroGenero)
+            
             return {
                 ...state,
                 artists: { ...state.artists, artists: filtroGenero }
@@ -144,10 +146,23 @@ const reducer = (state = initialState, action) => {
             })
         return {
             ...state,
-            ORDEN_BY_NAME: order
+            artists: { ...state.artists, artists: order }
 
         }
 
+        case GET_ALL_PLAYLISTS:
+            return {
+                ...state,
+                playlists: action.payload,
+            }
+
+        case GET_ALL_PLAYLIST_TRACKS:
+            return {
+                ...state,
+                playlistTracks: action.payload
+            }
+
+                 
 
         default:
             return { ...state };

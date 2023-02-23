@@ -3,7 +3,7 @@ import Lima from '../Premium/lima.png'
 import Ilimi from '../Premium/ilimi.png'
 import Fini from '../Premium/play.png'
 import styled from 'styled-components'
-import Registro from '../Registro/Registro'
+//import Registro from '../Registro/Registro'
 
 
 function Premium() {

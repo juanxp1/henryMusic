@@ -15,6 +15,9 @@ import Player1 from "./Componentes/Audio-Player/Player1";
 import Error from "./Componentes/Error/Error"
 import Dashboard from "./Componentes/Dashboard/Dashboard";
 import PrivateRoute from "./Componentes/Dashboard/PrivateRoute";
+import Update from "./Componentes/Update/update.jsx"
+
+
 
 
 function App() {
@@ -54,10 +57,14 @@ function App() {
         <Route path="/home" component={Homedos} />
         <Route path="/detail/:id" component={Detail} />
         <Route path="/playlist" component={PlayList} />
+        <Route path="/update" component={Update} />
 
         <PrivateRoute path="/dashboard" component={Dashboard} />
 
         <Route path="*" component={Error}/> 
+       
+
+
        
     
 
