@@ -16,10 +16,9 @@ function Landing() {
             <Premium />
             <Pagos></Pagos>
             <Us />
-            <DiscussionEmbed></DiscussionEmbed>
-           <Recommendations></Recommendations>
             <Footer />
-          
+            {/* <DiscussionEmbed></DiscussionEmbed> */}
+           <Recommendations></Recommendations>
         </div>
     )
 }
