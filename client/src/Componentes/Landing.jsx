@@ -6,6 +6,7 @@ import Us from './About us/Us'
 import Footer from './Footer/Footer'
 import Pagos from './Pagos/Pagos';
 import { DiscussionEmbed, Recommendations } from 'disqus-react';
+import { Button } from 'bootstrap';
 
 function Landing() {
     // const { getAccessTokenSilently } = useAuth0();
@@ -16,10 +17,12 @@ function Landing() {
             <Premium />
             <Pagos></Pagos>
             <Us />
-            <DiscussionEmbed></DiscussionEmbed>
-           <Recommendations></Recommendations>
+            <div className='container h-auto'>
+                <DiscussionEmbed />
+                <Recommendations />
+            </div>
             <Footer />
-          
+
         </div>
     )
 }
