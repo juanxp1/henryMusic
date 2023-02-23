@@ -150,7 +150,7 @@ const Homedos = () => {
           <h2 className="d-flex justify-content-start h1 ms-3">Lo mas escuchado </h2>
           {/* carrusel */}
 
-          <div className="swiffy-slider">
+          <div className="swiffy-slider slider-nav-round slider-nav-dark">
             <ul className="slider-container d-flex">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
@@ -194,7 +194,7 @@ const Homedos = () => {
 
           {/* carrusel */}
 
-          <div className="swiffy-slider">
+          <div className="swiffy-slider slider-nav-round slider-nav-dark">
             <ul className="slider-container d-flex justify-content-center">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {

@@ -5,12 +5,13 @@ import listas from "./listas.png";
 import cora from "./cora.png";
 import mas from "./mas.png";
 import favi from './favi.png';
+import { Link } from 'react-router-dom'
 import {
   NavbarContainer1,
   Navbarwrapper1,
   Menu1,
   MenuItem1,
-  MenuItemLink1,
+  MenuItemLipo1,
   IconLogoMobile1,
 } from "./Nav-Vertical-E";
 
@@ -24,6 +25,7 @@ function Navertical() {
   };
 
   return (
+    <>
     <Div>
       <NavbarContainer1>
         <Navbarwrapper1>
@@ -42,53 +44,54 @@ function Navertical() {
 
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
-                        <MenuItemLink1>
+                        <MenuItemLipo1>
                           <a href="#">
                             <span className="fa fa-home">
                               <img className="home" src={home} alt="home" />
                             </span>
                             <span>Home</span>
                           </a>
-                        </MenuItemLink1>
+                        </MenuItemLipo1>
                       </li>
                     </MenuItem1>
 
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
-                        <MenuItemLink1>
+                        <MenuItemLipo1>
                           <a href="/">
                             <span className="fa fas fa-book">
                               <img className="home" src={listas} alt="home" />
                             </span>
                             <span>Your Library</span>
                           </a>
-                        </MenuItemLink1>
+                        </MenuItemLipo1>
                       </li>
                     </MenuItem1>
 
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
-                        <MenuItemLink1>
+                        
+                        <MenuItemLipo1>
                           <a href="/playlist">
                             <span className="fa fas fa-heart">
                               <img className="home" src={cora} alt="home" />
                             </span>
                             <span>Liked Songs</span>
                           </a>
-                        </MenuItemLink1>
+                        </MenuItemLipo1>
                       </li>
                     </MenuItem1>
 
                     <MenuItem1 onClick={() => ChangeClick()}>
                       <li>
-                        <MenuItemLink1>
+                        <MenuItemLipo1>
                           <a href="/new">
                             <span className="fa fas fa-heart">
                               <img className="home" src={mas} alt="home" />
                             </span>
                             <span>New Song</span>
                           </a>
-                        </MenuItemLink1>
+                        </MenuItemLipo1>
                       </li>
                     </MenuItem1>
 
@@ -101,7 +104,8 @@ function Navertical() {
         </Navbarwrapper1>
       </NavbarContainer1>
     </Div>
-  );
+    </>
+  )
 }
 
 export default Navertical;

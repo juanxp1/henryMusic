@@ -73,6 +73,9 @@ function Detail(props) {
                     <Link onClick={reset} to={"/home"}>
                         <button className=" regresar btn-dark" type="button">Volver al Menu</button>
                     </Link>
+                    <Link onClick={reset} to={"/playlist"}>
+                        <button className=" regresar btn-dark" type="button">Tus me gustas</button>
+                    </Link>
                 </div>
             </div>
 
