@@ -5,15 +5,15 @@ import { useHistory } from "react-router-dom";
 
 function Update() {
   const [username, setUsername] = useState("");
-  const [picture, setPicture] = useState("");
+  const [avatar, setAvatar] = useState("");
   const infoToken = useSelector((state) => state.token);
   const history = useHistory();
 
   useEffect(() => {
     if (infoToken) {
-      axios.get("http://localhost:3001/git api/user").then((res) => {
+      axios.get("http://localhost:3001/api/user").then((res) => {
         setUsername(res.data.username);
-        setPicture(res.data.image);
+        setAvatar(res.data.avatar);
       });
     }
   }, [infoToken]);
@@ -21,7 +21,7 @@ function Update() {
   const handleSaveChanges = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:3001/api/user", { username, picture });
+      await axios.put("http://localhost:3001/api/user", { username, avatar });
       history.push("/");
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ function Update() {
   const handleCancel = (e) => {
     e.preventDefault();
     setUsername("");
-    setPicture("");
+    setAvatar("");
   };
 
   return (
@@ -43,9 +43,9 @@ function Update() {
           <div className="col-md-3">
             <div className="text-center">
               <img
-                src={picture || "//placehold.it/100"}
-                className="picture img-circle"
-                alt="picture"
+                src={avatar || "//placehold.it/100"}
+                className="avatar img-circle"
+                alt="avatar"
               />
               <h6>Cargar Nueva Foto de Perfil</h6>
 
@@ -74,13 +74,11 @@ function Update() {
                 <div className="col-md-8">
                   <button className="btn btn-primary" onClick={handleSaveChanges}>
                     Save Changes
-                  </button>                  
-                  <span></span>                  
-                  <a href="/home">
-                  <button className="btn btn-default">
+                  </button>
+                  <span></span>
+                  <button className="btn btn-default" onClick={handleCancel}>
                     Cancel
                   </button>
-                  </a>
                 </div>
               </div>
             </form>

@@ -14,11 +14,13 @@ function Search() {
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
+  const [notFound, setNotFound] = useState(false);
 
   const handleClose = (e) => {
     e.preventDefault();    
     setShow(false);
     setInput('');
+    setNotFound(false);
   };
   const handleShow = () => setShow(true);
 
@@ -36,8 +38,9 @@ function Search() {
 
     setError(false);
     const result = dispatch(searchArtist(input));
+    setNotFound(!result.payload);
 
-    if (!result.payload) {
+    if (notFound) {
       handleShow();
       return;
     }
@@ -60,7 +63,7 @@ function Search() {
         {error && <p className="text-danger">Debes ingresar un artista</p>}
       </form>
 
-      {/* <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Artista no encontrado</Modal.Title>
         </Modal.Header>
@@ -72,7 +75,7 @@ function Search() {
             Cerrar
           </Button>
         </Modal.Footer>
-      </Modal> */}
+      </Modal>
     </Div>
   );
 }
