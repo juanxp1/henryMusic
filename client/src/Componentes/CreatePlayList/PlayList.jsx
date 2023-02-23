@@ -8,7 +8,7 @@ import play from '../Detail/play.png'
 import pic from './pic.jpg'
 import NavHome from '../NavHome/NavHome';
 import Navertical from '../Nav-Vertical/Navertical';
-import like from './gif.gif';
+
 
 
 
@@ -78,7 +78,7 @@ function PlayList() {
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <br />
-                                    <p className="card-text p-0"> Los temas que te gustaron <img style={{width:"40px"}} src={like} alt="" /></p>
+                                    <p className="card-text p-0"> Las canciones que te gustaron</p>
                                     <h1 className="card-title display-1 p-0 m-0 name">{user.name}</h1>
                                 </div>
                             </div>
@@ -183,9 +183,15 @@ p{
 }
 
 .oki {
-    max-height: auto;
-    background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 13%, #997587 100%, #dbb1c6 100%);
+    background-image: linear-gradient(
+  140deg,
+  hsl(0deg 0% 0%) 0%,
+  hsl(339deg 0% 0%) 29%,
+  hsl(339deg 0% 0%) 43%,
+  hsl(301deg 14% 23%) 57%,
+  hsl(300deg 16% 46%) 71%,
+  hsl(0deg 0% 0%) 100%
+);
 }
 
 color: white;
