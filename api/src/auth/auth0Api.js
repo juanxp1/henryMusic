@@ -18,20 +18,25 @@ export const checkAdmin = (req, res, next) => {
 
 // middleware para inyectar el usuario en el request
 export const injectUser = async (req, res, next) => {
-  if (!req.auth) return next()
+  if (!req.auth) {
+    console.log('no auth')
+    return next()
+  }
   try {
     const { sub } = req.auth.payload
     let user = await User.findByPk(sub)
     if (!user) {
+      console.log('no user found, creating one')
       user = await createUser(req.headers)
       user || (user = { id: sub, dataValues: {} })
     }
+    else console.log('user found')
     delete user.dataValues.password
     delete user.dataValues.deleted_at
     req.user = user
     next()
   }
-  catch (_) { next() }
+  catch (_) { console.log(_);next() }
 }
 
 async function createUser(headers) {

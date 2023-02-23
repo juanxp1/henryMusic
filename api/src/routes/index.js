@@ -13,10 +13,11 @@ const router = Router();
 const secured = Router();
 const admin = Router();
 const upload = multer({ dest: process.env.UPLOADS_PATH })
-const fieldsUpload = upload.fields([
+const uploadMultiple = upload.fields([
   { name: 'image', maxCount: 1 },
   { name: 'song', maxCount: 1 }
 ])
+const uploadImage = upload.single('image')
 
 // --- rutas publicas ---
 // Esta ruta es llamada solo desde Auth0
@@ -24,7 +25,7 @@ router.post('/api/register-auth0-user', UserController.createUser)
 
 // --- rutas privadas, se necesita un token valido para acceder a ellas
 secured.get('/user', UserController.getUser)
-secured.post('/user/update', UserController.updateMyUser)
+secured.post('/user/update', uploadImage, UserController.updateMyUser)
 secured.post('/user/delete', UserController.deleteUser)
 
 admin.get('/user/all', AdminController.getAllUsers)
@@ -39,7 +40,8 @@ secured.get('/track/search', TrackController.searchTrack)
 secured.get('/track/:id', TrackController.getTrack)
 secured.get('/song/all', TrackController.getAllSongs)
 secured.get('/song/search', TrackController.searchSongs)
-secured.post('/song/create', fieldsUpload, TrackController.createSong)
+secured.get('/song/:id', TrackController.getSong)
+secured.post('/song/create', uploadMultiple, TrackController.createSong)
 secured.post('/song/update', TrackController.updateSong)
 secured.post('/song/delete', TrackController.deleteSong)
 

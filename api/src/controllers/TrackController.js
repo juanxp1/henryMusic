@@ -126,6 +126,22 @@ export async function getAllSongs(req, res) {
   catch (error) { jsonError(res, error.message) }
 }
 
+export async function getSong(req, res) {
+  const validator = new Validator(req.params, { id: "required|alpha_dash|min:10|max:36" })
+  if (validator.fails()) return jsonError(res, validator.errors)
+
+  try {
+    const song = await Song.findOne({
+      where: { id: req.params.id, [Op.or]: [ {user_id: req.user.id}, {public: true} ] },
+      attributes: { exclude: ["created_at", "updated_at"] },
+      include: [ { model: Image, as: 'images', attributes: ['id', 'url', 'width', 'height'] } ]
+    })
+    if (!song) return jsonError(res, "Song not found", 404)
+    jsonOk(res, song)
+  }
+  catch (error) { jsonError(res, error.message) }
+}
+
 export async function searchSongs(req, res) {
   const validator = new Validator(req.query, {
     q: "required|string|min:2",
@@ -154,7 +170,6 @@ export async function searchSongs(req, res) {
 }
 
 export async function createSong(req, res) {
-  console.log(req.files)
   let validator = new Validator(req.body, {
     name: 'required|string|min:3|max:100',
     artist: 'required|string|min:3|max:100',
@@ -164,6 +179,7 @@ export async function createSong(req, res) {
     public: 'boolean'
   })
   if (validator.fails()) return jsonError(res, validator.errors)
+  
   validator = new Validator(req.files, { image: 'required', song: 'required' })
   if (validator.fails()) return jsonError(res, validator.errors)
 
@@ -248,7 +264,7 @@ export async function deleteSong(req, res) {
   catch (error) { jsonError(res, error.message) }
 }
 
-async function validateImage(file) {
+export async function validateImage(file) {
   const tmp_file = path.resolve(file.path)
   if (file.size > MAX_IMG_SIZE) {
     fs.unlink(tmp_file, blank)
@@ -299,6 +315,21 @@ async function processFiles(fimage, faudio) {
   names.push({ name: file_name, extension, duration: duration * 1000 })
 
   return names
+}
+
+export async function processImage(fimage) {
+  let tmp_file = path.resolve(fimage.path)
+  let file_name = short.generate()
+  const image = sharp(tmp_file)
+  const metadata = await image.metadata()
+  if (metadata.width > MAX_IMG_WIDTH || metadata.height > MAX_IMG_HEIGHT) {
+    image.resize(MAX_IMG_WIDTH, MAX_IMG_HEIGHT)
+    metadata.width = MAX_IMG_WIDTH
+    metadata.height = MAX_IMG_HEIGHT
+  }
+  await image.toFile(path.join(global.STORAGE_PATH, 'images', file_name + '.jpg'))
+  fs.unlink(tmp_file, blank)
+  return { name: file_name, width: metadata.width, height: metadata.height }
 }
 
 function deleteTempFiles(files) {
