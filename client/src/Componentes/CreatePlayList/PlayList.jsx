@@ -67,8 +67,6 @@ function PlayList() {
 
         isAuthenticated ? (
             <Div>
-                <NavHome />
-                <Navertical />
                 <div className='contenedor'>
                     <div className=" bg-dark mw-100 pt-2 pb-1  container-fluid oki" >
                         <div className="row g-0 container-fluid">

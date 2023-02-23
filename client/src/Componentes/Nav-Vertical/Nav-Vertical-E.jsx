@@ -79,7 +79,7 @@ font-weight: 400;
 }
 
 `
-export const MenuItemLink1 = styled.a`
+export const MenuItemLipo1 = styled.a`
 text-decoration: none;
 color: #ffff01;
 
