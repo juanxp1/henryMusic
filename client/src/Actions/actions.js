@@ -189,10 +189,10 @@ export const playlistDeleteTrack = (playlist_id, track_id) => {
 }
 
 
-export const updateMyUser = (payload) => {
-    return {
-        type: UPDATEMYUSER,
-        payload
+export const updateMyUser = (name, username, country_id, image_id) => {
+    return async function() {
+        const info = await axios.post(`${URL}/user/update`, {name, username, country_id, image_id})
+        return info;
     }
 }
 

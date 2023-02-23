@@ -58,7 +58,7 @@ function PlayList() {
 
     useEffect(() => {
         if (playlistTracks?.tracks) {
-            setData({ name: playlistTracks.name, tracks: playlistTracks.tracks, i: 0 })
+            setData({ name: playlistTracks.name, tracks: playlistTracks.tracks, i: data.i })
         }
     }, [playlistTracks])
 

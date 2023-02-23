@@ -1,37 +1,38 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getUser, updateMyUser } from ".././../Actions/actions.js"
 
 function Update() {
-  const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState("");
+
+  const {user} = useAuth0();
+
+  const dispatch = useDispatch();
+
+  const usuario = useSelector(state => state.user.userInfo)
   const infoToken = useSelector((state) => state.token);
   const history = useHistory();
 
   useEffect(() => {
     if (infoToken) {
-      axios.get("http://localhost:3001/api/user").then((res) => {
-        setUsername(res.data.username);
-        setAvatar(res.data.avatar);
-      });
+      dispatch(getUser(user))
+      console.log(usuario)
     }
   }, [infoToken]);
 
   const handleSaveChanges = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.put("http://localhost:3001/api/user", { username, avatar });
-      history.push("/");
-    } catch (error) {
-      console.log(error);
-    }
+     e.preventDefault();
+     try {
+       dispatch(updateMyUser(usuario.nickname, ))
+       history.push("/");
+     } catch (error) {
+       console.log(error);
+     }
   };
 
   const handleCancel = (e) => {
     e.preventDefault();
-    setUsername("");
-    setAvatar("");
   };
 
   return (
@@ -43,7 +44,7 @@ function Update() {
           <div className="col-md-3">
             <div className="text-center">
               <img
-                src={avatar || "//placehold.it/100"}
+                src={usuario?.picture}
                 className="avatar img-circle"
                 alt="avatar"
               />
@@ -60,12 +61,7 @@ function Update() {
               <div className="form-group">
                 <label className="col-md-3 control-label">Username:</label>
                 <div className="col-md-8">
-                  <input
-                    className="form-control"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
+                <label className="col-md-3 control-label">{usuario?.nickname}</label>
                 </div>
               </div>
 
