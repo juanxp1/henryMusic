@@ -37,6 +37,10 @@ function App() {
           scope: 'read:posts',
         },
       });
+
+      console.log (token)
+
+
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       dispatch(getToken(token));
     })()
