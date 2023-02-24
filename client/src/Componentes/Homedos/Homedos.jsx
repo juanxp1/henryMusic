@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllAlbums, getPlayer, isPlaying, Landing } from ".././../Actions/actions.js";
+import { getAllAlbums, getPlayer, isPlaying, Landing, getNewSong, deleteSong } from ".././../Actions/actions.js";
 import styled from "styled-components";
 import { getAllArtists, filtroGenero, ordenPorAbc } from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
@@ -19,6 +19,10 @@ const Homedos = () => {
   // eslint-disable-next-line 
   const infoPlayer = useSelector(state => state.player)
 
+  const infoSong = useSelector((state)=> state.newSong);
+
+
+
   function handleGenero(genero) {
     genero.preventDefault();
     dispatch(filtroGenero(genero.target.value));
@@ -35,6 +39,13 @@ const Homedos = () => {
     dispatch(getPlayer({ tracks: data.album[e].tracks, i: 0 }))
     dispatch(isPlaying())
   }
+
+  function Delete(id) {
+    // console.log(id)
+    dispatch(deleteSong(id))
+    window.location.reload()
+  }
+
 
   function handleAbc(e) {
     e.preventDefault();
@@ -54,13 +65,14 @@ const Homedos = () => {
 
 
   useEffect(() => {
-    if (infoToken) {
+    if (isAuthenticated) {
       dispatch(getAllArtists(200));
       dispatch(getAllAlbums(50));
+      dispatch(getNewSong(infoToken));
     }
     dispatch(Landing());
     // eslint-disable-next-line 
-  }, [infoToken]);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     setData({ album: infoAlbum.albums, i: 0 })
@@ -236,46 +248,58 @@ const Homedos = () => {
 
           <h2 className="d-flex justify-content-start h1 ms-3 pb-4">  Canciones creadas por la Comunidad </h2>
 
-          <br /><br /><br /><br /><br />
+          
           {/* carrusel */}
-          {/* <div className="swiffy-slider">
-            <ul className="slider-container d-flex">
-              {infoMusic.artists ? (
-                infoMusic?.artists.map((c) => {
+          <br/>
+
+        
+          <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
+            <ul className="slider-container slider-nav-autoplay">
+            {infoSong?.songs ? 
+                infoSong?.songs.map((c) => {
                   return (
-                    <li className="d-flex">
-                      <Link to={"/detail/" + c.id}>
-                        <Card
-                          key={c.id}
-                          id={c.id}
-                          name={c.name}
-                          image={c.images[0]?.url}
-                          genre={c.genres.map((el) => (
-                            <span> {el.name} </span>
-                          ))}
-                        />
-                      </Link>
+                    <li id="slide1" className=" container-fluid d-flex justify-content-center">
+                      <Container>
+                        <div className="cards">
+                          <div className='cards-info'>
+                            <img className="card_imagen" key={c.id} src={c.images[0].url} alt={"img"} />
+                            <div className="card_text container">
+                              <p className='d-flex justify-content-start w-100'>{c.name}</p>
+                              <a className='d-flex ms-3 p-0' onClick={() => handleClick((infoSong.songs.indexOf(c)))}><img src={play} alt="" /></a>
+                            </div>
+                            <button onClick={() => Delete(c.id)}className="trash">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-trash3" viewBox="2 0 16 16">
+                              <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                            </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </Container>
                     </li>
                   );
                 })
-              ) : (
-                <div className="uwu mw-100 container-fluid">
-                  <div className="loaderRectangle d-flex justify-content-center">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                : (
+                  <div className="uwu w-100 container-fluid">
+                    <div className="loaderRectangle d-flex justify-content-center">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </ul>
-            <button type="button" className="slider-nav"></button>
-            <button
-              type="button"
-              className="slider-nav slider-nav-next"
-            ></button>
-          </div> */}
+
+          </div>
+        
+
+
+
+
+
+
+          <br/><br/><br/><br/><br/>
         </div>
       </div>
 
@@ -291,6 +315,9 @@ const Container1 = styled.div`
   * {
     text-decoration: none;
     color: #ffffff;
+  }
+  .trash{
+    background: transparent;
   }
 
   .pikachu {

@@ -67,7 +67,7 @@ function New() {
     const handleChange = (e) => {
         setInput({
             ...input,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.type === 'file' ? e.target.files[0] : e.target.value
         });
         setErrors(validate({
             ...input,
@@ -159,17 +159,6 @@ function New() {
 
                         <div className="user-box">
                         <input
-                            className="awa"        
-                            placeholder="Song"
-                            name="song"
-                            type="file"
-                            onChange={handleChange}
-                            />
-                            {errors.song && <p> {errors.song} </p>}
-                        </div>    
-
-                        <div className="user-box">
-                        <input
                             className="awa"         
                             placeholder="Image"
                             name="image"
@@ -178,13 +167,25 @@ function New() {
                             />
                             {errors.image && <p> {errors.image} </p>}
                         </div>
+  
+
+                        <div className="user-box">
+                        <input
+                            className="awa"        
+                            placeholder="Subir cancion"
+                            name="song"
+                            type="file"
+                            onChange={handleChange}
+                            />
+                            {errors.song && <p> {errors.song} </p>}
+                        </div>
 
 
                         <center>
                         
-                            <button className="uwu" type="submit" disabled={
-                                errors.name || errors.artist || errors.album || errors.genre || errors.image || errors.song ? true : false
-                            }> Create</button>
+                        <button className="uwu" onClick={handleSubmit} disabled={
+                            errors.name || errors.artist || errors.album || errors.genre || errors.image || errors.song ? true : false
+                        }> Create</button>
                         
                         </center>
                         

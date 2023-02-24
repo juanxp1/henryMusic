@@ -24,6 +24,10 @@ export const GET_ALL_PLAYLISTS = 'GET_ALL_PLAYLISTS';
 export const GET_ALL_PLAYLIST_TRACKS = 'GET_ALL_PLAYLIST_TRACKS';
 export const UPDATEMYUSER = 'UPDATEMYUSER';
 
+export const GET_NEW_SONG = "GET_NEW_SONG";
+export const DELETE_SONG = "DELETE_SONG";
+
+
 
 const initialLimit = 10;
 
@@ -69,6 +73,15 @@ export const searchAlbum = (album, limit = initialLimit) => {
     };
 };
 
+
+export const getNewSong = () =>{
+    return async function(dispatch){
+        const info = await axios.get(`${URL}/song/all`)
+        return dispatch({ type: GET_NEW_SONG, payload: info.data })
+    }
+}
+
+
 export const getAllAlbums = (limit = initialLimit) => {
     return async function (dispatch) {
         const info = await axios.get(`${URL}/album/all?limit=${limit}`)
@@ -101,10 +114,18 @@ export const getAllArtists = (limit = initialLimit) => {
 
 export const postSong = (song) => {
     return async function () {
-        let json = await axios.post(`${URL}`, song)
+        let json = await axios.post(`${URL}/song/create`, song, {headers: {'Content-Type': 'multipart/form-data'}})
         return json;
     }
 }
+export const deleteSong = (ID) => {
+    
+    return async function () {
+        let json = await axios.post(`${URL}/song/delete`, {id:ID})
+        return json;
+    }
+}
+
 
 export const update = (user) => {
     return async function () {

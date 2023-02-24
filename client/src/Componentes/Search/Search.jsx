@@ -63,19 +63,7 @@ function Search() {
         {error && <p className="text-danger">Debes ingresar un artista</p>}
       </form>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Artista no encontrado</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Lo sentimos, no se ha encontrado ningún artista con el nombre "{input}".
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+    
     </Div>
   );
 }
@@ -138,7 +126,7 @@ input::placeholder {
     font-size: 13px;
     text-align: center;
 }
-
+/* 
 @media (max-width: 768px) {
     .input {
         width: 100%;
@@ -174,6 +162,6 @@ input::placeholder {
         width: 100%;
     }
 }
-
+ */
 
 `
