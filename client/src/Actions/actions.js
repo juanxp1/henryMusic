@@ -146,10 +146,10 @@ export const isPlaying = () => {
     }
 }
 
-export const getUser = (payload) => {
-    return {
-        type: GET_USER,
-        payload
+export const getUser = () => {
+    return async function(dispatch) {
+        const info = await axios.get(`${URL}/user`)
+        return dispatch({type: GET_USER, payload: info.data})
     }
 }
 
@@ -189,9 +189,9 @@ export const playlistDeleteTrack = (playlist_id, track_id) => {
 }
 
 
-export const updateMyUser = (name, username, country_id, image_id) => {
+export const updateMyUser = (username, image) => {
     return async function() {
-        const info = await axios.post(`${URL}/user/update`, {name, username, country_id, image_id})
+        const info = await axios.post(`${URL}/user/update`, {username, image}, {headers: {"Content-Type": "multipart/form-data"}})
         return info;
     }
 }
