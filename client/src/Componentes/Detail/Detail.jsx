@@ -6,7 +6,7 @@ import { getArtist, resetDetalles } from '../../Actions/actions';
 import { Link } from 'react-router-dom'
 import play from '../Detail/play.png'
 import CounterScreen from "./CounterScreen"
-import Comentarios from '../Comentarios/Comentarios';
+
 
 
 function Detail(props) {
@@ -100,9 +100,6 @@ function Detail(props) {
                     ))}
 
                 </ol>
-                <div className=' container d-flex justify-content-center'>
-                    <Comentarios />
-                </div>
 
             </div>
 

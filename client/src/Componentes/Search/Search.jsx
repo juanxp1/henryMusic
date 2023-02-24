@@ -17,7 +17,7 @@ function Search() {
   const [notFound, setNotFound] = useState(false);
 
   const handleClose = (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     setShow(false);
     setInput('');
     setNotFound(false);
@@ -63,7 +63,7 @@ function Search() {
         {error && <p className="text-danger">Debes ingresar un artista</p>}
       </form>
 
-    
+
     </Div>
   );
 }
@@ -73,46 +73,8 @@ export default Search;
 
 
 
-// export default function Search() {
-//     const [input, setInput] = useState('')
-//     const dispatch = useDispatch()
-//     const history = useHistory();
-
-//     function handleChange(e) {
-//         setInput(e.target.value)
-//     }
-
-//     function handleSubmit(e) {
-//         e.preventDefault()
-//         dispatch(searchArtist(input))
-//         setInput('')
-//         history.push('/artist')
-//     }
-
-//     return (
-//         <Div>
-//             <form onSubmit={handleSubmit}>
-//                 <input
-//                     className="input"
-//                     type="text"
-//                     placeholder="Search Artist"
-//                     value={input}
-//                     onChange={handleChange}
-//                 />
-//             </form>
-//         </Div>
-//     )
-// }
-
-
-
-
-
 const Div = styled.div`
 
-@media screen and (max-width: 960px){
-display: none;
-}
 
 
 .input {
@@ -120,48 +82,17 @@ display: none;
     text-align: center;
     width: auto;
 
+    @media screen and (max-width: 960px){
+ width: 85px;
+
+}
+
 }
 
 input::placeholder {
     font-size: 13px;
     text-align: center;
 }
-/* 
-@media (max-width: 768px) {
-    .input {
-        width: 100%;
-    }
-}
 
-@media (max-width: 576px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 375px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 320px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 280px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 240px) {
-    .input {
-        width: 100%;
-    }
-}
- */
 
 `

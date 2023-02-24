@@ -6,8 +6,7 @@ import Us from './About us/Us'
 import Footer from './Footer/Footer'
 import Pagos from './Pagos/Pagos';
 import { DiscussionEmbed, Recommendations } from 'disqus-react';
-import { Button } from 'bootstrap';
-import { height } from '@mui/system';
+import Colpse from '../Componentes/Comentarios/Colapse'
 
 function Landing() {
     // const { getAccessTokenSilently } = useAuth0();
@@ -19,8 +18,7 @@ function Landing() {
             <Pagos></Pagos>
             <Us />
             <div className='container '>
-                <DiscussionEmbed />
-                {/* <Recommendations /> */}
+                <Colpse />
             </div>
             <Footer />
 
