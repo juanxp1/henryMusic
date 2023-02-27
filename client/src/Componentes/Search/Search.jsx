@@ -46,14 +46,14 @@ function Search() {
     }
 
     setInput('');
-    history.replace('/');
+    history.replace('/home');
   };
 
   return (
     <Div className="container-fluid w-100">
       <form className="d-flex justify-content-center" onSubmit={handleSubmit}>
         <input
-          className="row g-0 align-items-center input"
+          className="align-items-center input bg-transparent  font-monospace"
           type="search"
           placeholder=" ⚡  Busca tu canción favorita"
           aria-label="Search"
@@ -78,20 +78,21 @@ const Div = styled.div`
 
 
 .input {
-    border-radius: 20px;
+    border-radius: 0px;
+    border: none;
+    height: 40px;
     text-align: center;
-    width: auto;
-
-    @media screen and (max-width: 960px){
- width: 85px;
-
-}
-
+    width: 50%;
+    color:white;
+    font-size: 25px;
+ 
 }
 
 input::placeholder {
-    font-size: 13px;
+    font-size: 25px;
     text-align: center;
+    color: #aaaaaa;
+    border: none
 }
 
 

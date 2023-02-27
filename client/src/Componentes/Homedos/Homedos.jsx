@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { Link } from "react-router-dom";
 import play from './play.png'
+import Search from "../Search/Search";
 
 const Homedos = () => {
   // eslint-disable-next-line 
@@ -19,7 +20,7 @@ const Homedos = () => {
   // eslint-disable-next-line 
   const infoPlayer = useSelector(state => state.player)
 
-  const infoSong = useSelector((state)=> state.newSong);
+  const infoSong = useSelector((state) => state.newSong);
 
 
 
@@ -53,11 +54,11 @@ const Homedos = () => {
     setOrden(`ordenado ${e.target.value}`)
   }
 
-// useEffect(()=>{
-// setData? ordenPorAbc(e.target.value) : ; 
+  // useEffect(()=>{
+  // setData? ordenPorAbc(e.target.value) : ; 
 
 
-// },[])
+  // },[])
 
 
 
@@ -79,16 +80,19 @@ const Homedos = () => {
   }, [infoAlbum])
 
 
- // console.log(infoPlayer)
+  // console.log(infoPlayer)
 
   return (
     <Container1>
       <div className="contenedor d-flex justify-content-center container-fluid">
         <div className="container-fluid">
-          <h1 className="h1 ms-3">
-            Bienvenido{" "}
-            <span className="pit">{user?.nickname.toUpperCase()}</span>
-          </h1>
+          <h1 className="h1 ms-3">Bienvenido{" "}<span className="pit">{user?.nickname.toUpperCase()}</span> </h1>
+
+          {/* Search */}
+          <div className="mt-5 mb-5">
+            <Search />
+          </div>
+
           <h2 className=" d-flex justify-content-center mt-4 mb-3  h1 text-white">
             Top artistas
           </h2>
@@ -248,14 +252,14 @@ const Homedos = () => {
 
           <h2 className="d-flex justify-content-start h1 ms-3 pb-4">  Canciones creadas por la Comunidad </h2>
 
-          
-          {/* carrusel */}
-          <br/>
 
-        
+          {/* carrusel */}
+          <br />
+
+
           <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
             <ul className="slider-container slider-nav-autoplay">
-            {infoSong?.songs ? 
+              {infoSong?.songs ?
                 infoSong?.songs.map((c) => {
                   return (
                     <li id="slide1" className=" container-fluid d-flex justify-content-center">
@@ -267,10 +271,10 @@ const Homedos = () => {
                               <p className='d-flex justify-content-start w-100'>{c.name}</p>
                               <a className='d-flex ms-3 p-0' onClick={() => handleClick((infoSong.songs.indexOf(c)))}><img src={play} alt="" /></a>
                             </div>
-                            <button onClick={() => Delete(c.id)}className="trash">
-                            <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-trash3" viewBox="2 0 16 16">
-                              <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                            </svg>
+                            <button onClick={() => Delete(c.id)} className="trash">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-trash3" viewBox="2 0 16 16">
+                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                              </svg>
                             </button>
                           </div>
                         </div>
@@ -292,14 +296,14 @@ const Homedos = () => {
             </ul>
 
           </div>
-        
 
 
 
 
 
 
-          <br/><br/><br/><br/><br/>
+
+          <br /><br /><br /><br /><br />
         </div>
       </div>
 
@@ -340,7 +344,8 @@ const Container1 = styled.div`
 
   .contenedor {
     width: auto;
-    height: auto;
+    min-height: 120vh;
+    max-height: auto;
     margin: 0;
     padding: 0;
     background: rgb(0,0,0);
