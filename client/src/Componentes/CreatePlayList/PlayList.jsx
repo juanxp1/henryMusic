@@ -228,9 +228,10 @@ background-color: black;
 
 .contenedordos{
     width: auto;
-    height: 120vh;
-    background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0,0,0,1) 0%, #0a0909 100%);
+   min-height: 120vh;
+   max-height: auto;
+    background: rgb(194,194,45);
+    background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 70%);
     /* margin-left: 230px  !important; */
     color: white;
     border:none;

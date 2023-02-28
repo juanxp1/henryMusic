@@ -348,8 +348,8 @@ const Container1 = styled.div`
     max-height: auto;
     margin: 0;
     padding: 0;
-    background: rgb(0,0,0);
-    background: linear-gradient(138deg, rgba(0,0,0,1) 8%, rgba(0,1,24,1) 100%, rgba(0,1,27,1) 100%, rgba(0,1,54,1) 100%, rgba(0,3,122,1) 100%);
+    background: rgb(194,194,45);
+    background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 70%);
     margin-left: 230px;
     color: white;
     @media screen and (max-width: 960px) {
