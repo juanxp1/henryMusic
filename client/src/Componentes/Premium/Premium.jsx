@@ -11,14 +11,14 @@ function Premium() {
         <NavContainer >
     
             <br />
-            <h1 className='text-center'>¿Por qué cambiarse a Premium?</h1>
+            <h1 className='text-center'>¿Por qué cambiarse a Henry Music?</h1>
             <br />
             <div className="card-group">
                
                 <div className="card">
                     <img src={Lima} className="rounded mx-auto d-block" alt="..." />
                     <div className="card-body">
-                        <h4 className="card-title">Escuchá música sin anuncios.</h4>
+                        <h4 className="card-title">Escuchá música gratis y sin anuncios.</h4>
                         <p className="card-text">Disfruta de tu música sin interrupciones.</p>
                      
                     </div>

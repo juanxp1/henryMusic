@@ -8,7 +8,7 @@ import { CommentEmbed } from 'disqus-react';
     showMedia={false}
     showParentComment={true}
     width={420}
-    height={auto}
+    height={50}
 />
 
 

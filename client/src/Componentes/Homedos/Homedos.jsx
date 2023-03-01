@@ -66,10 +66,16 @@ const Homedos = () => {
 
 
   useEffect(() => {
+<<<<<<< HEAD
+    if (infoToken) {
+      dispatch(getAllArtists(50, 700));
+      dispatch(getAllAlbums(50, 500));
+=======
     if (isAuthenticated) {
       dispatch(getAllArtists(800));
       dispatch(getAllAlbums(50));
       dispatch(getNewSong(infoToken));
+>>>>>>> 0f73aa182a8a792aa4ba87db34d0dc5854a42de3
     }
     dispatch(Landing());
     // eslint-disable-next-line 
@@ -104,7 +110,7 @@ const Homedos = () => {
           <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
             <ul className="slider-container slider-nav-autoplay">
               {infoAlbum.albums ?
-                infoAlbum.albums?.slice(1, 20).map((c) => {
+                infoAlbum.albums?.slice(25, 50).map((c) => {
                   return (
                     <li id="slide1" className=" container-fluid d-flex justify-content-center">
                       <Container>
