@@ -51,9 +51,7 @@ export default NavHome;
 const Div = styled.div`
   @media screen and (max-width: 960px) {
     background-color: #000000;
-    width: auto;
-    display: flex;
-    direction: column;
+   
   }
 
   .btn {
@@ -76,7 +74,8 @@ const Div = styled.div`
     height: auto;
   }
 
-  background-color: #000000;
+ background-color: black;
+;
   height: auto;
   max-height: 250px;
 

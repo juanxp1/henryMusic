@@ -82,7 +82,7 @@ function New() {
             alert('Invalid camps');
         }
         else{
-            console.log(input);
+            //console.log(input);
             dispatch(postSong(input));
             setInput({
                 name: '',

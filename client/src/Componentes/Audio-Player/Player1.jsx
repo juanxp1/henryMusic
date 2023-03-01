@@ -15,7 +15,7 @@ export default function Player1(tracks) {
 
   let arr = [];
 
-  console.log(tracks)
+
 
   useEffect(() => {
     tracks.tracks.map(el => arr.push(el.play_url))

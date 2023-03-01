@@ -30,7 +30,7 @@ const Homedos = () => {
   }
 
   const [data, setData] = useState({ album: [] })
-  console.log("is", data);
+  //console.log("is", data);
 
   // eslint-disable-next-line 
   const [orden, setOrden] = useState('')
@@ -67,7 +67,7 @@ const Homedos = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(getAllArtists(200));
+      dispatch(getAllArtists(800));
       dispatch(getAllAlbums(50));
       dispatch(getNewSong(infoToken));
     }
@@ -157,6 +157,8 @@ const Homedos = () => {
                 <option value="Latin">Latin </option>
                 <option value="Rock">Rock </option>
                 <option value="hip hop">hip hop</option>
+                <option value="dance">dance</option>
+                <option value="electro">electro</option>
               </select>
             </div>
           </div>
