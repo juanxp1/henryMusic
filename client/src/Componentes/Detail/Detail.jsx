@@ -96,10 +96,14 @@ function Detail(props) {
                             </div>
                             <div className='fw-bold'> {convertidor(el.duration)}<CounterScreen track={el} />  </div>
                         </li>
-                        
+
                     ))}
-                    <Comentarios></Comentarios>
+
                 </ol>
+                <div className=' container d-flex justify-content-center'>
+                    <Comentarios />
+                </div>
+
             </div>
 
 

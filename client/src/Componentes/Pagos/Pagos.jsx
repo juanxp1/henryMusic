@@ -7,6 +7,8 @@ import paypal from '../Pagos/paypal.png'
 import { useAuth0 } from '@auth0/auth0-react'
 import Publicidad from '../publicidad/Video'
 import Registro from '../Registro/Registro'
+import { convertLength } from "@mui/material/styles/cssUtils";
+
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -61,20 +63,56 @@ export default function Pagos() {
 
   return (
     <Container className="payment container-fluid" id="premium">
+{/* <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> */}
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://i.postimg.cc/D0fD7B4s/Cover-2.jpg" alt="First slide"/>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Second slide"/>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Third slide"/>
+    </div>
+  </div>
+  {/* <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"> */}
+    {/* <span class="carousel-control-prev-icon" aria-hidden="true"></span> */}
+    {/* <span class="sr-only">Previous</span> */}
+  {/* </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"> */}
+    {/* <span class="carousel-control-next-icon" aria-hidden="true"></span> */}
+    {/* <span class="sr-only">Next</span> */}
+  {/* </a>
+</div> */}
+</Container>
 
-      {/* {actions ? <h1>Bienvenido a tu cuenta Premium</h1> : <Publicidad />} */}
-    {/* <Publicidad /> */}
 
 
-      <h1 className='text-center pt-5'>¡No esperes mas y adquiere hoy tu plan Premium!</h1>
-      <h2 className='text-center Music'>ᴺᴼᵂ ᴾᴸᴬᵞᴵᴺᴳ♫♬♪</h2>
-      <p className="parrafo text-center"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
-      <img src={visa} alt="visa" />
-      <img src={master} alt="master" />
-      <img src={paypal} alt="paypal" />
+);
+}
 
 
-      <div className=" container-fluid m-0 p-0 ">
+   
+    
+
+    //   {/* {actions ? <h1>Bienvenido a tu cuenta Premium</h1> : <Publicidad />} */}
+    // {/* <Publicidad /> */}
+{/* 
+
+    //   <h1 className='text-center pt-5'>¡No esperes mas y adquiere hoy tu plan Premium!</h1>
+    //   <h2 className='text-center Music'>ᴺᴼᵂ ᴾᴸᴬᵞᴵᴺᴳ♫♬♪</h2>
+    //   <p className="parrafo text-center"> Escuchá contenido sin límites en tu celular, parlante y otros dispositivos.</p>
+    //   <img src={visa} alt="visa" />
+    //   <img src={master} alt="master" />
+    //   <img src={paypal} alt="paypal" />
+
+
+      /* <div className=" container-fluid m-0 p-0 ">
         <div className="container card-group">
           <div className="card">
             <button type="button" class="btn btn-dark p-1 rounded-pill">1 mes gratis al suscribirse</button>
@@ -118,64 +156,59 @@ export default function Pagos() {
           <Registro></Registro>
             <hr />
           </div>
-        </div> : <button onClick={alert} className="btn bg-dark"><h2>Realizar Compra</h2></button>}
-    </Container>
-  );
-}
-
+        </div> : <button onClick={alert} className="btn bg-dark"><h2>Realizar Compra</h2></button>} */}
 
 
 const Container = styled.div`
 
-.Music {
-  color: #ffff01
+ .Music {
+   color: #ffff01
 }
 
 img{
-    width: 33px;
-    margin:10px;
+     width: 810px;
+     heigth: 100px;
+    margin:0px;
     margin-top: 0px;
-    padding-top: 0px;
-}
+     padding-top: 0px;
+ }
 
 .select{
   background-color: black;
   color:whitesmoke; 
     font-weight: 600;
     padding-top: 10px;
-    padding-bottom: 10px;
-}
+   padding-bottom: 10px;
+ }
 
 .option{
-  color:whitesmoke; 
-  font-weight: 600;
-  padding-top: 10px;
-  padding-bottom: 20px;
-
+ color:whitesmoke; 
+font-weight: 600;
+ padding-top: 10px;
+ padding-bottom: 20px;
 }
 
 
-background: rgb(255,255,1);
-background: linear-gradient(0deg, rgba(255,255,1,1) 0%, rgba(0,0,0,1) 81%);
+// background: rgb(255,255,1);
+// background: linear-gradient(0deg, rgba(255,255,1,1) 0%, rgba(0,0,0,1) 81%);
 
-background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 2%, rgba(255,255,0,1) 43%, rgba(0,0,0,1) 85%);
-
+// background: rgb(0,0,0);
+// background: linear-gradient(0deg, rgba(0,0,0,1) 2%, rgba(255,255,0,1) 43%, rgba(0,0,0,1) 85%);
+background: black;
 text-align: center;
 height: auto;
 
 
 h3 {
     font-size: 20px;
-    color:whitesmoke; 
-}
+   color:whitesmoke; 
+ }
 
 
 
 h1 {
-  
-    color:whitesmoke; 
-    font-weight: 600;
+       color:whitesmoke; 
+   font-weight: 600;
 
 }
 
@@ -190,53 +223,53 @@ h1 {
 h2 {
     color: whitesmoke;
   
-}
+ }
 
-.card{
+ .card{
 
   background-color: #000000;
 
-  color: whitesmoke;  
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px solid #ffffff;
-   margin: 10px;
+color: whitesmoke;  
+padding: 30px;
+border-radius: 10px;
+border: 1px solid #ffffff;
+margin: 10px;
   
-    // margin:10px;
-    // display: flex;
-    // flex-direction: column;
-    // border-radius: 10px;
-    // padding-top:10px;
+margin:10px;
+display: flex;
+flex-direction: column;
+border-radius: 10px;
+padding-top:10px;
   
 }
 
 .card:hover {
-    cursor: pointer;
-    transform: scale(1.08);
+   cursor: pointer;
+   transform: scale(1.08);
     transition: all 0.3s;
-}
+ }
 
 .parrafo{
-  padding-top: 30px;
-    color:whitesmoke;
-    font-size: 20px;
+ padding-top: 30px;
+ color:whitesmoke;
+ font-size: 20px;
 }
 
 
 .card-text{
-  padding-top: 100px;
-    font-size: 13px;
-    padding: 5px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 15px;
+ padding-top: 100px;
+ font-size: 13px;
+ padding: 5px;
+ padding-left: 30px;
+ padding-right: 30px;
+ padding-bottom: 15px;
 
 
-}
+ }
 
 
 
 
-`
+ `
 
 

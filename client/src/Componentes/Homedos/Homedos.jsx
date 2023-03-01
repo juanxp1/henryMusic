@@ -55,8 +55,8 @@ const Homedos = () => {
 
   useEffect(() => {
     if (infoToken) {
-      dispatch(getAllArtists(200));
-      dispatch(getAllAlbums(50));
+      dispatch(getAllArtists(50, 700));
+      dispatch(getAllAlbums(50, 500));
     }
     dispatch(Landing());
     // eslint-disable-next-line 
@@ -88,7 +88,7 @@ const Homedos = () => {
           <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
             <ul className="slider-container slider-nav-autoplay">
               {infoAlbum.albums ?
-                infoAlbum.albums?.slice(1, 20).map((c) => {
+                infoAlbum.albums?.slice(25, 50).map((c) => {
                   return (
                     <li id="slide1" className=" container-fluid d-flex justify-content-center">
                       <Container>

@@ -5,7 +5,9 @@ import Premium from './Premium/Premium'
 import Us from './About us/Us'
 import Footer from './Footer/Footer'
 import Pagos from './Pagos/Pagos';
-import { DiscussionEmbed, Recommendations } from 'disqus-react';
+// import { DiscussionEmbed, Recommendations } from 'disqus-react';
+import { Button } from 'bootstrap';
+import { height } from '@mui/system';
 
 function Landing() {
     // const { getAccessTokenSilently } = useAuth0();
@@ -16,9 +18,12 @@ function Landing() {
             <Premium />
             <Pagos></Pagos>
             <Us />
+            <div className='container '>
+                
+            </div>
             <Footer />
-            {/* <DiscussionEmbed></DiscussionEmbed> */}
-           <Recommendations></Recommendations>
+
+           
         </div>
     )
 }

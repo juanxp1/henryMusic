@@ -11,7 +11,7 @@ function Logout() {
 
     return (
         
-        <Button type="button" className="btn btn-warning" onClick={() => logout()}>
+        <Button type="button" style={{background:"#ffff01"}} className="btn btn-warning" onClick={() => logout()}>
             Logout
         </Button>
     );
