@@ -6,6 +6,7 @@ import cora from "./cora.png";
 import mas from "./mas.png";
 import favi from './favi.png';
 import { Link } from 'react-router-dom'
+import Logout from '../Logout/Logout'
 import {
   NavbarContainer1,
   Navbarwrapper1,
@@ -26,84 +27,77 @@ function Navertical() {
 
   return (
     <>
-    <Div>
-      <NavbarContainer1>
-        <Navbarwrapper1>
-          <div className="nav">
-            <div className="sidebar ">
-              <div className="navigation">
-                <IconLogoMobile1 onClick={() => ChangeClick()}>
-                  {click ? <FaTimes /> : <FaBars />}
-                </IconLogoMobile1>
-
-                <Menu1 click={click} className="container-fluid d-flex justify-content-center">
-                  <ul>
-                    <a href="/">
-                      <img style={{ width: "150px", margin: "0", padding: "0" }} src={favi} alt="logo" />
-                    </a>
-
-                    <MenuItem1 onClick={() => ChangeClick()}>
-                      <li>
-                        <MenuItemLipo1>
-                          <a href="/">
-                            <span className="fa fa-home">
-                              <img className="home" src={home} alt="home" />
-                            </span>
-                            <span>Home</span>
-                          </a>
-                        </MenuItemLipo1>
-                      </li>
-                    </MenuItem1>
-
-                    <MenuItem1 onClick={() => ChangeClick()}>
-                      <li>
-                        <MenuItemLipo1>
-                          <a href="/asds">
-                            <span className="fa fas fa-book">
-                              <img className="home" src={listas} alt="home" />
-                            </span>
-                            <span>Your Library</span>
-                          </a>
-                        </MenuItemLipo1>
-                      </li>
-                    </MenuItem1>
-
-                    <MenuItem1 onClick={() => ChangeClick()}>
-                      <li>
-                        
-                        <MenuItemLipo1>
-                          <a href="#">
-                            <span className="fa fas fa-heart">
-                              <img className="home" src={cora} alt="home" />
-                            </span>
-                            <span>Liked Songs</span>
-                          </a>
-                        </MenuItemLipo1>
-                      </li>
-                    </MenuItem1>
-
-                    <MenuItem1 onClick={() => ChangeClick()}>
-                      <li>
-                        <MenuItemLipo1>
-                          <a href="/new">
-                            <span className="fa fas fa-heart">
-                              <img className="home" src={mas} alt="home" />
-                            </span>
-                            <span>New Song</span>
-                          </a>
-                        </MenuItemLipo1>
-                      </li>
-                    </MenuItem1>
-
-                    <hr />
-                  </ul>
-                </Menu1>
+      <Div>
+        <NavbarContainer1>
+          <Navbarwrapper1>
+            <div className="nav">
+              <div className="sidebar ">
+                <div className="navigation">
+                  <IconLogoMobile1 onClick={() => ChangeClick()}>
+                    {click ? <FaTimes /> : <FaBars />}
+                  </IconLogoMobile1>
+                  <Menu1 click={click} className="container-fluid d-flex justify-content-center">
+                    <ul>
+                      <a href="/">
+                        <img style={{ width: "150px", margin: "0", padding: "0" }} src={favi} alt="logo" />
+                      </a>
+                      <MenuItem1 onClick={() => ChangeClick()}>
+                        <li>
+                          <MenuItemLipo1>
+                            <a href="/">
+                              <span className="fa fa-home">
+                                <img className="home" src={home} alt="home" />
+                              </span>
+                              <span>Home</span>
+                            </a>
+                          </MenuItemLipo1>
+                        </li>
+                      </MenuItem1>
+                      <MenuItem1 onClick={() => ChangeClick()}>
+                        <li>
+                          <MenuItemLipo1>
+                            <a href="/asds">
+                              <span className="fa fas fa-book">
+                                <img className="home" src={listas} alt="home" />
+                              </span>
+                              <span>Your Library</span>
+                            </a>
+                          </MenuItemLipo1>
+                        </li>
+                      </MenuItem1>
+                      <MenuItem1 onClick={() => ChangeClick()}>
+                        <li>
+                          <MenuItemLipo1>
+                            <a href="#">
+                              <span className="fa fas fa-heart">
+                                <img className="home" src={cora} alt="home" />
+                              </span>
+                              <span>Liked Songs</span>
+                            </a>
+                          </MenuItemLipo1>
+                        </li>
+                      </MenuItem1>
+                      <MenuItem1 onClick={() => ChangeClick()}>
+                        <li>
+                          <MenuItemLipo1>
+                            <a href="/new">
+                              <span className="fa fas fa-heart">
+                                <img className="home" src={mas} alt="home" />
+                              </span>
+                              <span>New Song</span>
+                            </a>
+                          </MenuItemLipo1>
+                        </li>
+                      </MenuItem1>
+                      <hr />
+                    </ul>
+                  </Menu1>
+                </div>
               </div>
             </div>
-          </div>
-        </Navbarwrapper1>
-      </NavbarContainer1>
-    </Div>
+          </Navbarwrapper1>
+        </NavbarContainer1>
+      </Div>
     </>
   )
 }
@@ -111,6 +105,9 @@ function Navertical() {
 export default Navertical;
 
 const Div = styled.div`
+
+
+
   .fotasa {
     width: 150px;
   }

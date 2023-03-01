@@ -9,6 +9,7 @@ import Card from "./Card";
 import { Link } from "react-router-dom";
 import play from './play.png'
 import Search from "../Search/Search";
+import Carousel from 'react-elastic-carousel';
 
 const Homedos = () => {
   // eslint-disable-next-line 
@@ -169,37 +170,39 @@ const Homedos = () => {
           {/* carrusel */}
 
           <div className="swiffy-slider slider-nav-round slider-nav-dark">
-            <ul className="slider-container d-flex">
-              {infoMusic.artists ? (
-                infoMusic?.artists.map((c) => {
-                  return (
-                    <li className="ms-2">
-                      <Link to={"/detail/" + c.id}>
-                        <Card
-                          key={c.id}
-                          id={c.id}
-                          name={c.name}
-                          image={c.images[0]?.url}
-                          genre={c.genres.map((el) => (
-                            <span> {el.name} </span>
-                          ))}
-                        />
-                      </Link>
-                    </li>
-                  );
-                })
-              ) : (
-                <div className="uwu w-100 container-fluid">
-                  <div className="loaderRectangle d-flex justify-content-center">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
+            <ul className="slider-container d-flex justify-content-center">
+            {infoMusic.artists ? (
+              infoMusic?.artists.map((c) => {
+                return (
+
+                  <li>
+                    <Link to={"/detail/" + c.id}>
+                      <Card
+                        key={c.id}
+                        id={c.id}
+                        name={c.name}
+                        image={c.images[0]?.url}
+                        genre={c.genres.map((el) => (
+                          <span> {el.name} </span>
+                        ))}
+                      />
+                    </Link>
+                  </li>
+
+                );
+              })
+            ) : (
+              <div className="uwu w-100 container-fluid">
+                <div className="loaderRectangle d-flex justify-content-center">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
                 </div>
-              )}
-            </ul>
+              </div>
+            )}
+          </ul>
             <button type="button" className="slider-nav"></button>
             <button
               type="button"

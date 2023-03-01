@@ -77,6 +77,7 @@ const Div = styled.div`
 
 
 
+
 .input {
     border-radius: 0px;
     border: none;
@@ -85,6 +86,11 @@ const Div = styled.div`
     width: 50%;
     color:white;
     font-size: 25px;
+    
+@media screen and (max-width: 960px) {
+   
+  width: 100%;
+  }
  
 }
 
