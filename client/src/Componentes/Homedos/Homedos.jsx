@@ -66,16 +66,10 @@ const Homedos = () => {
 
 
   useEffect(() => {
-<<<<<<< HEAD
-    if (infoToken) {
-      dispatch(getAllArtists(50, 700));
-      dispatch(getAllAlbums(50, 500));
-=======
     if (isAuthenticated) {
       dispatch(getAllArtists(800));
       dispatch(getAllAlbums(50));
       dispatch(getNewSong(infoToken));
->>>>>>> 0f73aa182a8a792aa4ba87db34d0dc5854a42de3
     }
     dispatch(Landing());
     // eslint-disable-next-line 
