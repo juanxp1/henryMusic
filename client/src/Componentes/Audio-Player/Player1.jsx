@@ -25,13 +25,13 @@ export default function Player1(tracks) {
     setCurrentSong({ index: tracks.i, url: arr[currentSong.index] })
   }, [tracks])
 
-  console.log(arr)
 
   return (
 
     <Container className="container-fluid d-flex justify-content-around">
       <AudioPlayer
         src={currentSong.url}
+        style={{background:"black",color:"#ffff01" ,width:"100%", textAlign:"center", height:"auto"}}
         controls
         autoPlay={false}
         onClickNext={() => setCurrentSong({ index: currentSong.index == arr.length - 1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == arr.length - 1 ? currentSong.url : arr[currentSong.index + 1] })}
@@ -40,7 +40,8 @@ export default function Player1(tracks) {
         showSkipControls
         volumeJumpStep
         showFilledProgress
-      
+        header={tracks?.tracks[currentSong.index]?.name}
+        onEnded={() => setCurrentSong({ index: currentSong.index == arr.length - 1 ? currentSong.index : currentSong.index + 1, url: currentSong.index == arr.length - 1 ? currentSong.url : arr[currentSong.index + 1] })}
 
       />
     </Container>

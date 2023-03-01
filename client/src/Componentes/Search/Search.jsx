@@ -17,7 +17,7 @@ function Search() {
   const [notFound, setNotFound] = useState(false);
 
   const handleClose = (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     setShow(false);
     setInput('');
     setNotFound(false);
@@ -46,14 +46,14 @@ function Search() {
     }
 
     setInput('');
-    history.replace('/');
+    history.replace('/home');
   };
 
   return (
     <Div className="container-fluid w-100">
       <form className="d-flex justify-content-center" onSubmit={handleSubmit}>
         <input
-          className="row g-0 align-items-center input"
+          className="align-items-center input bg-transparent  font-monospace"
           type="search"
           placeholder=" ⚡  Busca tu canción favorita"
           aria-label="Search"
@@ -63,7 +63,7 @@ function Search() {
         {error && <p className="text-danger">Debes ingresar un artista</p>}
       </form>
 
-    
+
     </Div>
   );
 }
@@ -73,95 +73,27 @@ export default Search;
 
 
 
-// export default function Search() {
-//     const [input, setInput] = useState('')
-//     const dispatch = useDispatch()
-//     const history = useHistory();
-
-//     function handleChange(e) {
-//         setInput(e.target.value)
-//     }
-
-//     function handleSubmit(e) {
-//         e.preventDefault()
-//         dispatch(searchArtist(input))
-//         setInput('')
-//         history.push('/artist')
-//     }
-
-//     return (
-//         <Div>
-//             <form onSubmit={handleSubmit}>
-//                 <input
-//                     className="input"
-//                     type="text"
-//                     placeholder="Search Artist"
-//                     value={input}
-//                     onChange={handleChange}
-//                 />
-//             </form>
-//         </Div>
-//     )
-// }
-
-
-
-
-
 const Div = styled.div`
 
-@media screen and (max-width: 960px){
-display: none;
-}
 
 
 .input {
-    border-radius: 20px;
+    border-radius: 0px;
+    border: none;
+    height: 40px;
     text-align: center;
-    width: auto;
-
+    width: 50%;
+    color:white;
+    font-size: 25px;
+ 
 }
 
 input::placeholder {
-    font-size: 13px;
+    font-size: 25px;
     text-align: center;
-}
-/* 
-@media (max-width: 768px) {
-    .input {
-        width: 100%;
-    }
+    color: #aaaaaa;
+    border: none
 }
 
-@media (max-width: 576px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 375px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 320px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 280px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 240px) {
-    .input {
-        width: 100%;
-    }
-}
- */
 
 `

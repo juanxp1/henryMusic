@@ -6,7 +6,7 @@ import { getArtist, resetDetalles } from '../../Actions/actions';
 import { Link } from 'react-router-dom'
 import play from '../Detail/play.png'
 import CounterScreen from "./CounterScreen"
-import Comentarios from '../Comentarios/Comentarios';
+
 
 
 function Detail(props) {
@@ -100,9 +100,6 @@ function Detail(props) {
                     ))}
 
                 </ol>
-                <div className=' container d-flex justify-content-center'>
-                    <Comentarios />
-                </div>
 
             </div>
 
@@ -193,14 +190,13 @@ img {
 } 
  .contenedordos{
     width: auto;
-    height: 120vh;
+    min-height: 100vh;
+    max-height: auto;
     background: rgb(194,194,45);
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
-    /* margin-left: 230px  !important; */
     color: white;
     border:none;
-    /* display: flex;
-    position: relative; */
+ 
 
     @media screen and (min-width: 960px){
         margin-left: 230px 

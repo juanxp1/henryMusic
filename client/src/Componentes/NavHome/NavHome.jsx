@@ -4,7 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import Search from "../Search/Search";
+
 import Logout from "../Logout/Logout";
 
 function NavHome() {
@@ -18,7 +18,7 @@ function NavHome() {
       <Div className='container-fluid'>
         <div className="navbar container d-flex justify-content-end">
           <div className=" d-flex justify-content-center">
-            <Search />
+           
           </div>
 
           <div className="d-flex justify-content-center" role="search">
