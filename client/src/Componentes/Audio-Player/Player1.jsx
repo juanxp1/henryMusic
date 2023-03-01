@@ -5,17 +5,18 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react';
 
 
-
 export default function Player1(tracks) {
+
+  // VARIABLES
+
+  let arr = [];
 
   const [currentSong, setCurrentSong] = useState({
     index: 0,
     url: '',
   });
 
-  let arr = [];
-
-
+  // USE_EFFECTS
 
   useEffect(() => {
     tracks.tracks.map(el => arr.push(el.play_url))
@@ -25,6 +26,7 @@ export default function Player1(tracks) {
     setCurrentSong({ index: tracks.i, url: arr[currentSong.index] })
   }, [tracks])
 
+  // RETURN 
 
   return (
 
