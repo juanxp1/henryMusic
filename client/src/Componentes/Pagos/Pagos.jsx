@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createElement } from "react";
 import ReactDOM from "react-dom"
 import styled from 'styled-components'
-import abigail from './abigail.jpeg'
+import abigail from './henryMusic.jpg'
 import videoabi from './abi.mp4'
 
 

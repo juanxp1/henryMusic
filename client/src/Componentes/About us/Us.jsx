@@ -6,7 +6,7 @@ import Bianchi from '../About us/bianchi.jpg';
 import Felipe from '../About us/felipe.jpg';
 import Rodolfo from '../About us/rodolfo.jpg';
 import Erick from '../About us/erick.jpg';
-import Agustin from '../About us/agustin.jpg';
+import Agustin from '../About us/Agus.jpg';
 import Linke from '../About us/linke.png';
 import Carlos from '../About us/carlos.jpg';
 import Abii from '../About us/Abii.jpeg';
