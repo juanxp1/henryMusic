@@ -15,7 +15,7 @@ export default function CounterScreen({track}) {
 
   useEffect(() => {
     if(isAuthenticated) {
-      dispatch(getUser(user))
+      dispatch(getUser())
       dispatch(getAllPlaylists())
     }
   }, [isAuthenticated])

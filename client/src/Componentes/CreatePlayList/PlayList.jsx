@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlaylists, getPlaylistTracks, getUser, getPlayer, isPlaying, playlistDeleteTrack } from '../../Actions/actions';
 import play from '../Detail/play.png'
 import pic from './pic.jpg'
-import NavHome from '../NavHome/NavHome';
 import Navertical from '../Nav-Vertical/Navertical';
 
 
@@ -14,15 +13,16 @@ import Navertical from '../Nav-Vertical/Navertical';
 
 function PlayList() {
 
-    const convertidor = (milisegundos) => {
-        const minutos = Math.floor(milisegundos / 1000 / 60);
-        milisegundos -= Math.floor(minutos * 60 * 1000);
-        const segundos = Math.floor(milisegundos / 1000);
-        return `${minutos}:${segundos}`;
-    }
+    // const convertidor = (milisegundos) => {
+    //     const minutos = Math.floor(milisegundos / 1000 / 60);
+    //     milisegundos -= Math.floor(minutos * 60 * 1000);
+    //     const segundos = Math.floor(milisegundos / 1000);
+    //     return `${minutos}:${segundos}`;
+    // }
 
     const { user, isAuthenticated } = useAuth0();
     const infoToken = useSelector(state => state.token)
+    const infoUser = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const playlistTracks = useSelector(state => state.playlistTracks)
     const playlist = useSelector(state => state.playlists.playlists)
@@ -40,27 +40,28 @@ function PlayList() {
     }
 
     function deleteTrack(track_id) {
-        dispatch(playlistDeleteTrack(playlist[0].id, track_id))
+        dispatch(playlistDeleteTrack(playlist[0]?.id, track_id))
     }
-
 
     useEffect(() => {
         if (infoToken) {
-            dispatch(getUser(user))
+            dispatch(getUser())
             dispatch(getAllPlaylists())
         }
     }, [infoToken])
 
     useEffect(() => {
         isAuthenticated &&
-            dispatch(getPlaylistTracks(playlist[0].id))
-    }, [playlist, playlistTracks])
+            dispatch(getPlaylistTracks(playlist[0]?.id))
+    }, [infoToken])
 
     useEffect(() => {
         if (playlistTracks?.tracks) {
             setData({ name: playlistTracks.name, tracks: playlistTracks.tracks, i: data.i })
         }
-    }, [playlistTracks])
+    }, [playlist])
+
+    console.log(infoUser)
 
 
     return (
