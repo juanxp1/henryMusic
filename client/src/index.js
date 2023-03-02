@@ -5,12 +5,11 @@ import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from 'react-redux';
 import store from './Store/store';
-//estilos de audio
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    
     <Provider store={store}>
       <Auth0Provider
         domain="dev-183wwf4clw7n6848.us.auth0.com"
@@ -21,11 +20,8 @@ ReactDOM.render(
         }}
       >
         <App />
-
       </Auth0Provider>
-
     </Provider>
-
   </React.StrictMode >,
   document.getElementById('root')
 );

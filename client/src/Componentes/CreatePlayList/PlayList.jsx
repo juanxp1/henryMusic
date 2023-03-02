@@ -6,19 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlaylists, getPlaylistTracks, getUser, getPlayer, isPlaying, playlistDeleteTrack } from '../../Actions/actions';
 import play from '../Detail/play.png'
 import pic from './pic.jpg'
-import Navertical from '../Nav-Vertical/Navertical';
 
 
 
 
 function PlayList() {
-   // const convertidor = (milisegundos) => {
+    // const convertidor = (milisegundos) => {
     //     const minutos = Math.floor(milisegundos / 1000 / 60);
     //     milisegundos -= Math.floor(minutos * 60 * 1000);
     //     const segundos = Math.floor(milisegundos / 1000);
     //     return `${minutos}:${segundos}`;
     // }
- 
+
 
     const { user, isAuthenticated } = useAuth0();
     const infoToken = useSelector(state => state.token)
@@ -53,7 +52,7 @@ function PlayList() {
     useEffect(() => {
         isAuthenticated &&
             dispatch(getPlaylistTracks(playlist[0]?.id))
-    }, [infoToken, playlistTracks])
+    }, [infoToken])
 
     useEffect(() => {
         if (playlistTracks?.tracks) {
@@ -68,14 +67,13 @@ function PlayList() {
 
         isAuthenticated ? (
             <Div>
-                <Navertical />
-                <div className='contenedor'>
+                <div className=' contenedor'>
                     <div className=" bg-dark mw-100 pt-2 pb-1  container-fluid oki" >
                         <div className="row g-0 container-fluid">
                             <div className="col-md-4 container-fluid">
                                 <img src={user.picture} className="img-thumbnail bg-dark pancho " alt="fotouser" />
                             </div>
-                            <div className="col-md-8">
+                            <div className="col-md-8 container">
                                 <div className="card-body">
                                     <br />
                                     <p className="card-text p-0"> Las canciones que te gustaron</p>
@@ -83,7 +81,6 @@ function PlayList() {
                                 </div>
                             </div>
                         </div>
-                        <br />
                         <br />
                         <Link to={"/home"}>
                             <button className=" ms-3 regresar btn-dark" type="button">Volver al Menu</button>
@@ -93,9 +90,7 @@ function PlayList() {
 
                 {/* PLAYLIST */}
 
-
-
-                <div className='contenedordos'>
+                <div className='contenedordos container-fluid'>
                     <ul className="list-group list-group-numbered container-fluid ">
                         <li className="ms-0 list-group-item d-flex justify-content-between align-items-start bg-transparent text-white">
                             <div className="row position-fixed-top container-fluid">
@@ -103,12 +98,11 @@ function PlayList() {
                                     <li className=" col-8 d-flex align-items-center bg-transparent text-light">
                                         <img onClick={() => handleClick(playlistTracks.tracks.indexOf(el))} className='fotico ms-2' src={play} alt="play" />
                                         <div className=" ms-4 me-auto container-fluid d-flex justify-content-start">
-                                           {el.name} 
+                                            {el.name}
                                         </div>
                                         <div className='w-100 d-flex container-fluid justify-content-end'>
                                             <button className=' eliminar' onClick={() => deleteTrack(el.id)}> Eliminar </button>
                                         </div>
-
                                         {/* <div className='fw-bold'> {convertidor(el.duration)} </div> */}
                                     </li>
                                 ))}
@@ -116,7 +110,6 @@ function PlayList() {
                         </li>
                     </ul>
                 </div>
-
             </Div>
         ) : <div className="uwu w-100 container-fluid bg-dark">
             <img style={{ width: "100%", height: "100%" }} src={pic} alt="" />
@@ -216,14 +209,6 @@ background-color: black;
 .contenedor{
     width: auto;
     height: auto;
-
-    /* margin-left: 230px  !important; */
-    color: white;
-    /* display: flex;
-    position: relative; */
-    @media screen and (min-width: 960px){
-        margin-left: 230px 
-}
 }
 
 
@@ -233,15 +218,9 @@ background-color: black;
    max-height: auto;
     background: rgb(194,194,45);
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 70%);
-    /* margin-left: 230px  !important; */
     color: white;
     border:none;
-    /* display: flex;
-    position: relative; */
 
-    @media screen and (min-width: 960px){
-        margin-left: 230px 
-}
 
 }
 

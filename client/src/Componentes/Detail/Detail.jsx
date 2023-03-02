@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getPlayer, Landing, isPlaying } from '../../Actions/actions';
+import { getPlayer, Landing, isPlaying,resetDetalles,getArtist } from '../../Actions/actions';
 import styled from 'styled-components';
-import { getArtist, resetDetalles } from '../../Actions/actions';
 import { Link } from 'react-router-dom'
 import play from '../Detail/play.png'
 import CounterScreen from "./CounterScreen"
@@ -53,7 +52,6 @@ function Detail(props) {
 
     return (
         <Div>
-
             <div className='contenedor'>
                 <div className=" bg-dark mw-100 pt-2 pb-1  container-fluid oki" >
                     <div className="row g-0 pt-2 container-fluid">
@@ -82,8 +80,6 @@ function Detail(props) {
 
 
             {/* PLAYLIST */}
-
-
             <div className='contenedordos'>
                 <ol className="list-group list-group-numbered container-fluid ">
                     {data.tracks.map(el => (
@@ -96,15 +92,9 @@ function Detail(props) {
                             </div>
                             <div className='fw-bold'> {convertidor(el.duration)}<CounterScreen track={el} />  </div>
                         </li>
-
                     ))}
-
                 </ol>
-
             </div>
-
-
-
         </Div>
     )
 
@@ -175,19 +165,10 @@ img {
     width: auto;
     height: auto;
     background: rgb(194,194,45);
-    background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
-    /* margin-left: 230px  !important; */
+    background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);   
     color: white;
-    /* display: flex;
-    position: relative; */
-    @media screen and (min-width: 960px){
-        margin-left: 230px 
-}
-
-
-
-
 } 
+
  .contenedordos{
     width: auto;
     min-height: 100vh;
@@ -196,11 +177,7 @@ img {
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 80%);
     color: white;
     border:none;
- 
 
-    @media screen and (min-width: 960px){
-        margin-left: 230px 
-}
 
 } 
 .detail-button{

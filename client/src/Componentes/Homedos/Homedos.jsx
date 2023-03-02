@@ -2,25 +2,22 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllAlbums, getPlayer, isPlaying, Landing, getNewSong, deleteSong } from ".././../Actions/actions.js";
 import styled from "styled-components";
-import { getAllArtists, filtroGenero, ordenPorAbc } from ".././../Actions/actions.js";
+import { getAllArtists, filtroGenero } from ".././../Actions/actions.js";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { Link } from "react-router-dom";
 import play from './play.png'
 import Search from "../Search/Search";
-import Carousel from 'react-elastic-carousel';
 
 const Homedos = () => {
-  // eslint-disable-next-line 
+
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const infoMusic = useSelector((state) => state.artists);
   const infoToken = useSelector(state => state.token)
   const infoAlbum = useSelector((state) => state.albums);
-  // eslint-disable-next-line 
   const infoPlayer = useSelector(state => state.player)
-
   const infoSong = useSelector((state) => state.newSong);
 
 
@@ -31,10 +28,7 @@ const Homedos = () => {
   }
 
   const [data, setData] = useState({ album: [] })
-  //console.log("is", data);
 
-  // eslint-disable-next-line 
-  const [orden, setOrden] = useState('')
 
   function handleClick(e) {
     setData({ ...data, i: e })
@@ -47,24 +41,6 @@ const Homedos = () => {
     dispatch(deleteSong(id))
     window.location.reload()
   }
-
-
-  function handleAbc(e) {
-    e.preventDefault();
-    dispatch(ordenPorAbc(e.target.value))
-    setOrden(`ordenado ${e.target.value}`)
-  }
-
-  // useEffect(()=>{
-  // setData? ordenPorAbc(e.target.value) : ; 
-
-
-  // },[])
-
-
-
-
-
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -81,7 +57,6 @@ const Homedos = () => {
   }, [infoAlbum])
 
 
-  // console.log(infoPlayer)
 
   return (
     <Container1>
@@ -123,33 +98,15 @@ const Homedos = () => {
                   );
                 })
                 : (
-                  <div className="uwu w-100 container-fluid">
-                    <div className="loaderRectangle d-flex justify-content-center">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
-                  </div>
+                 <div></div>
                 )}
             </ul>
-
           </div>
 
 
-          {/* FILTRO POR ABC */}
+          {/* BOTON FILTRO POR GENERO */}
+
           <div className="d-flex contianer justify-content-center">
-            <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
-              <select onChange={e => handleAbc(e)} className="btn">
-                <option value="asc">ascendent A-Z</option>
-                <option value="des">descendent Z-A</option>
-              </select>
-            </div>
-
-            {/* BOTON FILTRO POR GENERO */}
-
-
             <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
               <select onChange={(e) => handleGenero(e)} className="btn">
                 <option value="All">All Generos</option>
@@ -168,59 +125,12 @@ const Homedos = () => {
 
           <h2 className="d-flex justify-content-start h1 ms-3">Lo mas escuchado </h2>
           {/* carrusel */}
-
-          <div className="swiffy-slider slider-nav-round slider-nav-dark">
-            <ul className="slider-container d-flex justify-content-center">
-            {infoMusic.artists ? (
-              infoMusic?.artists.map((c) => {
-                return (
-
-                  <li>
-                    <Link to={"/detail/" + c.id}>
-                      <Card
-                        key={c.id}
-                        id={c.id}
-                        name={c.name}
-                        image={c.images[0]?.url}
-                        genre={c.genres.map((el) => (
-                          <span> {el.name} </span>
-                        ))}
-                      />
-                    </Link>
-                  </li>
-
-                );
-              })
-            ) : (
-              <div className="uwu w-100 container-fluid">
-                <div className="loaderRectangle d-flex justify-content-center">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </div>
-            )}
-          </ul>
-            <button type="button" className="slider-nav"></button>
-            <button
-              type="button"
-              className="slider-nav slider-nav-next"
-            ></button>
-          </div>
-
-          <h2 className=" d-flex justify-content-start h1 ms-3">Temas para {user?.name}</h2>
-
-
-          {/* carrusel */}
-
           <div className="swiffy-slider slider-nav-round slider-nav-dark">
             <ul className="slider-container d-flex justify-content-center">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                    <li className="ms-2">
+                    <li>
                       <Link to={"/detail/" + c.id}>
                         <Card
                           key={c.id}
@@ -254,67 +164,51 @@ const Homedos = () => {
             ></button>
           </div>
 
-
-          <h2 className="d-flex justify-content-start h1 ms-3 pb-4">  Canciones creadas por la Comunidad </h2>
-
-
           {/* carrusel */}
-          <br />
-
-
-          <div className="swiffy-slider container-fluid slider-item-show3 slider-nav-autoplay">
-            <ul className="slider-container slider-nav-autoplay">
-              {infoSong?.songs ?
-                infoSong?.songs.map((c) => {
+          <h2 className=" d-flex justify-content-start h1 ms-3">Temas para {user?.name}</h2>
+          
+          <div className="swiffy-slider slider-nav-round slider-nav-dark">
+            <ul className="slider-container d-flex justify-content-center">
+              {infoMusic.artists ? (
+                infoMusic?.artists.map((c) => {
                   return (
-                    <li id="slide1" className=" container-fluid d-flex justify-content-center">
-                      <Container>
-                        <div className="cards">
-                          <div className='cards-info'>
-                            <img className="card_imagen" key={c.id} src={c.images[0].url} alt={"img"} />
-                            <div className="card_text container">
-                              <p className='d-flex justify-content-start w-100'>{c.name}</p>
-                              <a className='d-flex ms-3 p-0' onClick={() => handleClick((infoSong.songs.indexOf(c)))}><img src={play} alt="" /></a>
-                            </div>
-                            <button onClick={() => Delete(c.id)} className="trash">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-trash3" viewBox="2 0 16 16">
-                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-                      </Container>
-                    </li>
+                  
+                      <Link to={"/detail/" + c.id}>
+                        <Card
+                          key={c.id}
+                          id={c.id}
+                          name={c.name}
+                          image={c.images[0]?.url}
+                          genre={c.genres.map((el) => (
+                            <span> {el.name} </span>
+                          ))}
+                        />
+                      </Link>
+                   
                   );
                 })
-                : (
-                  <div className="uwu w-100 container-fluid">
-                    <div className="loaderRectangle d-flex justify-content-center">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+              ) : (
+                <div className="uwu w-100 container-fluid">
+                  <div className="loaderRectangle d-flex justify-content-center">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                   </div>
-                )}
+                </div>
+              )}
             </ul>
-
+            <button type="button" className="slider-nav"></button>
+            <button
+              type="button"
+              className="slider-nav slider-nav-next"
+            ></button>
           </div>
-
-
-
-
-
-
-
-          <br /><br /><br /><br /><br />
         </div>
       </div>
 
     </Container1>
-
-
   );
 };
 
@@ -351,15 +245,10 @@ const Container1 = styled.div`
     width: auto;
     min-height: 120vh;
     max-height: auto;
-    margin: 0;
-    padding: 0;
+    margin: auto;
+    padding: 20px;
     background: rgb(194,194,45);
     background: linear-gradient(337deg, rgba(194,194,45,1) 0%, rgba(0,0,0,1) 70%);
-    margin-left: 230px;
-    color: white;
-    @media screen and (max-width: 960px) {
-      margin-left: auto;
-    }
   }
 
 
@@ -619,32 +508,4 @@ img{
 }
 `
 
-// SOLO PARA CORREOS VERIFICADO
 
-// eslint-disable-next-line 
-const Verificado = styled.div`
-  * {
-    text-decoration: none;
-    margin: auto;
-    padding: auto;
-    color: white;
-  }
-
-  .contenedor {
-    width: auto;
-    height: auto;
-    max-height: 300vh;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(255, 255, 0, 1) 100%,
-      rgba(0, 0, 0, 1) 100%
-    );
-    margin-left: auto;
-    color: white;
-    display: flex;
-    position: relative;
-    padding-bottom: 0px;
-  }
-`;
