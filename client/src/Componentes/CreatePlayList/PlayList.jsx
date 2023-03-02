@@ -9,19 +9,12 @@ import pic from './pic.jpg'
 
 
 
-
 function PlayList() {
-    // const convertidor = (milisegundos) => {
-    //     const minutos = Math.floor(milisegundos / 1000 / 60);
-    //     milisegundos -= Math.floor(minutos * 60 * 1000);
-    //     const segundos = Math.floor(milisegundos / 1000);
-    //     return `${minutos}:${segundos}`;
-    // }
 
+    // ----------------------------------- ESTADOS ----------------------------------------
 
     const { user, isAuthenticated } = useAuth0();
     const infoToken = useSelector(state => state.token)
-    const infoUser = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const playlistTracks = useSelector(state => state.playlistTracks)
     const playlist = useSelector(state => state.playlists.playlists)
@@ -32,6 +25,8 @@ function PlayList() {
         i: 0,
     })
 
+    // ----------------------------------- HANDLERS ----------------------------------------
+
     function handleClick(e) {
         setData({ ...data, i: e })
         dispatch(getPlayer({ tracks: data.tracks, i: e }))
@@ -40,19 +35,21 @@ function PlayList() {
 
     function deleteTrack(track_id) {
         dispatch(playlistDeleteTrack(playlist[0]?.id, track_id))
+        setTimeout(() => {
+            dispatch(getPlaylistTracks(playlist[0]?.id))
+        }, 500)
     }
+
+    // ----------------------------------- EFFECTS ----------------------------------------
 
     useEffect(() => {
         if (infoToken) {
             dispatch(getUser())
             dispatch(getAllPlaylists())
+            dispatch(getPlaylistTracks(playlist[0]?.id))
         }
     }, [infoToken])
 
-    useEffect(() => {
-        isAuthenticated &&
-            dispatch(getPlaylistTracks(playlist[0]?.id))
-    }, [infoToken])
 
     useEffect(() => {
         if (playlistTracks?.tracks) {
@@ -60,8 +57,7 @@ function PlayList() {
         }
     }, [playlistTracks])
 
-    console.log(infoUser)
-
+    // ----------------------------------- RENDERIZADO ----------------------------------------
 
     return (
 
@@ -103,7 +99,6 @@ function PlayList() {
                                         <div className='w-100 d-flex container-fluid justify-content-end'>
                                             <button className=' eliminar' onClick={() => deleteTrack(el.id)}> Eliminar </button>
                                         </div>
-                                        {/* <div className='fw-bold'> {convertidor(el.duration)} </div> */}
                                     </li>
                                 ))}
                             </div>
@@ -119,7 +114,7 @@ function PlayList() {
 
 export default PlayList
 
-
+// ----------------------------------- ESTILOs ----------------------------------------
 
 const Div = styled.div`
 
