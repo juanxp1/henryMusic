@@ -68,7 +68,7 @@ const Homedos = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(getAllArtists(800));
+      dispatch(getAllArtists(100));
       dispatch(getAllAlbums(50));
       dispatch(getNewSong(infoToken));
     }

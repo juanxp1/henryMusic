@@ -12,13 +12,13 @@ import Navertical from '../Nav-Vertical/Navertical';
 
 
 function PlayList() {
-
-    // const convertidor = (milisegundos) => {
+   // const convertidor = (milisegundos) => {
     //     const minutos = Math.floor(milisegundos / 1000 / 60);
     //     milisegundos -= Math.floor(minutos * 60 * 1000);
     //     const segundos = Math.floor(milisegundos / 1000);
     //     return `${minutos}:${segundos}`;
     // }
+ 
 
     const { user, isAuthenticated } = useAuth0();
     const infoToken = useSelector(state => state.token)
@@ -53,13 +53,13 @@ function PlayList() {
     useEffect(() => {
         isAuthenticated &&
             dispatch(getPlaylistTracks(playlist[0]?.id))
-    }, [infoToken])
+    }, [infoToken, playlistTracks])
 
     useEffect(() => {
         if (playlistTracks?.tracks) {
             setData({ name: playlistTracks.name, tracks: playlistTracks.tracks, i: data.i })
         }
-    }, [playlist])
+    }, [playlistTracks])
 
     console.log(infoUser)
 
