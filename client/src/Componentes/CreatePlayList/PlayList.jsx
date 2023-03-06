@@ -29,8 +29,10 @@ function PlayList() {
 
     function handleClick(e) {
         setData({ ...data, i: e })
-        dispatch(getPlayer({ tracks: data.tracks, i: e }))
-        dispatch(isPlaying())
+        setTimeout(() => {
+            dispatch(getPlayer({ tracks: data.tracks, i: e }))
+            dispatch(isPlaying())
+        }, 400)
     }
 
     function deleteTrack(track_id) {
