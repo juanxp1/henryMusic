@@ -60,14 +60,25 @@ const Homedos = () => {
 
   return (
     <Container1>
+
       <div className="contenedor d-flex justify-content-center container-fluid">
+
         <div className="container-fluid">
-          <h1 className="h1 ms-3">Bienvenido{" "}<span className="pit">{user?.nickname.toUpperCase()}</span> </h1>
+          <h3 className=" ms-3">Bienvenido{" "}<span className="pit">{user?.nickname.toUpperCase()}</span> </h3>
+          <div className="container d-flex">
+            <h2 className="text-danger">Version Demo </h2>
+          </div>
+
 
           {/* Search */}
           <div className="mt-5 mb-5">
             <Search />
           </div>
+
+          <Link to={"/playlist"}>
+            <button className=" regresar btn-dark" type="button">Tus me gustas</button>
+          </Link>
+
 
           <h2 className=" d-flex justify-content-center mt-4 mb-3  h1 text-white">
             Top artistas
@@ -98,13 +109,14 @@ const Homedos = () => {
                   );
                 })
                 : (
-                 <div></div>
+                  <div></div>
                 )}
             </ul>
           </div>
 
 
           {/* BOTON FILTRO POR GENERO */}
+
 
           <div className="d-flex contianer justify-content-center">
             <div className="btn-wrapper mt-0 mb-3 mt-4 container-fluid">
@@ -166,25 +178,25 @@ const Homedos = () => {
 
           {/* carrusel */}
           <h2 className=" d-flex justify-content-start h1 ms-3">Temas para {user?.name}</h2>
-          
+
           <div className="swiffy-slider slider-nav-round slider-nav-dark">
             <ul className="slider-container d-flex justify-content-center">
               {infoMusic.artists ? (
                 infoMusic?.artists.map((c) => {
                   return (
-                  
-                      <Link to={"/detail/" + c.id}>
-                        <Card
-                          key={c.id}
-                          id={c.id}
-                          name={c.name}
-                          image={c.images[0]?.url}
-                          genre={c.genres.map((el) => (
-                            <span> {el.name} </span>
-                          ))}
-                        />
-                      </Link>
-                   
+
+                    <Link to={"/detail/" + c.id}>
+                      <Card
+                        key={c.id}
+                        id={c.id}
+                        name={c.name}
+                        image={c.images[0]?.url}
+                        genre={c.genres.map((el) => (
+                          <span> {el.name} </span>
+                        ))}
+                      />
+                    </Link>
+
                   );
                 })
               ) : (
@@ -219,6 +231,13 @@ const Container1 = styled.div`
     text-decoration: none;
     color: #ffffff;
   }
+
+  .regresar {
+   font-weight: 500;
+    font-size: 20px;
+    color: #FFFF01;
+}
+
   .trash{
     background: transparent;
   }
