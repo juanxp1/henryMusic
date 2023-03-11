@@ -1,5 +1,6 @@
 import * as ArtistController from '../controllers/ArtistController.js'
 import * as AlbumController from '../controllers/AlbumController.js'
+import * as FrontController from '../controllers/FrontController.js'
 import * as TrackController from '../controllers/TrackController.js'
 import * as UserController from '../controllers/UserController.js'
 import * as AdminController from '../controllers/AdminController.js'
@@ -24,6 +25,8 @@ const uploadImage = upload.single('image')
 router.post('/api/register-auth0-user', UserController.createUser)
 
 // --- rutas privadas, se necesita un token valido para acceder a ellas
+secured.get('/front', FrontController.getFront)
+
 secured.get('/user', UserController.getUser)
 secured.post('/user/update', uploadImage, UserController.updateMyUser)
 secured.post('/user/delete', UserController.deleteUser)
